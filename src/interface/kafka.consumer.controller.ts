@@ -12,8 +12,10 @@ class KafkaConsumerController {
 ) {}
 
   async startListening() {
+    console.log("startListening from controller")
     await this.listenOtpEventUseCase.execute();
   }
 }
 
-const kafkaConsumerController = new KafkaConsumerController(listenOtpEventUseCase)
+const kafkaConsumerController = new KafkaConsumerController(listenOtpEventUseCase);
+export { kafkaConsumerController };

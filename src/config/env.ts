@@ -11,12 +11,19 @@ export const mongoConfig = {
 
 export const mailConfig = {
     user: process.env.OFFICIAL_EMAIL,
-    password: process.env.OFFICIALEMAIL_PASS
+    password: process.env.OFFICIALEMAIL_PASS,
+    noreplyEmail: process.env.OFFICIAL_NOREPLY_EMAIL
 }
 
 export const kafkaConfig = {
   clientId: process.env.KAFKA_CLIENT_ID,
   groupId: process.env.KAFKA_GROUP_ID,
   brokers: (process.env.KAFKA_BROKERS || "localhost:9092").split(","),
-  otpSendTopic: process.env.KAFKA_SENDOTP_TOPIC || "otpSend-event"
+  otpSendTopic: process.env.KAFKA_SENDOTP_TOPIC || "sendOtp-events"
 };
+
+export const awsConfig = {
+    aws_access_key_id: process.env.AWS_ACCESS_KEY_ID,
+    aws_secret_access_key: process.env.AWS_SECRET_ACCESS_KEY,
+    aws_region: process.env.AWS_REGION,
+}

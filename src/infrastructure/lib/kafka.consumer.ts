@@ -1,4 +1,4 @@
-import { Kafka, Consumer } from "kafkajs";
+import { Kafka, Consumer, logLevel } from "kafkajs";
 import { kafkaConfig } from "../../config/env";
 
 export class KafkaConsumerService {
@@ -11,7 +11,11 @@ export class KafkaConsumerService {
     ) { }
 
     async connect(): Promise<void> {
-        const kafka = new Kafka({ clientId: this.clientId, brokers: this.brokers });
+        const kafka = new Kafka({ 
+            clientId: this.clientId, 
+            brokers: this.brokers,
+            logLevel: logLevel.ERROR,
+        });
         this.consumer = kafka.consumer({ groupId: this.groupId });
         await this.consumer.connect();
         console.log("✅ Kafka consumer connected");

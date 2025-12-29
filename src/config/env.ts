@@ -1,29 +1,61 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
+import { Validator } from "../utils/validator";
+
+const validator = new Validator();
+
 export const appConfig = {
-    port: 6000
-}
+  port: validator.requireNumber("PORT"),
+};
 
 export const mongoConfig = {
-    mongoURL: process.env.NODE_ENV === "development" ? process.env.MONGO_URI_DEV : process.env.MONGO_URI
-}
+  mongoURL:
+    process.env.NODE_ENV === "development"
+      ? validator.requireEnv("MONGO_URI_DEV")
+      : validator.requireEnv("MONGO_URI"),
+};
 
 export const mailConfig = {
-    user: process.env.OFFICIAL_EMAIL,
-    password: process.env.OFFICIALEMAIL_PASS,
-    noreplyEmail: process.env.OFFICIAL_NOREPLY_EMAIL
-}
+  officialMail: validator.requireEnv("OFFICIAL_EMAIL"),
+  officialMailPassword: validator.requireEnv("OFFICIALEMAIL_PASS"),
+  noreplyEmail: validator.requireEnv("OFFICIAL_NOREPLY_EMAIL"),
+};
 
 export const kafkaConfig = {
-  clientId: process.env.KAFKA_CLIENT_ID,
-  groupId: process.env.KAFKA_GROUP_ID,
-  brokers: (process.env.KAFKA_BROKERS || "localhost:9092").split(","),
-  otpSendTopic: process.env.KAFKA_SENDOTP_TOPIC || "sendOtp-events"
+  clientId: validator.requireEnv("KAFKA_CLIENT_ID"),
+  groupId: validator.requireEnv("KAFKA_GROUP_ID"),
+  brokers: validator.requireEnv("KAFKA_BROKERS").split(","),
+
+  topics: {
+    sendOtp: validator.requireEnv("KAFKA_SENDOTP_TOPIC"),
+    registerSuccess: validator.requireEnv("KAFKA_REGISTER_SUCCESS_TOPIC"),
+
+    adminApproved: validator.requireEnv("KAFKA_ADMIN_APPROVED_TOPIC"),
+    adminRejected: validator.requireEnv("KAFKA_ADMIN_REJECTED_TOPIC"),
+
+    accountBlocked: validator.requireEnv("KAFKA_ACCOUNT_BLOCKED_TOPIC"),
+    accountUnblocked: validator.requireEnv("KAFKA_ACCOUNT_UNBLOCKED_TOPIC"),
+
+    accountTrusted: validator.requireEnv("KAFKA_ACCOUNT_TRUSTED_TOPIC"),
+    accountUntrusted: validator.requireEnv("KAFKA_ACCOUNT_UNTRUSTED_TOPIC"),
+
+    gotAppointment: validator.requireEnv("KAFKA_GOT_APPOINTMENT_TOPIC"),
+    confirmAppointment: validator.requireEnv("KAFKA_CONFIRM_APPOINTMENT_TOPIC"),
+    rejectAppointment: validator.requireEnv("KAFKA_REJECT_APPOINTMENT_TOPIC"),
+
+    userPayment: validator.requireEnv("KAFKA_USER_PAYMENT_TOPIC"),
+    providerSubscriptionPayment: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_TOPIC"),
+    providerPayout: validator.requireEnv("KAFKA_PROVIDER_PAYOUT_TOPIC"),
+
+    providerStripeAccount: validator.requireEnv("KAFKA_PROVIDER_STRIPE_ACCOUNT_TOPIC"),
+    userGoogleConnect: validator.requireEnv("KAFKA_USER_GOOGLE_CONNECT_TOPIC"),
+    providerGoogleConnect: validator.requireEnv("KAFKA_PROVIDER_GOOGLE_CONNECT_TOPIC"),
+  },
 };
 
 export const awsConfig = {
-    aws_access_key_id: process.env.AWS_ACCESS_KEY_ID,
-    aws_secret_access_key: process.env.AWS_SECRET_ACCESS_KEY,
-    aws_region: process.env.AWS_REGION,
-}
+  aws_access_key_id: validator.requireEnv("AWS_ACCESS_KEY_ID"),
+  aws_secret_access_key: validator.requireEnv("AWS_SECRET_ACCESS_KEY"),
+  aws_region: validator.requireEnv("AWS_REGION"),
+};

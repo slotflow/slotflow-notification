@@ -5,10 +5,11 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "predev": "npx kill-port 3000",
+    "predev": "npx kill-port 6000",
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "bundle": "tsup src/server.ts --format esm --dts --out-dir dist-bundle"
   },
   "keywords": [
     "slotflow",
@@ -21,9 +22,11 @@
     "@aws-sdk/client-ses": "^3.908.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "googleapis": "^160.0.0",
     "helmet": "^8.1.0",
     "kafkajs": "^2.2.4",
-    "nodemailer": "^7.0.9"
+    "nodemailer": "^7.0.9",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
@@ -31,6 +34,7 @@
     "@types/node": "^24.7.2",
     "@types/nodemailer": "^7.0.2",
     "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }

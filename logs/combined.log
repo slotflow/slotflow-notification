@@ -1,0 +1,1203 @@
+[2025-12-29 16:30:52] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 16:33:02] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 16:39:33] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:14:51] [[31merror[39m]: [31mServer startup failed:[39m
+[31mCannot subscribe to topic while consumer is running[39m
+[31mKafkaJSNonRetriableError: Cannot subscribe to topic while consumer is running[39m
+[31m    at Object.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\consumer\index.js:136:13)[39m
+[31m    at KafkaConsumerService.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:29:29)[39m
+[31m    at ListenNotificationEventsUseCase.execute (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\application\useCases\listenKafkaEvent.useCase.ts:13:32)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\interface\kafka.consumer.controller.ts:36:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:11:5)[39m
+[2025-12-29 17:15:21] [[31merror[39m]: [31mServer startup failed:[39m
+[31mCannot subscribe to topic while consumer is running[39m
+[31mKafkaJSNonRetriableError: Cannot subscribe to topic while consumer is running[39m
+[31m    at Object.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\consumer\index.js:136:13)[39m
+[31m    at KafkaConsumerService.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:29:29)[39m
+[31m    at ListenNotificationEventsUseCase.execute (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\application\useCases\listenKafkaEvent.useCase.ts:13:32)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\interface\kafka.consumer.controller.ts:36:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:11:5)[39m
+[2025-12-29 17:16:22] [[31merror[39m]: [31mServer startup failed:[39m
+[31mCannot subscribe to topic while consumer is running[39m
+[31mKafkaJSNonRetriableError: Cannot subscribe to topic while consumer is running[39m
+[31m    at Object.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\consumer\index.js:136:13)[39m
+[31m    at KafkaConsumerService.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:29:29)[39m
+[31m    at ListenNotificationEventsUseCase.execute (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\application\useCases\listenKafkaEvent.useCase.ts:13:32)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\interface\kafka.consumer.controller.ts:36:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:11:5)[39m
+[2025-12-29 17:18:16] [[31merror[39m]: [31mServer startup failed:[39m
+[31mCannot subscribe to topic while consumer is running[39m
+[31mKafkaJSNonRetriableError: Cannot subscribe to topic while consumer is running[39m
+[31m    at Object.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\consumer\index.js:136:13)[39m
+[31m    at KafkaConsumerService.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:29:29)[39m
+[31m    at ListenNotificationEventsUseCase.execute (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\application\useCases\listenKafkaEvent.useCase.ts:13:32)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\interface\kafka.consumer.controller.ts:36:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:11:5)[39m
+[2025-12-29 17:18:46] [[31merror[39m]: [31mServer startup failed:[39m
+[31mCannot subscribe to topic while consumer is running[39m
+[31mKafkaJSNonRetriableError: Cannot subscribe to topic while consumer is running[39m
+[31m    at Object.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\consumer\index.js:136:13)[39m
+[31m    at KafkaConsumerService.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:29:29)[39m
+[31m    at ListenNotificationEventsUseCase.execute (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\application\useCases\listenKafkaEvent.useCase.ts:13:32)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\interface\kafka.consumer.controller.ts:36:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:11:5)[39m
+[2025-12-29 17:23:24] [[31merror[39m]: [31mServer startup failed:[39m
+[31mCannot subscribe to topic while consumer is running[39m
+[31mKafkaJSNonRetriableError: Cannot subscribe to topic while consumer is running[39m
+[31m    at Object.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\consumer\index.js:136:13)[39m
+[31m    at KafkaConsumerService.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:31:29)[39m
+[31m    at ListenNotificationEventsUseCase.execute (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\application\useCases\listenKafkaEvent.useCase.ts:13:32)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\interface\kafka.consumer.controller.ts:36:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:11:5)[39m
+[2025-12-29 17:27:01] [[31merror[39m]: [31mServer startup failed:[39m
+[31mCannot read properties of undefined (reading 'set')[39m
+[31mTypeError: Cannot read properties of undefined (reading 'set')[39m
+[31m    at KafkaConsumerService.subscribe (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:37:26)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async ListenNotificationEventsUseCase.execute (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\application\useCases\listenKafkaEvent.useCase.ts:13:7)[39m
+[31m    at async KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\interface\kafka.consumer.controller.ts:36:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:11:5)[39m
+[2025-12-29 17:27:13] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 17:27:22] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:27:24] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:27:26] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:27:28] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:27:29] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:27:31] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:27:32] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:28:41] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:29:08] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:30:12] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:30:25] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:30:31] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:30:40] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:30:44] [[31merror[39m]: [31mServer startup failed:[39m
+[31mlog is not defined[39m
+[31mReferenceError: log is not defined[39m
+[31m    at KafkaConsumerService.connect (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:24:9)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:10:5)[39m
+[2025-12-29 17:30:45] [[31merror[39m]: [31mServer startup failed:[39m
+[31mlog is not defined[39m
+[31mReferenceError: log is not defined[39m
+[31m    at KafkaConsumerService.connect (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:24:9)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:10:5)[39m
+[2025-12-29 17:30:49] [[31merror[39m]: [31mKafka consumer connected[39m
+[2025-12-29 17:30:49] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:30:54] [[31merror[39m]: [31mServer startup failed:[39m
+[31mlog.ifno is not a function[39m
+[31mTypeError: log.ifno is not a function[39m
+[31m    at KafkaConsumerService.connect (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\infrastructure\messaging\kafka.consumer.ts:25:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:10:5)[39m
+[2025-12-29 17:30:57] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:30:57] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:31:04] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:31:04] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:31:06] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:31:06] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:31:18] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:31:18] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:31:23] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:31:23] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:31:27] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:31:27] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:31:32] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:31:32] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:31:56] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:31:56] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:32:01] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:32:01] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:32:05] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:32:05] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:32:08] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:32:08] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:32:10] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:32:10] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:09] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:09] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:23] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:23] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:28] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:28] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:34] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:34] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:37] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:37] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:40] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:40] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:47] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:47] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:50] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:50] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:52] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:52] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:54] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:54] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:56] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:56] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:36:57] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:36:57] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:37:01] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:37:01] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:20] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:20] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:21] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:21] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:24] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:24] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:28] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:28] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:29] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:29] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:35] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:35] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:37] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:37] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:44] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:44] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:38:46] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:38:46] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:41:08] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:41:08] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:41:10] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:41:10] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:41:12] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:41:12] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:41:14] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:41:14] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:41:26] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:41:26] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:43:28] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:43:28] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:43:30] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:43:30] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:43:32] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:43:32] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:45:07] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:45:07] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:45:11] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:45:11] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:45:14] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:45:14] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:45:35] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:45:35] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:45:49] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:45:50] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:45:51] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:45:51] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 17:48:13] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 17:48:13] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:23:01] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:23:01] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:23:04] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:23:04] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:23:07] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:23:07] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:26:11] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:26:11] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:26:14] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:26:14] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:26:17] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:26:17] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:26:22] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:26:22] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:26:50] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:26:50] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:27:07] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:27:07] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:27:09] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:27:09] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:27:53] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:27:53] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:32:56] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:32:56] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:33:00] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:33:00] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:16] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:16] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:27] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:27] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:31] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:31] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:40] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:40] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:43] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:43] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:47] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:47] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:49] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:49] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:51] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:51] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:54] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:54] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:56] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:56] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:35:59] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:35:59] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:01] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:01] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:05] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:05] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:10] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:10] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:13] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:13] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:15] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:15] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:17] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:17] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:20] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:20] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:28] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:28] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:35] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:35] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:38] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:38] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:40] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:40] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:42] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:42] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:45] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:45] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:47] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:47] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:50] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:50] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:52] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:52] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:36:55] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:36:55] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:37:03] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:37:03] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:37:06] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:37:06] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:37:08] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:37:08] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:37:11] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:37:11] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:37:47] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:37:47] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:37:49] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:37:49] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:37:50] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:37:50] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:38:30] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:38:30] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:38:57] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:38:57] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:39:07] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:39:07] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:39:14] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:39:14] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:39:17] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:39:17] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:39:21] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:39:21] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:39:25] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:39:25] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:18] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:18] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:23] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:23] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:26] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:26] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:31] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:31] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:35] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:35] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:41] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:41] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:45] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:45] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:51] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:51] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:56] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:56] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:42:59] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:42:59] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:04] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:04] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:09] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:09] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:11] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:11] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:14] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:14] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:20] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:20] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:24] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:25] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:27] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:27] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:31] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:31] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:43] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:43] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:47] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:47] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:49] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:49] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:52] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:52] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:43:57] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:43:57] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:01] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:01] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:03] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:03] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:07] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:07] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:27] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:27] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:35] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:35] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:39] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:39] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:43] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:43] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:45] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:45] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:50] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:50] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:53] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:53] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:54] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:54] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:44:59] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:44:59] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:45:02] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:45:02] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:45:07] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:45:07] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:45:10] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:45:10] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:45:11] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:45:11] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:45:13] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:45:13] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:45:16] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:45:16] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:45:17] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:45:17] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:45:19] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:45:19] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:51:26] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:51:26] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:51:28] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:51:28] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:51:36] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:51:36] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:51:37] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:51:37] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:51:40] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:51:40] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:51:45] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:51:45] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:51:51] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:51:51] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:51:53] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:51:53] [[32minfo[39m]: [32mServer running on http://localhost:6000[39m
+[2025-12-29 18:52:08] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:52:08] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 18:52:09] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:52:09] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 18:52:11] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:52:11] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 18:52:12] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:52:12] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 18:52:13] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:52:13] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 18:52:14] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:52:14] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 18:52:44] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:52:44] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 18:58:05] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:58:05] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 18:58:08] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 18:58:08] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 19:02:25] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 19:02:25] [[31merror[39m]: [31mServer startup failed:[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2025-12-29 19:41:04] [[32minfo[39m]: [32mKafka consumer connected[39m
+[2025-12-29 19:41:04] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:41:28] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:41:41] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:41:56] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:43:07] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:43:07] [[32minfo[39m]: [32m📥 Subscribed to topic: sendOtp-event[39m
+[2025-12-29 19:43:07] [[32minfo[39m]: [32m📥 Subscribed to topic: register-success-event[39m
+[2025-12-29 19:43:07] [[32minfo[39m]: [32m📥 Subscribed to topic: admin-approved-event[39m
+[2025-12-29 19:43:07] [[32minfo[39m]: [32m📥 Subscribed to topic: admin-rejected-event[39m
+[2025-12-29 19:43:07] [[32minfo[39m]: [32m📥 Subscribed to topic: account-blocked-event[39m
+[2025-12-29 19:43:07] [[32minfo[39m]: [32m📥 Subscribed to topic: account-unblocked-event[39m
+[2025-12-29 19:43:07] [[32minfo[39m]: [32m📥 Subscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: got-appointment-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: confirm-appointment-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: reject-appointment-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: user-payment-success-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: provider-payout-success-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: user-google-connected-event[39m
+[2025-12-29 19:43:08] [[32minfo[39m]: [32m📥 Subscribed to topic: provider-google-connected-event[39m
+[2025-12-29 19:43:09] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:43:09] [[32minfo[39m]: [32m📥 Subscribed to topic: sendOtp-event[39m
+[2025-12-29 19:43:09] [[32minfo[39m]: [32m📥 Subscribed to topic: register-success-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: admin-approved-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: admin-rejected-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: account-blocked-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: account-unblocked-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: got-appointment-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: confirm-appointment-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: reject-appointment-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: user-payment-success-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: provider-payout-success-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: user-google-connected-event[39m
+[2025-12-29 19:43:10] [[32minfo[39m]: [32m📥 Subscribed to topic: provider-google-connected-event[39m
+[2025-12-29 19:44:48] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:58:24] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:58:26] [[32minfo[39m]: [32m👂 Kafka consumer connected (group: notification-group)[39m
+[2025-12-29 19:58:46] [[32minfo[39m]: [32m👂 Kafka consumer connected (notification-group)[39m
+[2025-12-29 19:58:48] [[32minfo[39m]: [32m👂 Kafka consumer connected (notification-group)[39m
+[2025-12-29 19:58:51] [[32minfo[39m]: [32m👂 Kafka consumer connected (notification-group)[39m
+[2025-12-29 19:58:54] [[32minfo[39m]: [32m👂 Kafka consumer connected (notification-group)[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:13:13] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:13:15] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:13:20] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:13:21] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:13:28] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:13:46] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:13:50] [[32minfo[39m]: [32mKafka consumer running[39m
+[2025-12-29 20:13:50] [[32minfo[39m]: [32mNotification service running on 6000[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:13:56] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:13:59] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:00] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:03] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:04] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:14] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:18] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:25] [[32minfo[39m]: [32mKafka consumer running[39m
+[2025-12-29 20:14:25] [[32minfo[39m]: [32mNotification service running on 6000[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:28] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:30] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:32] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:34] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:36] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:38] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:40] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:41] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:14:55] [[32minfo[39m]: [32mKafka consumer running[39m
+[2025-12-29 20:14:55] [[32minfo[39m]: [32mNotification service running on 6000[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:14:57] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:15:06] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:15:15] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:15:19] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:15:22] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:15:23] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:24] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:15:25] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:15:28] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:15:32] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:15:58] [[32minfo[39m]: [32mKafka consumer running[39m
+[2025-12-29 20:15:58] [[32minfo[39m]: [32mNotification service running on 6000[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mKafka producer connected[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: sendOtp-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: register-success-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: admin-approved-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: admin-rejected-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: account-blocked-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: account-unblocked-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-trusted-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: account-slotflow-untrusted-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: got-appointment-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: confirm-appointment-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: reject-appointment-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: user-payment-success-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: provider-subscription-payment-success-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: provider-payout-success-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: provider-stripe-account-created-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: user-google-connected-event[39m
+[2025-12-29 20:17:18] [[32minfo[39m]: [32mSubscribed to topic: provider-google-connected-event[39m
+[2025-12-29 20:17:42] [[32minfo[39m]: [32mKafka consumer running[39m
+[2025-12-29 20:17:42] [[32minfo[39m]: [32mNotification service running on 6000[39m

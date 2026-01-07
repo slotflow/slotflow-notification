@@ -28,29 +28,32 @@ export const kafkaConfig = {
   brokers: validator.requireEnv("KAFKA_BROKERS").split(","),
 
   topics: {
-    sendOtp: validator.requireEnv("KAFKA_SENDOTP_TOPIC"),
-    registerSuccess: validator.requireEnv("KAFKA_REGISTER_SUCCESS_TOPIC"),
+  sendOtp: validator.requireEnv("KAFKA_SENDOTP_TOPIC"),
+  registerSuccess: validator.requireEnv("KAFKA_REGISTER_SUCCESS_TOPIC"),
+  adminProviderReview: validator.requireEnv("KAFKA_ADMIN_PROVIDER_REVIEW_TOPIC"),
+  accountBlockStatus: validator.requireEnv("KAFKA_ACCOUNT_BLOCK_STATUS_TOPIC"),
+  accountTrustStatus: validator.requireEnv("KAFKA_ACCOUNT_TRUST_STATUS_TOPIC"),
+  gotAppointment: validator.requireEnv("KAFKA_GOT_APPOINTMENT_TOPIC"),
 
-    adminApproved: validator.requireEnv("KAFKA_ADMIN_APPROVED_TOPIC"),
-    adminRejected: validator.requireEnv("KAFKA_ADMIN_REJECTED_TOPIC"),
+  confirmAppointment: validator.requireEnv("KAFKA_CONFIRM_APPOINTMENT_TOPIC"),
+  rejectAppointment: validator.requireEnv("KAFKA_REJECT_APPOINTMENT_TOPIC"),
 
-    accountBlocked: validator.requireEnv("KAFKA_ACCOUNT_BLOCKED_TOPIC"),
-    accountUnblocked: validator.requireEnv("KAFKA_ACCOUNT_UNBLOCKED_TOPIC"),
+  userPayment: validator.requireEnv("KAFKA_USER_PAYMENT_TOPIC"),
+  providerPayout: validator.requireEnv("KAFKA_PROVIDER_PAYOUT_TOPIC"),
 
-    accountTrusted: validator.requireEnv("KAFKA_ACCOUNT_TRUSTED_TOPIC"),
-    accountUntrusted: validator.requireEnv("KAFKA_ACCOUNT_UNTRUSTED_TOPIC"),
+  stripeConnect: validator.requireEnv("KAFKA_STRIPE_CONNECT_TOPIC"),
+  googleConnect: validator.requireEnv("KAFKA_GOOGLE_CONNECT_TOPIC"),
 
-    gotAppointment: validator.requireEnv("KAFKA_GOT_APPOINTMENT_TOPIC"),
-    confirmAppointment: validator.requireEnv("KAFKA_CONFIRM_APPOINTMENT_TOPIC"),
-    rejectAppointment: validator.requireEnv("KAFKA_REJECT_APPOINTMENT_TOPIC"),
+  confirmSubscription: validator.requireEnv(
+    "KAFKA_PROVIDER_CONFIRM_SUBSCRIPTION_TOPIC"
+  ),
 
-    userPayment: validator.requireEnv("KAFKA_USER_PAYMENT_TOPIC"),
-    providerSubscriptionPayment: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_TOPIC"),
-    providerPayout: validator.requireEnv("KAFKA_PROVIDER_PAYOUT_TOPIC"),
-
-    providerStripeAccount: validator.requireEnv("KAFKA_PROVIDER_STRIPE_ACCOUNT_TOPIC"),
-    userGoogleConnect: validator.requireEnv("KAFKA_USER_GOOGLE_CONNECT_TOPIC"),
-    providerGoogleConnect: validator.requireEnv("KAFKA_PROVIDER_GOOGLE_CONNECT_TOPIC"),
+  createGoogleCalendarEvent: validator.requireEnv(
+    "KAFKA_CREATE_GOOGLE_CALENDAR_EVENT_TOPIC"
+  ),
+  updateGoogleCalendarEvent: validator.requireEnv(
+    "KAFKA_UPDATE_GOOGLE_CALENDAR_EVENT_TOPIC"
+  ),
   },
 };
 

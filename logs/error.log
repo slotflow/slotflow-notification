@@ -288,3 +288,27 @@
 [31m    at KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\interface\kafka.consumer.controller.ts:60:60)[39m
 [31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
 [31m    at async start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:8:5)[39m
+[2026-01-05 18:57:00] [[31merror[39m]: [31mStartup failed[39m
+[31mConnection error: [39m
+[31mKafkaJSNonRetriableError[39m
+[31m  Caused by: KafkaJSConnectionError: Connection error: [39m
+[31m    at Socket.onError (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:210:23)[39m
+[31m    at Socket.emit (node:events:519:28)[39m
+[31m    at emitErrorNT (node:internal/streams/destroy:170:8)[39m
+[31m    at emitErrorCloseNT (node:internal/streams/destroy:129:3)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)[39m
+[2026-01-05 18:57:35] [[31merror[39m]: [31mStartup failed[39m
+[31mConnection error: [39m
+[31mKafkaJSNonRetriableError[39m
+[31m  Caused by: KafkaJSConnectionError: Connection error: [39m
+[31m    at Socket.onError (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:210:23)[39m
+[31m    at Socket.emit (node:events:519:28)[39m
+[31m    at emitErrorNT (node:internal/streams/destroy:170:8)[39m
+[31m    at emitErrorCloseNT (node:internal/streams/destroy:129:3)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)[39m
+[2026-01-05 20:58:03] [[31merror[39m]: [31mStartup failed[39m
+[31mSendProviderSubscriptionPaymentEmailUseCase is not defined[39m
+[31mReferenceError: SendProviderSubscriptionPaymentEmailUseCase is not defined[39m
+[31m    at KafkaConsumerController.startListening (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\presentation\kafka.consumer.controller.ts:45:32)[39m
+[31m    at start (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\src\server.ts:23:22)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m

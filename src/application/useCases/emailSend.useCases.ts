@@ -1,123 +1,160 @@
 import { IEmailService } from "../service/IEmail.service";
-import { NotificationEventHandler, SendOtpEmail, SendEmailCommon } from "../dtos/common";
-import { accountBlockedEmailTemplate, accountTrustedEmailTemplate, accountUnblockedEmailTemplate, accountUntrustedEmailTemplate, adminApprovedEmailTemplate, adminRejectedEmailTemplate, confirmAppointmentEmailTemplate, emailMainTemplate, googleConnectEmailTemplate, gotAppointmentEmailTemplate, otpEmailTemplate, providerPayoutEmailTemplate, providerStripeAccountEmailTemplate, providerSubscriptionPaymentEmailTemplate, rejectAppointmentEmailTemplate, userPaymentEmailTemplate, welcomeEmailTemplate } from "../../utils/constants";
+import { NotificationEventHandler, SendOtpEvent, SendEmailCommon, SendAdminProviderReviewEvent, SendUserPaymentEmail, SendProviderGotAppointmentEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent } from "../dtos/common";
+import { confirmAppointmentEmailTemplate, emailMainTemplate, googleConnectEmailTemplate, gotAppointmentEmailTemplate, otpEmailTemplate, providerPayoutEmailTemplate, providerStripeAccountEmailTemplate, providerConfirmSubscriptionEmailTemplate, rejectAppointmentEmailTemplate, userPaymentEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate } from "../../utils/constants";
 
-export class SendOtpEmailUseCase implements NotificationEventHandler<SendOtpEmail> {
-  constructor(private emailService: IEmailService) { };
+// send otp event for registration and password update
+export class SendOtpEventUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) { };
 
-  async handle({ email, otp }: SendOtpEmail) {
-    const htmlContent = `${otpEmailTemplate.contentStart}${otp}${otpEmailTemplate.contentEnd}`;
+  async handle(payload: SendOtpEvent) {
+    const { email, otp, purpose, name } = payload;
+
+     const subject = otpEmailTemplate.subject(purpose);
+
+    const htmlContent = `
+      ${otpEmailTemplate.head(name)}
+      ${otpEmailTemplate.body(purpose, otp)}
+    `;
+
     await this.emailService.sendEmailViaNodemailer({
       to: email,
-      subject: otpEmailTemplate.subject,
-      html: emailMainTemplate.html(otpEmailTemplate.subject,htmlContent),
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
     });
   };
 };
 
-export class SendWelcomeEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
-  constructor(private emailService: IEmailService) { };
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${welcomeEmailTemplate.contentStart}${name}${welcomeEmailTemplate.contentEnd}`;
-    await this.emailService.sendEmailViaNodemailer({
+// send welcome event
+export class SendWelcomeEventUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) { };
+
+  async handle(payload: SendWelcomeEvent) {
+    const { email, name, role } = payload;
+
+    const subject = welcomeEmailTemplate.subject();
+
+    const htmlContent = `
+      ${welcomeEmailTemplate.head(name)}
+      ${welcomeEmailTemplate.body(role)}
+    `;
+
+   await this.emailService.sendEmailViaNodemailer({
       to: email,
-      subject: welcomeEmailTemplate.subject,
-      html: emailMainTemplate.html(welcomeEmailTemplate.subject,htmlContent),
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
     });
   };
 };
 
-export class SendAdminApprovedEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
-  constructor(private emailService: IEmailService) {}
+// send admin provider review event
+export class SendAdminProviderReviewEventUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) {};
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${adminApprovedEmailTemplate.contentStart}${name}${adminApprovedEmailTemplate.contentEnd}`;
+  async handle(payload: SendAdminProviderReviewEvent) {
+    const { email, name, status, reason } = payload;
+
+    const subject = adminProviderReviewEmailTemplate.subject(status);
+
+    const htmlContent = `
+      ${adminProviderReviewEmailTemplate.head(name)}
+      ${adminProviderReviewEmailTemplate.body(status, reason)}
+    `;
+
     await this.emailService.sendEmailViaNodemailer({
       to: email,
-      subject: adminApprovedEmailTemplate.subject,
-      html: emailMainTemplate.html(adminApprovedEmailTemplate.subject, htmlContent),
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
     });
-  }
-}
+  };
+};
 
-export class SendAdminRejectedEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
-  constructor(private emailService: IEmailService) {}
+// send account block status event
+export class SendAccountBlockStatusEventUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) {};
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${adminRejectedEmailTemplate.contentStart}${name}${adminRejectedEmailTemplate.contentEnd}`;
+  async handle(payload: SendAccountBlockStatusEvent) {
+    const { blocked, email, name, reason } = payload;
+
+    const subject = accountBlockStatusEmailTemplate.subject(blocked);
+
+    const htmlContent = `
+      ${accountBlockStatusEmailTemplate.head(name)}
+      ${accountBlockStatusEmailTemplate.body(blocked, reason)}
+    `;
+
     await this.emailService.sendEmailViaNodemailer({
       to: email,
-      subject: adminRejectedEmailTemplate.subject,
-      html: emailMainTemplate.html(adminRejectedEmailTemplate.subject, htmlContent),
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
     });
-  }
-}
+  };
+};
 
-export class SendAccountBlockedEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
-  constructor(private emailService: IEmailService) {}
+// send account trust status event
+export class SendAcountTrustStatusEventUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) {};
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${accountBlockedEmailTemplate.contentStart}${name}${accountBlockedEmailTemplate.contentEnd}`;
+  async handle(payload: SendAccountTrustStatusEvent) {
+    const { trusted, email, name, reason } = payload;
+
+    const subject = accountTrustStatusEmailTemplate.subject(trusted);
+
+    const htmlContent = `
+      ${accountTrustStatusEmailTemplate.head(name)}
+      ${accountTrustStatusEmailTemplate.body(trusted, reason)}
+    `;
+    
     await this.emailService.sendEmailViaNodemailer({
       to: email,
-      subject: accountBlockedEmailTemplate.subject,
-      html: emailMainTemplate.html(accountBlockedEmailTemplate.subject, htmlContent),
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
     });
-  }
-}
+  };
+};
 
-export class SendAccountUnblockedEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
-  constructor(private emailService: IEmailService) {}
+// send got appointment event
+export class SendGotAppointmentEventUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) {};
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${accountUnblockedEmailTemplate.contentStart}${name}${accountUnblockedEmailTemplate.contentEnd}`;
+  async handle(payload: SendProviderGotAppointmentEvent) {
+    const { appointmentDate , appointmentDuration, appointmentMode, appointmentTime, email, name} = payload;
+    
+     const subject = gotAppointmentEmailTemplate.subject;
+
+    const htmlContent = `
+      ${gotAppointmentEmailTemplate.head(name)}
+      ${gotAppointmentEmailTemplate.body(
+        appointmentDate,
+        appointmentTime,
+        appointmentDuration,
+        appointmentMode
+      )}
+    `;
+
     await this.emailService.sendEmailViaNodemailer({
       to: email,
-      subject: accountUnblockedEmailTemplate.subject,
-      html: emailMainTemplate.html(accountUnblockedEmailTemplate.subject, htmlContent),
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
     });
-  }
-}
+  };
+};
 
-export class SendAccountTrustedEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
-  constructor(private emailService: IEmailService) {}
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${accountTrustedEmailTemplate.contentStart}${name}${accountTrustedEmailTemplate.contentEnd}`;
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject: accountTrustedEmailTemplate.subject,
-      html: emailMainTemplate.html(accountTrustedEmailTemplate.subject, htmlContent),
-    });
-  }
-}
 
-export class SendAccountUntrustedEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
-  constructor(private emailService: IEmailService) {}
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${accountUntrustedEmailTemplate.contentStart}${name}${accountUntrustedEmailTemplate.contentEnd}`;
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject: accountUntrustedEmailTemplate.subject,
-      html: emailMainTemplate.html(accountUntrustedEmailTemplate.subject, htmlContent),
-    });
-  }
-}
-
-export class SendGotAppointmentEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
-  constructor(private emailService: IEmailService) {}
-
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${gotAppointmentEmailTemplate.contentStart}${name}${gotAppointmentEmailTemplate.contentEnd}`;
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject: gotAppointmentEmailTemplate.subject,
-      html: emailMainTemplate.html(gotAppointmentEmailTemplate.subject, htmlContent),
-    });
-  }
-}
 
 export class SendConfirmAppointmentEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
   constructor(private emailService: IEmailService) {}
@@ -148,28 +185,64 @@ export class SendRejectAppointmentEmailUseCase implements NotificationEventHandl
 export class SendUserPaymentEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
   constructor(private emailService: IEmailService) {}
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${userPaymentEmailTemplate.contentStart}${name}${userPaymentEmailTemplate.contentEnd}`;
+  async handle(payload: SendUserPaymentEmail) {
+    const { email, name, amount, transactionId, paymentDate, appointmentDate } = payload;
+    const htmlContent = `
+      ${userPaymentEmailTemplate.header.replace("{{name}}", name)}
+      ${userPaymentEmailTemplate.details
+        .replace("{{amount}}", amount.toString())
+        .replace("{{transactionId}}", transactionId)
+        .replace("{{paymentDate}}", paymentDate)
+        .replace("{{appointmentDate}}", appointmentDate)
+      }
+      ${userPaymentEmailTemplate.footer}
+    `;
     await this.emailService.sendEmailViaNodemailer({
       to: email,
       subject: userPaymentEmailTemplate.subject,
       html: emailMainTemplate.html(userPaymentEmailTemplate.subject, htmlContent),
     });
-  }
-}
+  };
+};
 
-export class SendProviderSubscriptionPaymentEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
+export class SendProviderConfirmSubscriptionEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
   constructor(private emailService: IEmailService) {}
 
-  async handle({ email, name }: SendEmailCommon) {
-    const htmlContent = `${providerSubscriptionPaymentEmailTemplate.contentStart}${name}${providerSubscriptionPaymentEmailTemplate.contentEnd}`;
+  async handle(payload: SendProviderConfirmSubscriptionEmail) {
+    const { email, name, startDate, endDate, subscription, duration } = payload;
+    
+    const formattedStartDate = new Date(startDate).toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+
+    const formattedEndDate = new Date(endDate).toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+
+    const htmlContent = `
+      ${providerConfirmSubscriptionEmailTemplate.header.replace("{{name}}", name)}
+
+      ${providerConfirmSubscriptionEmailTemplate.subscriptionBlock
+        .replace("{{subscription}}", subscription)
+        .replace("{{duration}}", duration + " days")
+        .replace("{{startDate}}", formattedStartDate)
+        .replace("{{endDate}}", formattedEndDate)
+      }
+
+      ${providerConfirmSubscriptionEmailTemplate.footer}
+    `;
+    
     await this.emailService.sendEmailViaNodemailer({
       to: email,
-      subject: providerSubscriptionPaymentEmailTemplate.subject,
-      html: emailMainTemplate.html(providerSubscriptionPaymentEmailTemplate.subject, htmlContent),
+      subject: providerConfirmSubscriptionEmailTemplate.subject,
+      html: emailMainTemplate.html(providerConfirmSubscriptionEmailTemplate.subject, htmlContent),
     });
-  }
-}
+  };
+};
 
 export class SendProviderPayoutEmailUseCase implements NotificationEventHandler<SendEmailCommon> {
   constructor(private emailService: IEmailService) {}
@@ -207,6 +280,6 @@ export class SendGoogleConnectEmailUseCase implements NotificationEventHandler<S
       subject: googleConnectEmailTemplate.subject,
       html: emailMainTemplate.html(googleConnectEmailTemplate.subject, htmlContent),
     });
-  }
-}
+  };
+};
 

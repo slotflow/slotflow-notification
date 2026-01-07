@@ -2,7 +2,7 @@ import app from "./app";
 import { log } from "./shared/logger/logger";
 import { appConfig, kafkaConfig } from "./config/env";
 import { KafkaClientAdapter } from "./infrastructure/messaging/kafkaClientAdapter";
-import { KafkaConsumerController } from "./interface/kafka.consumer.controller";
+import { KafkaConsumerController } from "./presentation/kafka.controller";
 
 export const kafkaClient = new KafkaClientAdapter(
   kafkaConfig.clientId,

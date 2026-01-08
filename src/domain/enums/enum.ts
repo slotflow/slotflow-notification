@@ -26,4 +26,29 @@ export enum AdminVerificationStatus {
     REJECTED = "Rejected",
     RESUBMITTED = "Resubmitted",
     NOT_REQUESTED = "Not_submitted",
-};
+}
+
+export enum PaymentStatus {
+    Pending = "Pending",
+    Paid = "Paid",
+    Failed = "Failed",
+    Cancelled = "Cancelled",
+    Refunded = "Refunded",
+}
+
+export enum PaymentFor {
+    ProviderSubscription = "ProviderSubscription",
+    AppointmentBooking = "AppointmentBooking",
+    ProviderPayout = "ProviderPayout",
+    CancelBooking = "CancelBooking",
+    CancelSubscription = "CancelSubscription",
+}
+
+export enum AppConnect {
+    Google = "Google",
+    Stripe = "Stripe",
+    Notion = "Notion",
+    WhatsApp = "WhatsApp",
+    Razorpay = "Razorpay",
+    Paypal = "Paypal",
+}

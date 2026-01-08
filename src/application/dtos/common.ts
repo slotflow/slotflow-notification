@@ -1,4 +1,4 @@
-import { OtpPurpose, Role } from "../../domain/enums/enum";
+import { AppConnect, OtpPurpose, PaymentFor, PaymentStatus, Role } from "../../domain/enums/enum";
 import { AdminVerificationStatus, AppointmentStatus } from "../../domain/enums/enum";
 
 export interface ParticipantPresence {
@@ -73,11 +73,53 @@ export interface SendAccountTrustStatusEvent extends SendEmailCommon {
   reason?: string;
 }
 
-export interface SendProviderGotAppointmentEvent extends SendEmailCommon {
+// send provider got appointment event
+export interface SendGotAppointmentEvent extends SendEmailCommon {
   appointmentDate: string;
   appointmentTime: string;
   appointmentDuration: string;
   appointmentMode: string;
+}
+
+// send appointment status change event
+export interface SendAppointmentStatusChangeEvent extends SendEmailCommon {
+  appointmentDate: string;
+  appointmentTime: string;
+  appointmentDuration: string;
+  appointmentMode: string;
+  appointmentStatus: AppointmentStatus;
+}
+
+// send user payment event
+export interface SendUserPaymentEvent extends SendEmailCommon {
+  amount: number;
+  transactionId: string;
+  paymentDate: string;
+  appointmentDate: string;
+  paymentStatus: PaymentStatus;
+  paymentFor: PaymentFor;
+}
+
+// send provider payment event
+export interface SendProviderPaymentEvent extends SendEmailCommon {
+  amount: number;
+  transactionId: string;
+  paymentDate: string;
+  subscriptionStartDate: string;
+  subscriptionEndDate: string;
+  paymentStatus: PaymentStatus;
+  paymentFor: PaymentFor;
+}
+
+// send provider payout event
+export interface SendProviderPayoutEvent extends SendEmailCommon {
+  amount: number;
+  transactionId: string;
+  payoutDate: string;
+}
+
+export interface SendAppConnectEvent extends SendEmailCommon {
+  appConnect: AppConnect;
 }
 
 export interface NotificationEventHandler<T = any> {
@@ -94,13 +136,6 @@ export interface SendProviderConfirmSubscriptionEvent extends SendEmailCommon {
   endDate: string;
   subscription: string;
   duration: number;
-}
-
-export interface SendUserPaymentEmail extends SendEmailCommon {
-  amount: number;
-  transactionId: string;
-  paymentDate: string;
-  appointmentDate: string;
 }
 
 

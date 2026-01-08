@@ -1,4 +1,4 @@
-import { AdminVerificationStatus, OtpPurpose } from "../domain/enums/enum";
+import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentStatus } from "../domain/enums/enum";
 
 // email main template
 export const emailMainTemplate = {
@@ -307,116 +307,289 @@ export const gotAppointmentEmailTemplate = {
   `,
 };
 
+// appointment status change email template
+export const appointmentStatusEmailTemplate = {
+  subject: (status: AppointmentStatus): string => {
+    switch (status) {
+      case AppointmentStatus.Confirmed:
+        return "Your appointment has been confirmed";
+      case AppointmentStatus.RejectedByProvider:
+        return "Your appointment has been rejected";
+      case AppointmentStatus.Cancelled:
+        return "Appointment has been cancelled";
+      default:
+        return "Appointment Update";
+    }
+  },
 
+  head: (name: string, status: AppointmentStatus): string => {
+    switch (status) {
+      case AppointmentStatus.Confirmed:
+        return `<p style="font-size: 1.1em;">Hi ${name},</p>
+                <p>Good news! Your appointment with the service provider has been confirmed.</p>`;
+      case AppointmentStatus.RejectedByProvider:
+        return `<p style="font-size: 1.1em;">Hi ${name},</p>
+                <p>We’re sorry! Your appointment request has been rejected by the service provider.</p>`;
+      case AppointmentStatus.Cancelled:
+        return `<p style="font-size: 1.1em;">Hi ${name},</p>
+                <p>Notice: The appointment has been cancelled by the user.</p>`;
+      default:
+        return `<p style="font-size: 1.1em;">Hi ${name},</p>`;
+    }
+  },
 
-export const confirmAppointmentEmailTemplate: Record<string, string> = {
-  subject: "Your appointment has been confirmed",
-  contentStart: `<p style="font-size: 1.1em;">Hi,</p>
-<p>Good news! Your appointment with the service provider has been confirmed.</p>
-<div style="background: #635BFF; color: #fff; padding: 10px 20px; border-radius: 4px; width: max-content; margin: 10px 0;">`,
-  contentEnd: `</div>
-<p>You can view your appointment details in your Slotflow dashboard.</p>`,
-};
-
-export const rejectAppointmentEmailTemplate: Record<string, string> = {
-  subject: "Your appointment has been rejected",
-  contentStart: `<p style="font-size: 1.1em;">Hi,</p>
-<p>We’re sorry to inform you that your appointment request has been rejected by the service provider.</p>
-<div style="background: #635BFF; color: #fff; padding: 10px 20px; border-radius: 4px; width: max-content; margin: 10px 0;">`,
-  contentEnd: `</div>
-<p>Please try booking another slot or contact the service provider for more information.</p>`,
-};
-
-export const userPaymentEmailTemplate: Record<string, string> = {
-  subject: "Your payment was successful",
-
-  header: `
-    <p style="font-size: 1.1em;">Hi, <strong>{{name}}</strong>,</p>
-    <p>Thank you for your payment. Your appointment booking has been successfully confirmed.</p>
-  `,
-
-  details: `
+  body: (
+    status: AppointmentStatus,
+    appointmentDate: string,
+    appointmentTime: string,
+    appointmentDuration: string,
+    appointmentMode: string
+  ): string => `
     <div style="
-      background: #635BFF;
-      color: #ffffff;
-      padding: 16px 20px;
+      border: 1px solid #635BFF;
+      padding: 14px 18px;
       border-radius: 6px;
       margin: 16px 0;
       font-size: 0.95em;
     ">
-      <p><strong>Amount Paid:</strong> ₹{{amount}}</p>
-      <p><strong>Transaction ID:</strong> {{transactionId}}</p>
-      <p><strong>Payment Date:</strong> {{paymentDate}}</p>
-      <p><strong>Appointment Date:</strong> {{appointmentDate}}</p>
+      <p><strong>Date:</strong> ${appointmentDate}</p>
+      <p><strong>Time:</strong> ${appointmentTime}</p>
+      <p><strong>Duration:</strong> ${appointmentDuration}</p>
+      <p><strong>Mode:</strong> ${appointmentMode}</p>
     </div>
-  `,
 
-  footer: `
     <p>
-      You can view full appointment details anytime from your
-      <strong>Slotflow dashboard</strong>.
+      ${
+        status === AppointmentStatus.Confirmed
+          ? "You can view your appointment details in your Slotflow dashboard."
+          : status === AppointmentStatus.RejectedByProvider
+          ? "Please try booking another slot or contact the service provider for more information."
+          : "Please check your dashboard for more details."
+      }
     </p>
-    <p>Thank you for choosing Slotflow.</p>
+
+    <p>
+      Regards,<br/>
+      <strong>The Slotflow Team</strong>
+    </p>
   `,
 };
 
+// user payment / refund email template
+export const userPaymentStatusEmailTemplate = {
+  subject: (
+    paymentStatus: PaymentStatus,
+  ): string => {
+    if (paymentStatus === PaymentStatus.Paid) {
+      return "Payment successful for your appointment";
+    }
 
-export const providerConfirmSubscriptionEmailTemplate = {
-  subject: "Subscription payment successful",
+    if (paymentStatus === PaymentStatus.Refunded) {
+      return "Your appointment payment has been refunded";
+    }
 
-  header: `
-    <p style="font-size: 1.1em;">Hi {{name}},</p>
-    <p>Your subscription payment for your Slotflow account has been successfully processed and your subscription is live.</p>
+    return "Payment update from Slotflow";
+  },
+
+  head: (
+    name: string,
+    paymentStatus: PaymentStatus
+  ): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    ${
+      paymentStatus === PaymentStatus.Paid
+        ? `<p>Your payment was successful, and your appointment has been confirmed.</p>`
+        : `<p>Your appointment has been cancelled, and the payment has been refunded successfully.</p>`
+    }
   `,
 
-  subscriptionBlock: `
+  body: (
+    amount: number,
+    transactionId: string,
+    paymentDate: string,
+    appointmentDate: string,
+    paymentStatus: PaymentStatus
+  ): string => `
     <div style="
-      background: #635BFF;
-      color: #fff;
-      padding: 16px 20px;
+      border: 1px solid #635BFF;
+      padding: 14px 18px;
       border-radius: 6px;
       margin: 16px 0;
       font-size: 0.95em;
     ">
-      <p style="margin-top: 2px;"><strong>Plan:</strong> {{subscription}}</p>
-      <p style="margin-top: 2px;"><strong>Validity:</strong> {{duration}}</p>
-      <p style="margin-top: 2px;"><strong>Start Date:</strong> {{startDate}}</p>
-      <p style="margin-top: 2px;"><strong>End Date:</strong> {{endDate}}</p>
+      <p><strong>Amount ${paymentStatus === PaymentStatus.Refunded ? "Refunded" : "Paid"}:</strong> ₹${amount}</p>
+      <p><strong>Transaction ID:</strong> ${transactionId}</p>
+      <p><strong>Payment Date:</strong> ${paymentDate}</p>
+      <p><strong>Appointment Date:</strong> ${appointmentDate}</p>
     </div>
+
+    <p>
+      ${
+        paymentStatus === PaymentStatus.Paid
+          ? "You can view your appointment details in your Slotflow dashboard."
+          : "The refunded amount will be credited back to your original payment method shortly."
+      }
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
+  `,
+};
+
+
+
+// provider subscription payment / refund email template
+export const providerSubscriptionPaymentEmailTemplate = {
+  subject: (
+    paymentStatus: PaymentStatus
+  ): string => {
+    if (paymentStatus === PaymentStatus.Paid) {
+      return "Your Slotflow subscription is now active";
+    }
+
+    if (paymentStatus === PaymentStatus.Refunded) {
+      return "Your Slotflow subscription has been cancelled";
+    }
+
+    return "Subscription update from Slotflow";
+  },
+
+  head: (
+    name: string,
+    paymentStatus: PaymentStatus
+  ): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    ${
+      paymentStatus === PaymentStatus.Paid
+        ? `<p>Your subscription payment was successful and your Slotflow account is now active.</p>`
+        : `<p>Your Slotflow subscription has been cancelled and the amount has been refunded.</p>`
+    }
   `,
 
-  footer: `
-    <p>Thank you for staying with Slotflow. Your account remains active.</p>
-    <p style="margin-top: 20px;">— Team Slotflow</p>
+  body: (
+    amount: number,
+    transactionId: string,
+    paymentDate: string,
+    subscriptionStartDate: string,
+    subscriptionEndDate: string,
+    paymentStatus: PaymentStatus
+  ): string => `
+    <div style="
+      border: 1px solid #635BFF;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.95em;
+    ">
+      <p><strong>Amount ${paymentStatus === PaymentStatus.Refunded ? "Refunded" : "Paid"}:</strong> ₹${amount}</p>
+      <p><strong>Transaction ID:</strong> ${transactionId}</p>
+      <p><strong>Payment Date:</strong> ${paymentDate}</p>
+      <p><strong>Subscription Start:</strong> ${subscriptionStartDate}</p>
+      <p><strong>Subscription End:</strong> ${subscriptionEndDate}</p>
+    </div>
+
+    <p>
+      ${
+        paymentStatus === PaymentStatus.Paid
+          ? "You can continue managing your services and availability from your Slotflow dashboard."
+          : "Access to subscription features will remain disabled after the current billing period."
+      }
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
   `,
 };
 
 
-export const providerPayoutEmailTemplate: Record<string, string> = {
-  subject: "Payout processed successfully",
-  contentStart: `<p style="font-size: 1.1em;">Hi,</p>
-<p>Your payout from Slotflow has been successfully transferred to your bank account.</p>
-<div style="background: #635BFF; color: #fff; padding: 10px 20px; border-radius: 4px; width: max-content; margin: 10px 0;">`,
-  contentEnd: `</div>
-<p>Please check your bank account for the credited amount.</p>`,
+
+// provider payout email template
+export const providerPayoutEmailTemplate = {
+  subject: (): string =>
+    "Your Slotflow payout has been processed",
+
+  head: (name: string): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    <p>
+      Your payout from Slotflow has been successfully processed and transferred
+      to your registered bank account.
+    </p>
+  `,
+
+  body: (
+    amount: number,
+    transactionId: string,
+    payoutDate: string
+  ): string => `
+    <div style="
+      border: 1px solid #635BFF;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.95em;
+    ">
+      <p><strong>Amount Credited:</strong> ₹${amount}</p>
+      <p><strong>Transaction ID:</strong> ${transactionId}</p>
+      <p><strong>Payout Date:</strong> ${payoutDate}</p>
+    </div>
+
+    <p>
+      Please allow some time for the amount to reflect in your bank account,
+      depending on your bank’s processing time.
+    </p>
+
+    <p>
+      If you have any questions, feel free to reach out to our support team.
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
+  `,
 };
 
-export const providerStripeAccountEmailTemplate: Record<string, string> = {
-  subject: "Your Stripe account has been successfully created",
-  contentStart: `<p style="font-size: 1.1em;">Hi,</p>
-<p>Congratulations! Your Stripe account has been successfully linked to your Slotflow provider account.</p>
-<div style="background: #635BFF; color: #fff; padding: 10px 20px; border-radius: 4px; width: max-content; margin: 10px 0;">`,
-  contentEnd: `</div>
-<p>You can now receive payments directly through Slotflow.</p>`,
-};
 
-export const googleConnectEmailTemplate: Record<string, string> = {
-  subject: "Google account connected successfully",
-  contentStart: `<p style="font-size: 1.1em;">Hi,</p>
-<p>Your Google account has been successfully connected to your Slotflow account.</p>
-<div style="background: #635BFF; color: #fff; padding: 10px 20px; border-radius: 4px; width: max-content; margin: 10px 0;">`,
-  contentEnd: `</div>
-<p>You can now sign in quickly and securely using your Google account.</p>`,
+export const appConnectEmailTemplate = {
+  subject: (app: AppConnect): string =>
+    `${app} account connected successfully to Slotflow`,
+
+  head: (name: string, app: AppConnect): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    <p>
+      Your <strong>${app}</strong> account has been successfully connected
+      to your Slotflow account.
+    </p>
+  `,
+
+  body: (app: AppConnect): string => `
+    <div style="
+      border: 1px solid #635BFF;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.95em;
+    ">
+      <p>
+        You can now start using <strong>${app}</strong> integration features
+        directly within Slotflow.
+      </p>
+    </div>
+
+    <p>
+      If you did not perform this action, please review your account settings
+      or contact support immediately.
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
+  `,
 };
 
 

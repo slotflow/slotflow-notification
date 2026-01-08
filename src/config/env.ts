@@ -34,26 +34,14 @@ export const kafkaConfig = {
   accountBlockStatus: validator.requireEnv("KAFKA_ACCOUNT_BLOCK_STATUS_TOPIC"),
   accountTrustStatus: validator.requireEnv("KAFKA_ACCOUNT_TRUST_STATUS_TOPIC"),
   gotAppointment: validator.requireEnv("KAFKA_GOT_APPOINTMENT_TOPIC"),
-
-  confirmAppointment: validator.requireEnv("KAFKA_CONFIRM_APPOINTMENT_TOPIC"),
-  rejectAppointment: validator.requireEnv("KAFKA_REJECT_APPOINTMENT_TOPIC"),
-
-  userPayment: validator.requireEnv("KAFKA_USER_PAYMENT_TOPIC"),
+  appointmentStatus: validator.requireEnv("KAFKA_APPOINTMENT_STATUS_TOPIC"),
+  userPayment: validator.requireEnv("KAFKA_USER_PAYMENT_STATUS_TOPIC"),
+  providerPayment: validator.requireEnv("KAFKA_PROVIDER_PAYMENT_STATUS_TOPIC"),
   providerPayout: validator.requireEnv("KAFKA_PROVIDER_PAYOUT_TOPIC"),
+  appConnect: validator.requireEnv("KAFKA_APP_CONNECT_TOPIC"),
 
-  stripeConnect: validator.requireEnv("KAFKA_STRIPE_CONNECT_TOPIC"),
-  googleConnect: validator.requireEnv("KAFKA_GOOGLE_CONNECT_TOPIC"),
-
-  confirmSubscription: validator.requireEnv(
-    "KAFKA_PROVIDER_CONFIRM_SUBSCRIPTION_TOPIC"
-  ),
-
-  createGoogleCalendarEvent: validator.requireEnv(
-    "KAFKA_CREATE_GOOGLE_CALENDAR_EVENT_TOPIC"
-  ),
-  updateGoogleCalendarEvent: validator.requireEnv(
-    "KAFKA_UPDATE_GOOGLE_CALENDAR_EVENT_TOPIC"
-  ),
+  createGoogleCalendarEvent: validator.requireEnv("KAFKA_CREATE_GOOGLE_CALENDAR_EVENT_TOPIC"),
+  updateGoogleCalendarEvent: validator.requireEnv("KAFKA_UPDATE_GOOGLE_CALENDAR_EVENT_TOPIC"),
   },
 };
 

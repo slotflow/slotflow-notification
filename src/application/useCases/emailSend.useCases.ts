@@ -1,7 +1,7 @@
 import { IEmailService } from "../service/IEmail.service";
 import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../domain/enums/enum";
-import { SendOtpEvent, SendAdminProviderReviewEvent, SendGotAppointmentEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent } from "../dtos/common";
-import { emailMainTemplate, gotAppointmentEmailTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate } from "../../utils/constants";
+import { SendOtpEvent, SendAdminProviderReviewEvent, SendGotAppointmentEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent } from "../dtos/common";
+import { emailMainTemplate, gotAppointmentEmailTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate } from "../../utils/constants";
 
 // send otp event for registration and password update
 export class SendOtpEventUseCase {
@@ -340,6 +340,29 @@ export class SendAppConnectEventUseCase {
     const htmlContent = `
       ${appConnectEmailTemplate.head(name, appConnect)}
       ${appConnectEmailTemplate.body(appConnect)}
+    `;
+
+    await this.emailService.sendEmailViaNodemailer({
+      to: email,
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
+    });
+  };
+};
+
+export class SendProviderTrialSubscriptionEventUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) { };
+
+  async handle(payload: SendProviderTrialSubscriptionEvent) {
+    const { email, name, startDate, endDate } = payload;
+
+    const subject = providerTrialSubscriptionEmailTemplate.subject();
+
+    const htmlContent = `
+      ${providerTrialSubscriptionEmailTemplate.head(name)}
+      ${providerTrialSubscriptionEmailTemplate.body(startDate, endDate)}
     `;
 
     await this.emailService.sendEmailViaNodemailer({

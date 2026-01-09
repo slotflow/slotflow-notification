@@ -1,13 +1,9 @@
 import { log } from "../../shared/logger/logger";
 import { Kafka, Consumer, Producer, logLevel } from "kafkajs";
+import { MessageHandler } from "../../application/dtos/common";
+import { IKafkaClientAdapter } from "../../domain/interface/message/IKafkaClientAdapter";
 
-export type MessageHandler = (payload: {
-  topic: string;
-  partition: number;
-  message: any;
-}) => Promise<void>;
-
-export class KafkaClientAdapter {
+export class KafkaClientAdapter implements IKafkaClientAdapter {
   private kafka: Kafka;
   private consumer!: Consumer;
   private producer!: Producer;
@@ -25,7 +21,6 @@ export class KafkaClientAdapter {
     });
   }
 
-
   async connectConsumer(): Promise<void> {
     this.consumer = this.kafka.consumer({ groupId: this.groupId });
     await this.consumer.connect();
@@ -33,7 +28,7 @@ export class KafkaClientAdapter {
   }
 
   async subscribe(topic: string, handler: MessageHandler): Promise<void> {
-    await this.consumer.subscribe({ topic, fromBeginning: false });
+    await this.consumer.subscribe({ topic, fromBeginning: true });
     this.handlers.set(topic, handler);
     log.info(`Subscribed to topic: ${topic}`);
   }
@@ -57,17 +52,11 @@ export class KafkaClientAdapter {
     log.info("Kafka producer connected");
   }
 
-  async publish(topic: string, payload: unknown): Promise<void> {
+  async publish<T>(topic: string, payload: T): Promise<void> {
     await this.producer.send({
       topic,
       messages: [{ value: JSON.stringify(payload) }],
     });
   }
 
-  getProducer(): Producer {
-    if (!this.producer) {
-      throw new Error("Producer not connected");
-    }
-    return this.producer;
-  }
-}
+};

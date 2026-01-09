@@ -1,30 +1,30 @@
 import { handlers } from ".";
 import { kafkaConfig } from "../config/env";
 import { log } from "../shared/logger/logger";
-import { KafkaClientAdapter } from "../infrastructure/messaging/kafkaClientAdapter";
+import { IKafkaClientAdapter } from "../domain/interface/message/IKafkaClientAdapter";
 
 export class KafkaConsumerController {
 
   constructor(
-    private kafkaClient: KafkaClientAdapter
+    private kafkaClientAdapter: IKafkaClientAdapter
   ) { };
 
   async startListening(): Promise<void> {
     try {
       log.info("start listening");
 
-      for (const [key, topic] of Object.entries(kafkaConfig.topics)) {
+      for (const [key, topic] of Object.entries(kafkaConfig.topics.sub)) {
         const useCase = handlers[key as keyof typeof handlers];
         if (!useCase) continue;
 
-        await this.kafkaClient.subscribe(topic, async ({ message }) => {
+        await this.kafkaClientAdapter.subscribe(topic, async ({ message }) => {
           if (!message.value) return;
           const payload = JSON.parse(message.value.toString());
           await useCase.handle(payload);
         });
       };
 
-      await this.kafkaClient.startConsumer();
+      await this.kafkaClientAdapter.startConsumer();
     } catch (error) {
       log.error("startListening failed : ", error as Error);
     };

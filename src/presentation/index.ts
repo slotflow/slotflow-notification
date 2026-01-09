@@ -10,10 +10,11 @@ import {
     SendProviderPaymentEventUseCase,
     SendProviderPayoutEventUseCase,
     SendAppConnectEventUseCase,
+    SendProviderTrialSubscriptionEventUseCase,
 } from "../application/useCases/emailSend.useCases";
-import { EmailService } from "../infrastructure/services/email.service";
-
-const emailService = new EmailService();
+import { kafkaClientAdapter } from "../infrastructure/messaging";
+import { emailService, googleCalendarGatewayService } from "../infrastructure/container";
+import { CreateGoogleCalendarEventUseCase, UpdateGoogleCalendarEventUseCase } from "../application/useCases/googleCalendar.useCases";
 
 export const handlers = {
     sendOtp: new SendOtpEventUseCase(emailService),
@@ -27,7 +28,8 @@ export const handlers = {
     providerPayment: new SendProviderPaymentEventUseCase(emailService),
     providerPayout: new SendProviderPayoutEventUseCase(emailService),
     appConnect: new SendAppConnectEventUseCase(emailService),
+    trialSubscription: new SendProviderTrialSubscriptionEventUseCase(emailService),
 
-    // createGoogleCalendarEvent
-    // updateGoogleCalendarEvent
+    googleCalendarCreateRequest: new CreateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaClientAdapter),
+    googleCalendarUpdateRequest: new UpdateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaClientAdapter),
 };

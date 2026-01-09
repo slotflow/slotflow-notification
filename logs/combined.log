@@ -2582,3 +2582,27 @@
 [2026-01-06 21:10:21] [[32minfo[39m]: [32mSubscribed to topic: provider-confirm-subscription-event[39m
 [2026-01-06 21:10:36] [[32minfo[39m]: [32mKafka consumer running[39m
 [2026-01-06 21:10:36] [[32minfo[39m]: [32mNotification service running on 6000[39m
+[2026-01-08 18:52:41] [[31merror[39m]: [31mStartup failed[39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async [private:Broker:sendRequest] (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2026-01-08 18:58:22] [[32minfo[39m]: [32mNotification service running on 6000[39m
+[2026-01-08 19:08:30] [[32minfo[39m]: [32mTopic account-block-status-event[39m
+[2026-01-08 19:08:30] [[32minfo[39m]: [32mPartition 0[39m
+[2026-01-08 19:08:30] [[32minfo[39m]: [32mReceived message [object Object][39m
+[2026-01-08 19:17:57] [[32minfo[39m]: [32mNotification service running on 6000[39m
+[2026-01-08 19:17:57] [[32minfo[39m]: [32mTopic account-block-status-event[39m
+[2026-01-08 19:17:57] [[32minfo[39m]: [32mPartition 0[39m
+[2026-01-08 19:17:57] [[32minfo[39m]: [32mReceived message {[39m
+[32m  "providerId": "693db323d13641dca3890836",[39m
+[32m  "isBlocked": false[39m
+[32m}[39m

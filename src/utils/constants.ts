@@ -592,6 +592,54 @@ export const appConnectEmailTemplate = {
   `,
 };
 
+// provider trial subscription email template
+export const providerTrialSubscriptionEmailTemplate = {
+  subject: (): string =>
+    "Your Slotflow Free Trial Has Started",
+
+  head: (name: string): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    <p>
+      Welcome to <strong>Slotflow</strong>! Your
+      <strong>free trial subscription</strong> has been successfully activated.
+    </p>
+  `,
+
+  body: (startDate: string, endDate: string): string => `
+    <div style="
+      border: 1px solid #22C55E;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.95em;
+      background-color: #F0FDF4;
+    ">
+      <p style="margin: 0 0 8px 0;">
+        <strong>Trial Period Details:</strong>
+      </p>
+      <ul style="margin: 0; padding-left: 18px;">
+        <li><strong>Start Date:</strong> ${startDate}</li>
+        <li><strong>End Date:</strong> ${endDate}</li>
+      </ul>
+    </div>
+
+    <p>
+      During this trial, you’ll have access to Slotflow’s core features to
+      manage appointments, automate workflows, and grow your business.
+    </p>
+
+    <p>
+      If you have any questions or need assistance, our support team is always
+      here to help.
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
+  `,
+};
+
 
 // Google calendar event
 export enum EventData {
@@ -602,3 +650,10 @@ export enum EventData {
   eventCancelTextColor = "#ffffff",
   eventTimeZone = "Asia/Kolkata",
 }
+
+// Email service
+export const emailServiceConstants = {
+  gmail: "Gmail",
+  slotflow: "Slotflow",
+  source: "no-reply@slotflow.online"
+};

@@ -1,16 +1,18 @@
 import nodemailer from 'nodemailer';
 import { ses } from '../lib/aws.ses';
 import { mailConfig } from '../../config/env';
+import { log } from '../../shared/logger/logger';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
 import { EmailOptions } from '../../application/dtos/common';
+import { emailServiceConstants } from '../../utils/constants';
 import { IEmailService } from '../../application/service/IEmail.service';
 
-export class EmailService implements IEmailService {
+export class EmailServiceImpl implements IEmailService {
 
   async sendEmailViaNodemailer(options: EmailOptions): Promise<void> {
     try {
       const transporter = nodemailer.createTransport({
-        service: 'Gmail',
+        service: emailServiceConstants.gmail,
         auth: {
           user: mailConfig.officialMail,
           pass: mailConfig.officialMailPassword,
@@ -18,22 +20,22 @@ export class EmailService implements IEmailService {
       });
 
       await transporter.sendMail({
-        from: "Slotflow",
+        from: emailServiceConstants.slotflow,
         to: options.to,
         subject: options.subject,
         html: options.html,
       });
     } catch (error) {
-      console.log("Error : ", error)
-      throw new Error("Failed to send OTP.");
-    }
-  }
+      log.error("sendEmailViaNodemailer failed : ", error as Error);
+      throw error;
+    };
+  };
 
 
   async sendEmailViaSes(options: EmailOptions): Promise<void> {
     try {
       const params = {
-        Source: "no-reply@slotflow.online",
+        Source: emailServiceConstants.source,
         Destination: {
           ToAddresses: [options.to],
         },
@@ -46,12 +48,12 @@ export class EmailService implements IEmailService {
       };
 
       const command = new SendEmailCommand(params);
-      const response = await ses.send(command);
+      await ses.send(command);
 
-      console.log(`✅ Email sent to ${options.to}: ${response.MessageId}`);
     } catch (error) {
-      console.error("❌ Error sending email via SES:", error);
+      log.error("sendEmailViaSes failed : ", error as Error);
       throw error;
-    }
-  }
-}
+    };
+  };
+
+};

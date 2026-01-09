@@ -118,9 +118,47 @@ export interface SendProviderPayoutEvent extends SendEmailCommon {
   payoutDate: string;
 }
 
+// send app connect event
 export interface SendAppConnectEvent extends SendEmailCommon {
   appConnect: AppConnect;
 }
+
+export interface SendProviderTrialSubscriptionEvent extends SendEmailCommon {
+  startDate: string;
+  endDate: string;
+}
+
+// Create google calendar event
+export interface CreateGoogleCalendarEvent {
+  accessToken: string;
+  appointmentDate: string;
+  appointmentStatus: AppointmentStatus;
+  slotDuration: number;
+  bookingId: string;
+}
+
+export interface GoogleCalendarEventResponse {
+  eventId: string;
+  bookingId: string;
+}
+
+// Update google calendar event
+export interface UpdateGoogleCalendarEvent {
+  accessToken: string;
+  eventId: string;
+  appointmentDate: string;
+  appointmentStatus: AppointmentStatus;
+  bookingId: string;
+}
+
+// kafka client adapter props
+export interface KafkaClientAdapterProps<T> {
+  topic: string;
+  partition: number;
+  message: T;
+}
+
+export type MessageHandler<T = any> = (payload: KafkaClientAdapterProps<T>) => Promise<void>;
 
 export interface NotificationEventHandler<T = any> {
   handle(payload: T): Promise<void>;
@@ -138,6 +176,11 @@ export interface SendProviderConfirmSubscriptionEvent extends SendEmailCommon {
   duration: number;
 }
 
+export interface KafkaPublishInput<T = unknown> {
+  topic: string;
+  key?: string;
+  message: T;
+}
 
 // Google calendar event
 export interface UpdateGoogleCalendarEventRequest {

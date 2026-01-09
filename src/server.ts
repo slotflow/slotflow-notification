@@ -14,7 +14,7 @@ const start = async () => {
     await kafkaController.startListening();
 
     app.listen(appConfig.port, () =>
-      log.info(`Notification service running on ${appConfig.port}`)
+      log.info(`Notification service running on http://localhost:${appConfig.port}`)
     );
   } catch (error) {
     log.error("Startup failed", error as Error);

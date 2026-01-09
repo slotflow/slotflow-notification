@@ -3,7 +3,7 @@ import { ses } from '../lib/aws.ses';
 import { mailConfig } from '../../config/env';
 import { log } from '../../shared/logger/logger';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
-import { EmailOptions } from '../../application/dtos/common';
+import { EmailOptions } from '../../application/dtos/common.dtos';
 import { emailServiceConstants } from '../../utils/constants';
 import { IEmailService } from '../../application/service/IEmail.service';
 

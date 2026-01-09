@@ -1,7 +1,7 @@
 import { google } from "googleapis";
 import { EventData } from "../../utils/constants";
 import { IGoogleCalendarGatewayService } from "../../domain/interface/services/IGoogleCalendarGateway.service";
-import { AddEventToCalendarProps, CreateGoogleCalendarEventRequest, UpdateGoogleCalendarEventRequest } from "../../application/dtos/common";
+import { AddEventToCalendarProps, CreateGoogleCalendarEventRequest, UpdateGoogleCalendarEventRequest } from "../../application/dtos/common.dtos";
 
 export class GoogleCalendarGatewayServiceImpl implements IGoogleCalendarGatewayService {
 
@@ -64,9 +64,9 @@ export class GoogleCalendarGatewayServiceImpl implements IGoogleCalendarGatewayS
 
         const eventUpdate: Partial<AddEventToCalendarProps> = {
             description: `Appointment scheduled on ${startDate.toLocaleString("en-IN", {
-                    dateStyle: "full",
-                    timeStyle: "short",
-                })} has been ${appointmentStatus}`,
+                dateStyle: "full",
+                timeStyle: "short",
+            })} has been ${appointmentStatus}`,
             extendedProperties: {
                 private: {
                     bookingStatus: appointmentStatus,

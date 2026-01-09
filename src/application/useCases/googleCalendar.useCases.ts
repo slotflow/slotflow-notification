@@ -2,7 +2,7 @@ import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
 import { IKafkaClientAdapter } from "../../domain/interface/message/IKafkaClientAdapter";
 import { IGoogleCalendarGatewayService } from "../../domain/interface/services/IGoogleCalendarGateway.service";
-import { CreateGoogleCalendarEvent, GoogleCalendarEventResponse, UpdateGoogleCalendarEvent } from "../dtos/common";
+import { CreateGoogleCalendarEvent, GoogleCalendarEventResponse, UpdateGoogleCalendarEvent } from "../dtos/common.dtos";
 
 export class CreateGoogleCalendarEventUseCase {
     constructor(

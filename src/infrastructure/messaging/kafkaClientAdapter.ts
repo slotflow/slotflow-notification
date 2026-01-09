@@ -1,6 +1,6 @@
 import { log } from "../../shared/logger/logger";
 import { Kafka, Consumer, Producer, logLevel } from "kafkajs";
-import { MessageHandler } from "../../application/dtos/common";
+import { MessageHandler } from "../../application/dtos/common.dtos";
 import { IKafkaClientAdapter } from "../../domain/interface/message/IKafkaClientAdapter";
 
 export class KafkaClientAdapter implements IKafkaClientAdapter {

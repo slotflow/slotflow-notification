@@ -1,6 +1,6 @@
 import { kafkaConfig } from "../../config/env";
-import { IKafkaClientAdapter } from "../../domain/interface/message/IKafkaClientAdapter";
 import { KafkaClientAdapter } from "./kafkaClientAdapter";
+import { IKafkaClientAdapter } from "../../domain/interface/message/IKafkaClientAdapter";
 
 export const kafkaClientAdapter: IKafkaClientAdapter = new KafkaClientAdapter(
   kafkaConfig.clientId,

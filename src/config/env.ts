@@ -6,6 +6,7 @@ import { Validator } from "../utils/validator";
 const validator = new Validator();
 
 export const appConfig = {
+  nodeEnv: validator.requireEnv("NODE_ENV"),
   port: validator.requireNumber("PORT"),
 };
 

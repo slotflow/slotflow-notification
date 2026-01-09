@@ -158,6 +158,7 @@ export interface KafkaClientAdapterProps<T> {
   message: T;
 }
 
+// kafka client adapter message handler
 export type MessageHandler<T = any> = (payload: KafkaClientAdapterProps<T>) => Promise<void>;
 
 export interface NotificationEventHandler<T = any> {

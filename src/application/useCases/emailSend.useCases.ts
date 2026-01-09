@@ -1,6 +1,6 @@
 import { IEmailService } from "../service/IEmail.service";
 import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../domain/enums/enum";
-import { SendOtpEvent, SendAdminProviderReviewEvent, SendGotAppointmentEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent } from "../dtos/common";
+import { SendOtpEvent, SendAdminProviderReviewEvent, SendGotAppointmentEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent } from "../dtos/common.dtos";
 import { emailMainTemplate, gotAppointmentEmailTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate } from "../../utils/constants";
 
 // send otp event for registration and password update
@@ -301,16 +301,16 @@ export class SendProviderPayoutEventUseCase {
 
   async handle(payload: SendProviderPayoutEvent) {
     const { amount, email, name, payoutDate, transactionId } = payload;
-    
+
     const subject = providerPayoutEmailTemplate.subject();
 
     const htmlContent = `
       ${providerPayoutEmailTemplate.head(name)}
       ${providerPayoutEmailTemplate.body(
-        amount,
-        transactionId,
-        payoutDate
-      )}
+      amount,
+      transactionId,
+      payoutDate
+    )}
     `;
 
     await this.emailService.sendEmailViaNodemailer({

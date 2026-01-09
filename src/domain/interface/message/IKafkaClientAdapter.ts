@@ -1,4 +1,4 @@
-import { MessageHandler } from "../../../application/dtos/common";
+import { MessageHandler } from "../../../application/dtos/common.dtos";
 
 export interface IKafkaClientAdapter {
 

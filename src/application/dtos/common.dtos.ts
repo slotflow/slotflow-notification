@@ -1,17 +1,20 @@
 import { AppConnect, OtpPurpose, PaymentFor, PaymentStatus, Role } from "../../domain/enums/enum";
 import { AdminVerificationStatus, AppointmentStatus } from "../../domain/enums/enum";
 
+// participant presence
 export interface ParticipantPresence {
   joined: boolean;
   joinedTime: Date | null;
   leftCallTime: Date | null;
 }
 
+// status track
 export interface statusTrack {
   appointmentStatus: AppointmentStatus;
   time: Date;
 }
 
+// booking dto
 export interface BookingDTO {
   _id: string,
   serviceProviderId: string,
@@ -33,12 +36,14 @@ export interface BookingDTO {
   updatedAt: Date,
 }
 
+// email options
 export interface EmailOptions {
   to: string;
   subject: string;
   html: string;
 }
 
+// send email common
 export interface SendEmailCommon {
   email: string;
   name: string;
@@ -85,7 +90,6 @@ export interface SendGotAppointmentEvent extends SendEmailCommon {
 export interface SendAppointmentStatusChangeEvent extends SendEmailCommon {
   appointmentDate: string;
   appointmentTime: string;
-  appointmentDuration: string;
   appointmentMode: string;
   appointmentStatus: AppointmentStatus;
 }
@@ -123,12 +127,13 @@ export interface SendAppConnectEvent extends SendEmailCommon {
   appConnect: AppConnect;
 }
 
+// send provider trial subscription event
 export interface SendProviderTrialSubscriptionEvent extends SendEmailCommon {
   startDate: string;
   endDate: string;
 }
 
-// Create google calendar event
+// create google calendar event
 export interface CreateGoogleCalendarEvent {
   accessToken: string;
   appointmentDate: string;
@@ -137,12 +142,13 @@ export interface CreateGoogleCalendarEvent {
   bookingId: string;
 }
 
+// google calendar event response
 export interface GoogleCalendarEventResponse {
   eventId: string;
   bookingId: string;
 }
 
-// Update google calendar event
+// update google calendar event
 export interface UpdateGoogleCalendarEvent {
   accessToken: string;
   eventId: string;
@@ -161,27 +167,6 @@ export interface KafkaClientAdapterProps<T> {
 // kafka client adapter message handler
 export type MessageHandler<T = any> = (payload: KafkaClientAdapterProps<T>) => Promise<void>;
 
-export interface NotificationEventHandler<T = any> {
-  handle(payload: T): Promise<void>;
-}
-
-export type AnyNotificationHandler = {
-  handle(payload: unknown): Promise<void>;
-};
-
-
-export interface SendProviderConfirmSubscriptionEvent extends SendEmailCommon {
-  startDate: string;
-  endDate: string;
-  subscription: string;
-  duration: number;
-}
-
-export interface KafkaPublishInput<T = unknown> {
-  topic: string;
-  key?: string;
-  message: T;
-}
 
 // Google calendar event
 export interface UpdateGoogleCalendarEventRequest {
@@ -191,6 +176,7 @@ export interface UpdateGoogleCalendarEventRequest {
   accessToken: string,
 }
 
+// create google calendar event request
 export interface CreateGoogleCalendarEventRequest {
   appointmentDate: string,
   appointmentStatus: AppointmentStatus,
@@ -198,6 +184,7 @@ export interface CreateGoogleCalendarEventRequest {
   accessToken: string;
 }
 
+// google calendar events props for backend
 interface GoogleCalendarEventsPropsForBackend {
   start: {
     dateTime: string,
@@ -209,6 +196,7 @@ interface GoogleCalendarEventsPropsForBackend {
   };
 }
 
+// google calendar event
 export interface GoogleCalendarEvent extends Partial<BookingDTO> {
   id: string;
   iCalUID?: string;
@@ -256,8 +244,10 @@ export interface GoogleCalendarEvent extends Partial<BookingDTO> {
   },
 };
 
+// add event to calendar props
 export type AddEventToCalendarProps = Pick<GoogleCalendarEvent, "summary" | "description" | "extendedProperties"> & GoogleCalendarEventsPropsForBackend;
 
+// decoded user
 export interface DecodedUser {
   userOrProviderId?: string;
   role?: Role;

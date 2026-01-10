@@ -342,7 +342,6 @@ export const appointmentStatusEmailTemplate = {
     status: AppointmentStatus,
     appointmentDate: string,
     appointmentTime: string,
-    appointmentDuration: string,
     appointmentMode: string
   ): string => `
     <div style="
@@ -354,7 +353,6 @@ export const appointmentStatusEmailTemplate = {
     ">
       <p><strong>Date:</strong> ${appointmentDate}</p>
       <p><strong>Time:</strong> ${appointmentTime}</p>
-      <p><strong>Duration:</strong> ${appointmentDuration}</p>
       <p><strong>Mode:</strong> ${appointmentMode}</p>
     </div>
 

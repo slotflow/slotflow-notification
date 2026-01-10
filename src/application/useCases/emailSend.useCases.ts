@@ -160,7 +160,7 @@ export class SendAppointmentStatusChangeEventUseCase {
   ) { };
 
   async handle(payload: SendAppointmentStatusChangeEvent) {
-    const { email, name, appointmentDate, appointmentDuration, appointmentMode, appointmentTime, appointmentStatus } = payload;
+    const { email, name, appointmentDate, appointmentMode, appointmentTime, appointmentStatus } = payload;
 
     if (
       ![
@@ -180,7 +180,6 @@ export class SendAppointmentStatusChangeEventUseCase {
       appointmentStatus,
       appointmentDate,
       appointmentTime,
-      appointmentDuration,
       appointmentMode
     )}
     `;

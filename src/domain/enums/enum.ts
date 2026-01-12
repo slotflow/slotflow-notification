@@ -52,3 +52,9 @@ export enum AppConnect {
     Razorpay = "Razorpay",
     Paypal = "Paypal",
 }
+
+export enum PaymentGateway {
+    Stripe = "Stripe",
+    Razorpay = "Razorpay",
+    Paypal = "Paypal"
+}

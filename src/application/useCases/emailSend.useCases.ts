@@ -1,6 +1,6 @@
 import { IEmailService } from "../service/IEmail.service";
 import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../domain/enums/enum";
-import { SendOtpEvent, SendAdminProviderReviewEvent, SendGotAppointmentEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendEmailCommon } from "../dtos/common.dtos";
+import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendEmailCommon } from "../dtos/kafka.dtos";
 import { emailMainTemplate, gotAppointmentEmailTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate, passwordResetEmailTemplate } from "../../shared/utils/constants";
 
 // send otp event for registration and password update
@@ -267,33 +267,33 @@ export class SendProviderTrialSubscriptionEventUseCase {
 
 //  Edit 
 // send got appointment event
-export class SendGotAppointmentEventUseCase {
-  constructor(
-    private emailService: IEmailService
-  ) { };
+// export class SendGotAppointmentEventUseCase {
+//   constructor(
+//     private emailService: IEmailService
+//   ) { };
 
-  async handle(payload: SendGotAppointmentEvent) {
-    const { appointmentDate, appointmentDuration, appointmentMode, appointmentTime, email, name } = payload;
+//   async handle(payload: SendGotAppointmentEvent) {
+//     const { appointmentDate, appointmentDuration, appointmentMode, appointmentTime, email, name } = payload;
 
-    const subject = gotAppointmentEmailTemplate.subject;
+//     const subject = gotAppointmentEmailTemplate.subject;
 
-    const htmlContent = `
-      ${gotAppointmentEmailTemplate.head(name)}
-      ${gotAppointmentEmailTemplate.body(
-      appointmentDate,
-      appointmentTime,
-      appointmentDuration,
-      appointmentMode
-    )}
-    `;
+//     const htmlContent = `
+//       ${gotAppointmentEmailTemplate.head(name)}
+//       ${gotAppointmentEmailTemplate.body(
+//       appointmentDate,
+//       appointmentTime,
+//       appointmentDuration,
+//       appointmentMode
+//     )}
+//     `;
 
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject,
-      html: emailMainTemplate.html(subject, htmlContent),
-    });
-  };
-};
+//     await this.emailService.sendEmailViaNodemailer({
+//       to: email,
+//       subject,
+//       html: emailMainTemplate.html(subject, htmlContent),
+//     });
+//   };
+// };
 
 // send user payment event
 export class SendUserPaymentEventUseCase {

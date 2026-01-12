@@ -1,10 +1,10 @@
 import nodemailer from 'nodemailer';
 import { ses } from '../lib/aws.ses';
-import { mailConfig } from '../../config/env';
 import { log } from '../../shared/logger/logger';
+import { officialConfig } from '../../config/env';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
+import { emailServiceConstants } from '../../shared/utils/constants';
 import { EmailOptions } from '../../application/dtos/common.dtos';
-import { emailServiceConstants } from '../../utils/constants';
 import { IEmailService } from '../../application/service/IEmail.service';
 
 export class EmailServiceImpl implements IEmailService {
@@ -14,8 +14,8 @@ export class EmailServiceImpl implements IEmailService {
       const transporter = nodemailer.createTransport({
         service: emailServiceConstants.gmail,
         auth: {
-          user: mailConfig.officialMail,
-          pass: mailConfig.officialMailPassword,
+          user: officialConfig.email,
+          pass: officialConfig.password,
         },
       });
 

@@ -1,17 +1,12 @@
 import app from "./app";
+import { InitKafkaControllers } from ".";
 import { appConfig } from "./config/env";
 import { log } from "./shared/logger/logger";
-import { kafkaClientAdapter } from './infrastructure/messaging/index';
-import { KafkaConsumerController } from "./presentation/kafka.controller";
-
-const kafkaController = new KafkaConsumerController(kafkaClientAdapter);
 
 const start = async () => {
   try {
 
-    await kafkaClientAdapter.connectConsumer();
-    await kafkaClientAdapter.connectProducer();
-    await kafkaController.startListening();
+    await InitKafkaControllers();
 
     app.listen(appConfig.port, () =>
       log.info(`Notification service running on http://localhost:${appConfig.port}`)

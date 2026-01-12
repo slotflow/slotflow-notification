@@ -1,4 +1,4 @@
-import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentStatus } from "../domain/enums/enum";
+import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentStatus } from "../../domain/enums/enum";
 
 // email main template
 export const emailMainTemplate = {
@@ -102,6 +102,31 @@ export const welcomeEmailTemplate = {
   `,
 };
 
+// password reset success email template
+export const passwordResetEmailTemplate = {
+  subject: (): string => "Your Slotflow password has been successfully reset",
+
+  head: (name: string): string =>
+    `<p style="font-size: 1.1em;">Hi ${name},</p>`,
+
+  body: (): string => `
+    <p>
+      This is a confirmation that the password for your <strong>Slotflow</strong> account 
+      has been successfully changed.
+    </p>
+
+    <p>
+      If you did not perform this action, please contact our support team immediately 
+      to secure your account.
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
+  `,
+};
+
 // admin provider review email template
 export const adminProviderReviewEmailTemplate = {
   subject: (status: string) =>
@@ -166,27 +191,24 @@ export const accountBlockStatusEmailTemplate = {
     `<p style="font-size: 1.1em;">Hi ${name},</p>`,
 
   body: (blocked: boolean, reason?: string): string => `
-    ${
-      blocked
-        ? `<p>
+    ${blocked
+      ? `<p>
             We regret to inform you that your Slotflow account has been
             <strong>temporarily blocked</strong> by our administration team.
           </p>`
-        : `<p>
+      : `<p>
             We’re happy to inform you that your Slotflow account has been
             <strong>successfully unblocked</strong>.
           </p>`
     }
 
-    ${
-      blocked && reason
-        ? `<p><strong>Reason:</strong> ${reason}</p>`
-        : ""
+    ${blocked && reason
+      ? `<p><strong>Reason:</strong> ${reason}</p>`
+      : ""
     }
 
-    ${
-      blocked
-        ? `<p>
+    ${blocked
+      ? `<p>
             During this period, you will not be able to access certain features
             of the platform.
           </p>
@@ -194,7 +216,7 @@ export const accountBlockStatusEmailTemplate = {
             If you believe this action was taken in error or need clarification,
             please contact our support team.
           </p>`
-        : `<p>
+      : `<p>
             You may now log in and continue using Slotflow without restrictions.
           </p>`
     }
@@ -217,9 +239,8 @@ export const accountTrustStatusEmailTemplate = {
     `<p style="font-size: 1.1em;">Hi ${name},</p>`,
 
   body: (trusted: boolean, reason?: string): string => `
-    ${
-      trusted
-        ? `<p>
+    ${trusted
+      ? `<p>
             Congratulations! Your service provider account has been
             <strong>marked as Trusted</strong> on Slotflow.
           </p>
@@ -227,24 +248,22 @@ export const accountTrustStatusEmailTemplate = {
             This status increases your credibility and helps clients
             choose your services with confidence.
           </p>`
-        : `<p>
+      : `<p>
             We’d like to inform you that your service provider account is
             <strong>no longer marked as Trusted</strong> on Slotflow.
           </p>`
     }
 
-    ${
-      !trusted && reason
-        ? `<p><strong>Reason:</strong> ${reason}</p>`
-        : ""
+    ${!trusted && reason
+      ? `<p><strong>Reason:</strong> ${reason}</p>`
+      : ""
     }
 
-    ${
-      trusted
-        ? `<p>
+    ${trusted
+      ? `<p>
             Keep delivering great service to maintain your trusted status.
           </p>`
-        : `<p>
+      : `<p>
             Please review your account details and reach out to support if
             you believe this change was made in error.
           </p>`
@@ -357,13 +376,12 @@ export const appointmentStatusEmailTemplate = {
     </div>
 
     <p>
-      ${
-        status === AppointmentStatus.Confirmed
-          ? "You can view your appointment details in your Slotflow dashboard."
-          : status === AppointmentStatus.RejectedByProvider
-          ? "Please try booking another slot or contact the service provider for more information."
-          : "Please check your dashboard for more details."
-      }
+      ${status === AppointmentStatus.Confirmed
+      ? "You can view your appointment details in your Slotflow dashboard."
+      : status === AppointmentStatus.RejectedByProvider
+        ? "Please try booking another slot or contact the service provider for more information."
+        : "Please check your dashboard for more details."
+    }
     </p>
 
     <p>
@@ -394,10 +412,9 @@ export const userPaymentStatusEmailTemplate = {
     paymentStatus: PaymentStatus
   ): string => `
     <p style="font-size: 1.1em;">Hi ${name},</p>
-    ${
-      paymentStatus === PaymentStatus.Paid
-        ? `<p>Your payment was successful, and your appointment has been confirmed.</p>`
-        : `<p>Your appointment has been cancelled, and the payment has been refunded successfully.</p>`
+    ${paymentStatus === PaymentStatus.Paid
+      ? `<p>Your payment was successful, and your appointment has been confirmed.</p>`
+      : `<p>Your appointment has been cancelled, and the payment has been refunded successfully.</p>`
     }
   `,
 
@@ -422,11 +439,10 @@ export const userPaymentStatusEmailTemplate = {
     </div>
 
     <p>
-      ${
-        paymentStatus === PaymentStatus.Paid
-          ? "You can view your appointment details in your Slotflow dashboard."
-          : "The refunded amount will be credited back to your original payment method shortly."
-      }
+      ${paymentStatus === PaymentStatus.Paid
+      ? "You can view your appointment details in your Slotflow dashboard."
+      : "The refunded amount will be credited back to your original payment method shortly."
+    }
     </p>
 
     <p>
@@ -459,10 +475,9 @@ export const providerSubscriptionPaymentEmailTemplate = {
     paymentStatus: PaymentStatus
   ): string => `
     <p style="font-size: 1.1em;">Hi ${name},</p>
-    ${
-      paymentStatus === PaymentStatus.Paid
-        ? `<p>Your subscription payment was successful and your Slotflow account is now active.</p>`
-        : `<p>Your Slotflow subscription has been cancelled and the amount has been refunded.</p>`
+    ${paymentStatus === PaymentStatus.Paid
+      ? `<p>Your subscription payment was successful and your Slotflow account is now active.</p>`
+      : `<p>Your Slotflow subscription has been cancelled and the amount has been refunded.</p>`
     }
   `,
 
@@ -489,11 +504,10 @@ export const providerSubscriptionPaymentEmailTemplate = {
     </div>
 
     <p>
-      ${
-        paymentStatus === PaymentStatus.Paid
-          ? "You can continue managing your services and availability from your Slotflow dashboard."
-          : "Access to subscription features will remain disabled after the current billing period."
-      }
+      ${paymentStatus === PaymentStatus.Paid
+      ? "You can continue managing your services and availability from your Slotflow dashboard."
+      : "Access to subscription features will remain disabled after the current billing period."
+    }
     </p>
 
     <p>

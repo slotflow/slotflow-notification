@@ -70,6 +70,7 @@ export interface SendAdminProviderReviewEvent extends SendEmailCommon {
 export interface SendAccountBlockStatusEvent extends SendEmailCommon {
   blocked: boolean;
   reason?: string;
+  userId: string;
 }
 
 // send account trust status event

@@ -2606,3 +2606,135 @@
 [32m  "providerId": "693db323d13641dca3890836",[39m
 [32m  "isBlocked": false[39m
 [32m}[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mKafka consumer connected [group=inapp-notification-group][39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mKafka consumer connected [group=push-notification-group][39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: provider-appointment-status-change[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: app-connect[39m
+[2026-01-12 19:44:53] [[32minfo[39m]: [32mSubscribed to topic: provider-trial-subscription[39m
+[2026-01-12 19:45:00] [[32minfo[39m]: [32mKafka consumer running[39m
+[2026-01-12 19:45:00] [[32minfo[39m]: [32mNotification service running on http://localhost:6000[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mKafka consumer connected [group=inapp-notification-group][39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mKafka consumer connected [group=push-notification-group][39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: provider-appointment-status-change[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: app-connect[39m
+[2026-01-12 19:52:39] [[32minfo[39m]: [32mSubscribed to topic: provider-trial-subscription[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mKafka consumer connected [group=inapp-notification-group][39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mKafka consumer connected [group=push-notification-group][39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: provider-appointment-status-change[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: app-connect[39m
+[2026-01-12 19:52:58] [[32minfo[39m]: [32mSubscribed to topic: provider-trial-subscription[39m
+[2026-01-12 19:53:11] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-12 19:53:11] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:53:11] [[32minfo[39m]: [32mKafka consumer connected [group=inapp-notification-group][39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mKafka consumer connected [group=push-notification-group][39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: provider-appointment-status-change[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: app-connect[39m
+[2026-01-12 19:53:12] [[32minfo[39m]: [32mSubscribed to topic: provider-trial-subscription[39m
+[2026-01-12 19:53:21] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-12 19:53:21] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:53:21] [[32minfo[39m]: [32mKafka consumer connected [group=inapp-notification-group][39m
+[2026-01-12 19:53:21] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:53:21] [[32minfo[39m]: [32mKafka consumer connected [group=push-notification-group][39m
+[2026-01-12 19:53:21] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: provider-appointment-status-change[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: app-connect[39m
+[2026-01-12 19:53:22] [[32minfo[39m]: [32mSubscribed to topic: provider-trial-subscription[39m
+[2026-01-12 19:53:40] [[32minfo[39m]: [32mKafka consumer running[39m
+[2026-01-12 19:53:40] [[32minfo[39m]: [32mNotification service running on http://localhost:6000[39m
+[2026-01-12 20:04:12] [[32minfo[39m]: [32mAdmin Account block or unblock[39m
+[2026-01-12 20:04:12] [[32minfo[39m]: [32mpayload : [object Object][39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mKafka consumer connected [group=inapp-notification-group][39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mKafka consumer connected [group=push-notification-group][39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: provider-appointment-status-change[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: app-connect[39m
+[2026-01-12 20:05:08] [[32minfo[39m]: [32mSubscribed to topic: provider-trial-subscription[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mKafka consumer connected [group=inapp-notification-group][39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mKafka consumer connected [group=push-notification-group][39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: provider-appointment-status-change[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: app-connect[39m
+[2026-01-12 20:05:18] [[32minfo[39m]: [32mSubscribed to topic: provider-trial-subscription[39m

@@ -1,5 +1,7 @@
-import { Role } from "../../domain/enums/enum";
+import { Platform, Role } from "../../domain/enums/enum";
 import { AppointmentStatus } from "../../domain/enums/enum";
+
+// **** ENTITY DTOS 
 
 // participant presence
 export interface ParticipantPresence {
@@ -36,6 +38,20 @@ export interface BookingDTO {
   updatedAt: Date,
 }
 
+// notification dto
+export interface Notification {
+    _id: string;
+    userId: string;
+    message: string;
+    pushNotification: boolean;
+    isRead: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+
+// **** COMMON DTOS 
+
 // email options
 export interface EmailOptions {
   to: string;
@@ -43,68 +59,6 @@ export interface EmailOptions {
   html: string;
 }
 
-// google calendar events props for backend
-interface GoogleCalendarEventsPropsForBackend {
-  start: {
-    dateTime: string,
-    timeZone: string,
-  };
-  end: {
-    dateTime: string,
-    timeZone: string,
-  };
-}
-
-// google calendar event
-export interface GoogleCalendarEvent extends Partial<BookingDTO> {
-  id: string;
-  iCalUID?: string;
-  kind?: string;
-  eventType?: string;
-
-  summary?: string;
-  description?: string;
-
-  created?: string;
-  updated?: string;
-
-  htmlLink?: string;
-  status?: string;
-
-  creator?: {
-    email: string;
-    self?: boolean;
-  };
-
-  organizer?: {
-    email: string;
-    self?: boolean;
-  };
-
-  reminders?: {
-    useDefault: boolean;
-    overrides?: {
-      method: string;
-      minutes: number;
-    }[];
-  };
-
-  sequence?: number;
-  etag?: string;
-
-  extendedProperties?: {
-    private: {
-      bookingStatus?: string;
-      bookingId?: string;
-      title?: string;
-      backgroundColor?: string;
-      textColor?: string;
-    },
-  },
-};
-
-// add event to calendar props
-export type AddEventToCalendarProps = Pick<GoogleCalendarEvent, "summary" | "description" | "extendedProperties"> & GoogleCalendarEventsPropsForBackend;
 
 // decoded user
 export interface DecodedUser {
@@ -119,5 +73,46 @@ export interface DecodedUser {
   connectOnly?: boolean;
   exp?: number;
   iat?: number;
+};
+
+
+// Used as the response interface for the all request
+export interface CommonResponse {
+  success?: boolean;
+  message?: string;
+};
+
+
+// Used as the request interface for the paginated request
+export interface ApiPaginationRequest {
+  page: number;
+  limit: number;
+}
+
+
+// Used as the type of table data
+export interface TableData<T> {
+  totalPages?: number;
+  currentPage?: number;
+  totalCount?: number;
+  data?: T
+};
+
+
+// **** USECASE DTOS
+
+// Register Device 
+export interface RegisterDeviceRequest {
+  fcmToken: string;
+  deviceId: string;
+  platform: Platform;
   userId: string;
 };
+
+
+// Get All Notifications
+export interface GetAllNotificationsRequest extends ApiPaginationRequest{
+  userId: string;
+};
+
+export type GetAllNotificationsResponse = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "message">>;

@@ -67,10 +67,11 @@ export class UserDevice {
 
     // Business Methods
 
-    rotateToken(newToken: string) {
-        this.props.fcmToken = newToken;
-        this.props.lastUsedAt = new Date();
-        this.touch();
+    updateToken(newToken: string) {
+        if (this.props.fcmToken !== newToken) {
+            this.props.fcmToken = newToken;
+            this.touch();
+        };
     };
 
     deactivate() {
@@ -78,7 +79,13 @@ export class UserDevice {
         this.touch();
     };
 
+    markUsed() {
+        this.props.lastUsedAt = new Date();
+        this.touch();
+    };
+
     getProps(): Readonly<UserDeviceProps> {
         return { ...this.props };
     };
-}
+
+};

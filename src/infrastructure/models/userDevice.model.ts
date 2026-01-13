@@ -11,12 +11,12 @@ export interface IUserDevice {
     lastUsedAt: Date;
     createdAt: Date;
     updatedAt: Date;
-}
+};
 
 const userDeviceSchema = new Schema<IUserDevice>({
     userId: {
         type: Schema.Types.ObjectId,
-        required: true,
+        required: [true, "User ID is required"],
         index: true
     },
     fcmToken: {
@@ -50,5 +50,7 @@ const userDeviceSchema = new Schema<IUserDevice>({
         required: true
     }
 });
+
+userDeviceSchema.index({ userId: 1, deviceId: 1 }, { unique: true });
 
 export const UserDeviceModel = mongoose.model<IUserDevice>("UserDevice", userDeviceSchema);

@@ -1,6 +1,6 @@
-import { KafkaNotificationController } from "./presentation/kafkaInapp.controller";
-import { KafkaEmailConsumerController } from "./presentation/kafkaEmail.controller";
-import { KafkaGoogleCalendarController } from "./presentation/kafkaGoogleCalendar.controller";
+import { KafkaNotificationController } from "./presentation/kafkaController/kafkaNotification.controller";
+import { KafkaEmailConsumerController } from "./presentation/kafkaController/kafkaEmail.controller";
+import { KafkaGoogleCalendarController } from "./presentation/kafkaController/kafkaGoogleCalendar.controller";
 import { kafkaEmailConsumer, kafkaGoogleCalendarConsumer, kafkaNotificationConsumer, kafkaProducer } from "./infrastructure/messaging";
 
 const kafkaEmailController = new KafkaEmailConsumerController(kafkaEmailConsumer);
@@ -8,7 +8,6 @@ const kafkaNotificationController = new KafkaNotificationController(kafkaNotific
 const kafkaGoogleCalendarController = new KafkaGoogleCalendarController(kafkaGoogleCalendarConsumer);
 
 export const InitKafkaControllers = async () => {
-   
     await kafkaEmailConsumer.connectConsumer();
     await kafkaNotificationConsumer.connectConsumer();
     await kafkaGoogleCalendarConsumer.connectConsumer();

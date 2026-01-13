@@ -12,8 +12,9 @@ import {
     SendUserPaymentEventUseCase,
     SendProviderPaymentEventUseCase,
     SendProviderPayoutEventUseCase,
-} from "../application/useCases/emailSend.useCases";
-import { emailService, googleCalendarGatewayService } from "../infrastructure/container";
+} from "../../application/useCases/emailSend.useCases";
+import { emailService } from "../../infrastructure/container";
+
 // import { CreateGoogleCalendarEventUseCase, UpdateGoogleCalendarEventUseCase } from "../application/useCases/googleCalendar.useCases";
 
 export const emailHandlers = {        

@@ -1,7 +1,7 @@
 import { emailHandlers } from ".";
-import { kafkaConfig } from "../config/env";
-import { log } from "../shared/logger/logger";
-import { IKafkaConsumerAdapter } from "../domain/interfaces/message/IKafkaConsumerAdapter";
+import { kafkaConfig } from "../../config/env";
+import { log } from "../../shared/logger/logger";
+import { IKafkaConsumerAdapter } from "../../domain/interfaces/message/IKafkaConsumerAdapter";
 
 export class KafkaEmailConsumerController {
 

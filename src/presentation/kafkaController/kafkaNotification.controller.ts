@@ -1,7 +1,8 @@
-import { IKafkaConsumerAdapter } from "../domain/interfaces/message/IKafkaConsumerAdapter";
-import { log } from "../shared/logger/logger";
+import { log } from "../../shared/logger/logger";
+import { IKafkaConsumerAdapter } from "../../domain/interfaces/message/IKafkaConsumerAdapter";
 
-export class KafkaGoogleCalendarController {
+
+export class KafkaNotificationController {
 
     constructor(
         private readonly kafkaConsumerAdapter: IKafkaConsumerAdapter

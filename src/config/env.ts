@@ -19,6 +19,10 @@ export const officialConfig = {
   password: validator.requireEnv("OFFICIALEMAIL_PASS"),
 };
 
+export const firebaseConfig = {
+  firebaseServiceAccountJson: validator.requireEnv("FIREBASE_SERVICE_ACCOUNT_JSON"),
+};
+
 export const kafkaConfig = {
   clientId: validator.requireEnv("KAFKA_CLIENT_ID"),
 

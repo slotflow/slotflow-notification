@@ -1,6 +1,8 @@
 import { KafkaMessage } from "kafkajs";
 import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentFor, PaymentGateway, PaymentStatus, Role } from "../../domain/enums/enum";
 
+// **** COMMON DTOS
+
 // kafka client adapter props
 export interface KafkaClientAdapterProps {
     topic: string;
@@ -26,7 +28,7 @@ export interface CreateGoogleCalendarEventRequest {
 }
 
 
-// **** KAFKA EVENTS PAYLOAD TYPES ****//
+// **** KAFKA EVENTS PAYLOAD
 
 // send email common
 export interface SendEmailCommon {
@@ -159,16 +161,3 @@ export interface UpdateGoogleCalendarEvent {
     appointmentStatus: AppointmentStatus;
     bookingId: string;
 }
-
-// Type map for the handler
-// export interface kafkaEventMap {
-//     sendOtp: SendOtpEvent,
-//     registerSuccess: SendWelcomeEvent,
-//     passwordReset: SendEmailCommon,
-//     adminProviderReview: SendAdminProviderReviewEvent,
-//     accountBlockStatus: SendAccountBlockStatusEvent,
-//     accountTrustStatus: SendAccountTrustStatusEvent,
-//     providerAppointmentStatus: SendAppointmentStatusChangeEvent,
-//     appConnect: SendAppConnectEvent,
-//     providerTrialSubscription: SendProviderTrialSubscriptionEvent,
-// }

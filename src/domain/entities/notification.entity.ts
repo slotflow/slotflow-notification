@@ -41,6 +41,18 @@ export class Notification {
         return this.props.pushNotification;
     };
 
+    get isRead(): boolean {
+        return this.props.isRead;
+    };
+
+    get createdAt(): Date {
+        return this.props.createdAt;
+    };
+
+    get updatedAt(): Date {
+        return this.props.updatedAt;
+    };
+
     // Business Methods
 
     getProps(): Readonly<NotificationProps> {

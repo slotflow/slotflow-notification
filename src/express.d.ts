@@ -1,4 +1,3 @@
-import { Role } from "./domain/enums/enum";
 import { DecodedUser } from "./application/dtos/common.dto";
 
 // Extend the Request interface

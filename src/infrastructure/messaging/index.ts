@@ -11,14 +11,9 @@ export const kafkaEmailConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapte
   kafkaConfig.groups.emailGroupId
 );
 
-export const kafkaPushNotificationConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapter(
+export const kafkaNotificationConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapter(
   kafkaClient,
-  kafkaConfig.groups.pushGroupId
-);
-
-export const kafkaInappNotificationConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapter(
-  kafkaClient,
-  kafkaConfig.groups.inappGroupId
+  kafkaConfig.groups.notificationGroupId
 );
 
 export const kafkaGoogleCalendarConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapter(

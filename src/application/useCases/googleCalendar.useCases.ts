@@ -1,13 +1,15 @@
-import { kafkaConfig } from "../../config/env";
+// import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
-import { IKafkaClientAdapter } from "../../domain/interfaces/message/IKafkaClientAdapter";
 import { IGoogleCalendarGatewayService } from "../../domain/interfaces/services/IGoogleCalendarGateway.service";
-import { CreateGoogleCalendarEvent, GoogleCalendarEventResponse, UpdateGoogleCalendarEvent } from "../dtos/common.dtos";
+// import { IKafkaProducerAdapter } from "../../domain/interfaces/message/IKafkaProducerAdapter";
+import { CreateGoogleCalendarEvent, 
+    // GoogleCalendarEventResponse, 
+    UpdateGoogleCalendarEvent } from "../dtos/kafka.dtos";
 
 export class CreateGoogleCalendarEventUseCase {
     constructor(
         private googleCalendarGatewayService: IGoogleCalendarGatewayService,
-        private kafkaClientAdapter: IKafkaClientAdapter,
+        // private kafkaProducer: IKafkaProducerAdapter,
     ) { };
 
     async handle(payload: CreateGoogleCalendarEvent): Promise<void> {
@@ -21,17 +23,17 @@ export class CreateGoogleCalendarEventUseCase {
                 slotDuration: Number(slotDuration),
             });
 
-            if (eventId) {
-                await this.kafkaClientAdapter.publish<GoogleCalendarEventResponse>(kafkaConfig.topics.pub.googleCalendarCreateSuccess, {
-                    eventId,
-                    bookingId,
-                });
-            } else {
-                await this.kafkaClientAdapter.publish<GoogleCalendarEventResponse>(kafkaConfig.topics.pub.googleCalendarCreateFailed, {
-                    eventId,
-                    bookingId,
-                });
-            };
+            // if (eventId) {
+            //     await this.kafkaProducer.publish<GoogleCalendarEventResponse>(kafkaConfig.topics.pub.googleCalendarCreateSuccess, {
+            //         eventId,
+            //         bookingId,
+            //     });
+            // } else {
+            //     await this.kafkaProducer.publish<GoogleCalendarEventResponse>(kafkaConfig.topics.pub.googleCalendarCreateFailed, {
+            //         eventId,
+            //         bookingId,
+            //     });
+            // };
 
             return;
         } catch (error) {
@@ -43,7 +45,7 @@ export class CreateGoogleCalendarEventUseCase {
 export class UpdateGoogleCalendarEventUseCase {
     constructor(
         private googleCalendarGatewayService: IGoogleCalendarGatewayService,
-        private kafkaClientAdapter: IKafkaClientAdapter,
+        // private kafkaProducer: IKafkaProducerAdapter,
     ) { };
 
     async handle(payload: UpdateGoogleCalendarEvent): Promise<void> {
@@ -57,17 +59,17 @@ export class UpdateGoogleCalendarEventUseCase {
                 appointmentStatus,
             });
 
-            if (updatedEventId) {
-                await this.kafkaClientAdapter.publish<GoogleCalendarEventResponse>(kafkaConfig.topics.pub.googleCalendarUpdateSuccess, {
-                    eventId,
-                    bookingId
-                });
-            } else {
-                await this.kafkaClientAdapter.publish<GoogleCalendarEventResponse>(kafkaConfig.topics.pub.googleCalendarUpdateFailed, {
-                    eventId,
-                    bookingId
-                });
-            };
+            // if (updatedEventId) {
+            //     await this.kafkaProducer.publish<GoogleCalendarEventResponse>(kafkaConfig.topics.pub.googleCalendarUpdateSuccess, {
+            //         eventId,
+            //         bookingId
+            //     });
+            // } else {
+            //     await this.kafkaProducer.publish<GoogleCalendarEventResponse>(kafkaConfig.topics.pub.googleCalendarUpdateFailed, {
+            //         eventId,
+            //         bookingId
+            //     });
+            // };
             return;
         } catch (error) {
             log.error("UpdateGoogleCalendarEventUseCase failed : ", error as Error);

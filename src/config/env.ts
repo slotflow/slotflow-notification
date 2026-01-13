@@ -11,7 +11,7 @@ export const appConfig = {
 };
 
 export const mongodbConfig = {
-  mongoURL: process.env.NODE_ENV === "development" ? validator.requireEnv("MONGO_URI_DEV") : validator.requireEnv("MONGO_URI"),
+  mongoUri: process.env.NODE_ENV === "development" ? validator.requireEnv("MONGO_URI_DEV") : validator.requireEnv("MONGO_URI"),
 };
 
 export const officialConfig = {
@@ -23,8 +23,7 @@ export const kafkaConfig = {
   clientId: validator.requireEnv("KAFKA_CLIENT_ID"),
 
   groups: {
-    inappGroupId: validator.requireEnv("KAFKA_INAPP_NOTIFICATION_GROUP_ID"),
-    pushGroupId: validator.requireEnv("KAFKA_PUSH_NOTIFICATION_GROUP_ID"),
+    notificationGroupId: validator.requireEnv("KAFKA_NOTIFICATION_GROUP_ID"),
     emailGroupId: validator.requireEnv("KAFKA_EMAIL_NOTIFICATION_GROUP_ID"),
     calendarGroupId: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_NOTIFICATION_GROUP_ID"),
   },

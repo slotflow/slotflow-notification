@@ -1,7 +1,7 @@
 import { log } from "../shared/logger/logger";
 import { IKafkaConsumerAdapter } from "../domain/interfaces/message/IKafkaConsumerAdapter";
 
-export class KafkaInappController {
+export class KafkaNotificationController {
 
     constructor(
         private readonly kafkaConsumerAdapter: IKafkaConsumerAdapter

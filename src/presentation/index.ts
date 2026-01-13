@@ -8,7 +8,7 @@ import {
     SendAppConnectEventUseCase,
     SendProviderTrialSubscriptionEventUseCase,
     SendPasswordResetEventUseCase,
-    SendGotAppointmentEventUseCase,
+    // SendGotAppointmentEventUseCase,
     SendUserPaymentEventUseCase,
     SendProviderPaymentEventUseCase,
     SendProviderPayoutEventUseCase,

@@ -11,6 +11,20 @@ export interface KafkaClientAdapterProps {
 // kafka client adapter message handler
 export type MessageHandler = (payload: KafkaClientAdapterProps) => Promise<void>;
 
+export interface UpdateGoogleCalendarEventRequest {
+  eventId: string,
+  appointmentDate: Date,
+  appointmentStatus: AppointmentStatus,
+  accessToken: string,
+}
+
+export interface CreateGoogleCalendarEventRequest {
+  appointmentDate: Date,
+  appointmentStatus: AppointmentStatus,
+  slotDuration: number,
+  accessToken: string;
+}
+
 
 // **** KAFKA EVENTS PAYLOAD TYPES ****//
 

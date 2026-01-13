@@ -1,7 +1,7 @@
 import { IEmailService } from "../service/IEmail.service";
 import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../domain/enums/enum";
 import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendEmailCommon } from "../dtos/kafka.dtos";
-import { emailMainTemplate, gotAppointmentEmailTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate, passwordResetEmailTemplate } from "../../shared/utils/constants";
+import { emailMainTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate, passwordResetEmailTemplate } from "../../shared/utils/constants";
 
 // send otp event for registration and password update
 export class SendOtpEventUseCase {

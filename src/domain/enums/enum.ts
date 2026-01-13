@@ -2,12 +2,12 @@ export enum Role {
     Admin = "ADMIN",
     User = "USER",
     Provider = "PROVIDER",
-}
+};
 
 export enum OtpPurpose {
   REGISTRATION = "REGISTRATION",
   PASSWORD_RESET = "PASSWORD_RESET",
-}
+};
 
 export enum AppointmentStatus {
   Booked = "Booked",
@@ -16,8 +16,7 @@ export enum AppointmentStatus {
   RejectedByProvider = "RejectedByProvider",
   NotAttended = "NotAttended",
   Confirmed = "Confirmed",
-}
-
+};
 
 export enum AdminVerificationStatus {
     REQUESTED = "Requested",
@@ -26,7 +25,7 @@ export enum AdminVerificationStatus {
     REJECTED = "Rejected",
     RESUBMITTED = "Resubmitted",
     NOT_REQUESTED = "Not_submitted",
-}
+};
 
 export enum PaymentStatus {
     Pending = "Pending",
@@ -34,7 +33,7 @@ export enum PaymentStatus {
     Failed = "Failed",
     Cancelled = "Cancelled",
     Refunded = "Refunded",
-}
+};
 
 export enum PaymentFor {
     ProviderSubscription = "ProviderSubscription",
@@ -42,7 +41,7 @@ export enum PaymentFor {
     ProviderPayout = "ProviderPayout",
     CancelBooking = "CancelBooking",
     CancelSubscription = "CancelSubscription",
-}
+};
 
 export enum AppConnect {
     Google = "Google",
@@ -51,10 +50,16 @@ export enum AppConnect {
     WhatsApp = "WhatsApp",
     Razorpay = "Razorpay",
     Paypal = "Paypal",
-}
+};
 
 export enum PaymentGateway {
     Stripe = "Stripe",
     Razorpay = "Razorpay",
     Paypal = "Paypal"
-}
+};
+
+export enum Platform {
+    Android = "Android",
+    Ios = "Ios",
+    Web = "Web",
+};

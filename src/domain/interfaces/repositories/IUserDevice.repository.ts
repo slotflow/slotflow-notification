@@ -8,6 +8,10 @@ export interface IUserDeviceRepository {
 
     findByDeviceId(deviceId: string): Promise<UserDevice | null>;
 
+    findByUserIdAndDeviceId(userId: string, deviceId: string): Promise<UserDevice | null>;
+
     delete(deviceId: string): Promise<void>;
+
+    update(userDevice: UserDevice): Promise<UserDevice>;
 
 };

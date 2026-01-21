@@ -54,18 +54,11 @@ export const kafkaConfig = {
         providerTrialSubscription: validator.requireEnv("KAFKA_PROVIDER_TRIAL_SUBSCRIPTION"),
       },
 
-      push: {
-        // PUSH NOTIFICATIONS
+      notification: {
+        // NOTIFICATIONS
+        passwordReset: validator.requireEnv("KAFKA_PASSWORD_RESET"),
         accountBlockStatus: validator.requireEnv("KAFKA_ACCOUNT_BLOCK_STATUS"),
         accountTrustStatus: validator.requireEnv("KAFKA_ACCOUNT_TRUST_STATUS"),
-        providerAppointmentStatus: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS"),
-        appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
-        providerTrialSubscription: validator.requireEnv("KAFKA_PROVIDER_TRIAL_SUBSCRIPTION"),
-      },
-
-      inApp: {
-        // IN-APP NOTIFICATIONS
-        passwordReset: validator.requireEnv("KAFKA_PASSWORD_RESET"),
         providerAppointmentStatus: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS"),
         appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
         providerTrialSubscription: validator.requireEnv("KAFKA_PROVIDER_TRIAL_SUBSCRIPTION"),

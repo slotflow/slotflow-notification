@@ -1,7 +1,7 @@
-import { log } from "../../shared/logger/logger";
-import { IGetAllNotificationsUseCase } from "../dtos/useCase.dtos";
-import { INotificationRepository } from "../../domain/interfaces/repositories/INotification.repository";
-import { GetAllNotificationsRequest, TableData, GetAllNotificationsResponse } from "../dtos/common.dtos";
+import { log } from "../../../shared/logger/logger";
+import { IGetAllNotificationsUseCase } from "../../dtos/useCase.dtos";
+import { INotificationRepository } from "../../../domain/interfaces/repositories/INotification.repository";
+import { GetAllNotificationsRequest, TableData, GetAllNotificationsResponse } from "../../dtos/common.dtos";
 
 export class GetAllNotificationsUseCase implements IGetAllNotificationsUseCase {
     constructor(
@@ -19,7 +19,9 @@ export class GetAllNotificationsUseCase implements IGetAllNotificationsUseCase {
                 data: notifications.map(notification => ({
                     _id: notification._id,
                     createdAt: notification.createdAt,
-                    message: notification.message,
+                    title: notification.title,
+                    body: notification.body,
+                    data: notification.data,
                     isRead: notification.isRead,
                 })),
                 currentPage,
@@ -27,7 +29,7 @@ export class GetAllNotificationsUseCase implements IGetAllNotificationsUseCase {
                 totalPages
             };
         } catch (error) {
-            log.error("GetAllNotificationsUseCase failed : ",error as Error);
+            log.error("GetAllNotificationsUseCase failed : ", error as Error);
             throw error;
         };
     };

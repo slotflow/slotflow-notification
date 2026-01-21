@@ -3,9 +3,9 @@ import { ses } from '../lib/aws.ses';
 import { log } from '../../shared/logger/logger';
 import { officialConfig } from '../../config/env';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
-import { emailServiceConstants } from '../../shared/utils/constants';
 import { EmailOptions } from '../../application/dtos/common.dtos';
-import { IEmailService } from '../../application/service/IEmail.service';
+import { emailServiceConstants } from '../../shared/utils/constants';
+import { IEmailService } from '../../domain/interfaces/services/IEmail.service';
 
 export class EmailServiceImpl implements IEmailService {
 

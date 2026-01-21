@@ -9,7 +9,13 @@ export class NotificationMapper {
             _id: doc._id.toString(),
             userId: doc.userId.toString(),
             isRead: doc.isRead,
-            message: doc.message,
+            body: doc.body,
+            data: {
+                notificationType: doc.data.notificationType,
+                providerId: doc.data.providerId.toString(),
+                redirectUrl: doc.data.redirectUrl
+            },
+            title: doc.title,
             pushNotification: doc.pushNotification,
             createdAt: doc.createdAt,
             updatedAt: doc.updatedAt
@@ -23,7 +29,9 @@ export class NotificationMapper {
         return {
             userId: new Types.ObjectId(props.userId),
             isRead: props.isRead,
-            message: props.message,
+            body: props.body,
+            data: props.data,
+            title: props.title,
             pushNotification: props.pushNotification,
             createdAt: props.createdAt,
             updatedAt: props.updatedAt

@@ -1,5 +1,5 @@
-import { Platform, Role } from "../../domain/enums/enum";
 import { AppointmentStatus } from "../../domain/enums/enum";
+import { NotificationType, Platform, Role } from "../../domain/enums/enum";
 
 // **** ENTITY DTOS 
 
@@ -38,15 +38,18 @@ export interface BookingDTO {
   updatedAt: Date,
 }
 
+
 // notification dto
 export interface Notification {
-    _id: string;
-    userId: string;
-    message: string;
-    pushNotification: boolean;
-    isRead: boolean;
-    createdAt: Date;
-    updatedAt: Date;
+  _id: string;
+  userId: string;
+  title: string;
+  body: string;
+  pushNotification: boolean;
+  isRead: boolean;
+  data: Record<string, string>,
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 
@@ -111,8 +114,20 @@ export interface RegisterDeviceRequest {
 
 
 // Get All Notifications
-export interface GetAllNotificationsRequest extends ApiPaginationRequest{
+export interface GetAllNotificationsRequest extends ApiPaginationRequest {
   userId: string;
 };
 
-export type GetAllNotificationsResponse = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "message">>;
+// Get All Notifications Response
+export type GetAllNotificationsResponse = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
+
+// Send Notification Request
+export type SendNotificationRequest = Pick<Notification, "userId" | "body" | "data" | "pushNotification" | "title">;
+
+// Send push notification paylod
+export interface SendPushNotificationRequest {
+  tokens: string[],
+  title: string;
+  body: string;
+  data?: Record<string, string>;
+}

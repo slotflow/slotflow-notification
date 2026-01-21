@@ -1,10 +1,9 @@
 // import { kafkaConfig } from "../../config/env";
-import { log } from "../../shared/logger/logger";
-import { IGoogleCalendarGatewayService } from "../../domain/interfaces/services/IGoogleCalendarGateway.service";
+import { log } from "../../../shared/logger/logger";
+import { CreateGoogleCalendarEvent, UpdateGoogleCalendarEvent } from "../../dtos/kafka.dtos";
 // import { IKafkaProducerAdapter } from "../../domain/interfaces/message/IKafkaProducerAdapter";
-import { CreateGoogleCalendarEvent, 
-    // GoogleCalendarEventResponse, 
-    UpdateGoogleCalendarEvent } from "../dtos/kafka.dtos";
+import { IGoogleCalendarGatewayService } from "../../../domain/interfaces/services/IGoogleCalendarGateway.service";
+
 
 export class CreateGoogleCalendarEventUseCase {
     constructor(
@@ -12,7 +11,7 @@ export class CreateGoogleCalendarEventUseCase {
         // private kafkaProducer: IKafkaProducerAdapter,
     ) { };
 
-    async handle(payload: CreateGoogleCalendarEvent): Promise<void> {
+    async execute(payload: CreateGoogleCalendarEvent): Promise<void> {
         try {
             const { accessToken, appointmentDate, appointmentStatus, slotDuration, bookingId } = payload;
 
@@ -48,7 +47,7 @@ export class UpdateGoogleCalendarEventUseCase {
         // private kafkaProducer: IKafkaProducerAdapter,
     ) { };
 
-    async handle(payload: UpdateGoogleCalendarEvent): Promise<void> {
+    async execute(payload: UpdateGoogleCalendarEvent): Promise<void> {
         try {
             const { accessToken, appointmentDate, appointmentStatus, bookingId, eventId } = payload;
 

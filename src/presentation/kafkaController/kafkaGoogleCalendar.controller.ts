@@ -4,14 +4,14 @@ import { IKafkaConsumerAdapter } from "../../domain/interfaces/message/IKafkaCon
 export class KafkaGoogleCalendarController {
 
     constructor(
-        private readonly kafkaConsumerAdapter: IKafkaConsumerAdapter
+        private readonly kafkaGoogleCalendarConsumerAdapter: IKafkaConsumerAdapter
     ) { };
 
     async startListening(): Promise<void> {
         try {
 
         } catch (error) {
-            log.error("startListening failed : ", error as Error);
+            log.error("google calendar controller startListening failed : ", error as Error);
         };
     };
 };

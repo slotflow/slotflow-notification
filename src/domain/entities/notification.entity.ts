@@ -16,9 +16,11 @@ export class Notification {
         return new Notification({
             _id: "",
             userId: props.userId,
-            message: props.message,
+            title: props.title,
+            body: props.body,
             pushNotification: props.pushNotification,
-            isRead: props.isRead,
+            data: props.data,
+            isRead: false,
             createdAt: new Date(),
             updatedAt: new Date(),
         });
@@ -33,8 +35,12 @@ export class Notification {
         return this.props.userId;
     };
 
-    get message(): string {
-        return this.props.message;
+    get title(): string {
+        return this.props.title;
+    };
+
+    get body(): string {
+        return this.props.body;
     };
 
     get pushNotification(): boolean {
@@ -43,6 +49,10 @@ export class Notification {
 
     get isRead(): boolean {
         return this.props.isRead;
+    };
+
+    get data(): Record<string, string> {
+        return this.props.data;
     };
 
     get createdAt(): Date {

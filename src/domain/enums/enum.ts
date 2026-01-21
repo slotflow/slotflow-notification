@@ -5,61 +5,90 @@ export enum Role {
 };
 
 export enum OtpPurpose {
-  REGISTRATION = "REGISTRATION",
-  PASSWORD_RESET = "PASSWORD_RESET",
+    REGISTRATION = "REGISTRATION",
+    PASSWORD_RESET = "PASSWORD_RESET",
 };
 
 export enum AppointmentStatus {
-  Booked = "Booked",
-  Completed = "Completed",
-  Cancelled = "Cancelled",
-  RejectedByProvider = "RejectedByProvider",
-  NotAttended = "NotAttended",
-  Confirmed = "Confirmed",
-};
+  BOOKED = "BOOKED",
+  CONFIRMED = "CONFIRMED",
+  COMPLETED = "COMPLETED",
+  CANCELLED = "CANCELLED",
+  REJECTED_BY_PROVIDER = "REJECTED_BY_PROVIDER",
+  NOT_ATTENDED = "NOT_ATTENDED",
+}
 
 export enum AdminVerificationStatus {
-    REQUESTED = "Requested",
-    UNDER_REVIEW = "Under_review",
-    APPROVED = "Approved",
-    REJECTED = "Rejected",
-    RESUBMITTED = "Resubmitted",
-    NOT_REQUESTED = "Not_submitted",
-};
+  NOT_REQUESTED = "NOT_REQUESTED",
+  REQUESTED = "REQUESTED",
+  UNDER_REVIEW = "UNDER_REVIEW",
+  APPROVED = "APPROVED",
+  REJECTED = "REJECTED",
+  RESUBMITTED = "RESUBMITTED",
+}
+
 
 export enum PaymentStatus {
-    Pending = "Pending",
-    Paid = "Paid",
-    Failed = "Failed",
-    Cancelled = "Cancelled",
-    Refunded = "Refunded",
-};
+  PENDING = "PENDING",
+  PAID = "PAID",
+  FAILED = "FAILED",
+  CANCELLED = "CANCELLED",
+  REFUNDED = "REFUNDED",
+}
+
 
 export enum PaymentFor {
-    ProviderSubscription = "ProviderSubscription",
-    AppointmentBooking = "AppointmentBooking",
-    ProviderPayout = "ProviderPayout",
-    CancelBooking = "CancelBooking",
-    CancelSubscription = "CancelSubscription",
-};
+  PROVIDER_SUBSCRIPTION = "PROVIDER_SUBSCRIPTION",
+  APPOINTMENT_BOOKING = "APPOINTMENT_BOOKING",
+  PROVIDER_PAYOUT = "PROVIDER_PAYOUT",
+  CANCEL_BOOKING = "CANCEL_BOOKING",
+  CANCEL_SUBSCRIPTION = "CANCEL_SUBSCRIPTION",
+}
+
 
 export enum AppConnect {
-    Google = "Google",
-    Stripe = "Stripe",
-    Notion = "Notion",
-    WhatsApp = "WhatsApp",
-    Razorpay = "Razorpay",
-    Paypal = "Paypal",
-};
+  GOOGLE = "GOOGLE",
+  STRIPE = "STRIPE",
+  NOTION = "NOTION",
+  WHATSAPP = "WHATSAPP",
+  RAZORPAY = "RAZORPAY",
+  PAYPAL = "PAYPAL",
+}
+
 
 export enum PaymentGateway {
-    Stripe = "Stripe",
-    Razorpay = "Razorpay",
-    Paypal = "Paypal"
-};
+  STRIPE = "STRIPE",
+  RAZORPAY = "RAZORPAY",
+  PAYPAL = "PAYPAL",
+}
+
 
 export enum Platform {
-    Android = "Android",
-    Ios = "Ios",
-    Web = "Web",
-};
+  ANDROID = "ANDROID",
+  IOS = "IOS",
+  WEB = "WEB",
+}
+
+
+export enum NotificationType {
+  BOOKING_CONFIRMED = "BOOKING_CONFIRMED",
+  BOOKING_CANCELLED = "BOOKING_CANCELLED",
+  BOOKING_RESCHEDULED = "BOOKING_RESCHEDULED",
+  BOOKING_REJECTED = "BOOKING_REJECTED",
+  BOOKING_NOT_ATTENDED = "BOOKING_NOT_ATTENDED",
+  BOOKING_APPROVED = "BOOKING_APPROVED",
+
+  APPOINTMENT_CREATED = "APPOINTMENT_CREATED",
+  APPOINTMENT_CANCELLED = "APPOINTMENT_CANCELLED",
+  APPOINTMENT_RESCHEDULED = "APPOINTMENT_RESCHEDULED",
+  APPOINTMENT_NOT_ATTENDED = "APPOINTMENT_NOT_ATTENDED",
+
+  PAYMENT_SUCCESS = "PAYMENT_SUCCESS",
+  PAYMENT_FAILED = "PAYMENT_FAILED",
+
+  SUBSCRIPTION_EXPIRING = "SUBSCRIPTION_EXPIRING",
+  SUBSCRIPTION_EXPIRED = "SUBSCRIPTION_EXPIRED",
+
+  SYSTEM = "SYSTEM",
+}
+

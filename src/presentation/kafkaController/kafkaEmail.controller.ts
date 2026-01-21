@@ -6,7 +6,7 @@ import { IKafkaConsumerAdapter } from "../../domain/interfaces/message/IKafkaCon
 export class KafkaEmailConsumerController {
 
   constructor(
-    private readonly kafkaConsumerAdapter: IKafkaConsumerAdapter
+    private readonly kafkaEmailConsumerAdapter: IKafkaConsumerAdapter
   ) { };
 
   async startListening(): Promise<void> {
@@ -17,16 +17,16 @@ export class KafkaEmailConsumerController {
         const useCase = emailHandlers[key as keyof typeof emailHandlers];
         if (!useCase) continue;
 
-        await this.kafkaConsumerAdapter.subscribe(topic, async ({ message }) => {
+        await this.kafkaEmailConsumerAdapter.subscribe(topic, async ({ message }) => {
           if (!message.value) return;
           const payload = JSON.parse(message.value.toString());
-          await useCase.handle(payload);
+          await useCase.execute(payload);
         });
       };
 
-      await this.kafkaConsumerAdapter.startConsumer();
+      await this.kafkaEmailConsumerAdapter.startConsumer();
     } catch (error) {
-      log.error("startListening failed : ", error as Error);
+      log.error("email controller startListening failed : ", error as Error);
     };
   };
 };

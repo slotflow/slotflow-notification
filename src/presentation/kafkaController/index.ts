@@ -1,33 +1,39 @@
 import {
-    SendOtpEventUseCase,
-    SendWelcomeEventUseCase,
-    SendAdminProviderReviewEventUseCase,
-    SendAccountBlockStatusChangeEventUseCase,
-    SendAcountTrustStatusChangeEventUseCase,
-    SendAppointmentStatusChangeEventUseCase,
-    SendAppConnectEventUseCase,
-    SendProviderTrialSubscriptionEventUseCase,
-    SendPasswordResetEventUseCase,
+    SendOtpEmailUseCase,
+    SendWelcomeEmailUseCase,
+    SendAdminProviderReviewEmailUseCase,
+    SendAccountBlockStatusChangeEmailUseCase,
+    SendAcountTrustStatusChangeEmailUseCase,
+    SendAppointmentStatusChangeEmailUseCase,
+    SendAppConnectEmailUseCase,
+    SendProviderTrialSubscriptionEmailUseCase,
+    SendPasswordResetEmailUseCase,
     // SendGotAppointmentEventUseCase,
-    SendUserPaymentEventUseCase,
-    SendProviderPaymentEventUseCase,
-    SendProviderPayoutEventUseCase,
-} from "../../application/useCases/emailSend.useCases";
-import { emailService } from "../../infrastructure/container";
+    // SendUserPaymentEmailUseCase,
+    // SendProviderPaymentEmailUseCase,
+    // SendProviderPayoutEventUseCase,
+} from "../../application/useCases/email/emailSend.useCases";
+import { SendNotificationUseCase } from "../../application/useCases/notification/sendNotification.useCase";
+import { notificationRepository, userDeviceRepository } from "../../infrastructure/repositoryImpls";
+import { emailService, pushNotificationService } from "../../infrastructure/services";
 
 // import { CreateGoogleCalendarEventUseCase, UpdateGoogleCalendarEventUseCase } from "../application/useCases/googleCalendar.useCases";
 
-export const emailHandlers = {        
-    sendOtp: new SendOtpEventUseCase(emailService),
-    registerSuccess: new SendWelcomeEventUseCase(emailService),
-    passwordReset: new SendPasswordResetEventUseCase(emailService),
-    adminProviderReview: new SendAdminProviderReviewEventUseCase(emailService),
-    accountBlockStatus: new SendAccountBlockStatusChangeEventUseCase(emailService),
-    accountTrustStatus: new SendAcountTrustStatusChangeEventUseCase(emailService),
-    providerAppointmentStatus: new SendAppointmentStatusChangeEventUseCase(emailService),
-    appConnect: new SendAppConnectEventUseCase(emailService),
-    providerTrialSubscription: new SendProviderTrialSubscriptionEventUseCase(emailService),
+export const emailHandlers = {
+    sendOtp: new SendOtpEmailUseCase(emailService),
+    registerSuccess: new SendWelcomeEmailUseCase(emailService),
+    passwordReset: new SendPasswordResetEmailUseCase(emailService),
+    adminProviderReview: new SendAdminProviderReviewEmailUseCase(emailService),
+    accountBlockStatus: new SendAccountBlockStatusChangeEmailUseCase(emailService),
+    accountTrustStatus: new SendAcountTrustStatusChangeEmailUseCase(emailService),
+    providerAppointmentStatus: new SendAppointmentStatusChangeEmailUseCase(emailService),
+    appConnect: new SendAppConnectEmailUseCase(emailService),
+    providerTrialSubscription: new SendProviderTrialSubscriptionEmailUseCase(emailService),
 
     // googleCalendarCreateRequest: new CreateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaClientAdapter),
     // googleCalendarUpdateRequest: new UpdateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaClientAdapter),
+};
+
+export const notificationHandler = {
+    passwordReset: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository)
 };

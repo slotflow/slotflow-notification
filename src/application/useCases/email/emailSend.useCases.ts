@@ -1,15 +1,15 @@
-import { IEmailService } from "../service/IEmail.service";
-import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../domain/enums/enum";
-import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendEmailCommon } from "../dtos/kafka.dtos";
-import { emailMainTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate, passwordResetEmailTemplate } from "../../shared/utils/constants";
+import { IEmailService } from "../../../domain/interfaces/services/IEmail.service";
+import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../../domain/enums/enum";
+import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendEmailCommon } from "../../dtos/kafka.dtos";
+import { emailMainTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate, passwordResetEmailTemplate } from "../../../shared/utils/constants";
 
 // send otp event for registration and password update
-export class SendOtpEventUseCase {
+export class SendOtpEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendOtpEvent) {
+  async execute(payload: SendOtpEvent) {
     const { email, otp, purpose, name } = payload;
 
     const subject = otpEmailTemplate.subject(purpose);
@@ -29,12 +29,12 @@ export class SendOtpEventUseCase {
 
 
 // send welcome event
-export class SendWelcomeEventUseCase {
+export class SendWelcomeEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendWelcomeEvent) {
+  async execute(payload: SendWelcomeEvent) {
     const { email, name, role } = payload;
 
     const subject = welcomeEmailTemplate.subject();
@@ -53,12 +53,12 @@ export class SendWelcomeEventUseCase {
 };
 
 // send admin provider review event
-export class SendAdminProviderReviewEventUseCase {
+export class SendAdminProviderReviewEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendAdminProviderReviewEvent) {
+  async execute(payload: SendAdminProviderReviewEvent) {
     const { email, name, status, reason } = payload;
 
     const subject = adminProviderReviewEmailTemplate.subject(status);
@@ -76,12 +76,12 @@ export class SendAdminProviderReviewEventUseCase {
   };
 };
 
-export class SendPasswordResetEventUseCase {
+export class SendPasswordResetEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendEmailCommon) {
+  async execute(payload: SendEmailCommon) {
     const { email, name } = payload;
 
     const subject = passwordResetEmailTemplate.subject();
@@ -100,12 +100,12 @@ export class SendPasswordResetEventUseCase {
 };
 
 // send account block status event
-export class SendAccountBlockStatusChangeEventUseCase {
+export class SendAccountBlockStatusChangeEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendAccountBlockStatusEvent) {
+  async execute(payload: SendAccountBlockStatusEvent) {
     const { blocked, email, name, reason } = payload;
 
     const subject = accountBlockStatusEmailTemplate.subject(blocked);
@@ -124,12 +124,12 @@ export class SendAccountBlockStatusChangeEventUseCase {
 };
 
 // send account trust status event
-export class SendAcountTrustStatusChangeEventUseCase {
+export class SendAcountTrustStatusChangeEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendAccountTrustStatusEvent) {
+  async execute(payload: SendAccountTrustStatusEvent) {
     const { trusted, email, name, reason } = payload;
 
     const subject = accountTrustStatusEmailTemplate.subject(trusted);
@@ -150,19 +150,19 @@ export class SendAcountTrustStatusChangeEventUseCase {
 
 
 // send appointment status change event
-export class SendAppointmentStatusChangeEventUseCase {
+export class SendAppointmentStatusChangeEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendAppointmentStatusChangeEvent) {
+  async execute(payload: SendAppointmentStatusChangeEvent) {
     const { email, name, appointmentDate, appointmentMode, appointmentTime, appointmentStatus } = payload;
 
     if (
       ![
-        AppointmentStatus.Confirmed,
-        AppointmentStatus.RejectedByProvider,
-        AppointmentStatus.Cancelled,
+        AppointmentStatus.CONFIRMED,
+        AppointmentStatus.REJECTED_BY_PROVIDER,
+        AppointmentStatus.CANCELLED,
       ].includes(appointmentStatus)
     ) {
       return;
@@ -189,12 +189,12 @@ export class SendAppointmentStatusChangeEventUseCase {
 };
 
 // send app connect event
-export class SendAppConnectEventUseCase {
+export class SendAppConnectEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendAppConnectEvent) {
+  async execute(payload: SendAppConnectEvent) {
     const { email, name, appConnect } = payload;
 
     const subject = appConnectEmailTemplate.subject(appConnect);
@@ -212,12 +212,12 @@ export class SendAppConnectEventUseCase {
   };
 };
 
-export class SendProviderTrialSubscriptionEventUseCase {
+export class SendProviderTrialSubscriptionEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendProviderTrialSubscriptionEvent) {
+  async execute(payload: SendProviderTrialSubscriptionEvent) {
     const { email, name, startDate, endDate } = payload;
 
     const subject = providerTrialSubscriptionEmailTemplate.subject();
@@ -272,7 +272,7 @@ export class SendProviderTrialSubscriptionEventUseCase {
 //     private emailService: IEmailService
 //   ) { };
 
-//   async handle(payload: SendGotAppointmentEvent) {
+//   async execute(payload: SendGotAppointmentEvent) {
 //     const { appointmentDate, appointmentDuration, appointmentMode, appointmentTime, email, name } = payload;
 
 //     const subject = gotAppointmentEmailTemplate.subject;
@@ -301,14 +301,14 @@ export class SendUserPaymentEventUseCase {
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendUserPaymentEvent) {
+  async execute(payload: SendUserPaymentEvent) {
     const { email, name, amount, transactionId, paymentDate, appointmentDate, paymentStatus, paymentFor } = payload;
 
     const isValidEvent =
-      (paymentStatus === PaymentStatus.Paid &&
-        paymentFor === PaymentFor.AppointmentBooking) ||
-      (paymentStatus === PaymentStatus.Refunded &&
-        paymentFor === PaymentFor.CancelBooking);
+      (paymentStatus === PaymentStatus.PAID &&
+        paymentFor === PaymentFor.APPOINTMENT_BOOKING) ||
+      (paymentStatus === PaymentStatus.REFUNDED &&
+        paymentFor === PaymentFor.CANCEL_BOOKING);
 
     if (!isValidEvent) {
       return;
@@ -343,14 +343,14 @@ export class SendProviderPaymentEventUseCase {
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendProviderPaymentEvent) {
+  async execute(payload: SendProviderPaymentEvent) {
     const { email, name, amount, paymentDate, paymentStatus, subscriptionEndDate, subscriptionStartDate, transactionId, paymentFor } = payload;
 
     const isValidEvent =
-      (paymentStatus === PaymentStatus.Paid &&
-        paymentFor === PaymentFor.ProviderSubscription) ||
-      (paymentStatus === PaymentStatus.Refunded &&
-        paymentFor === PaymentFor.CancelSubscription);
+      (paymentStatus === PaymentStatus.PAID &&
+        paymentFor === PaymentFor.PROVIDER_SUBSCRIPTION) ||
+      (paymentStatus === PaymentStatus.REFUNDED &&
+        paymentFor === PaymentFor.CANCEL_SUBSCRIPTION);
 
     if (!isValidEvent) {
       return;
@@ -401,7 +401,7 @@ export class SendProviderPayoutEventUseCase {
     private emailService: IEmailService
   ) { };
 
-  async handle(payload: SendProviderPayoutEvent) {
+  async execute(payload: SendProviderPayoutEvent) {
     const { amount, email, name, payoutDate, transactionId } = payload;
 
     const subject = providerPayoutEmailTemplate.subject();

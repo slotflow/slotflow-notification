@@ -1,8 +1,8 @@
 import { google } from "googleapis";
 import { EventData } from "../../shared/utils/constants";
-import { AddEventToCalendarProps } from "../../application/dtos/common.dtos";
 import { IGoogleCalendarGatewayService } from "../../domain/interfaces/services/IGoogleCalendarGateway.service";
 import { CreateGoogleCalendarEventRequest, UpdateGoogleCalendarEventRequest } from "../../application/dtos/kafka.dtos";
+import { AddEventToCalendarProps } from "../../application/dtos/googleCalendar.dto";
 
 export class GoogleCalendarGatewayServiceImpl implements IGoogleCalendarGatewayService {
 

@@ -1,4 +1,4 @@
-import { CreateGoogleCalendarEventRequest, UpdateGoogleCalendarEventRequest } from "../../../application/dtos/common.dtos";
+import { CreateGoogleCalendarEventRequest, UpdateGoogleCalendarEventRequest } from "../../../application/dtos/kafka.dtos";
 
 export interface IGoogleCalendarGatewayService {
 

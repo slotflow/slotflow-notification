@@ -13,7 +13,7 @@ export class RegisterDeviceUseCase implements IRegisterDeviceUseCase {
         try {
             const { fcmToken, deviceId, platform, userId } = payload;
 
-            const existing = await this.userDeviceRepository.findByUserIdAndDeviceId(userId, deviceId);
+            const existing = await this.userDeviceRepository.findUnique(userId, deviceId, platform);
             if (existing) {
                 existing.updateToken(fcmToken);
                 await this.userDeviceRepository.update(existing);

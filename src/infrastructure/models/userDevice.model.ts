@@ -17,7 +17,8 @@ const userDeviceSchema = new Schema<IUserDevice>({
     userId: {
         type: Schema.Types.ObjectId,
         required: [true, "User ID is required"],
-        index: true
+        index: true,
+        unique: true,
     },
     fcmToken: {
         type: String,

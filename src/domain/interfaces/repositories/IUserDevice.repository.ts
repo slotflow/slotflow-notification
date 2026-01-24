@@ -1,3 +1,4 @@
+import { Platform } from "../../enums/enum";
 import { UserDevice } from "../../entities/userDevice.entity";
 
 export interface IUserDeviceRepository {
@@ -8,7 +9,7 @@ export interface IUserDeviceRepository {
 
     findByDeviceId(deviceId: string): Promise<UserDevice | null>;
 
-    findByUserIdAndDeviceId(userId: string, deviceId: string): Promise<UserDevice | null>;
+    findUnique(userId: string, deviceId: string, platForm: Platform): Promise<UserDevice | null>;
 
     delete(deviceId: string): Promise<void>;
 

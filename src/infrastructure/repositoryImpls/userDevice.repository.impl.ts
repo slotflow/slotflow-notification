@@ -2,6 +2,7 @@ import { UserDeviceModel } from "../models/userDevice.model";
 import { UserDeviceMapper } from "../mappers/userDevice.mapper";
 import { UserDevice } from "../../domain/entities/userDevice.entity";
 import { IUserDeviceRepository } from "../../domain/interfaces/repositories/IUserDevice.repository";
+import { Platform } from "../../domain/enums/enum";
 
 export class UserDeviceRepositoryImpl implements IUserDeviceRepository {
 
@@ -42,8 +43,8 @@ export class UserDeviceRepositoryImpl implements IUserDeviceRepository {
         return UserDeviceMapper.toDomain(doc);
     };
 
-    async findByUserIdAndDeviceId(userId: string, deviceId: string): Promise<UserDevice | null> {
-        const doc = await UserDeviceModel.findOne({ userId, deviceId });
+    async findUnique(userId: string, deviceId: string, platform: Platform): Promise<UserDevice | null> {
+        const doc = await UserDeviceModel.findOne({ userId, deviceId, platform });
         if (!doc) return null;
         return UserDeviceMapper.toDomain(doc);
     };

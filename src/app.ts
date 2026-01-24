@@ -1,7 +1,8 @@
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import express from 'express';
-import notificationRouter from './presentation/httpController/router';
+import notificationRouter from './presentation/httpController/notification/router';
+import userDeviceRouter from './presentation/httpController/userDevice/router';
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/notifications',notificationRouter);
+app.use('/api/notification', notificationRouter);
+app.use('/api/user-device', userDeviceRouter);
 
 export default app;

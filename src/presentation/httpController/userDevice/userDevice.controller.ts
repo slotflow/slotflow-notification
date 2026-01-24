@@ -1,10 +1,10 @@
-import { registerDeviceUseCase } from ".";
-import { log } from "../../shared/logger/logger";
+import { registerDeviceUseCase } from "..";
+import { log } from "../../../shared/logger/logger";
 import { NextFunction, Request, Response } from "express";
-import { sendResponse } from "../../shared/utils/response";
-import { DecodedUser } from "../../application/dtos/common.dtos";
-import { registerDeviceZodSchema } from "../../shared/zod/notification.zod";
-import { IRegisterDeviceUseCase } from "../../application/dtos/useCase.dtos";
+import { sendResponse } from "../../../shared/utils/response";
+import { DecodedUser } from "../../../application/dtos/common.dtos";
+import { registerDeviceZodSchema } from "../../../shared/zod/notification.zod";
+import { IRegisterDeviceUseCase } from "../../../application/dtos/useCase.dtos";
 
 export class UserDeviceController {
     constructor(
@@ -21,9 +21,9 @@ export class UserDeviceController {
                 userId: user.userOrProviderId,
             })
             await this.registerDeviceUseCase.execute(validatedData);
-            sendResponse(res,null);
+            sendResponse(res, null);
         } catch (error) {
-            log.error("registerDevice failed : ",error as Error);
+            log.error("registerDevice failed : ", error as Error);
             next(error)
         };
     };

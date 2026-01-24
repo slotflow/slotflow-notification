@@ -330,11 +330,11 @@ export const gotAppointmentEmailTemplate = {
 export const appointmentStatusEmailTemplate = {
   subject: (status: AppointmentStatus): string => {
     switch (status) {
-      case AppointmentStatus.Confirmed:
+      case AppointmentStatus.CONFIRMED:
         return "Your appointment has been confirmed";
-      case AppointmentStatus.RejectedByProvider:
+      case AppointmentStatus.REJECTED_BY_PROVIDER:
         return "Your appointment has been rejected";
-      case AppointmentStatus.Cancelled:
+      case AppointmentStatus.CANCELLED:
         return "Appointment has been cancelled";
       default:
         return "Appointment Update";
@@ -343,13 +343,13 @@ export const appointmentStatusEmailTemplate = {
 
   head: (name: string, status: AppointmentStatus): string => {
     switch (status) {
-      case AppointmentStatus.Confirmed:
+      case AppointmentStatus.CONFIRMED:
         return `<p style="font-size: 1.1em;">Hi ${name},</p>
                 <p>Good news! Your appointment with the service provider has been confirmed.</p>`;
-      case AppointmentStatus.RejectedByProvider:
+      case AppointmentStatus.REJECTED_BY_PROVIDER:
         return `<p style="font-size: 1.1em;">Hi ${name},</p>
                 <p>We’re sorry! Your appointment request has been rejected by the service provider.</p>`;
-      case AppointmentStatus.Cancelled:
+      case AppointmentStatus.CANCELLED:
         return `<p style="font-size: 1.1em;">Hi ${name},</p>
                 <p>Notice: The appointment has been cancelled by the user.</p>`;
       default:
@@ -376,9 +376,9 @@ export const appointmentStatusEmailTemplate = {
     </div>
 
     <p>
-      ${status === AppointmentStatus.Confirmed
+      ${status === AppointmentStatus.CONFIRMED
       ? "You can view your appointment details in your Slotflow dashboard."
-      : status === AppointmentStatus.RejectedByProvider
+      : status === AppointmentStatus.REJECTED_BY_PROVIDER
         ? "Please try booking another slot or contact the service provider for more information."
         : "Please check your dashboard for more details."
     }
@@ -396,11 +396,11 @@ export const userPaymentStatusEmailTemplate = {
   subject: (
     paymentStatus: PaymentStatus,
   ): string => {
-    if (paymentStatus === PaymentStatus.Paid) {
+    if (paymentStatus === PaymentStatus.PAID) {
       return "Payment successful for your appointment";
     }
 
-    if (paymentStatus === PaymentStatus.Refunded) {
+    if (paymentStatus === PaymentStatus.REFUNDED) {
       return "Your appointment payment has been refunded";
     }
 
@@ -412,7 +412,7 @@ export const userPaymentStatusEmailTemplate = {
     paymentStatus: PaymentStatus
   ): string => `
     <p style="font-size: 1.1em;">Hi ${name},</p>
-    ${paymentStatus === PaymentStatus.Paid
+    ${paymentStatus === PaymentStatus.PAID
       ? `<p>Your payment was successful, and your appointment has been confirmed.</p>`
       : `<p>Your appointment has been cancelled, and the payment has been refunded successfully.</p>`
     }
@@ -432,14 +432,14 @@ export const userPaymentStatusEmailTemplate = {
       margin: 16px 0;
       font-size: 0.95em;
     ">
-      <p><strong>Amount ${paymentStatus === PaymentStatus.Refunded ? "Refunded" : "Paid"}:</strong> ₹${amount}</p>
+      <p><strong>Amount ${paymentStatus === PaymentStatus.REFUNDED ? "Refunded" : "Paid"}:</strong> ₹${amount}</p>
       <p><strong>Transaction ID:</strong> ${transactionId}</p>
       <p><strong>Payment Date:</strong> ${paymentDate}</p>
       <p><strong>Appointment Date:</strong> ${appointmentDate}</p>
     </div>
 
     <p>
-      ${paymentStatus === PaymentStatus.Paid
+      ${paymentStatus === PaymentStatus.PAID
       ? "You can view your appointment details in your Slotflow dashboard."
       : "The refunded amount will be credited back to your original payment method shortly."
     }
@@ -459,11 +459,11 @@ export const providerSubscriptionPaymentEmailTemplate = {
   subject: (
     paymentStatus: PaymentStatus
   ): string => {
-    if (paymentStatus === PaymentStatus.Paid) {
+    if (paymentStatus === PaymentStatus.PAID) {
       return "Your Slotflow subscription is now active";
     }
 
-    if (paymentStatus === PaymentStatus.Refunded) {
+    if (paymentStatus === PaymentStatus.REFUNDED) {
       return "Your Slotflow subscription has been cancelled";
     }
 
@@ -475,7 +475,7 @@ export const providerSubscriptionPaymentEmailTemplate = {
     paymentStatus: PaymentStatus
   ): string => `
     <p style="font-size: 1.1em;">Hi ${name},</p>
-    ${paymentStatus === PaymentStatus.Paid
+    ${paymentStatus === PaymentStatus.PAID
       ? `<p>Your subscription payment was successful and your Slotflow account is now active.</p>`
       : `<p>Your Slotflow subscription has been cancelled and the amount has been refunded.</p>`
     }
@@ -496,7 +496,7 @@ export const providerSubscriptionPaymentEmailTemplate = {
       margin: 16px 0;
       font-size: 0.95em;
     ">
-      <p><strong>Amount ${paymentStatus === PaymentStatus.Refunded ? "Refunded" : "Paid"}:</strong> ₹${amount}</p>
+      <p><strong>Amount ${paymentStatus === PaymentStatus.REFUNDED ? "Refunded" : "Paid"}:</strong> ₹${amount}</p>
       <p><strong>Transaction ID:</strong> ${transactionId}</p>
       <p><strong>Payment Date:</strong> ${paymentDate}</p>
       <p><strong>Subscription Start:</strong> ${subscriptionStartDate}</p>
@@ -504,7 +504,7 @@ export const providerSubscriptionPaymentEmailTemplate = {
     </div>
 
     <p>
-      ${paymentStatus === PaymentStatus.Paid
+      ${paymentStatus === PaymentStatus.PAID
       ? "You can continue managing your services and availability from your Slotflow dashboard."
       : "Access to subscription features will remain disabled after the current billing period."
     }

@@ -325,3 +325,249 @@
 [31m    at async D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:111:14[39m
 [31m    at async Cluster.refreshMetadata (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
 [31m    at async Cluster.addMultipleTargetTopics (D:\Projects\BrocamP\Projects\Personal Projects\21. Slotflow\Slotflow-Notification-Backend\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2026-01-24 15:43:10] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-82318648efcsm4429195b3a.1 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-82318648efcsm4429195b3a.1 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:43:12] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a802daa703sm42564695ad.16 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a802daa703sm42564695ad.16 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:43:18] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-82318644bcasm4430297b3a.2 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-82318644bcasm4430297b3a.2 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:43:23] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-8231871d57csm4402636b3a.41 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-8231871d57csm4402636b3a.41 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:43:30] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-c635a425254sm4131228a12.29 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-c635a425254sm4131228a12.29 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:43:39] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a802f978e0sm42603845ad.62 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a802f978e0sm42603845ad.62 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:49:41] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a802de5cd4sm41691285ad.40 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a802de5cd4sm41691285ad.40 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:49:44] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-3536dc50813sm4081052a91.15 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-3536dc50813sm4081052a91.15 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:49:49] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a802fb063esm41504015ad.85 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a802fb063esm41504015ad.85 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:49:55] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-3536d88b25bsm4143006a91.1 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-3536d88b25bsm4143006a91.1 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:50:01] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-c635a424cf9sm3974139a12.28 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-c635a424cf9sm3974139a12.28 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 15:50:09] [[31merror[39m]: [31msendEmailViaNodemailer failed : [39m
+[31mInvalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-8231871f97asm4430572b3a.40 - gsmtp[39m
+[31mError: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to[39m
+[31m535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-8231871f97asm4430572b3a.40 - gsmtp[39m
+[31m    at SMTPConnection._formatError (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)[39m
+[31m    at SMTPConnection._actionAUTHComplete (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:1595:34)[39m
+[31m    at SMTPConnection.<anonymous> (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)[39m
+[31m    at SMTPConnection._processResponse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)[39m
+[31m    at SMTPConnection._onData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)[39m
+[31m    at SMTPConnection._onSocketData (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)[39m
+[31m    at TLSSocket.emit (node:events:508:28)[39m
+[31m    at addChunk (node:internal/streams/readable:559:12)[39m
+[31m    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)[39m
+[31m    at Readable.push (node:internal/streams/readable:390:5)[39m
+[2026-01-24 23:49:51] [[31merror[39m]: [31mregisterDevice failed : [39m
+[31mCannot read properties of undefined (reading 'userOrProviderId')[39m
+[31mTypeError: Cannot read properties of undefined (reading 'userOrProviderId')[39m
+[31m    at UserDeviceController.registerDevice (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\src\presentation\httpController\userDevice.controller.ts:21:30)[39m
+[31m    at Layer.handleRequest (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\layer.js:152:17)[39m
+[31m    at next (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\route.js:157:13)[39m
+[31m    at Route.dispatch (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\route.js:117:3)[39m
+[31m    at handle (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:435:11)[39m
+[31m    at Layer.handleRequest (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\layer.js:152:17)[39m
+[31m    at C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:295:15[39m
+[31m    at processParams (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:582:12)[39m
+[31m    at next (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:291:5)[39m
+[31m    at router.handle (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:186:3)[39m
+[2026-01-24 23:53:17] [[31merror[39m]: [31mregisterDevice failed : [39m
+[31mCannot read properties of undefined (reading 'userOrProviderId')[39m
+[31mTypeError: Cannot read properties of undefined (reading 'userOrProviderId')[39m
+[31m    at UserDeviceController.registerDevice (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\src\presentation\httpController\userDevice.controller.ts:21:30)[39m
+[31m    at Layer.handleRequest (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\layer.js:152:17)[39m
+[31m    at next (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\route.js:157:13)[39m
+[31m    at Route.dispatch (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\route.js:117:3)[39m
+[31m    at handle (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:435:11)[39m
+[31m    at Layer.handleRequest (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\layer.js:152:17)[39m
+[31m    at C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:295:15[39m
+[31m    at processParams (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:582:12)[39m
+[31m    at next (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:291:5)[39m
+[31m    at router.handle (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:186:3)[39m
+[2026-01-25 00:03:31] [[31merror[39m]: [31mMongoDB Connection Error : [39m
+[31mconnect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+[31mMongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+[31m    at _handleConnectionErrors (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\mongoose@8.21.1\node_modules\mongoose\lib\connection.js:1169:11)[39m
+[31m    at NativeConnection.openUri (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\mongoose@8.21.1\node_modules\mongoose\lib\connection.js:1100:11)[39m
+[31m    at runNextTicks (node:internal/process/task_queues:64:5)[39m
+[31m    at process.processTimers (node:internal/timers:538:9)[39m
+[31m    at async connectDB (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\src\config\database\mongodb\mongodb.config.ts:7:9)[39m
+[2026-01-25 00:04:53] [[31merror[39m]: [31mregisterDevice failed : [39m
+[31mCannot read properties of undefined (reading 'userOrProviderId')[39m
+[31mTypeError: Cannot read properties of undefined (reading 'userOrProviderId')[39m
+[31m    at UserDeviceController.registerDevice (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\src\presentation\httpController\userDevice\userDevice.controller.ts:22:30)[39m
+[31m    at Layer.handleRequest (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\layer.js:152:17)[39m
+[31m    at next (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\route.js:157:13)[39m
+[31m    at Route.dispatch (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\route.js:117:3)[39m
+[31m    at handle (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:435:11)[39m
+[31m    at Layer.handleRequest (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\layer.js:152:17)[39m
+[31m    at C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:295:15[39m
+[31m    at processParams (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:582:12)[39m
+[31m    at next (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:291:5)[39m
+[31m    at router.handle (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:186:3)[39m
+[2026-01-25 00:19:11] [[31merror[39m]: [31mregisterDevice failed : [39m
+[31mCannot read properties of undefined (reading 'userOrProviderId')[39m
+[31mTypeError: Cannot read properties of undefined (reading 'userOrProviderId')[39m
+[31m    at UserDeviceController.registerDevice (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\src\presentation\httpController\userDevice\userDevice.controller.ts:22:30)[39m
+[31m    at Layer.handleRequest (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\layer.js:152:17)[39m
+[31m    at next (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\route.js:157:13)[39m
+[31m    at Route.dispatch (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\route.js:117:3)[39m
+[31m    at handle (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:435:11)[39m
+[31m    at Layer.handleRequest (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\lib\layer.js:152:17)[39m
+[31m    at C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:295:15[39m
+[31m    at processParams (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:582:12)[39m
+[31m    at next (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:291:5)[39m
+[31m    at router.handle (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\router@2.2.0\node_modules\router\index.js:186:3)[39m
+[2026-01-25 00:38:06] [[31merror[39m]: [31mMongoDB Connection Error : [39m
+[31mconnect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+[31mMongooseServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+[31m    at _handleConnectionErrors (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\mongoose@8.21.1\node_modules\mongoose\lib\connection.js:1169:11)[39m
+[31m    at NativeConnection.openUri (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\mongoose@8.21.1\node_modules\mongoose\lib\connection.js:1100:11)[39m
+[31m    at async connectDB (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\src\config\database\mongodb\mongodb.config.ts:7:9)[39m

@@ -10,4 +10,4 @@ export interface IGetAllNotificationsUseCase {
 
 export interface ISendNotificationUseCase {
     execute(payload: SendNotificationRequest): Promise<void>;
-}
+};

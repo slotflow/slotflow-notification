@@ -5,7 +5,7 @@ export interface NotificationProps {
     body: string;
     pushNotification: boolean;
     isRead: boolean;
-    data: Record<string, string>;
+    data: Record<string, string> | null;
     createdAt: Date;
     updatedAt: Date;
 }

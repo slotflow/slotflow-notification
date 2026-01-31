@@ -27,7 +27,6 @@ export class SendNotificationUseCase implements ISendNotificationUseCase{
             await this.notificationRepository.create(inAppNotification);
 
             if(pushNotification) {
-                
                 const userDevices = await this.userDeviceRepository.findByUserId(userId);
                 if(!userDevices) return;
 

@@ -4031,3 +4031,66 @@
 [2026-01-25 02:12:12] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
 [2026-01-25 02:12:15] [[32minfo[39m]: [32mKafka consumer running[39m
 [2026-01-25 02:12:15] [[32minfo[39m]: [32mNotification service running on http://localhost:6000[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mMngoDB Connected...[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: provider-appointment-status-change[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: app-connect[39m
+[2026-01-25 02:12:29] [[32minfo[39m]: [32mSubscribed to topic: provider-trial-subscription[39m
+[2026-01-25 02:12:47] [[32minfo[39m]: [32mKafka consumer running[39m
+[2026-01-25 02:12:47] [[32minfo[39m]: [32mstart listening kafka notification controller[39m
+[2026-01-25 02:12:47] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-25 02:12:51] [[32minfo[39m]: [32mKafka consumer running[39m
+[2026-01-25 02:12:51] [[32minfo[39m]: [32mNotification service running on http://localhost:6000[39m
+[2026-01-25 17:43:08] [[32minfo[39m]: [32mMngoDB Connected...[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mKafka consumer connected [group=email-notification-group][39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mKafka consumer connected [group=notification-group][39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mKafka consumer connected [group=google-calendar-notification-group][39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mKafka producer connected[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mstart listening kafka email controller[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: sendOtp[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: register-success[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: admin-provider-review-status-change[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-25 17:43:09] [[31merror[39m]: [31memail controller startListening failed : [39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+[31m    at async [private:Broker:sendRequest] (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mstart listening kafka notification controller[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: password-reset[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: account-block-status-change[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mSubscribed to topic: account-trust-status-change[39m
+[2026-01-25 17:43:09] [[31merror[39m]: [31mnotification controller startListening failed : [39m
+[31mThis server does not host this topic-partition[39m
+[31mKafkaJSProtocolError: This server does not host this topic-partition[39m
+[31m    at createErrorFromCode (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\protocol\error.js:581:10)[39m
+[31m    at Object.parse (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\protocol\requests\metadata\v0\response.js:55:11)[39m
+[31m    at Connection.send (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\network\connection.js:433:35)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+[31m    at async [private:Broker:sendRequest] (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\broker\index.js:904:14)[39m
+[31m    at async Broker.metadata (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\broker\index.js:177:12)[39m
+[31m    at async C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\cluster\brokerPool.js:158:25[39m
+[31m    at async C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\cluster\index.js:111:14[39m
+[31m    at async Cluster.refreshMetadata (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\cluster\index.js:172:5)[39m
+[31m    at async Cluster.addMultipleTargetTopics (C:\MY LOCAL DISC\Slotflow\slotflow-notifications\node_modules\.pnpm\kafkajs@2.2.4\node_modules\kafkajs\src\cluster\index.js:230:11)[39m
+[2026-01-25 17:43:09] [[32minfo[39m]: [32mNotification service running on http://localhost:6000[39m

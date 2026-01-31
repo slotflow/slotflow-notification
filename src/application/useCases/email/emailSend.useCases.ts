@@ -1,6 +1,6 @@
 import { IEmailService } from "../../../domain/interfaces/services/IEmail.service";
 import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../../domain/enums/enum";
-import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendEmailCommon } from "../../dtos/kafka.dtos";
+import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeForUserEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendEmailCommon, SendResetPasswordEvent } from "../../dtos/kafka.dtos";
 import { emailMainTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate, passwordResetEmailTemplate } from "../../../shared/utils/constants";
 
 // send otp event for registration and password update
@@ -52,36 +52,13 @@ export class SendWelcomeEmailUseCase {
   };
 };
 
-// send admin provider review event
-export class SendAdminProviderReviewEmailUseCase {
-  constructor(
-    private emailService: IEmailService
-  ) { };
-
-  async execute(payload: SendAdminProviderReviewEvent) {
-    const { email, name, status, reason } = payload;
-
-    const subject = adminProviderReviewEmailTemplate.subject(status);
-
-    const htmlContent = `
-      ${adminProviderReviewEmailTemplate.head(name)}
-      ${adminProviderReviewEmailTemplate.body(status, reason)}
-    `;
-
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject,
-      html: emailMainTemplate.html(subject, htmlContent),
-    });
-  };
-};
-
+// send password reset event
 export class SendPasswordResetEmailUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
-  async execute(payload: SendEmailCommon) {
+  async execute(payload: SendResetPasswordEvent) {
     const { email, name } = payload;
 
     const subject = passwordResetEmailTemplate.subject();
@@ -113,6 +90,30 @@ export class SendAccountBlockStatusChangeEmailUseCase {
     const htmlContent = `
       ${accountBlockStatusEmailTemplate.head(name)}
       ${accountBlockStatusEmailTemplate.body(blocked, reason)}
+    `;
+
+    await this.emailService.sendEmailViaNodemailer({
+      to: email,
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
+    });
+  };
+};
+
+// send admin provider review event
+export class SendAdminProviderReviewEmailUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) { };
+
+  async execute(payload: SendAdminProviderReviewEvent) {
+    const { email, name, status, reason } = payload;
+
+    const subject = adminProviderReviewEmailTemplate.subject(status);
+
+    const htmlContent = `
+      ${adminProviderReviewEmailTemplate.head(name)}
+      ${adminProviderReviewEmailTemplate.body(status, reason)}
     `;
 
     await this.emailService.sendEmailViaNodemailer({
@@ -155,8 +156,8 @@ export class SendAppointmentStatusChangeEmailUseCase {
     private emailService: IEmailService
   ) { };
 
-  async execute(payload: SendAppointmentStatusChangeEvent) {
-    const { email, name, appointmentDate, appointmentMode, appointmentTime, appointmentStatus } = payload;
+  async execute(payload: SendAppointmentStatusChangeForUserEvent) {
+    const { email, name, data : { appointmentDate, appointmentMode, appointmentTime, appointmentStatus } } = payload;
 
     if (
       ![

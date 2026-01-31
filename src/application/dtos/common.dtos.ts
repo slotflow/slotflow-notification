@@ -1,5 +1,5 @@
+import { Platform, Role } from "../../domain/enums/enum";
 import { AppointmentStatus } from "../../domain/enums/enum";
-import { NotificationType, Platform, Role } from "../../domain/enums/enum";
 
 // **** ENTITY DTOS 
 
@@ -47,7 +47,7 @@ export interface Notification {
   body: string;
   pushNotification: boolean;
   isRead: boolean;
-  data: Record<string, string>,
+  data?: Record<string, string>,
   createdAt: Date;
   updatedAt: Date;
 }

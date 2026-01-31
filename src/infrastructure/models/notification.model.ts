@@ -1,5 +1,4 @@
 import mongoose, { Schema, Types } from "mongoose";
-import { NotificationType } from "../../domain/enums/enum";
 
 export interface INotification {
     _id: Types.ObjectId,
@@ -12,21 +11,6 @@ export interface INotification {
     createdAt: Date,
     updatedAt: Date,
 };
-
-const notificationDataSchema = new Schema<Record<string, string>>({
-    notificationType: {
-        type: String,
-        enum: Object.values(NotificationType),
-        required: [true, "Notification type is required"],
-    },
-    providerId: {
-        type: String,
-        required: [true, "Provider ID is required"],
-    },
-    redirectUrl: {
-        type: String,
-    },
-})
 
 const notificationSchema = new Schema<INotification>({
     userId: {
@@ -55,7 +39,10 @@ const notificationSchema = new Schema<INotification>({
         type: Boolean,
         default: false,
     },
-    data: notificationDataSchema,
+    data: {
+        type: Object,
+        default: {}
+    },
     createdAt: {
         type: Date,
         required: true

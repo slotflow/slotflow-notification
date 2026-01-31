@@ -18,8 +18,8 @@ export class Notification {
             userId: props.userId,
             title: props.title,
             body: props.body,
-            pushNotification: props.pushNotification,
-            data: props.data,
+            pushNotification: props.pushNotification ?? false,
+            data: props.data ?? null,
             isRead: false,
             createdAt: new Date(),
             updatedAt: new Date(),
@@ -52,7 +52,11 @@ export class Notification {
     };
 
     get data(): Record<string, string> {
-        return this.props.data;
+        if(this.props.data) {
+            return this.props.data;
+        } else {
+            return {};
+        }
     };
 
     get createdAt(): Date {

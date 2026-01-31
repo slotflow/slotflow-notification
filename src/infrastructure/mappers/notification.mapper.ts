@@ -10,11 +10,7 @@ export class NotificationMapper {
             userId: doc.userId.toString(),
             isRead: doc.isRead,
             body: doc.body,
-            data: {
-                notificationType: doc.data.notificationType,
-                providerId: doc.data.providerId.toString(),
-                redirectUrl: doc.data.redirectUrl
-            },
+            data: doc.data,
             title: doc.title,
             pushNotification: doc.pushNotification,
             createdAt: doc.createdAt,

@@ -1,59 +1,83 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import { Validator } from "../utils/validator";
+import { Validator } from "../shared/validator/validator";
 
 const validator = new Validator();
 
 export const appConfig = {
+  nodeEnv: validator.requireEnv("NODE_ENV"),
   port: validator.requireNumber("PORT"),
 };
 
-export const mongoConfig = {
-  mongoURL:
-    process.env.NODE_ENV === "development"
-      ? validator.requireEnv("MONGO_URI_DEV")
-      : validator.requireEnv("MONGO_URI"),
+export const mongodbConfig = {
+  mongoUri: process.env.NODE_ENV === "development" ? validator.requireEnv("MONGO_URI_DEV") : validator.requireEnv("MONGO_URI"),
 };
 
-export const mailConfig = {
-  officialMail: validator.requireEnv("OFFICIAL_EMAIL"),
-  officialMailPassword: validator.requireEnv("OFFICIALEMAIL_PASS"),
-  noreplyEmail: validator.requireEnv("OFFICIAL_NOREPLY_EMAIL"),
+export const officialConfig = {
+  email: validator.requireEnv("OFFICIAL_EMAIL"),
+  password: validator.requireEnv("OFFICIALEMAIL_PASS"),
+};
+
+export const firebaseConfig = {
+  firebaseServiceAccountJson: validator.requireEnv("FIREBASE_SERVICE_ACCOUNT_JSON"),
 };
 
 export const kafkaConfig = {
   clientId: validator.requireEnv("KAFKA_CLIENT_ID"),
-  groupId: validator.requireEnv("KAFKA_GROUP_ID"),
-  brokers: validator.requireEnv("KAFKA_BROKERS").split(","),
+
+  groups: {
+    notificationGroupId: validator.requireEnv("KAFKA_NOTIFICATION_GROUP_ID"),
+    emailGroupId: validator.requireEnv("KAFKA_EMAIL_NOTIFICATION_GROUP_ID"),
+    calendarGroupId: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_NOTIFICATION_GROUP_ID"),
+  },
+
+  brokers: [
+    validator.requireEnv("KAFKA_BROKER_1"),
+    validator.requireEnv("KAFKA_BROKER_2"),
+    validator.requireEnv("KAFKA_BROKER_3"),
+  ],
 
   topics: {
-  sendOtp: validator.requireEnv("KAFKA_SENDOTP_TOPIC"),
-  registerSuccess: validator.requireEnv("KAFKA_REGISTER_SUCCESS_TOPIC"),
-  adminProviderReview: validator.requireEnv("KAFKA_ADMIN_PROVIDER_REVIEW_TOPIC"),
-  accountBlockStatus: validator.requireEnv("KAFKA_ACCOUNT_BLOCK_STATUS_TOPIC"),
-  accountTrustStatus: validator.requireEnv("KAFKA_ACCOUNT_TRUST_STATUS_TOPIC"),
-  gotAppointment: validator.requireEnv("KAFKA_GOT_APPOINTMENT_TOPIC"),
 
-  confirmAppointment: validator.requireEnv("KAFKA_CONFIRM_APPOINTMENT_TOPIC"),
-  rejectAppointment: validator.requireEnv("KAFKA_REJECT_APPOINTMENT_TOPIC"),
+    sub: {
+      email: {
+        // EMAIL
+        sendOtp: validator.requireEnv("KAFKA_SEND_OTP"),
+        registerSuccess: validator.requireEnv("KAFKA_REGISTER_SUCCESS"),
+        passwordReset: validator.requireEnv("KAFKA_PASSWORD_RESET"),
+        adminProviderReview: validator.requireEnv("KAFKA_ADMIN_PROVIDER_REVIEW"),
+        accountBlockStatus: validator.requireEnv("KAFKA_ACCOUNT_BLOCK_STATUS"),
+        accountTrustStatus: validator.requireEnv("KAFKA_ACCOUNT_TRUST_STATUS"),
+        providerAppointmentStatusForUser: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_USER"),
+        appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
+        providerTrialSubscription: validator.requireEnv("KAFKA_PROVIDER_TRIAL_SUBSCRIPTION"),
+        providerSubscriptionPaymentSuccess: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_SUCCESS"),
+      },
 
-  userPayment: validator.requireEnv("KAFKA_USER_PAYMENT_TOPIC"),
-  providerPayout: validator.requireEnv("KAFKA_PROVIDER_PAYOUT_TOPIC"),
+      notification: {
+        // NOTIFICATIONS
+        passwordReset: validator.requireEnv("KAFKA_PASSWORD_RESET"),
+        accountBlockStatus: validator.requireEnv("KAFKA_ACCOUNT_BLOCK_STATUS"),
+        accountTrustStatus: validator.requireEnv("KAFKA_ACCOUNT_TRUST_STATUS"),
+        providerAppointmentStatusForUser: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_USER"),
+        providerAppointmentStatusForProvider: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_PROVIDER"),
+        appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
+        providerTrialSubscription: validator.requireEnv("KAFKA_PROVIDER_TRIAL_SUBSCRIPTION"),
+      },
 
-  stripeConnect: validator.requireEnv("KAFKA_STRIPE_CONNECT_TOPIC"),
-  googleConnect: validator.requireEnv("KAFKA_GOOGLE_CONNECT_TOPIC"),
+      calendar: {
+        // GOOGLE CALENDAR
+        createGoogleCalendar: validator.requireEnv("KAFKA_CREATE_GOOGLE_CALENDAR"),
+        updateGoogleCalendar: validator.requireEnv("KAFKA_UPDATE_GOOGLE_CALENDAR"),
+      },
+    },
 
-  confirmSubscription: validator.requireEnv(
-    "KAFKA_PROVIDER_CONFIRM_SUBSCRIPTION_TOPIC"
-  ),
+    pub: {
+      googleCalendarSuccess: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_SUCCESS"),
+      googleCalendarFailed: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_FAILED"),
+    },
 
-  createGoogleCalendarEvent: validator.requireEnv(
-    "KAFKA_CREATE_GOOGLE_CALENDAR_EVENT_TOPIC"
-  ),
-  updateGoogleCalendarEvent: validator.requireEnv(
-    "KAFKA_UPDATE_GOOGLE_CALENDAR_EVENT_TOPIC"
-  ),
   },
 };
 

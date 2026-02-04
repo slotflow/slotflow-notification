@@ -157,7 +157,7 @@ export class SendAppointmentStatusChangeEmailUseCase {
   ) { };
 
   async execute(payload: SendAppointmentStatusChangeForUserEvent) {
-    const { email, name, data : { appointmentDate, appointmentMode, appointmentTime, appointmentStatus } } = payload;
+    const { email, name, appointmentDate, appointmentMode, appointmentTime, appointmentStatus } = payload;
 
     if (
       ![
@@ -226,6 +226,46 @@ export class SendProviderTrialSubscriptionEmailUseCase {
     const htmlContent = `
       ${providerTrialSubscriptionEmailTemplate.head(name)}
       ${providerTrialSubscriptionEmailTemplate.body(startDate, endDate)}
+    `;
+
+    await this.emailService.sendEmailViaNodemailer({
+      to: email,
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
+    });
+  };
+};
+
+// send provider payment event
+export class SendProviderPaymentEventUseCase {
+  constructor(
+    private emailService: IEmailService
+  ) { };
+
+  async execute(payload: SendProviderPaymentEvent) {
+    const { email, name, totalAmount, paymentDate, paymentStatus, transactionId, paymentFor } = payload;
+
+    const isValidEvent =
+      (paymentStatus === PaymentStatus.PAID &&
+        paymentFor === PaymentFor.PROVIDER_SUBSCRIPTION) ||
+      (paymentStatus === PaymentStatus.REFUNDED &&
+        paymentFor === PaymentFor.CANCEL_SUBSCRIPTION);
+
+    if (!isValidEvent) {
+      return;
+    }
+
+    const subject =
+      providerSubscriptionPaymentEmailTemplate.subject(paymentStatus);
+
+    const htmlContent = `
+      ${providerSubscriptionPaymentEmailTemplate.head(name, paymentStatus)}
+      ${providerSubscriptionPaymentEmailTemplate.body(
+      totalAmount,
+      transactionId,
+      paymentDate,
+      paymentStatus
+    )}
     `;
 
     await this.emailService.sendEmailViaNodemailer({
@@ -326,64 +366,6 @@ export class SendUserPaymentEventUseCase {
       transactionId,
       paymentDate,
       appointmentDate,
-      paymentStatus
-    )}
-    `;
-
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject,
-      html: emailMainTemplate.html(subject, htmlContent),
-    });
-  };
-};
-
-// send provider payment event
-export class SendProviderPaymentEventUseCase {
-  constructor(
-    private emailService: IEmailService
-  ) { };
-
-  async execute(payload: SendProviderPaymentEvent) {
-    const { email, name, amount, paymentDate, paymentStatus, subscriptionEndDate, subscriptionStartDate, transactionId, paymentFor } = payload;
-
-    const isValidEvent =
-      (paymentStatus === PaymentStatus.PAID &&
-        paymentFor === PaymentFor.PROVIDER_SUBSCRIPTION) ||
-      (paymentStatus === PaymentStatus.REFUNDED &&
-        paymentFor === PaymentFor.CANCEL_SUBSCRIPTION);
-
-    if (!isValidEvent) {
-      return;
-    }
-
-    const formattedStartDate = new Date(
-      subscriptionStartDate
-    ).toLocaleDateString("en-IN", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-
-    const formattedEndDate = new Date(
-      subscriptionEndDate
-    ).toLocaleDateString("en-IN", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-
-    const subject =
-      providerSubscriptionPaymentEmailTemplate.subject(paymentStatus);
-
-    const htmlContent = `
-      ${providerSubscriptionPaymentEmailTemplate.head(name, paymentStatus)}
-      ${providerSubscriptionPaymentEmailTemplate.body(
-      amount,
-      transactionId,
-      paymentDate,
-      formattedStartDate,
-      formattedEndDate,
       paymentStatus
     )}
     `;

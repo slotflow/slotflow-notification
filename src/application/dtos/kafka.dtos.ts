@@ -1,5 +1,5 @@
 import { KafkaMessage } from "kafkajs";
-import { AdminVerificationStatus, AppConnect, AppointmentStatus, NotificationType, OtpPurpose, PaymentFor, PaymentGateway, PaymentStatus, Role } from "../../domain/enums/enum";
+import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentFor, PaymentGateway, PaymentStatus, Role } from "../../domain/enums/enum";
 
 // **** COMMON DTOS
 
@@ -10,6 +10,7 @@ export interface KafkaClientAdapterProps {
     message: KafkaMessage;
 }
 
+// event envelope
 export interface EventEnvelope<T> {
     eventId: string;
     occurredAt: Date;
@@ -17,26 +18,6 @@ export interface EventEnvelope<T> {
     maxAttempts: number;
     payload: T;
 }
-
-
-// kafka client adapter message handler
-export type MessageHandler = (payload: KafkaClientAdapterProps) => Promise<void>;
-
-export interface UpdateGoogleCalendarEventRequest {
-    eventId: string,
-    appointmentDate: Date,
-    appointmentStatus: AppointmentStatus,
-    accessToken: string,
-}
-
-export interface CreateGoogleCalendarEventRequest {
-    appointmentDate: Date,
-    appointmentStatus: AppointmentStatus,
-    accessToken: string;
-}
-
-
-// **** KAFKA EVENTS PAYLOAD
 
 // send email common
 export interface SendEmailCommon {
@@ -46,11 +27,20 @@ export interface SendEmailCommon {
 
 // send notification common
 export interface SendNotificationCommon {
+    userId: string;
     body: string;
     pushNotification: boolean;
     title: string;
     data?: Record<string, string>;
 }
+
+// kafka client adapter message handler
+export type MessageHandler = (payload: KafkaClientAdapterProps) => Promise<void>;
+
+
+
+
+// **** KAFKA EVENTS PAYLOAD
 
 // send otp event for registration and password update
 export interface SendOtpEvent extends SendEmailCommon {
@@ -66,64 +56,43 @@ export interface SendWelcomeEvent extends SendEmailCommon {
 // send reset password
 export interface SendResetPasswordEvent extends SendEmailCommon { };
 
-// send account block status event
-export interface SendAccountBlockStatusEvent extends SendEmailCommon, SendNotificationCommon {
-    blocked: boolean;
-    reason?: string;
-    userId: string;
-}
-
 // send admin provider review event
-export interface SendAdminProviderReviewEvent extends SendEmailCommon, SendNotificationCommon {
+export interface SendAdminProviderReviewEvent extends SendEmailCommon {
     status: AdminVerificationStatus;
     reason?: string;
 }
 
+// send account block status event
+export interface SendAccountBlockStatusEvent extends SendEmailCommon {
+    blocked: boolean;
+    reason?: string;
+}
+
 // send account trust status event
-export interface SendAccountTrustStatusEvent extends SendEmailCommon, SendNotificationCommon {
+export interface SendAccountTrustStatusEvent extends SendEmailCommon {
     trusted: boolean;
-    userId: string; // providerId ( admin perspective it is user id )
     reason?: string;
 }
 
 // send appointment status change for user event
-export interface SendAppointmentStatusChangeForUserEvent extends SendEmailCommon, SendNotificationCommon {
-    userId: string;
-    userAccessToken: string;
-    data: {
-        appointmentDate: string;
-        appointmentTime: string;
-        appointmentMode: string;
-        appointmentStatus: AppointmentStatus;
-        notificationType: NotificationType;
-    }
+export interface SendAppointmentStatusChangeForUserEvent extends SendEmailCommon {
+    appointmentDate: string;
+    appointmentTime: string;
+    appointmentMode: string;
+    appointmentStatus: AppointmentStatus;
 }
 
-// send appointment status change for provider event
-export interface SendAppointmentStatusChangeForProviderEvent extends SendNotificationCommon {
-    userId: string;
-    userAccessToken: string;
-    data: {
-        appointmentDate: string;
-        appointmentTime: string;
-        appointmentMode: string;
-        appointmentStatus: AppointmentStatus;
-        notificationType: NotificationType;
-    }
+// send provider trial subscription event
+export interface SendProviderTrialSubscriptionEvent extends SendEmailCommon {
+    startDate: string;
+    endDate: string;
 }
 
 // send app connect event
 export interface SendAppConnectEvent extends SendEmailCommon {
     appConnect: AppConnect;
-    userOrProviderId: string;
 }
 
-// send provider trial subscription event
-export interface SendProviderTrialSubscriptionEvent extends SendEmailCommon, SendNotificationCommon {
-    startDate: string;
-    endDate: string;
-    userId: string;
-}
 
 // Added till this 
 
@@ -138,15 +107,15 @@ export interface SendUserPaymentEvent extends SendEmailCommon {
 }
 
 // send provider payment event
-export interface SendProviderPaymentEvent extends SendEmailCommon {
-    amount: number;
+export type SendProviderPaymentEvent = SendEmailCommon & SendNotificationCommon & {
+    totalAmount: number;
     transactionId: string;
     paymentDate: string;
     subscriptionStartDate: string;
     subscriptionEndDate: string;
     paymentStatus: PaymentStatus;
     paymentFor: PaymentFor;
-}
+};
 
 // send provider payout event
 export interface SendProviderPayoutEvent extends SendEmailCommon {
@@ -174,34 +143,42 @@ export interface SendPaymentRequestEvent {
 
 // create google calendar event
 export interface CreateGoogleCalendarEvent {
-  bookingId: string;
-  role: Role;
-  targetId: string; 
-  accessToken: string;
-  appointmentDate: Date;
-  appointmentStatus: AppointmentStatus;
+    calendarData: {
+        bookingId: string;
+        role: Role;
+        accessToken: string;
+        appointmentDate: Date;
+        appointmentStatus: AppointmentStatus;
+        slotDuration: number
+    }
 }
 
 // create google calendar event success result
 export interface CreateGoogleCalendarEventSuccessResult {
-    bookingId: string;
-    role: Role;
-    eventId: string;
+    mbsData: {
+        bookingId: string;
+        role: Role;
+        eventId: string;
+    }
 }
 
 // create google calendar event failed result
 export interface CreateGoogleCalendarEventFailedResult {
-    bookingId: string;
-    role: Role;
-    error: string;
+    mbsData: {
+        bookingId: string;
+        role: Role;
+        error: string;
+    }
 }
 
 // update google calendar event
 export interface UpdateGoogleCalendarEvent {
-    accessToken: string;
-    eventId: string;
-    appointmentDate: Date;
-    appointmentStatus: AppointmentStatus;
-    bookingId: string;
-    role: Role;
+    calendarData: {
+        accessToken: string;
+        eventId: string;
+        appointmentDate: Date;
+        appointmentStatus: AppointmentStatus;
+        bookingId: string;
+        role: Role;
+    }
 }

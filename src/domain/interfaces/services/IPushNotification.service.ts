@@ -1,4 +1,9 @@
-import { SendPushNotificationRequest } from "../../../application/dtos/common.dtos";
+export interface SendPushNotificationRequest {
+  tokens: string[],
+  title: string;
+  body: string;
+  data?: Record<string, string>;
+}
 
 export interface IPushNotificationService {
 

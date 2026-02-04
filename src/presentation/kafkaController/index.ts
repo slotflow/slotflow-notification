@@ -8,18 +8,13 @@ import {
     SendAppConnectEmailUseCase,
     SendProviderTrialSubscriptionEmailUseCase,
     SendPasswordResetEmailUseCase,
-    // SendGotAppointmentEventUseCase,
-    // SendUserPaymentEmailUseCase,
-    // SendProviderPaymentEmailUseCase,
-    // SendProviderPayoutEventUseCase,
+    SendProviderPaymentEventUseCase,
 } from "../../application/useCases/email/emailSend.useCases";
-import { CreateGoogleCalendarEventUseCase, UpdateGoogleCalendarEventUseCase } from "../../application/useCases/GoogleCalendar/googleCalendar.useCases";
-import { SendNotificationUseCase } from "../../application/useCases/notification/sendNotification.useCase";
 import { kafkaProducer } from "../../infrastructure/messaging";
 import { notificationRepository, userDeviceRepository } from "../../infrastructure/repositoryImpls";
+import { SendNotificationUseCase } from "../../application/useCases/notification/sendNotification.useCase";
 import { emailService, googleCalendarGatewayService, pushNotificationService } from "../../infrastructure/services";
-
-// import { CreateGoogleCalendarEventUseCase, UpdateGoogleCalendarEventUseCase } from "../application/useCases/googleCalendar.useCases";
+import { CreateGoogleCalendarEventUseCase, UpdateGoogleCalendarEventUseCase } from "../../application/useCases/GoogleCalendar/googleCalendar.useCases";
 
 export const emailHandlers = {
     sendOtp: new SendOtpEmailUseCase(emailService),
@@ -31,6 +26,7 @@ export const emailHandlers = {
     providerAppointmentStatusForUser: new SendAppointmentStatusChangeEmailUseCase(emailService),
     appConnect: new SendAppConnectEmailUseCase(emailService),
     providerTrialSubscription: new SendProviderTrialSubscriptionEmailUseCase(emailService),
+    providerSubscriptionPaymentSuccess: new SendProviderPaymentEventUseCase(emailService),
 };
 
 export const notificationHandler = {
@@ -42,9 +38,10 @@ export const notificationHandler = {
     providerAppointmentStatusForUser: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
     providerAppointmentStatusForProvider: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
     providerTrialSubscription: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
+    providerSubscriptionPaymentSuccess: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
 };
 
 export const calendarHandler = {
     createGoogleCalendar: new CreateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaProducer),
     updateGoogleCalendar: new UpdateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaProducer),
-}
+};

@@ -1,7 +1,6 @@
 import { log } from "../../shared/logger/logger";
 import { firebaseMessaging } from "../firebase/firebaseAdmin";
-import { SendPushNotificationRequest } from "../../application/dtos/common.dtos";
-import { IPushNotificationService } from "../../domain/interfaces/services/IPushNotification.service";
+import { IPushNotificationService, SendPushNotificationRequest } from "../../domain/interfaces/services/IPushNotification.service";
 
 export class PushNotificationServiceImpl implements IPushNotificationService {
 
@@ -14,10 +13,10 @@ export class PushNotificationServiceImpl implements IPushNotificationService {
             await firebaseMessaging.sendEachForMulticast({
                 tokens,
                 notification: {
-                    title: payload.title,
-                    body: payload.body,
+                    title,
+                    body,
                 },
-                data: payload.data,
+                data,
             });
 
         } catch (error) {

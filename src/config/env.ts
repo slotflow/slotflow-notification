@@ -52,6 +52,7 @@ export const kafkaConfig = {
         providerAppointmentStatusForUser: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_USER"),
         appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
         providerTrialSubscription: validator.requireEnv("KAFKA_PROVIDER_TRIAL_SUBSCRIPTION"),
+        providerSubscriptionPaymentSuccess: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_SUCCESS"),
       },
 
       notification: {

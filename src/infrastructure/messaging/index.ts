@@ -2,8 +2,8 @@ import { kafkaClient } from "../lib/kafka";
 import { kafkaConfig } from "../../config/env";
 import { KafkaConsumerAdapter } from "./kafkaConsumerAdapter";
 import { KafkaProducerAdapter } from "./kafkaproducerAdapter";
-import { IKafkaConsumerAdapter } from "../../domain/interfaces/message/IKafkaConsumerAdapter";
-import { IKafkaProducerAdapter } from "../../domain/interfaces/message/IKafkaProducerAdapter";
+import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
+import { IKafkaProducerAdapter } from "../../domain/interfaces/messaging/IKafkaProducerAdapter";
 
 // Different Consumers for different usecases
 export const kafkaEmailConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapter(

@@ -7,6 +7,7 @@ import { IPushNotificationService } from "../../../domain/interfaces/services/IP
 import { INotificationRepository } from "../../../domain/interfaces/repositories/INotification.repository";
 
 export class SendNotificationUseCase implements ISendNotificationUseCase{
+    
     constructor(
         private readonly notificationRepository: INotificationRepository,
         private readonly pushNotificationService: IPushNotificationService,

@@ -1,7 +1,7 @@
 import { emailHandlers } from ".";
 import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
-import { IKafkaConsumerAdapter } from "../../domain/interfaces/message/IKafkaConsumerAdapter";
+import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
 
 export class KafkaEmailConsumerController {
 
@@ -19,8 +19,8 @@ export class KafkaEmailConsumerController {
 
         await this.kafkaEmailConsumerAdapter.subscribe(topic, async ({ message }) => {
           if (!message.value) return;
-          const payload = JSON.parse(message.value.toString());
-          await useCase.execute(payload);
+          const { payload: { emailData } } = JSON.parse(message.value.toString());
+          await useCase.execute(emailData);
         });
       };
 

@@ -1,8 +1,8 @@
+import { Platform } from "../../domain/enums/enum";
 import { UserDeviceModel } from "../models/userDevice.model";
 import { UserDeviceMapper } from "../mappers/userDevice.mapper";
 import { UserDevice } from "../../domain/entities/userDevice.entity";
 import { IUserDeviceRepository } from "../../domain/interfaces/repositories/IUserDevice.repository";
-import { Platform } from "../../domain/enums/enum";
 
 export class UserDeviceRepositoryImpl implements IUserDeviceRepository {
 

@@ -123,11 +123,3 @@ export type GetAllNotificationsResponse = Array<Pick<Notification, "_id" | "crea
 
 // Send Notification Request
 export type SendNotificationRequest = Pick<Notification, "userId" | "body" | "data" | "pushNotification" | "title">;
-
-// Send push notification paylod
-export interface SendPushNotificationRequest {
-  tokens: string[],
-  title: string;
-  body: string;
-  data?: Record<string, string>;
-}

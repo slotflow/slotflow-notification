@@ -1,6 +1,6 @@
 import { kafkaConfig } from "../../../config/env";
 import { log } from "../../../shared/logger/logger";
-import { IKafkaProducerAdapter } from "../../../domain/interfaces/message/IKafkaProducerAdapter";
+import { IKafkaProducerAdapter } from "../../../domain/interfaces/messaging/IKafkaProducerAdapter";
 import { IGoogleCalendarGatewayService } from "../../../domain/interfaces/services/IGoogleCalendarGateway.service";
 import { CreateGoogleCalendarEvent, CreateGoogleCalendarEventFailedResult, CreateGoogleCalendarEventSuccessResult, EventEnvelope, UpdateGoogleCalendarEvent } from "../../dtos/kafka.dtos";
 
@@ -13,14 +13,19 @@ export class CreateGoogleCalendarEventUseCase {
     async execute(envelopePayload: EventEnvelope<CreateGoogleCalendarEvent>): Promise<void> {
         try {
             const {
+                eventId,
+                occurredAt,
                 attempt,
                 maxAttempts,
                 payload: {
-                    role,
-                    accessToken,
-                    appointmentDate,
-                    appointmentStatus,
-                    bookingId,
+                    calendarData: {
+                        role,
+                        accessToken,
+                        appointmentDate,
+                        appointmentStatus,
+                        bookingId,
+                        slotDuration
+                    }
                 }
             } = envelopePayload;
 
@@ -28,28 +33,31 @@ export class CreateGoogleCalendarEventUseCase {
                 return;
             };
 
-            const eventId = await this.googleCalendarGatewayService.createEvent({
+            const calendarEventId = await this.googleCalendarGatewayService.createEvent({
                 accessToken,
                 appointmentDate: new Date(appointmentDate),
                 appointmentStatus: appointmentStatus,
+                slotDuration
             });
 
-            if (eventId && (attempt <= maxAttempts)) {
+            if (calendarEventId && (attempt <= maxAttempts)) {
                 await this.kafkaProducer.publish<EventEnvelope<CreateGoogleCalendarEventSuccessResult>>(
                     kafkaConfig.topics.pub.googleCalendarSuccess,
                     {
                         ...envelopePayload,
                         payload: {
-                            bookingId,
-                            role,
-                            eventId,
+                            mbsData: {
+                                bookingId,
+                                role,
+                                eventId: calendarEventId,
+                            }
                         }
                     }
                 );
                 return;
             };
 
-            if (!eventId && (attempt < maxAttempts)) {
+            if (!calendarEventId && (attempt < maxAttempts)) {
                 await this.kafkaProducer.publish<EventEnvelope<CreateGoogleCalendarEvent>>(
                     kafkaConfig.topics.pub.googleCalendarFailed,
                     {
@@ -59,15 +67,17 @@ export class CreateGoogleCalendarEventUseCase {
                 );
             };
 
-            if(!eventId && (attempt > maxAttempts)) {
+            if (!calendarEventId && (attempt > maxAttempts)) {
                 await this.kafkaProducer.publish<EventEnvelope<CreateGoogleCalendarEventFailedResult>>(
                     kafkaConfig.topics.pub.googleCalendarFailed,
                     {
                         ...envelopePayload,
                         payload: {
-                            bookingId,
-                            role,
-                            error: "Failed to create google calendar event",
+                            mbsData: {
+                                bookingId,
+                                role,
+                                error: "Failed to create google calendar event",
+                            }
                         }
                     }
                 );
@@ -86,13 +96,28 @@ export class UpdateGoogleCalendarEventUseCase {
         private kafkaProducer: IKafkaProducerAdapter,
     ) { };
 
-    async execute(payload: UpdateGoogleCalendarEvent): Promise<void> {
+    async execute(payload: EventEnvelope<UpdateGoogleCalendarEvent>): Promise<void> {
         try {
-            const { accessToken, appointmentDate, appointmentStatus, bookingId, eventId, role } = payload;
+            const {
+                attempt,
+                eventId,
+                maxAttempts,
+                occurredAt,
+                payload: {
+                    calendarData: {
+                        accessToken,
+                        appointmentDate,
+                        appointmentStatus,
+                        bookingId,
+                        eventId: calendarEventId,
+                        role
+                    }
+                }
+            } = payload;
 
             const updatedEventId = await this.googleCalendarGatewayService.updateEvent({
                 accessToken,
-                eventId,
+                eventId: calendarEventId,
                 appointmentDate,
                 appointmentStatus,
             });

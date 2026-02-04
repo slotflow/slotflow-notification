@@ -482,11 +482,9 @@ export const providerSubscriptionPaymentEmailTemplate = {
   `,
 
   body: (
-    amount: number,
+    totalAmount: number,
     transactionId: string,
     paymentDate: string,
-    subscriptionStartDate: string,
-    subscriptionEndDate: string,
     paymentStatus: PaymentStatus
   ): string => `
     <div style="
@@ -496,11 +494,9 @@ export const providerSubscriptionPaymentEmailTemplate = {
       margin: 16px 0;
       font-size: 0.95em;
     ">
-      <p><strong>Amount ${paymentStatus === PaymentStatus.REFUNDED ? "Refunded" : "Paid"}:</strong> ₹${amount}</p>
+      <p><strong>Amount ${paymentStatus === PaymentStatus.REFUNDED ? "Refunded" : "Paid"}:</strong> ₹${totalAmount}</p>
       <p><strong>Transaction ID:</strong> ${transactionId}</p>
       <p><strong>Payment Date:</strong> ${paymentDate}</p>
-      <p><strong>Subscription Start:</strong> ${subscriptionStartDate}</p>
-      <p><strong>Subscription End:</strong> ${subscriptionEndDate}</p>
     </div>
 
     <p>

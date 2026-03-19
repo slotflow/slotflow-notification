@@ -1,14 +1,18 @@
 import {
     SendOtpEmailUseCase,
     SendWelcomeEmailUseCase,
+    SendAppConnectEmailUseCase,
+    SendPasswordResetEmailUseCase,
+    SendSlotBookedEventUseCase,
     SendAdminProviderReviewEmailUseCase,
-    SendAccountBlockStatusChangeEmailUseCase,
+    SendBookingPaymentSuccessEventUseCase,
+    SendPlanSubscribedEventUseCase,
     SendAcountTrustStatusChangeEmailUseCase,
     SendAppointmentStatusChangeEmailUseCase,
-    SendAppConnectEmailUseCase,
+    SendAccountBlockStatusChangeEmailUseCase,
     SendProviderTrialSubscriptionEmailUseCase,
-    SendPasswordResetEmailUseCase,
-    SendProviderPaymentEventUseCase,
+    SendSubscriptionPaymentSuccessEventUseCase,
+    SendGotAnAppointmentEmailUseCase,
 } from "../../application/useCases/email/emailSend.useCases";
 import { kafkaProducer } from "../../infrastructure/messaging";
 import { notificationRepository, userDeviceRepository } from "../../infrastructure/repositoryImpls";
@@ -26,22 +30,29 @@ export const emailHandlers = {
     providerAppointmentStatusForUser: new SendAppointmentStatusChangeEmailUseCase(emailService),
     appConnect: new SendAppConnectEmailUseCase(emailService),
     providerTrialSubscription: new SendProviderTrialSubscriptionEmailUseCase(emailService),
-    providerSubscriptionPaymentSuccess: new SendProviderPaymentEventUseCase(emailService),
+    providerSubscriptionPaymentSuccess: new SendSubscriptionPaymentSuccessEventUseCase(emailService),
+    userBookingPaymentSuccess: new SendBookingPaymentSuccessEventUseCase(emailService),
+    planSubscribed: new SendPlanSubscribedEventUseCase(emailService),
+    slotBooked: new SendSlotBookedEventUseCase(emailService),
+    gotAnAppointment: new SendGotAnAppointmentEmailUseCase(emailService),
 };
 
 export const notificationHandler = {
     passwordReset: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    appConnect: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
     accountBlockStatus: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    adminProviderReview: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
     accountTrustStatus: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
     providerAppointmentStatusForUser: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
     providerAppointmentStatusForProvider: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
+    appConnect: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
     providerTrialSubscription: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
     providerSubscriptionPaymentSuccess: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
+    userBookingPaymentSuccess: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
+    planSubscribed: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
+    slotBooked: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
+    gotAnAppointment: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
 };
 
 export const calendarHandler = {
-    createGoogleCalendar: new CreateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaProducer),
-    updateGoogleCalendar: new UpdateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaProducer),
+    createGoogleCalendarEvent: new CreateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaProducer),
+    updateGoogleCalendarEvent: new UpdateGoogleCalendarEventUseCase(googleCalendarGatewayService, kafkaProducer),
 };

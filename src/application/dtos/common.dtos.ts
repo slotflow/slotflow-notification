@@ -65,8 +65,8 @@ export interface EmailOptions {
 
 // decoded user
 export interface DecodedUser {
-  userOrProviderId?: string;
-  role?: Role;
+  userOrProviderId: string;
+  role: Role;
   googleAccessToken?: string;
   googleRefreshToken?: string;
   googleId?: string;
@@ -114,12 +114,12 @@ export interface RegisterDeviceRequest {
 
 
 // Get All Notifications
-export interface GetAllNotificationsRequest extends ApiPaginationRequest {
+export interface GetNotificationsRequest extends ApiPaginationRequest {
   userId: string;
 };
 
 // Get All Notifications Response
-export type GetAllNotificationsResponse = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
+export type GetNotificationsResponse = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
 
 // Send Notification Request
 export type SendNotificationRequest = Pick<Notification, "userId" | "body" | "data" | "pushNotification" | "title">;

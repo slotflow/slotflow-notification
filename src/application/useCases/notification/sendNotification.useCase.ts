@@ -1,12 +1,11 @@
 import { log } from "../../../shared/logger/logger";
 import { SendNotificationRequest } from "../../dtos/common.dtos";
-import { ISendNotificationUseCase } from "../../dtos/useCase.dtos";
 import { Notification } from "../../../domain/entities/notification.entity";
 import { IUserDeviceRepository } from "../../../domain/interfaces/repositories/IUserDevice.repository";
 import { IPushNotificationService } from "../../../domain/interfaces/services/IPushNotification.service";
 import { INotificationRepository } from "../../../domain/interfaces/repositories/INotification.repository";
 
-export class SendNotificationUseCase implements ISendNotificationUseCase{
+export class SendNotificationUseCase {
     
     constructor(
         private readonly notificationRepository: INotificationRepository,
@@ -25,6 +24,7 @@ export class SendNotificationUseCase implements ISendNotificationUseCase{
                 body,
                 data,
             });
+            console.log("inAppNotification : ",inAppNotification);
             await this.notificationRepository.create(inAppNotification);
 
             if(pushNotification) {

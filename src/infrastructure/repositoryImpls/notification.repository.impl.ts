@@ -38,7 +38,7 @@ export class NotificationRepositoryImpl implements INotificationRepository {
                 pushNotification: 1,
                 isRead: 1,
                 createdAt: 1
-            }).skip(skip).limit(limit).lean(),
+            }).sort({ createdAt: -1}).skip(skip).limit(limit).lean(),
             NotificationModel.countDocuments({ userId }),
         ]);
         const totalPages = Math.ceil(totalCount / limit);

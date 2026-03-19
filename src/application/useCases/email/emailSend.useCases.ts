@@ -1,7 +1,7 @@
 import { IEmailService } from "../../../domain/interfaces/services/IEmail.service";
 import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../../domain/enums/enum";
-import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeForUserEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendEmailCommon, SendResetPasswordEvent } from "../../dtos/kafka.dtos";
-import { emailMainTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate, passwordResetEmailTemplate } from "../../../shared/utils/constants";
+import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeForUserEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendResetPasswordEvent, SendPlanSubscribedEvent, SendSlotBookedEvent, SendBookingPaymentSuccessEvent, SendGotAnAppointmentEvent } from "../../dtos/kafka.dtos";
+import { emailMainTemplate, otpEmailTemplate, providerPayoutEmailTemplate, welcomeEmailTemplate, adminProviderReviewEmailTemplate, accountBlockStatusEmailTemplate, accountTrustStatusEmailTemplate, appointmentStatusEmailTemplate, userPaymentStatusEmailTemplate, providerSubscriptionPaymentEmailTemplate, appConnectEmailTemplate, providerTrialSubscriptionEmailTemplate, passwordResetEmailTemplate, planSubscribedEmailTemplate, slotBookedEmailTemplate, bookingPaymentSuccessEmailTemplate, gotAnAppointmentEmailTemplate } from "../../../shared/utils/constants";
 
 // send otp event for registration and password update
 export class SendOtpEmailUseCase {
@@ -237,13 +237,13 @@ export class SendProviderTrialSubscriptionEmailUseCase {
 };
 
 // send provider payment event
-export class SendProviderPaymentEventUseCase {
+export class SendSubscriptionPaymentSuccessEventUseCase {
   constructor(
     private emailService: IEmailService
   ) { };
 
   async execute(payload: SendProviderPaymentEvent) {
-    const { email, name, totalAmount, paymentDate, paymentStatus, transactionId, paymentFor } = payload;
+    const { email, name, totalAmount, paymentDate, paymentStatus, transactionId, paymentFor, recieptUrl } = payload;
 
     const isValidEvent =
       (paymentStatus === PaymentStatus.PAID &&
@@ -264,7 +264,8 @@ export class SendProviderPaymentEventUseCase {
       totalAmount,
       transactionId,
       paymentDate,
-      paymentStatus
+      paymentStatus,
+      recieptUrl
     )}
     `;
 
@@ -276,11 +277,116 @@ export class SendProviderPaymentEventUseCase {
   };
 };
 
+// send subscription completed
+export class SendPlanSubscribedEventUseCase {
+  constructor(
+    private readonly emailService: IEmailService
+  ) { }
 
+  async execute(payload: SendPlanSubscribedEvent) {
+    const { email, name, subscribedPlan, startDate, endDate } = payload;
 
+    const subject = planSubscribedEmailTemplate.subject();
 
+    const htmlContent = `
+    ${planSubscribedEmailTemplate.head(name)}
+    ${planSubscribedEmailTemplate.body(subscribedPlan, startDate, endDate)}
+    `;
 
+    await this.emailService.sendEmailViaNodemailer({
+      to: email,
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent)
+    })
+  }
+}
 
+// send booking payment success
+export class SendBookingPaymentSuccessEventUseCase {
+  constructor(
+    private readonly emailService: IEmailService
+  ) { }
+
+  async execute(payload: SendBookingPaymentSuccessEvent) {
+    const { email, name, totalAmount, paymentDate, paymentStatus, transactionId, paymentFor, recieptUrl } = payload;
+
+    const isValidEvent =
+      (paymentStatus === PaymentStatus.PAID &&
+        paymentFor === PaymentFor.APPOINTMENT_BOOKING);
+
+    if (!isValidEvent) {
+      return;
+    }
+
+    const subject =
+      bookingPaymentSuccessEmailTemplate.subject(paymentStatus);
+
+    const htmlContent = `
+      ${bookingPaymentSuccessEmailTemplate.head(name, paymentStatus)}
+      ${bookingPaymentSuccessEmailTemplate.body(
+      totalAmount,
+      transactionId,
+      paymentDate,
+      paymentStatus,
+      recieptUrl
+    )}
+    `;
+
+    await this.emailService.sendEmailViaNodemailer({
+      to: email,
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent),
+    });
+  };
+};
+
+// send booking completed
+export class SendSlotBookedEventUseCase {
+  constructor(
+    private readonly emailService: IEmailService
+  ) { }
+
+  async execute(payload: SendSlotBookedEvent) {
+    const { email, name, appointmentDate, appointmentMode, appointmentStatus } = payload;
+
+    const subject = slotBookedEmailTemplate.subject();
+
+    const htmlContent = `
+    ${slotBookedEmailTemplate.head(name)}
+    ${slotBookedEmailTemplate.body(appointmentDate, appointmentMode, appointmentStatus)}
+    `;
+
+    await this.emailService.sendEmailViaNodemailer({
+      to: email,
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent)
+    })
+  }
+}
+
+//
+export class SendGotAnAppointmentEmailUseCase {
+  constructor(
+    private readonly emailService: IEmailService
+  ) { }
+
+  async execute(payload: SendGotAnAppointmentEvent) {
+    const { email, name, appointmentDate, appointmentMode, appointmentStatus } = payload;
+
+    const subject = gotAnAppointmentEmailTemplate.subject();
+
+    const htmlContent = `
+    ${gotAnAppointmentEmailTemplate.head(name)}
+    ${gotAnAppointmentEmailTemplate.body(appointmentDate, appointmentMode, appointmentStatus)}
+    `;
+
+    await this.emailService.sendEmailViaNodemailer({
+      to: email,
+      subject,
+      html: emailMainTemplate.html(subject, htmlContent)
+    })
+  }
+}
 
 
 

@@ -485,7 +485,8 @@ export const providerSubscriptionPaymentEmailTemplate = {
     totalAmount: number,
     transactionId: string,
     paymentDate: string,
-    paymentStatus: PaymentStatus
+    paymentStatus: PaymentStatus,
+    recieptUrl: string
   ): string => `
     <div style="
       border: 1px solid #635BFF;
@@ -504,6 +505,10 @@ export const providerSubscriptionPaymentEmailTemplate = {
       ? "You can continue managing your services and availability from your Slotflow dashboard."
       : "Access to subscription features will remain disabled after the current billing period."
     }
+    </p>
+
+    <p>
+    <strong>Reciept : <a href="${recieptUrl}" target="_blank">Download</a></strong>
     </p>
 
     <p>
@@ -639,6 +644,237 @@ export const providerTrialSubscriptionEmailTemplate = {
     <p>
       If you have any questions or need assistance, our support team is always
       here to help.
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
+  `,
+};
+
+export const planSubscribedEmailTemplate = {
+  subject: (): string =>
+    "Your Slotflow Subscription is Now Active",
+
+  head: (name: string): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    <p>
+      Thank you for subscribing to <strong>Slotflow</strong>! Your
+      <strong>subscription plan</strong> has been successfully activated.
+    </p>
+  `,
+
+  body: (
+    subscribedPlan: string,
+    startDate: string,
+    endDate: string
+  ): string => `
+    <div style="
+      border: 1px solid #2563EB;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.95em;
+      background-color: #EFF6FF;
+    ">
+      <p style="margin: 0 0 8px 0;">
+        <strong>Subscription Details:</strong>
+      </p>
+      <ul style="margin: 0; padding-left: 18px;">
+        <li><strong>Plan:</strong> ${subscribedPlan}</li>
+        <li><strong>Start Date:</strong> ${startDate}</li>
+        <li><strong>End Date:</strong> ${endDate}</li>
+      </ul>
+    </div>
+
+    <p>
+      You now have full access to all features included in your selected plan.
+      Manage appointments, streamline operations, and continue growing your business with confidence.
+    </p>
+
+    <p>
+      We appreciate your trust in Slotflow. If you need any assistance,
+      our support team is always here to help.
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
+  `,
+};
+
+export const bookingPaymentSuccessEmailTemplate = {
+  subject: (paymentStatus: string): string =>
+    paymentStatus === "PAID"
+      ? "Payment Successful – SlotFlow Booking Confirmed ✅"
+      : "Payment Update – SlotFlow",
+
+  head: (name: string, paymentStatus: string): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    <p>
+      Your payment has been <strong>${paymentStatus}</strong> for your
+      appointment booking with <strong>SlotFlow</strong>.
+    </p>
+  `,
+
+  body: (
+    totalAmount: number,
+    transactionId: string,
+    paymentDate: string,
+    paymentStatus: string,
+    receiptUrl?: string
+  ): string => `
+    <div style="
+      border: 1px solid #22C55E;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.95em;
+      background-color: #F0FDF4;
+    ">
+      <p style="margin: 0 0 8px 0;">
+        <strong>Payment Details:</strong>
+      </p>
+      <ul style="margin: 0; padding-left: 18px;">
+        <li><strong>Amount Paid:</strong> ₹${totalAmount}</li>
+        <li><strong>Transaction ID:</strong> ${transactionId}</li>
+        <li><strong>Payment Date:</strong> ${paymentDate}</li>
+        <li><strong>Status:</strong> ${paymentStatus}</li>
+      </ul>
+    </div>
+
+    ${
+      receiptUrl
+        ? `
+      <p>
+        You can download your payment receipt using the link below:
+      </p>
+      <p>
+        <a href="${receiptUrl}" 
+           style="
+             display: inline-block;
+             padding: 10px 16px;
+             background-color: #22C55E;
+             color: #ffffff;
+             text-decoration: none;
+             border-radius: 6px;
+             font-weight: 600;
+           ">
+          Download Receipt
+        </a>
+      </p>
+      `
+        : ""
+    }
+
+    <p>
+      Thank you for choosing SlotFlow. Your booking is now confirmed.
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The SlotFlow Team</strong>
+    </p>
+  `,
+};
+
+export const slotBookedEmailTemplate = {
+  subject: (): string =>
+    "Your Slotflow Booking is Confirmed",
+
+  head: (name: string): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    <p>
+      Your appointment has been successfully scheduled with
+      <strong>Slotflow</strong>.
+    </p>
+  `,
+
+  body: (
+    appointmentDate: string,
+    appointmentMode: string,
+    appointmentStatus: string
+  ): string => `
+    <div style="
+      border: 1px solid #22C55E;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.95em;
+      background-color: #F0FDF4;
+    ">
+      <p style="margin: 0 0 8px 0;">
+        <strong>Appointment Details:</strong>
+      </p>
+      <ul style="margin: 0; padding-left: 18px;">
+        <li><strong>Date & Time:</strong> ${appointmentDate}</li>
+        <li><strong>Mode:</strong> ${appointmentMode}</li>
+        <li><strong>Status:</strong> ${appointmentStatus}</li>
+      </ul>
+    </div>
+
+    <p>
+      Please make sure to be available at the scheduled time. If your
+      appointment is online, ensure you have a stable internet connection.
+    </p>
+
+    <p>
+      If you need to reschedule or cancel, you can manage your booking
+      directly from your dashboard.
+    </p>
+
+    <p>
+      Regards,<br />
+      <strong>The Slotflow Team</strong>
+    </p>
+  `,
+};
+
+export const gotAnAppointmentEmailTemplate = {
+  subject: (): string =>
+    "You have received a new appointment request",
+
+  head: (name: string): string => `
+    <p style="font-size: 1.1em;">Hi ${name},</p>
+    <p>
+      You have received a new appointment request with
+      <strong>Slotflow</strong>.
+    </p>
+  `,
+
+  body: (
+    appointmentDate: string,
+    appointmentMode: string,
+    appointmentStatus: string
+  ): string => `
+    <div style="
+      border: 1px solid #22C55E;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.95em;
+      background-color: #F0FDF4;
+    ">
+      <p style="margin: 0 0 8px 0;">
+        <strong>Appointment Details:</strong>
+      </p>
+      <ul style="margin: 0; padding-left: 18px;">
+        <li><strong>Date & Time:</strong> ${appointmentDate}</li>
+        <li><strong>Mode:</strong> ${appointmentMode}</li>
+        <li><strong>Status:</strong> ${appointmentStatus}</li>
+      </ul>
+    </div>
+
+    <p>
+      Please make sure to be available at the scheduled time. If your
+      appointment is online, ensure you have a stable internet connection.
+    </p>
+
+    <p>
+      If you need to reschedule or cancel, you can manage your booking
+      directly from your dashboard.
     </p>
 
     <p>

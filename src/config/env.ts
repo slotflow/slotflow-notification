@@ -28,8 +28,8 @@ export const kafkaConfig = {
 
   groups: {
     notificationGroupId: validator.requireEnv("KAFKA_NOTIFICATION_GROUP_ID"),
-    emailGroupId: validator.requireEnv("KAFKA_EMAIL_NOTIFICATION_GROUP_ID"),
-    calendarGroupId: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_NOTIFICATION_GROUP_ID"),
+    emailGroupId: validator.requireEnv("KAFKA_EMAIL_GROUP_ID"),
+    calendarGroupId: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_GROUP_ID"),
   },
 
   brokers: [
@@ -53,8 +53,12 @@ export const kafkaConfig = {
         appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
         providerTrialSubscription: validator.requireEnv("KAFKA_PROVIDER_TRIAL_SUBSCRIPTION"),
         providerSubscriptionPaymentSuccess: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_SUCCESS"),
+        userBookingPaymentSuccess: validator.requireEnv("KAFKA_USER_BOOKING_PAYMENT_SUCCESS"),
+        planSubscribed: validator.requireEnv("KAFKA_PLAN_SUBSCRIBED"),
+        slotBooked: validator.requireEnv("KAFKA_SLOT_BOOKED"),
+        gotAnAppointment: validator.requireEnv("KAFKA_GOT_AN_APPOINTMENT"),
       },
-
+      
       notification: {
         // NOTIFICATIONS
         passwordReset: validator.requireEnv("KAFKA_PASSWORD_RESET"),
@@ -64,12 +68,17 @@ export const kafkaConfig = {
         providerAppointmentStatusForProvider: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_PROVIDER"),
         appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
         providerTrialSubscription: validator.requireEnv("KAFKA_PROVIDER_TRIAL_SUBSCRIPTION"),
+        providerSubscriptionPaymentSuccess: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_SUCCESS"),
+        userBookingPaymentSuccess: validator.requireEnv("KAFKA_USER_BOOKING_PAYMENT_SUCCESS"),
+        planSubscribed: validator.requireEnv("KAFKA_PLAN_SUBSCRIBED"),
+        slotBooked: validator.requireEnv("KAFKA_SLOT_BOOKED"),
+        gotAnAppointment: validator.requireEnv("KAFKA_GOT_AN_APPOINTMENT"),
       },
 
       calendar: {
         // GOOGLE CALENDAR
-        createGoogleCalendar: validator.requireEnv("KAFKA_CREATE_GOOGLE_CALENDAR"),
-        updateGoogleCalendar: validator.requireEnv("KAFKA_UPDATE_GOOGLE_CALENDAR"),
+        createGoogleCalendarEvent: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_EVENT_CREATE"),
+        updateGoogleCalendarEvent: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_EVENT_UPDATE"),
       },
     },
 

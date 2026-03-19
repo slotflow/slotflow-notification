@@ -1,10 +1,9 @@
 import { log } from "../../../shared/logger/logger";
 import { RegisterDeviceRequest } from "../../dtos/common.dtos";
-import { IRegisterDeviceUseCase } from "../../dtos/useCase.dtos";
 import { UserDevice } from "../../../domain/entities/userDevice.entity";
 import { IUserDeviceRepository } from "../../../domain/interfaces/repositories/IUserDevice.repository";
 
-export class RegisterDeviceUseCase implements IRegisterDeviceUseCase {
+export class RegisterDeviceUseCase {
     constructor(
         private readonly userDeviceRepository: IUserDeviceRepository,
     ) { };

@@ -93,6 +93,35 @@ export interface SendAppConnectEvent extends SendEmailCommon {
     appConnect: AppConnect;
 }
 
+// send subscription completed event
+export interface SendPlanSubscribedEvent extends SendEmailCommon {
+    subscribedPlan: string;
+    startDate: string;
+    endDate: string;
+}
+
+export interface SendSlotBookedEvent extends SendEmailCommon {
+    appointmentDate: string;
+    appointmentMode: string;
+    appointmentStatus: string;
+}
+
+export interface SendBookingPaymentSuccessEvent extends SendEmailCommon {
+    totalAmount: number,
+    paymentDate: string,
+    paymentStatus: string,
+    recieptUrl: string,
+    transactionId: string,
+    paymentFor: string,
+}
+
+export interface SendGotAnAppointmentEvent extends SendEmailCommon {
+    appointmentDate: string;
+    appointmentTime: string;
+    appointmentMode: string;
+    appointmentStatus: string;
+}
+
 
 // Added till this 
 
@@ -107,14 +136,13 @@ export interface SendUserPaymentEvent extends SendEmailCommon {
 }
 
 // send provider payment event
-export type SendProviderPaymentEvent = SendEmailCommon & SendNotificationCommon & {
+export interface SendProviderPaymentEvent extends SendEmailCommon {
     totalAmount: number;
     transactionId: string;
     paymentDate: string;
-    subscriptionStartDate: string;
-    subscriptionEndDate: string;
     paymentStatus: PaymentStatus;
     paymentFor: PaymentFor;
+    recieptUrl: string;
 };
 
 // send provider payout event

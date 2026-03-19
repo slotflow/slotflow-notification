@@ -1,14 +1,13 @@
 import { log } from "../../../shared/logger/logger";
-import { IGetAllNotificationsUseCase } from "../../dtos/useCase.dtos";
 import { INotificationRepository } from "../../../domain/interfaces/repositories/INotification.repository";
-import { GetAllNotificationsRequest, TableData, GetAllNotificationsResponse } from "../../dtos/common.dtos";
+import { GetNotificationsRequest, TableData, GetNotificationsResponse } from "../../dtos/common.dtos";
 
-export class GetAllNotificationsUseCase implements IGetAllNotificationsUseCase {
+export class GetNotificationsUseCase {
     constructor(
         private readonly notificationRepository: INotificationRepository
     ) { };
 
-    async execute(payload: GetAllNotificationsRequest): Promise<TableData<GetAllNotificationsResponse>> {
+    async execute(payload: GetNotificationsRequest): Promise<TableData<GetNotificationsResponse>> {
         try {
             const { limit, page, userId } = payload;
 

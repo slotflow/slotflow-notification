@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { authMiddleware } from "../../middleware/authMiddleware";
-import { userDeviceController } from "../userDevice/userDevice.controller";
+import { authMiddleware } from "../../middleware/auth.middleware";
+import { userDeviceController } from "./userDevice.controller";
 
 const router = Router();
 console.log("user device router");

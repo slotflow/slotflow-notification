@@ -8,10 +8,12 @@ const validator = new Validator();
 export const appConfig = {
   nodeEnv: validator.requireEnv("NODE_ENV"),
   port: validator.requireNumber("PORT"),
+  isDev: validator.requireEnv("NODE_ENV") === "development",
+  serviceName: validator.requireEnv("SERVICE_NAME")
 };
 
 export const mongodbConfig = {
-  mongoUri: process.env.NODE_ENV === "development" ? validator.requireEnv("MONGO_URI_DEV") : validator.requireEnv("MONGO_URI"),
+  mongoUri: appConfig.isDev ? validator.requireEnv("MONGO_URI_DEV") : validator.requireEnv("MONGO_URI"),
 };
 
 export const officialConfig = {
@@ -21,6 +23,10 @@ export const officialConfig = {
 
 export const firebaseConfig = {
   firebaseServiceAccountJson: validator.requireEnv("FIREBASE_SERVICE_ACCOUNT_JSON"),
+};
+
+export const otelConfig = {
+    otelExporterOtlpEndpoint: appConfig.isDev ? validator.requireEnv("OTEL_EXPORTER_OTLP_ENDPOINT_DEV") : validator.requireEnv("OTEL_EXPORTER_OTLP_ENDPOINT"),
 };
 
 export const kafkaConfig = {

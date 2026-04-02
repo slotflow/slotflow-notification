@@ -1,5 +1,5 @@
-import { awsConfig } from "../../config/env";
 import { SESClient } from "@aws-sdk/client-ses";
+import { awsConfig } from "../../../config/env";
 
 export const ses = new SESClient({
     region: awsConfig.aws_region,

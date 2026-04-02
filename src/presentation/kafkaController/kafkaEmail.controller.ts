@@ -1,9 +1,10 @@
 import { emailHandlers } from ".";
 import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
+import { kafkaEmailConsumer } from "../../infrastructure/messaging";
 import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
 
-export class KafkaEmailConsumerController {
+class KafkaEmailController {
 
   constructor(
     private readonly kafkaEmailConsumerAdapter: IKafkaConsumerAdapter
@@ -30,3 +31,5 @@ export class KafkaEmailConsumerController {
     };
   };
 };
+
+export const kafkaEmailController = new KafkaEmailController(kafkaEmailConsumer);

@@ -1,17 +1,26 @@
-import app from "./app";
+import app from "../src/app/app";
 import { appConfig } from "./config/env";
+import { initDB } from "./app/init/db.init";
 import { log } from "./shared/logger/logger";
-import { InitKafkaControllers } from "./kafkaInitiator";
-import connectDB from "./config/database/mongodb/mongodb.config";
+import { initOtel } from "./app/init/otel.init";
+import { initKafka } from "./app/init/kafka.init";
+import { printText } from "./shared/utils/printText";
+import { setupGracefulShutdown } from "./app/init/shutdown";
 
 const start = async () => {
   try {
-    connectDB();
-    await InitKafkaControllers();
+  
+    await initOtel();
+    await initDB();
+    await initKafka();
 
-    app.listen(appConfig.port, () =>
-      log.info(`Notification service running on http://localhost:${appConfig.port}`)
-    );
+    const server = app.listen(appConfig.port, () => {
+      printText();
+      log.info(`Live on http://localhost:${appConfig.port}`)
+    });
+
+    setupGracefulShutdown(server);
+    
   } catch (error) {
     log.error("Startup failed", error as Error);
     process.exit(1);

@@ -1,10 +1,10 @@
 import { notificationHandler } from ".";
 import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
+import { kafkaNotificationConsumer } from "../../infrastructure/messaging";
 import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
 
-
-export class KafkaNotificationController {
+class KafkaNotificationController {
 
     constructor(
         private readonly kafkaNotificationConsumerAdapter: IKafkaConsumerAdapter
@@ -31,3 +31,5 @@ export class KafkaNotificationController {
         };
     };
 };
+
+export const kafkaNotificationController = new KafkaNotificationController(kafkaNotificationConsumer);

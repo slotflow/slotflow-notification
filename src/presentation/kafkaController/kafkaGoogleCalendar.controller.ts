@@ -1,9 +1,10 @@
 import { calendarHandler } from ".";
 import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
+import { kafkaGoogleCalendarConsumer } from "../../infrastructure/messaging";
 import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
 
-export class KafkaGoogleCalendarController {
+class KafkaGoogleCalendarController {
 
     constructor(
         private readonly kafkaGoogleCalendarConsumerAdapter: IKafkaConsumerAdapter
@@ -30,3 +31,5 @@ export class KafkaGoogleCalendarController {
         };
     };
 };
+
+export const kafkaGoogleCalendarController = new KafkaGoogleCalendarController(kafkaGoogleCalendarConsumer);

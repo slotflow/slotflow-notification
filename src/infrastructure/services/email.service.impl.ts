@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
-import { ses } from '../lib/aws.ses';
 import { log } from '../../shared/logger/logger';
 import { officialConfig } from '../../config/env';
+import { ses } from '../cloud/aws/aws.ses.client';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
 import { EmailOptions } from '../../application/dtos/common.dtos';
 import { emailServiceConstants } from '../../shared/utils/constants';

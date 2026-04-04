@@ -1,10 +1,7 @@
 import helmet from 'helmet';
-import dotenv from 'dotenv';
 import express from 'express';
 import v1router from '../presentation/router/router.v1';
 import { errorHandler } from '../presentation/middleware/error.middleware';
-
-dotenv.config();
 
 const app = express();
 

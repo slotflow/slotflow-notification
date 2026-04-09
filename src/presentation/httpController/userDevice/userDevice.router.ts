@@ -1,9 +1,8 @@
 import { Router } from "express";
-import { authMiddleware } from "../../middleware/auth.middleware";
 import { userDeviceController } from "./userDevice.controller";
+import { authMiddleware } from "../../middleware/auth.middleware";
 
 const router = Router();
-console.log("user device router");
 
 router.post('/', authMiddleware, userDeviceController.registerDevice);
 

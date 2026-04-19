@@ -1,40 +1,46 @@
 import { ZodError } from "zod";
-import { ErrorRequestHandler } from "express";
+import { AppError } from "../../shared/dtos/common";
+import { NextFunction, Request, Response } from "express";
+import { isNamedError } from "../../shared/utils/isNamedError";
 
-export const errorHandler: ErrorRequestHandler = (
-    err,
-    req,
-    res,
-    next
+export const errorHandler = (
+    err: unknown,
+    req: Request,
+    res: Response,
+    next: NextFunction
 ) => {
-    
     if (err instanceof ZodError) {
-        console.log("Zod Error : ",err);
-        const message = err.issues;
-        res.status(400).json({ success: false, message });
-        return;
+        console.error("Zod Validation Error:", JSON.stringify(err.issues, null, 2));
+        return res.status(400).json({ 
+            success: false, 
+            message: "Validation failed", 
+            errors: err.issues 
+        });
     }
 
-    console.log("ERROR:", err);
-
-    if (err instanceof Error) {
-        const status = (err as any).statusCode || 400;
-        res.status(status).json({ success: false, message: err.message });
-        return;
+    if (err instanceof AppError) {
+        return res.status(err.statusCode).json({
+            success: false,
+            message: err.message,
+        });
     }
 
-    if ((err as any).name === "UnauthorizedError") {
-        res.status(401).json({ success: false, message: "Unauthorized access." });
-        return;
+    if (isNamedError(err)) {
+        if (err.name === "UnauthorizedError") {
+            return res.status(401).json({ success: false, message: "Unauthorized access." });
+        }
+        if (err.name === "ForbiddenError") {
+            return res.status(403).json({ success: false, message: "Forbidden action." });
+        }
     }
 
-    if ((err as any).name === "ForbiddenError") {
-        res.status(403).json({ success: false, message: "Forbidden action." });
-        return;
-    }
-
+    console.error("UNEXPECTED ERROR:", err);
+    
+    const message = err instanceof Error ? err.message : "Internal Server Error";
+    
     res.status(500).json({
         success: false,
-        message: "Internal Server Error",
+        message: message,
     });
 };
+

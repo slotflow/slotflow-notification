@@ -1,5 +1,7 @@
 import { ZodError } from "zod";
-import { AppError } from "../../shared/dtos/common";
+import { log } from "../../shared/logger/logger";
+import { AppError } from "../../shared/error/appError";
+import { ERROR_CODES } from "../../shared/utils/types";
 import { NextFunction, Request, Response } from "express";
 import { isNamedError } from "../../shared/utils/isNamedError";
 
@@ -9,38 +11,71 @@ export const errorHandler = (
     res: Response,
     next: NextFunction
 ) => {
+    let statusCode = 500;
+    let message = "Something went wrong";
+    let success = false;
+    let errors: unknown = undefined;
+    let errorCode: string = ERROR_CODES.INTERNAL_ERROR;
+
     if (err instanceof ZodError) {
-        console.error("Zod Validation Error:", JSON.stringify(err.issues, null, 2));
-        return res.status(400).json({ 
-            success: false, 
-            message: "Validation failed", 
-            errors: err.issues 
-        });
+        statusCode = 400;
+        message = "Validation failed";
+        errors = err.issues;
+        errorCode = ERROR_CODES.VALIDATION_ERROR;
+
+        log.warn(`[Validation Error] ${req.method} ${req.url}`);
     }
 
-    if (err instanceof AppError) {
-        return res.status(err.statusCode).json({
-            success: false,
-            message: err.message,
-        });
+    else if (err instanceof AppError) {
+        statusCode = err.statusCode;
+        errorCode = err.errorCode || ERROR_CODES.INTERNAL_ERROR;
+
+        message = err.isOperational
+            ? err.message
+            : "Something went wrong";
+
+        if (err.isOperational) {
+            log.warn(
+                `[Operational Error] ${req.method} ${req.url} - ${err.message}`
+            );
+        } else {
+            log.error(
+                `[System Error] ${req.method} ${req.url}`,
+                err
+            );
+        }
     }
 
-    if (isNamedError(err)) {
+    else if (isNamedError(err)) {
         if (err.name === "UnauthorizedError") {
-            return res.status(401).json({ success: false, message: "Unauthorized access." });
+            statusCode = 401;
+            message = "Unauthorized access";
+            errorCode = ERROR_CODES.UNAUTHORIZED;
+        } else if (err.name === "ForbiddenError") {
+            statusCode = 403;
+            message = "Forbidden action";
         }
-        if (err.name === "ForbiddenError") {
-            return res.status(403).json({ success: false, message: "Forbidden action." });
-        }
+
+        log.warn(
+            `[Named Error] ${req.method} ${req.url} - ${err.name}`
+        );
     }
 
-    console.error("UNEXPECTED ERROR:", err);
-    
-    const message = err instanceof Error ? err.message : "Internal Server Error";
-    
-    res.status(500).json({
-        success: false,
-        message: message,
+    else {
+        log.error(
+            `[Unexpected Error] ${req.method} ${req.url}`,
+            err as Error
+        );
+    }
+
+    res.status(statusCode).json({
+        success,
+        message,
+        errorCode,
+        errors,
+        ...(process.env.NODE_ENV === "development" &&
+        err instanceof Error
+            ? { stack: err.stack }
+            : {}),
     });
 };
-

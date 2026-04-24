@@ -15,7 +15,7 @@ export class NotificationController {
 
     async getNotifications(req: Request, res: Response, next: NextFunction) {
         try {
-            const user = (req.user as DecodedUser);
+            const user = req.user as DecodedUser;
             const validatedData = paginationZodSchema.parse({
                 page: req.query.page,
                 limit: req.query.limit

@@ -110,7 +110,7 @@ export interface SendBookingPaymentSuccessEvent extends SendEmailCommon {
     totalAmount: number,
     paymentDate: string,
     paymentStatus: string,
-    recieptUrl: string,
+    receiptUrl: string,
     transactionId: string,
     paymentFor: string,
 }
@@ -142,7 +142,7 @@ export interface SendProviderPaymentEvent extends SendEmailCommon {
     paymentDate: string;
     paymentStatus: PaymentStatus;
     paymentFor: PaymentFor;
-    recieptUrl: string;
+    receiptUrl: string;
 };
 
 // send provider payout event

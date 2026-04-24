@@ -486,7 +486,7 @@ export const providerSubscriptionPaymentEmailTemplate = {
     transactionId: string,
     paymentDate: string,
     paymentStatus: PaymentStatus,
-    recieptUrl: string
+    receiptUrl: string
   ): string => `
     <div style="
       border: 1px solid #635BFF;
@@ -508,7 +508,7 @@ export const providerSubscriptionPaymentEmailTemplate = {
     </p>
 
     <p>
-    <strong>Reciept : <a href="${recieptUrl}" target="_blank">Download</a></strong>
+    <strong>Reciept : <a href="${receiptUrl}" target="_blank">Download</a></strong>
     </p>
 
     <p>

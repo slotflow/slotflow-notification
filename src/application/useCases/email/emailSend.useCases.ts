@@ -1,3 +1,4 @@
+import { log } from "../../../shared/logger/logger";
 import { IEmailService } from "../../../domain/interfaces/services/IEmail.service";
 import { AppointmentStatus, PaymentFor, PaymentStatus } from "../../../domain/enums/enum";
 import { SendOtpEvent, SendAdminProviderReviewEvent, SendWelcomeEvent, SendAccountBlockStatusEvent, SendAccountTrustStatusEvent, SendAppointmentStatusChangeForUserEvent, SendUserPaymentEvent, SendProviderPaymentEvent, SendProviderPayoutEvent, SendAppConnectEvent, SendProviderTrialSubscriptionEvent, SendResetPasswordEvent, SendPlanSubscribedEvent, SendSlotBookedEvent, SendBookingPaymentSuccessEvent, SendGotAnAppointmentEvent } from "../../dtos/kafka.dtos";
@@ -10,11 +11,13 @@ export class SendOtpEmailUseCase {
   ) { };
 
   async execute(payload: SendOtpEvent) {
-    const { email, otp, purpose, name } = payload;
+    try {
 
-    const subject = otpEmailTemplate.subject(purpose);
-
-    const htmlContent = `
+      const { email, otp, purpose, name } = payload;
+      
+      const subject = otpEmailTemplate.subject(purpose);
+      
+      const htmlContent = `
       ${otpEmailTemplate.head(name)}
       ${otpEmailTemplate.body(purpose, otp)}
     `;
@@ -24,6 +27,9 @@ export class SendOtpEmailUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendOtpEmailUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -35,20 +41,25 @@ export class SendWelcomeEmailUseCase {
   ) { };
 
   async execute(payload: SendWelcomeEvent) {
-    const { email, name, role } = payload;
+    try {
 
-    const subject = welcomeEmailTemplate.subject();
-
-    const htmlContent = `
+      const { email, name, role } = payload;
+      
+      const subject = welcomeEmailTemplate.subject();
+      
+      const htmlContent = `
       ${welcomeEmailTemplate.head(name)}
       ${welcomeEmailTemplate.body(role)}
-    `;
-
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject,
-      html: emailMainTemplate.html(subject, htmlContent),
-    });
+      `;
+      
+      await this.emailService.sendEmailViaNodemailer({
+        to: email,
+        subject,
+        html: emailMainTemplate.html(subject, htmlContent),
+      });
+    } catch (error) {
+      log.error("SendWelcomeEmailUseCase failed : ", error as Error);
+    }
   };
 };
 
@@ -59,6 +70,7 @@ export class SendPasswordResetEmailUseCase {
   ) { };
 
   async execute(payload: SendResetPasswordEvent) {
+    try{
     const { email, name } = payload;
 
     const subject = passwordResetEmailTemplate.subject();
@@ -73,6 +85,9 @@ export class SendPasswordResetEmailUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendPasswordResetEmailUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -83,6 +98,7 @@ export class SendAccountBlockStatusChangeEmailUseCase {
   ) { };
 
   async execute(payload: SendAccountBlockStatusEvent) {
+    try{
     const { blocked, email, name, reason } = payload;
 
     const subject = accountBlockStatusEmailTemplate.subject(blocked);
@@ -97,6 +113,9 @@ export class SendAccountBlockStatusChangeEmailUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendAccountBlockStatusChangeEmailUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -107,6 +126,7 @@ export class SendAdminProviderReviewEmailUseCase {
   ) { };
 
   async execute(payload: SendAdminProviderReviewEvent) {
+    try {
     const { email, name, status, reason } = payload;
 
     const subject = adminProviderReviewEmailTemplate.subject(status);
@@ -121,6 +141,9 @@ export class SendAdminProviderReviewEmailUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendAdminProviderReviewEmailUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -131,6 +154,7 @@ export class SendAcountTrustStatusChangeEmailUseCase {
   ) { };
 
   async execute(payload: SendAccountTrustStatusEvent) {
+    try {
     const { trusted, email, name, reason } = payload;
 
     const subject = accountTrustStatusEmailTemplate.subject(trusted);
@@ -145,6 +169,9 @@ export class SendAcountTrustStatusChangeEmailUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendAcountTrustStatusChangeEmailUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -157,6 +184,7 @@ export class SendAppointmentStatusChangeEmailUseCase {
   ) { };
 
   async execute(payload: SendAppointmentStatusChangeForUserEvent) {
+    try{
     const { email, name, appointmentDate, appointmentMode, appointmentTime, appointmentStatus } = payload;
 
     if (
@@ -186,6 +214,9 @@ export class SendAppointmentStatusChangeEmailUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendAppointmentStatusChangeEmailUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -196,6 +227,7 @@ export class SendAppConnectEmailUseCase {
   ) { };
 
   async execute(payload: SendAppConnectEvent) {
+    try{
     const { email, name, appConnect } = payload;
 
     const subject = appConnectEmailTemplate.subject(appConnect);
@@ -210,6 +242,9 @@ export class SendAppConnectEmailUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendAppConnectEmailUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -219,6 +254,7 @@ export class SendProviderTrialSubscriptionEmailUseCase {
   ) { };
 
   async execute(payload: SendProviderTrialSubscriptionEvent) {
+    try{
     const { email, name, startDate, endDate } = payload;
 
     const subject = providerTrialSubscriptionEmailTemplate.subject();
@@ -233,6 +269,9 @@ export class SendProviderTrialSubscriptionEmailUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendProviderTrialSubscriptionEmailUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -243,7 +282,8 @@ export class SendSubscriptionPaymentSuccessEventUseCase {
   ) { };
 
   async execute(payload: SendProviderPaymentEvent) {
-    const { email, name, totalAmount, paymentDate, paymentStatus, transactionId, paymentFor, recieptUrl } = payload;
+    try{
+    const { email, name, totalAmount, paymentDate, paymentStatus, transactionId, paymentFor, receiptUrl } = payload;
 
     const isValidEvent =
       (paymentStatus === PaymentStatus.PAID &&
@@ -265,7 +305,7 @@ export class SendSubscriptionPaymentSuccessEventUseCase {
       transactionId,
       paymentDate,
       paymentStatus,
-      recieptUrl
+      receiptUrl
     )}
     `;
 
@@ -274,6 +314,9 @@ export class SendSubscriptionPaymentSuccessEventUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendSubscriptionPaymentSuccessEventUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -284,6 +327,7 @@ export class SendPlanSubscribedEventUseCase {
   ) { }
 
   async execute(payload: SendPlanSubscribedEvent) {
+    try{
     const { email, name, subscribedPlan, startDate, endDate } = payload;
 
     const subject = planSubscribedEmailTemplate.subject();
@@ -297,7 +341,10 @@ export class SendPlanSubscribedEventUseCase {
       to: email,
       subject,
       html: emailMainTemplate.html(subject, htmlContent)
-    })
+    });
+  } catch (error) {
+    log.error("SendPlanSubscribedEventUseCase failed : ", error as Error);
+  }
   }
 }
 
@@ -308,7 +355,8 @@ export class SendBookingPaymentSuccessEventUseCase {
   ) { }
 
   async execute(payload: SendBookingPaymentSuccessEvent) {
-    const { email, name, totalAmount, paymentDate, paymentStatus, transactionId, paymentFor, recieptUrl } = payload;
+    try{
+    const { email, name, totalAmount, paymentDate, paymentStatus, transactionId, paymentFor, receiptUrl } = payload;
 
     const isValidEvent =
       (paymentStatus === PaymentStatus.PAID &&
@@ -328,7 +376,7 @@ export class SendBookingPaymentSuccessEventUseCase {
       transactionId,
       paymentDate,
       paymentStatus,
-      recieptUrl
+      receiptUrl
     )}
     `;
 
@@ -337,6 +385,9 @@ export class SendBookingPaymentSuccessEventUseCase {
       subject,
       html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendBookingPaymentSuccessEventUseCase failed : ", error as Error);
+  }
   };
 };
 
@@ -347,6 +398,7 @@ export class SendSlotBookedEventUseCase {
   ) { }
 
   async execute(payload: SendSlotBookedEvent) {
+    try {
     const { email, name, appointmentDate, appointmentMode, appointmentStatus } = payload;
 
     const subject = slotBookedEmailTemplate.subject();
@@ -360,9 +412,12 @@ export class SendSlotBookedEventUseCase {
       to: email,
       subject,
       html: emailMainTemplate.html(subject, htmlContent)
-    })
+    });
+  } catch (error) {
+    log.error("SendSlotBookedEventUseCase failed : ", error as Error);
   }
-}
+  };
+};
 
 //
 export class SendGotAnAppointmentEmailUseCase {
@@ -371,6 +426,7 @@ export class SendGotAnAppointmentEmailUseCase {
   ) { }
 
   async execute(payload: SendGotAnAppointmentEvent) {
+    try {
     const { email, name, appointmentDate, appointmentMode, appointmentStatus } = payload;
 
     const subject = gotAnAppointmentEmailTemplate.subject();
@@ -384,105 +440,40 @@ export class SendGotAnAppointmentEmailUseCase {
       to: email,
       subject,
       html: emailMainTemplate.html(subject, htmlContent)
-    })
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  Edit 
-// send got appointment event
-// export class SendGotAppointmentEventUseCase {
-//   constructor(
-//     private emailService: IEmailService
-//   ) { };
-
-//   async execute(payload: SendGotAppointmentEvent) {
-//     const { appointmentDate, appointmentDuration, appointmentMode, appointmentTime, email, name } = payload;
-
-//     const subject = gotAppointmentEmailTemplate.subject;
-
-//     const htmlContent = `
-//       ${gotAppointmentEmailTemplate.head(name)}
-//       ${gotAppointmentEmailTemplate.body(
-//       appointmentDate,
-//       appointmentTime,
-//       appointmentDuration,
-//       appointmentMode
-//     )}
-//     `;
-
-//     await this.emailService.sendEmailViaNodemailer({
-//       to: email,
-//       subject,
-//       html: emailMainTemplate.html(subject, htmlContent),
-//     });
-//   };
-// };
-
-// send user payment event
-export class SendUserPaymentEventUseCase {
-  constructor(
-    private emailService: IEmailService
-  ) { };
-
-  async execute(payload: SendUserPaymentEvent) {
-    const { email, name, amount, transactionId, paymentDate, appointmentDate, paymentStatus, paymentFor } = payload;
-
-    const isValidEvent =
-      (paymentStatus === PaymentStatus.PAID &&
-        paymentFor === PaymentFor.APPOINTMENT_BOOKING) ||
-      (paymentStatus === PaymentStatus.REFUNDED &&
-        paymentFor === PaymentFor.CANCEL_BOOKING);
-
-    if (!isValidEvent) {
-      return;
-    }
-
-    const subject = userPaymentStatusEmailTemplate.subject(
-      paymentStatus,
-    );
-
-    const htmlContent = `
-      ${userPaymentStatusEmailTemplate.head(name, paymentStatus)}
-      ${userPaymentStatusEmailTemplate.body(
-      amount,
-      transactionId,
-      paymentDate,
-      appointmentDate,
-      paymentStatus
-    )}
-    `;
-
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject,
-      html: emailMainTemplate.html(subject, htmlContent),
     });
+  } catch (error) {
+    log.error("SendGotAnAppointmentEmailUseCase failed : ", error as Error);
+  }
   };
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO 
+
+// user cancel booking refund email
 
 // send provider payout event
 export class SendProviderPayoutEventUseCase {
@@ -491,28 +482,27 @@ export class SendProviderPayoutEventUseCase {
   ) { };
 
   async execute(payload: SendProviderPayoutEvent) {
-    const { amount, email, name, payoutDate, transactionId } = payload;
+    try {
+      const { amount, email, name, payoutDate, transactionId } = payload;
 
-    const subject = providerPayoutEmailTemplate.subject();
+      const subject = providerPayoutEmailTemplate.subject();
 
-    const htmlContent = `
-      ${providerPayoutEmailTemplate.head(name)}
-      ${providerPayoutEmailTemplate.body(
-      amount,
-      transactionId,
-      payoutDate
-    )}
-    `;
+      const htmlContent = `
+        ${providerPayoutEmailTemplate.head(name)}
+        ${providerPayoutEmailTemplate.body(
+        amount,
+        transactionId,
+        payoutDate
+      )}
+      `;
 
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject,
-      html: emailMainTemplate.html(subject, htmlContent),
-    });
-    await this.emailService.sendEmailViaNodemailer({
-      to: email,
-      subject,
-      html: emailMainTemplate.html(subject, htmlContent),
-    });
+      await this.emailService.sendEmailViaNodemailer({
+        to: email,
+        subject,
+        html: emailMainTemplate.html(subject, htmlContent),
+      });
+    } catch (error) {
+      log.error("SendProviderPayoutEventUseCase failed : ", error as Error);
+    }
   };
 };

@@ -16,7 +16,7 @@ export class UserDeviceController {
     async registerDevice(req: Request, res: Response, next: NextFunction) {
         try {
             console.log("user device controller");
-            const user = (req.user as DecodedUser);
+            const user = req.user as DecodedUser;
             const validatedData = registerDeviceZodSchema.parse({
                 ...req.body,
             });

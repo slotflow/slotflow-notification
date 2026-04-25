@@ -20,7 +20,10 @@ export class NotificationController {
                 page: req.query.page,
                 limit: req.query.limit
             });
-            const result = await this.getNotificationsUseCase.execute({...validatedData, userId: user.userOrProviderId});
+            const result = await this.getNotificationsUseCase.execute({
+                ...validatedData,
+                userId: user.id
+            });
             sendResponse(res, result);
         } catch (error) {
             log.error("getNotifications failed :", error as Error);

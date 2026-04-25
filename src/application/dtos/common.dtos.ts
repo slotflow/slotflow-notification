@@ -65,7 +65,7 @@ export interface EmailOptions {
 
 // decoded user
 export interface DecodedUser {
-  userOrProviderId: string;
+  id: string;
   role: Role;
   googleAccessToken?: string;
   googleRefreshToken?: string;

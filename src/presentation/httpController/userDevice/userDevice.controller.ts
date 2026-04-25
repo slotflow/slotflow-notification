@@ -21,7 +21,10 @@ export class UserDeviceController {
                 ...req.body,
             });
             console.log("validatedData : ",validatedData);
-            await this.registerDeviceUseCase.execute({...validatedData, userId: user.userOrProviderId});
+            await this.registerDeviceUseCase.execute({
+                ...validatedData, 
+                userId: user.id
+            });
             sendResponse(res, null);
         } catch (error) {
             log.error("registerDevice failed : ", error as Error);

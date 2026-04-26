@@ -44,7 +44,7 @@ export const kafkaConfig = {
   ],
 
   topics: {
-
+    dlqTopic: validator.requireEnv("KAFKA_DLQ_TOPIC"),
     sub: {
       email: {
         // EMAIL

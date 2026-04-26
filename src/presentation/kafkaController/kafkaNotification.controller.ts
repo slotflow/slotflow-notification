@@ -1,14 +1,19 @@
-import { notificationHandler } from ".";
 import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
+import { notificationHandler, processEventWrapperUseCase } from ".";
+import { NSSubKafkaEventPayload } from "../../application/dtos/kafka.dtos";
 import { kafkaNotificationConsumer } from "../../infrastructure/messaging";
 import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
+import { ProcessEventWrapperUseCase } from "../../application/useCases/processEventWrapper.useCase";
 
 class KafkaNotificationController {
 
     constructor(
-        private readonly kafkaNotificationConsumerAdapter: IKafkaConsumerAdapter
-    ) { };
+        private readonly kafkaNotificationConsumerAdapter: IKafkaConsumerAdapter,
+        private readonly processEventWrapperUseCase: ProcessEventWrapperUseCase
+    ) {
+        this.startListening = this.startListening.bind(this);
+    };
 
     async startListening(): Promise<void> {
         try {
@@ -20,8 +25,13 @@ class KafkaNotificationController {
 
                 await this.kafkaNotificationConsumerAdapter.subscribe(topic, async ({ message }) => {
                     if (!message.value) return;
-                    const { payload: { notificationData } } = JSON.parse(message.value.toString());
-                    await useCase.execute(notificationData);
+                    const eventData = JSON.parse(message.value.toString());
+                    await this.processEventWrapperUseCase.execute({
+                        businessUseCase: useCase,
+                        eventData,
+                        topic,
+                        payloadExtractor: (payload: NSSubKafkaEventPayload) => payload.notificationData
+                    });
                 });
             };
 
@@ -32,4 +42,7 @@ class KafkaNotificationController {
     };
 };
 
-export const kafkaNotificationController = new KafkaNotificationController(kafkaNotificationConsumer);
+export const kafkaNotificationController = new KafkaNotificationController(
+    kafkaNotificationConsumer,
+    processEventWrapperUseCase
+);

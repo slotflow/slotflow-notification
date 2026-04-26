@@ -1,14 +1,19 @@
-import { emailHandlers } from ".";
 import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
+import { emailHandlers, processEventWrapperUseCase } from ".";
 import { kafkaEmailConsumer } from "../../infrastructure/messaging";
+import { NSSubKafkaEventPayload } from "../../application/dtos/kafka.dtos";
 import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
+import { ProcessEventWrapperUseCase } from "../../application/useCases/processEventWrapper.useCase";
 
 class KafkaEmailController {
 
   constructor(
-    private readonly kafkaEmailConsumerAdapter: IKafkaConsumerAdapter
-  ) { };
+    private readonly kafkaEmailConsumerAdapter: IKafkaConsumerAdapter,
+    private readonly processEventWrapperUseCase: ProcessEventWrapperUseCase
+  ) {
+    this.startListening = this.startListening.bind(this);
+  };
 
   async startListening(): Promise<void> {
     try {
@@ -20,8 +25,13 @@ class KafkaEmailController {
 
         await this.kafkaEmailConsumerAdapter.subscribe(topic, async ({ message }) => {
           if (!message.value) return;
-          const { payload: { emailData } } = JSON.parse(message.value.toString());
-          await useCase.execute(emailData);
+          const eventData = JSON.parse(message.value.toString());
+          await this.processEventWrapperUseCase.execute({
+            businessUseCase: useCase,
+            eventData,
+            topic,
+            payloadExtractor: (payload: NSSubKafkaEventPayload) => payload.emailData
+          });
         });
       };
 
@@ -32,4 +42,7 @@ class KafkaEmailController {
   };
 };
 
-export const kafkaEmailController = new KafkaEmailController(kafkaEmailConsumer);
+export const kafkaEmailController = new KafkaEmailController(
+  kafkaEmailConsumer,
+  processEventWrapperUseCase
+);

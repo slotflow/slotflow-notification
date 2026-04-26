@@ -15,10 +15,14 @@ import {
     SendGotAnAppointmentEmailUseCase,
 } from "../../application/useCases/email/emailSend.useCases";
 import { kafkaProducer } from "../../infrastructure/messaging";
-import { notificationRepository, userDeviceRepository } from "../../infrastructure/repositoryImpls";
+import { notificationRepository, processedEventRepository, userDeviceRepository } from "../../infrastructure/repositoryImpls";
 import { SendNotificationUseCase } from "../../application/useCases/notification/sendNotification.useCase";
 import { emailService, googleCalendarGatewayService, pushNotificationService } from "../../infrastructure/services";
 import { CreateGoogleCalendarEventUseCase, UpdateGoogleCalendarEventUseCase } from "../../application/useCases/GoogleCalendar/googleCalendar.useCases";
+import { ProcessEventWrapperUseCase } from "../../application/useCases/processEventWrapper.useCase";
+
+// process event wrapper use case
+export const processEventWrapperUseCase = new ProcessEventWrapperUseCase(processedEventRepository, kafkaProducer);
 
 export const emailHandlers = {
     sendOtp: new SendOtpEmailUseCase(emailService),

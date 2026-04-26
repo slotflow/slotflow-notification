@@ -1,16 +1,16 @@
-import { log } from "../../shared/logger/logger";
-import { EventStatus } from "../../domain/enums/enum";
-import { appConfig, kafkaConfig } from "../../config/env";
-import { ProcessedEvent } from "../../domain/entities/ProcessedEvent.entity";
-import { IKafkaProducerAdapter } from "../../domain/interfaces/messaging/IKafkaProducerAdapter";
-import { IProcessedEventRepository } from "../../domain/interfaces/repositories/IProcessedEvent.repository";
-import { DqMetaData, EventEnvelope, NSSubKafkaEventPayload, ProcessEventWrapperInput } from "../dtos/kafka.dtos";
+import { log } from "../../../shared/logger/logger";
+import { EventStatus } from "../../../domain/enums/enum";
+import { appConfig, kafkaConfig } from "../../../config/env";
+import { ProcessedEvent } from "../../../domain/entities/ProcessedEvent.entity";
+import { IKafkaProducerAdapter } from "../../../domain/interfaces/messaging/IKafkaProducerAdapter";
+import { IProcessedEventRepository } from "../../../domain/interfaces/repositories/IProcessedEvent.repository";
+import { DqMetaData, EventEnvelope, NSSubKafkaEventPayload, ProcessEventWrapperInput } from "../../dtos/kafka.dtos";
 
 export class ProcessEventWrapperUseCase {
     constructor(
         private processedEventRepository: IProcessedEventRepository,
         private kafkaProducer: IKafkaProducerAdapter
-    ) {}
+    ) { }
 
     async execute(input: ProcessEventWrapperInput): Promise<void> {
         const { businessUseCase, eventData, topic, payloadExtractor } = input;
@@ -22,12 +22,12 @@ export class ProcessEventWrapperUseCase {
 
         if (processedEvent) {
             const props = processedEvent.getProps();
-            
+
             if (props.status === EventStatus.SUCCESS) {
                 log.info(`Idempotency Event ${eventId} already processed successfully. Skipping.`);
                 return;
             }
-            
+
             if (props.status === EventStatus.PENDING) {
                 log.info(`Idempotency Event ${eventId} is currently PENDING. Proceeding with retry attempt ${attempt}.`);
             }
@@ -76,7 +76,7 @@ export class ProcessEventWrapperUseCase {
                 });
             } else {
                 log.error(`Kafka Event ${eventId} exhausted all ${maxAttempts} attempts. Moving to DLQ (or dropping).`);
-                
+
                 await this.kafkaProducer.publish<EventEnvelope<NSSubKafkaEventPayload, DqMetaData>>(kafkaConfig.topics.dlqTopic, {
                     ...eventData,
                     metadata: {

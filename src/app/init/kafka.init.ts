@@ -1,6 +1,6 @@
-import { kafkaEmailController } from "../../presentation/kafkaController/kafkaEmail.controller";
-import { kafkaNotificationController } from "../../presentation/kafkaController/kafkaNotification.controller";
-import { kafkaGoogleCalendarController } from "../../presentation/kafkaController/kafkaGoogleCalendar.controller";
+import { kafkaEmailController } from "../../presentation/kafka/kafkaEmail.controller";
+import { kafkaNotificationController } from "../../presentation/kafka/kafkaNotification.controller";
+import { kafkaGoogleCalendarController } from "../../presentation/kafka/kafkaGoogleCalendar.controller";
 import { kafkaEmailConsumer, kafkaGoogleCalendarConsumer, kafkaNotificationConsumer, kafkaProducer } from "../../infrastructure/messaging";
 
 export const initKafka = async () => {

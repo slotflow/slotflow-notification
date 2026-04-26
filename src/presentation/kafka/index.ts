@@ -6,20 +6,21 @@ import {
     SendSlotBookedEventUseCase,
     SendAdminProviderReviewEmailUseCase,
     SendBookingPaymentSuccessEventUseCase,
-    SendPlanSubscribedEventUseCase,
+    SendPlanSubscribedEventInputUseCase,
     SendAcountTrustStatusChangeEmailUseCase,
     SendAppointmentStatusChangeEmailUseCase,
     SendAccountBlockStatusChangeEmailUseCase,
     SendProviderTrialSubscriptionEmailUseCase,
     SendSubscriptionPaymentSuccessEventUseCase,
     SendGotAnAppointmentEmailUseCase,
-} from "../../application/useCases/email/emailSend.useCases";
+} from "../../application/useCases/kafka/email/emailSend.useCases";
 import { kafkaProducer } from "../../infrastructure/messaging";
-import { notificationRepository, processedEventRepository, userDeviceRepository } from "../../infrastructure/repositoryImpls";
-import { SendNotificationUseCase } from "../../application/useCases/notification/sendNotification.useCase";
+import { ProcessEventWrapperUseCase } from "../../application/useCases/kafka/processEventWrapper.useCase";
+import { SendNotificationUseCase } from "../../application/useCases/kafka/notification/sendNotification.useCase";
 import { emailService, googleCalendarGatewayService, pushNotificationService } from "../../infrastructure/services";
-import { CreateGoogleCalendarEventUseCase, UpdateGoogleCalendarEventUseCase } from "../../application/useCases/GoogleCalendar/googleCalendar.useCases";
-import { ProcessEventWrapperUseCase } from "../../application/useCases/processEventWrapper.useCase";
+import { CreateGoogleCalendarEventUseCase } from "../../application/useCases/kafka/GoogleCalendar/createGoogleCalendar.useCases";
+import { notificationRepository, processedEventRepository, userDeviceRepository } from "../../infrastructure/repositoryImpls";
+import { UpdateGoogleCalendarEventUseCase } from "../../application/useCases/kafka/GoogleCalendar/updateGoogleCalendar.useCase";
 
 // process event wrapper use case
 export const processEventWrapperUseCase = new ProcessEventWrapperUseCase(processedEventRepository, kafkaProducer);
@@ -36,7 +37,7 @@ export const emailHandlers = {
     providerTrialSubscription: new SendProviderTrialSubscriptionEmailUseCase(emailService),
     providerSubscriptionPaymentSuccess: new SendSubscriptionPaymentSuccessEventUseCase(emailService),
     userBookingPaymentSuccess: new SendBookingPaymentSuccessEventUseCase(emailService),
-    planSubscribed: new SendPlanSubscribedEventUseCase(emailService),
+    planSubscribed: new SendPlanSubscribedEventInputUseCase(emailService),
     slotBooked: new SendSlotBookedEventUseCase(emailService),
     gotAnAppointment: new SendGotAnAppointmentEmailUseCase(emailService),
 };

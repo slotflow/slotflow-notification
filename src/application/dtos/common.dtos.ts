@@ -122,4 +122,4 @@ export interface GetNotificationsRequest extends ApiPaginationRequest {
 export type GetNotificationsResponse = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
 
 // Send Notification Request
-export type SendNotificationRequest = Pick<Notification, "userId" | "body" | "data" | "pushNotification" | "title">;
+export type SendNotificationInput = Pick<Notification, "userId" | "body" | "data" | "pushNotification" | "title">;

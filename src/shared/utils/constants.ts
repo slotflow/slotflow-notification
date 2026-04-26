@@ -1,3 +1,4 @@
+import { IdType } from "./types";
 import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentStatus } from "../../domain/enums/enum";
 
 // email main template
@@ -900,4 +901,12 @@ export const emailServiceConstants = {
   gmail: "Gmail",
   slotflow: "Slotflow",
   source: "no-reply@slotflow.online"
+};
+
+export const PREFIX_MAP: Record<IdType, string> = {
+  [IdType.EVENT]: "sf_evt_",
+  [IdType.TRANSACTION]: "sf_trx_",
+  [IdType.ROOM]: "sf_room_",
+  [IdType.IDEMPOTENCY]: "sf_idem_",
+  [IdType.FILE]: "sf_file_",
 };

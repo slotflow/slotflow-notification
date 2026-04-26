@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import userDeviceRouter from '../httpController/userDevice/userDevice.router';
-import notificationRouter from '../httpController/notification/notification.router';
+import userDeviceRouter from '../http/userDevice/userDevice.router';
+import notificationRouter from '../http/notification/notification.router';
 
 const router = Router();
 

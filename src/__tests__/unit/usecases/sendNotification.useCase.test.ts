@@ -2,14 +2,14 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mockPushNotificationService } from '../../dependecInstances/service';
 import { SendNotificationRequest } from '../../../application/dtos/common.dtos';
 import { mockNotificationRepository, mockUserDeviceRepository } from '../../dependecInstances/repository';
-import { SendNotificationUseCase } from '../../../application/useCases/notification/sendNotification.useCase';
+import { SendNotificationUseCase } from '../../../application/useCases/kafka/notification/sendNotification.useCase';
 
 describe('SendNotificationUseCase', () => {
     let useCase: SendNotificationUseCase;
 
     beforeEach(() => {
         vi.clearAllMocks();
-        
+
         useCase = new SendNotificationUseCase(
             mockNotificationRepository as any,
             mockPushNotificationService as any,

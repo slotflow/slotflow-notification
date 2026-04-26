@@ -1,15 +1,15 @@
 import { log } from "../../../shared/logger/logger";
 import { INotificationRepository } from "../../../domain/interfaces/repositories/INotification.repository";
-import { GetNotificationsRequest, TableData, GetNotificationsResponse } from "../../dtos/common.dtos";
+import { GetNotificationsInput, TableData, GetNotificationsOutput } from "../../dtos/common.dtos";
 
 export class GetNotificationsUseCase {
     constructor(
         private readonly notificationRepository: INotificationRepository
     ) { };
 
-    async execute(payload: GetNotificationsRequest): Promise<TableData<GetNotificationsResponse>> {
+    async execute(input: GetNotificationsInput): Promise<TableData<GetNotificationsOutput>> {
         try {
-            const { limit, page, userId } = payload;
+            const { limit, page, userId } = input;
 
             const result = await this.notificationRepository.findAll(userId, page, limit);
             const { data: notifications, currentPage, totalCount, totalPages } = result;

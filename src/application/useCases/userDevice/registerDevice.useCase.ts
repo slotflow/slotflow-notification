@@ -1,4 +1,4 @@
-import { RegisterDeviceRequest } from "../../dtos/common.dtos";
+import { RegisterDeviceInput } from "../../dtos/common.dtos";
 import { UserDevice } from "../../../domain/entities/userDevice.entity";
 import { IUserDeviceRepository } from "../../../domain/interfaces/repositories/IUserDevice.repository";
 
@@ -7,8 +7,8 @@ export class RegisterDeviceUseCase {
         private readonly userDeviceRepository: IUserDeviceRepository,
     ) { };
 
-    async execute(payload: RegisterDeviceRequest): Promise<void> {
-        const { fcmToken, deviceId, platform, userId } = payload;
+    async execute(input: RegisterDeviceInput): Promise<void> {
+        const { fcmToken, deviceId, platform, userId } = input;
         const existing = await this.userDeviceRepository.findUnique(userId, deviceId, platform);
         if (existing) {
             existing.updateToken(fcmToken);

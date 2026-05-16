@@ -98,7 +98,7 @@ export interface TableData<T> {
   totalPages?: number;
   currentPage?: number;
   totalCount?: number;
-  data?: T
+  items?: T
 };
 
 

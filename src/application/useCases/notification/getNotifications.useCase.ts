@@ -12,10 +12,10 @@ export class GetNotificationsUseCase {
             const { limit, page, userId } = input;
 
             const result = await this.notificationRepository.findAll(userId, page, limit);
-            const { data: notifications, currentPage, totalCount, totalPages } = result;
+            const { items: notifications, currentPage, totalCount, totalPages } = result;
 
             return {
-                data: notifications.map(notification => ({
+                items: notifications.map(notification => ({
                     _id: notification._id,
                     createdAt: notification.createdAt,
                     title: notification.title,

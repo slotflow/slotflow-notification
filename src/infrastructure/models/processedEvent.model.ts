@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { EventStatus } from "../../domain/enums/common.enum";
+import { EventStatus } from "../../domain/enums/enum";
 
 export interface IProcessedEvent extends Document {
     eventId: string;

@@ -1,26 +1,26 @@
+import { kafkaProducer } from "../../infrastructure/messaging";
 import {
     SendOtpEmailUseCase,
     SendWelcomeEmailUseCase,
+    SendSlotBookedEventUseCase,
     SendAppConnectEmailUseCase,
     SendPasswordResetEmailUseCase,
-    SendSlotBookedEventUseCase,
+    SendGotAnAppointmentEmailUseCase,
+    SendPlanSubscribedEventInputUseCase,
     SendAdminProviderReviewEmailUseCase,
     SendBookingPaymentSuccessEventUseCase,
-    SendPlanSubscribedEventInputUseCase,
     SendAcountTrustStatusChangeEmailUseCase,
     SendAppointmentStatusChangeEmailUseCase,
     SendAccountBlockStatusChangeEmailUseCase,
     SendProviderTrialSubscriptionEmailUseCase,
     SendSubscriptionPaymentSuccessEventUseCase,
-    SendGotAnAppointmentEmailUseCase,
 } from "../../application/useCases/kafka/email/emailSend.useCases";
-import { kafkaProducer } from "../../infrastructure/messaging";
 import { ProcessEventWrapperUseCase } from "../../application/useCases/kafka/processEventWrapper.useCase";
 import { SendNotificationUseCase } from "../../application/useCases/kafka/notification/sendNotification.useCase";
 import { emailService, googleCalendarGatewayService, pushNotificationService } from "../../infrastructure/services";
-import { CreateGoogleCalendarEventUseCase } from "../../application/useCases/kafka/GoogleCalendar/createGoogleCalendar.useCases";
 import { notificationRepository, processedEventRepository, userDeviceRepository } from "../../infrastructure/repositoryImpls";
 import { UpdateGoogleCalendarEventUseCase } from "../../application/useCases/kafka/GoogleCalendar/updateGoogleCalendar.useCase";
+import { CreateGoogleCalendarEventUseCase } from "../../application/useCases/kafka/GoogleCalendar/createGoogleCalendar.useCases";
 
 // process event wrapper use case
 export const processEventWrapperUseCase = new ProcessEventWrapperUseCase(processedEventRepository, kafkaProducer);
@@ -42,19 +42,21 @@ export const emailHandlers = {
     gotAnAppointment: new SendGotAnAppointmentEmailUseCase(emailService),
 };
 
+const sendNotification = new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository);
 export const notificationHandler = {
-    passwordReset: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    accountBlockStatus: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    accountTrustStatus: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    providerAppointmentStatusForUser: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    providerAppointmentStatusForProvider: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    appConnect: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    providerTrialSubscription: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    providerSubscriptionPaymentSuccess: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    userBookingPaymentSuccess: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    planSubscribed: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    slotBooked: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
-    gotAnAppointment: new SendNotificationUseCase(notificationRepository, pushNotificationService, userDeviceRepository),
+    passwordReset: sendNotification,
+    accountBlockStatus: sendNotification,
+    accountTrustStatus: sendNotification,
+    providerAppointmentStatusForUser: sendNotification,
+    providerAppointmentStatusForProvider: sendNotification,
+    appConnect: sendNotification,
+    providerTrialSubscription: sendNotification,
+    providerSubscriptionPaymentSuccess: sendNotification,
+    userBookingPaymentSuccess: sendNotification,
+    planSubscribed: sendNotification,
+    slotBooked: sendNotification,
+    gotAnAppointment: sendNotification,
+    passwordUpdate: sendNotification,
 };
 
 export const calendarHandler = {

@@ -26,7 +26,7 @@ export class NotificationRepositoryImpl implements INotificationRepository {
         return NotificationMapper.toDomain(doc);
     };
 
-    async findAll(userId: string, page: number = 1, limit: number = 20): Promise<{ data: Array<Notification>, totalPages: number; currentPage: number; totalCount: number; }> {
+    async findAll(userId: string, page: number = 1, limit: number = 20): Promise<{ items: Array<Notification>, totalPages: number; currentPage: number; totalCount: number; }> {
         const skip = (page - 1) * limit;
         const [notifications, totalCount] = await Promise.all([
             NotificationModel.find({ userId }, {
@@ -43,7 +43,7 @@ export class NotificationRepositoryImpl implements INotificationRepository {
         ]);
         const totalPages = Math.ceil(totalCount / limit);
         return {
-            data: notifications.map(notification => NotificationMapper.toDomain(notification)),
+            items: notifications.map(notification => NotificationMapper.toDomain(notification)),
             totalPages,
             currentPage: page,
             totalCount

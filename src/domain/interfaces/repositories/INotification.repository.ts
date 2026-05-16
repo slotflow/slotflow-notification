@@ -6,6 +6,6 @@ export interface INotificationRepository {
     
     update(notification: Notification): Promise<Notification>;
 
-    findAll(userId: string, page: number, limit: number): Promise<{ data: Array<Notification>, totalPages: number; currentPage: number; totalCount: number; }>;
+    findAll(userId: string, page: number, limit: number): Promise<{ items: Array<Notification>, totalPages: number; currentPage: number; totalCount: number; }>;
 
 };

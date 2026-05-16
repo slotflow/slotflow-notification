@@ -15,7 +15,7 @@ export const mongodbConfig = {
 
 export const officialConfig = {
   email: validator.requireEnv("OFFICIAL_EMAIL"),
-  password: validator.requireEnv("OFFICIALEMAIL_PASS"),
+  password: validator.requireEnv("OFFICIAL_EMAIL_PASS"),
 };
 
 export const firebaseConfig = {
@@ -39,8 +39,8 @@ export const kafkaConfig = {
 
   brokers: [
     validator.requireEnv("KAFKA_BROKER_1"),
-    validator.requireEnv("KAFKA_BROKER_2"),
-    validator.requireEnv("KAFKA_BROKER_3"),
+    // validator.requireEnv("KAFKA_BROKER_2"),
+    // validator.requireEnv("KAFKA_BROKER_3"),
   ],
 
   topics: {
@@ -78,6 +78,7 @@ export const kafkaConfig = {
         planSubscribed: validator.requireEnv("KAFKA_PLAN_SUBSCRIBED"),
         slotBooked: validator.requireEnv("KAFKA_SLOT_BOOKED"),
         gotAnAppointment: validator.requireEnv("KAFKA_GOT_AN_APPOINTMENT"),
+        passwordUpdate: validator.requireEnv("KAFKA_PASSWORD_UPDATE"),
       },
 
       calendar: {

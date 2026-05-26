@@ -16,6 +16,4 @@ export const registerDeviceZodSchema = z.object({
     platform: z.nativeEnum(Platform, {
         errorMap: () => ({ message: "Invalid platform" }),
     }),
-}).merge(validateUserIdZodSchema);
-
-export const getAllNotificationsZodSchema = validateUserIdZodSchema.merge(paginationZodSchema);
+});

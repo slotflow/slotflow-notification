@@ -65,8 +65,8 @@ export interface EmailOptions {
 
 // decoded user
 export interface DecodedUser {
-  userOrProviderId?: string;
-  role?: Role;
+  id: string;
+  role: Role;
   googleAccessToken?: string;
   googleRefreshToken?: string;
   googleId?: string;
@@ -98,14 +98,14 @@ export interface TableData<T> {
   totalPages?: number;
   currentPage?: number;
   totalCount?: number;
-  data?: T
+  items?: T
 };
 
 
 // **** USECASE DTOS
 
 // Register Device 
-export interface RegisterDeviceRequest {
+export interface RegisterDeviceInput {
   fcmToken: string;
   deviceId: string;
   platform: Platform;
@@ -114,12 +114,12 @@ export interface RegisterDeviceRequest {
 
 
 // Get All Notifications
-export interface GetAllNotificationsRequest extends ApiPaginationRequest {
+export interface GetNotificationsInput extends ApiPaginationRequest {
   userId: string;
 };
 
 // Get All Notifications Response
-export type GetAllNotificationsResponse = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
+export type GetNotificationsOutput = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
 
 // Send Notification Request
-export type SendNotificationRequest = Pick<Notification, "userId" | "body" | "data" | "pushNotification" | "title">;
+export type SendNotificationInput = Pick<Notification, "userId" | "body" | "data" | "pushNotification" | "title">;

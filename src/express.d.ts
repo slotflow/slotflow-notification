@@ -1,4 +1,4 @@
-import { DecodedUser } from "./application/dtos/common.dto";
+import { DecodedUser } from "./application/dtos/common.dtos";
 
 // Extend the Request interface
 declare global {

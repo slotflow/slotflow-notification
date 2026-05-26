@@ -165,3 +165,10 @@ export enum SubscriptionValidity {
     SIX_MONTHS = 180,
     TWELVE_MONTHS = 360,
 };
+
+export enum EventStatus {
+    SUCCESS = "SUCCESS",
+    FAILED = "FAILED",
+    PENDING = "PENDING",
+    RETRY = "RETRY",
+}

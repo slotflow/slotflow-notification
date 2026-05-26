@@ -1,37 +1,29 @@
-import { log } from "../../../shared/logger/logger";
-import { RegisterDeviceRequest } from "../../dtos/common.dtos";
-import { IRegisterDeviceUseCase } from "../../dtos/useCase.dtos";
+import { RegisterDeviceInput } from "../../dtos/common.dtos";
 import { UserDevice } from "../../../domain/entities/userDevice.entity";
 import { IUserDeviceRepository } from "../../../domain/interfaces/repositories/IUserDevice.repository";
 
-export class RegisterDeviceUseCase implements IRegisterDeviceUseCase {
+export class RegisterDeviceUseCase {
     constructor(
         private readonly userDeviceRepository: IUserDeviceRepository,
     ) { };
 
-    async execute(payload: RegisterDeviceRequest): Promise<void> {
-        try {
-            const { fcmToken, deviceId, platform, userId } = payload;
-
-            const existing = await this.userDeviceRepository.findUnique(userId, deviceId, platform);
-            if (existing) {
-                existing.updateToken(fcmToken);
-                await this.userDeviceRepository.update(existing);
-                return;
-            };
-
-            const userDevice = UserDevice.create({
-                fcmToken,
-                deviceId,
-                userId,
-                platform,
-            });
-
-            await this.userDeviceRepository.create(userDevice);
+    async execute(input: RegisterDeviceInput): Promise<void> {
+        const { fcmToken, deviceId, platform, userId } = input;
+        const existing = await this.userDeviceRepository.findUnique(userId, deviceId, platform);
+        if (existing) {
+            existing.updateToken(fcmToken);
+            await this.userDeviceRepository.update(existing);
             return;
-        } catch (error) {
-            log.error("RegisterDeviceUseCase failed : ", error as Error);
-            throw error;
         };
+
+        const userDevice = UserDevice.create({
+            fcmToken,
+            deviceId,
+            userId,
+            platform,
+        });
+
+        await this.userDeviceRepository.create(userDevice);
+        return;
     };
 };

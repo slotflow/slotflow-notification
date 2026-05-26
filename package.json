@@ -1,5 +1,5 @@
 {
-  "name": "notification-backend",
+  "name": "slotflow-notification",
   "description": "Notification backend system for Slotflow",
   "author": "MidhunKalarikkal",
   "license": "MIT",
@@ -13,7 +13,8 @@
     "lint": "eslint \"src/**/*.ts\" --max-warnings=0",
     "build": "tsc",
     "start": "node dist/server.js",
-    "bundle": "tsup src/server.ts --format esm --dts --out-dir dist-bundle"
+    "bundle": "tsup src/server.ts --format esm --dts --out-dir dist-bundle",
+    "test": "vitest --watch"
   },
   "keywords": [
     "slotflow",
@@ -22,8 +23,23 @@
   ],
   "dependencies": {
     "@aws-sdk/client-ses": "^3.908.0",
+    "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/auto-instrumentations-node": "^0.72.0",
+    "@opentelemetry/exporter-logs-otlp-http": "^0.214.0",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.214.0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0.214.0",
+    "@opentelemetry/instrumentation-winston": "^0.58.0",
+    "@opentelemetry/resources": "^2.6.1",
+    "@opentelemetry/sdk-logs": "^0.214.0",
+    "@opentelemetry/sdk-metrics": "^2.6.1",
+    "@opentelemetry/sdk-node": "^0.214.0",
+    "@opentelemetry/semantic-conventions": "^1.40.0",
+    "@opentelemetry/winston-transport": "^0.24.0",
+    "@vitest/coverage-v8": "^4.1.4",
+    "chalk": "^5.6.2",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "figlet": "^1.11.0",
     "firebase": "^12.7.0",
     "firebase-admin": "^13.6.0",
     "googleapis": "^160.0.0",
@@ -31,6 +47,8 @@
     "kafkajs": "^2.2.4",
     "mongoose": "^8.10.1",
     "nodemailer": "^7.0.9",
+    "uuid": "^14.0.0",
+    "vitest": "^4.1.4",
     "winston": "^3.19.0",
     "zod": "^3.24.4"
   },

@@ -2,8 +2,10 @@
 
 import { UserDeviceRepositoryImpl } from "./userDevice.repository.impl";
 import { NotificationRepositoryImpl } from "./notification.repository.impl";
+import { ProcessedEventRepositoryImpl } from "./processedEvent.repository.impl";
 import { IUserDeviceRepository } from "../../domain/interfaces/repositories/IUserDevice.repository";
 import { INotificationRepository } from "../../domain/interfaces/repositories/INotification.repository";
+import { IProcessedEventRepository } from "../../domain/interfaces/repositories/IProcessedEvent.repository";
 
 // notification repository instance
 export const notificationRepository: INotificationRepository = new NotificationRepositoryImpl();
@@ -11,3 +13,5 @@ export const notificationRepository: INotificationRepository = new NotificationR
 // userDevice repository instance
 export const userDeviceRepository: IUserDeviceRepository = new UserDeviceRepositoryImpl();
 
+// processed event repository instance
+export const processedEventRepository: IProcessedEventRepository = new ProcessedEventRepositoryImpl();

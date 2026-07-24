@@ -79,6 +79,8 @@ export const kafkaConfig = {
         slotBooked: validator.requireEnv("KAFKA_SLOT_BOOKED"),
         gotAnAppointment: validator.requireEnv("KAFKA_GOT_AN_APPOINTMENT"),
         passwordUpdate: validator.requireEnv("KAFKA_PASSWORD_UPDATE"),
+        stripeAccountLinked: validator.requireEnv("KAFKA_STRIPE_ACCOUNT_LINKED"),
+        stripeAccountStatusUpdated: validator.requireEnv("KAFKA_STRIPE_ACCOUNT_STATUS_UPDATED"),
       },
 
       calendar: {

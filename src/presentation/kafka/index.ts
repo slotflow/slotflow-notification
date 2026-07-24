@@ -57,6 +57,8 @@ export const notificationHandler = {
     slotBooked: sendNotification,
     gotAnAppointment: sendNotification,
     passwordUpdate: sendNotification,
+    stripeAccountLinked: sendNotification,
+    stripeAccountStatusUpdated: sendNotification,
 };
 
 export const calendarHandler = {

@@ -45,7 +45,6 @@ export interface Notification {
   userId: string;
   title: string;
   body: string;
-  pushNotification: boolean;
   isRead: boolean;
   data?: Record<string, string>,
   createdAt: Date;
@@ -64,18 +63,11 @@ export interface EmailOptions {
 
 
 // decoded user
-export interface DecodedUser {
+export interface AuthUser {
   id: string;
   role: Role;
-  googleAccessToken?: string;
-  googleRefreshToken?: string;
-  googleId?: string;
-  email?: string;
-  name?: string;
-  image: string | null;
-  connectOnly?: boolean;
-  exp?: number;
-  iat?: number;
+  email: string;
+  name: string;
 };
 
 
@@ -121,5 +113,11 @@ export interface GetNotificationsInput extends ApiPaginationRequest {
 // Get All Notifications Response
 export type GetNotificationsOutput = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
 
-// Send Notification Request
-export type SendNotificationInput = Pick<Notification, "userId" | "body" | "data" | "pushNotification" | "title">;
+// Notification channels
+export type NotificationChannel = 'email' | 'push' | 'in_app';
+
+// Notification Type
+export type NotificationType =
+  | 'account_activity'
+  | 'system_updates'
+  | 'promotional_updates';

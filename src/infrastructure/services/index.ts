@@ -1,6 +1,6 @@
 import { EmailServiceImpl } from "./email.service.impl";
-import { IEmailService } from "../../domain/interfaces/services/IEmail.service";
 import { PushNotificationServiceImpl } from "./pushNotification.service.impl";
+import { IEmailService } from "../../domain/interfaces/services/IEmail.service";
 import { GoogleCalendarGatewayServiceImpl } from "./googleCalendarGatewayService.impl";
 import { IPushNotificationService } from "../../domain/interfaces/services/IPushNotification.service";
 import { IGoogleCalendarGatewayService } from "../../domain/interfaces/services/IGoogleCalendarGateway.service";

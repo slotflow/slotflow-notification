@@ -35,7 +35,6 @@ export class NotificationRepositoryImpl implements INotificationRepository {
                 body: 1,
                 title: 1,
                 data: 1,
-                pushNotification: 1,
                 isRead: 1,
                 createdAt: 1
             }).sort({ createdAt: -1}).skip(skip).limit(limit).lean(),

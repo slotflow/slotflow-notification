@@ -1,10 +1,10 @@
 import { kafkaConfig } from "../../../../config/env";
 import { log } from "../../../../shared/logger/logger";
-import { IdType } from "../../../../shared/utils/types";
-import { generateId } from "../../../../shared/utils/generateId";
+import { IdType } from "../../../../shared/utils/types/enums";
+import { generateId } from "../../../../shared/utils/helpers/generateId";
 import { IKafkaProducerAdapter } from "../../../../domain/interfaces/messaging/IKafkaProducerAdapter";
 import { IGoogleCalendarGatewayService } from "../../../../domain/interfaces/services/IGoogleCalendarGateway.service";
-import { CreateGoogleCalendarEventInput, CreateGoogleCalendarEventFailedResult, CreateGoogleCalendarSuccessEvent, EventEnvelope } from "../../../dtos/kafka.dtos";
+import { CreateGoogleCalendarEventInput, CreateGoogleCalendarEventFailedResult, GoogleCalendarCreateEventSuccessEvent, EventEnvelope } from "../../../dtos/kafka.dtos";
 
 export class CreateGoogleCalendarEventUseCase {
     constructor(
@@ -33,10 +33,13 @@ export class CreateGoogleCalendarEventUseCase {
                 appointmentStatus: appointmentStatus,
                 slotDuration
             });
+            
+
+            // TODO create and send notification
 
             if (calendarEventId) {
-                await this.kafkaProducer.publish<EventEnvelope<CreateGoogleCalendarSuccessEvent>>(
-                    kafkaConfig.topics.pub.googleCalendarSuccess,
+                await this.kafkaProducer.publish<EventEnvelope<GoogleCalendarCreateEventSuccessEvent>>(
+                    kafkaConfig.topics.pub.googleCalendarCreateEventSuccess,
                     {
                         eventId: generateId(IdType.EVENT),
                         occurredAt: new Date(),
@@ -54,7 +57,7 @@ export class CreateGoogleCalendarEventUseCase {
                 return;
             } else {
                 await this.kafkaProducer.publish<EventEnvelope<CreateGoogleCalendarEventFailedResult>>(
-                    kafkaConfig.topics.pub.googleCalendarFailed,
+                    kafkaConfig.topics.pub.googleCalendarCreateEventFailed,
                     {
                         eventId: generateId(IdType.EVENT),
                         occurredAt: new Date(),

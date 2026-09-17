@@ -14,6 +14,7 @@ export class ProcessEventWrapperUseCase {
 
     async execute(input: ProcessEventWrapperInput): Promise<void> {
         const { businessUseCase, eventData, topic, payloadExtractor } = input;
+
         const { eventId, attempt, maxAttempts, payload } = eventData;
 
         const payloadData = payloadExtractor(payload);

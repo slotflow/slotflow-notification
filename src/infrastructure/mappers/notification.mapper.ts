@@ -12,7 +12,6 @@ export class NotificationMapper {
             body: doc.body,
             data: doc.data,
             title: doc.title,
-            pushNotification: doc.pushNotification,
             createdAt: doc.createdAt,
             updatedAt: doc.updatedAt
         });
@@ -28,7 +27,6 @@ export class NotificationMapper {
             body: props.body,
             data: props.data,
             title: props.title,
-            pushNotification: props.pushNotification,
             createdAt: props.createdAt,
             updatedAt: props.updatedAt
         };

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { objectIdRegex } from "../utils/regex";
+import { objectIdRegex } from "../utils/constants/regex";
 
 export const validateUserIdZodSchema = z.object({
     userId: z.string().regex(objectIdRegex, "Invalid userId"),

@@ -18,7 +18,6 @@ export class Notification {
             userId: props.userId,
             title: props.title,
             body: props.body,
-            pushNotification: props.pushNotification ?? false,
             data: props.data ?? null,
             isRead: false,
             createdAt: new Date(),
@@ -41,10 +40,6 @@ export class Notification {
 
     get body(): string {
         return this.props.body;
-    };
-
-    get pushNotification(): boolean {
-        return this.props.pushNotification;
     };
 
     get isRead(): boolean {

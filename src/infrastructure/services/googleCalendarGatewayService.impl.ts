@@ -1,7 +1,7 @@
 import { google } from "googleapis";
 import { AppError } from "../../shared/error/appError";
-import { ERROR_CODES } from "../../shared/utils/types";
-import { EventData } from "../../shared/utils/constants";
+import { ERROR_CODES } from "../../shared/utils/types/enums";
+import { EventData } from "../../shared/utils/constants/constants";
 import { AddEventToCalendarProps } from "../../application/dtos/googleCalendar.dto";
 import { CreateGoogleCalendarEventRequest, IGoogleCalendarGatewayService, UpdateGoogleCalendarEventRequest } from "../../domain/interfaces/services/IGoogleCalendarGateway.service";
 

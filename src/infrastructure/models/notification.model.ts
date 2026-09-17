@@ -5,7 +5,6 @@ export interface INotification {
     userId: Types.ObjectId,
     title: string;
     body: string;
-    pushNotification: boolean;
     isRead: boolean;
     data: Record<string, string>;
     createdAt: Date,
@@ -30,10 +29,6 @@ const notificationSchema = new Schema<INotification>({
         maxLength: [200, "Notification title cannot exceed 500 characters"],
         minLength: [1, "Notification title cannot be empty"],
         trim: true
-    },
-    pushNotification: {
-        type: Boolean,
-        default: false,
     },
     isRead: {
         type: Boolean,

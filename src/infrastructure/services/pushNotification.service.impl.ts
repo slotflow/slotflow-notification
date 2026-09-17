@@ -1,6 +1,6 @@
 import { log } from "../../shared/logger/logger";
 import { AppError } from "../../shared/error/appError";
-import { ERROR_CODES } from "../../shared/utils/types";
+import { ERROR_CODES } from "../../shared/utils/types/enums";
 import { firebaseMessaging } from "../firebase/firebaseAdmin";
 import { IPushNotificationService, SendPushNotificationRequest } from "../../domain/interfaces/services/IPushNotification.service";
 

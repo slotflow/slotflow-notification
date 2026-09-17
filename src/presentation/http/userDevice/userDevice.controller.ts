@@ -1,8 +1,8 @@
 import { registerDeviceUseCase } from "..";
 import { log } from "../../../shared/logger/logger";
 import { NextFunction, Request, Response } from "express";
-import { sendResponse } from "../../../shared/utils/response";
-import { DecodedUser } from "../../../application/dtos/common.dtos";
+import { sendResponse } from "../../../shared/utils/helpers/response";
+import { AuthUser } from "../../../application/dtos/common.dtos";
 import { registerDeviceZodSchema } from "../../../shared/zod/notification.zod";
 import { RegisterDeviceUseCase } from "../../../application/useCases/userDevice/registerDevice.useCase";
 
@@ -16,7 +16,7 @@ export class UserDeviceController {
     async registerDevice(req: Request, res: Response, next: NextFunction) {
         try {
             console.log("user device controller");
-            const user = req.user as DecodedUser;
+            const user = req.user as AuthUser;
             const validatedData = registerDeviceZodSchema.parse({
                 ...req.body,
             });

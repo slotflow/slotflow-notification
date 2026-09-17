@@ -30,7 +30,11 @@ class KafkaEmailController {
             businessUseCase: useCase,
             eventData,
             topic,
-            payloadExtractor: (payload: NSSubKafkaEventPayload) => payload.emailData
+            // payloadExtractor: (payload: NSSubKafkaEventPayload) => payload.emailData
+            payloadExtractor: (payload: NSSubKafkaEventPayload) => ({
+              ...payload.emailData,
+              templateKey: key,
+            }),
           });
         });
       };

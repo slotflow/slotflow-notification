@@ -3,7 +3,6 @@ export interface NotificationProps {
     userId: string;
     title: string;
     body: string;
-    pushNotification: boolean;
     isRead: boolean;
     data: Record<string, string> | null;
     createdAt: Date;

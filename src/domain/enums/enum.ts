@@ -4,31 +4,6 @@ export enum Platform {
     WEB = "WEB",
 };
 
-export enum NotificationType {
-    BOOKING_CONFIRMED = "BOOKING_CONFIRMED",
-    BOOKING_CANCELLED = "BOOKING_CANCELLED",
-    BOOKING_RESCHEDULED = "BOOKING_RESCHEDULED",
-    BOOKING_REJECTED = "BOOKING_REJECTED",
-    BOOKING_NOT_ATTENDED = "BOOKING_NOT_ATTENDED",
-    BOOKING_APPROVED = "BOOKING_APPROVED",
-
-    APPOINTMENT_CREATED = "APPOINTMENT_CREATED",
-    APPOINTMENT_CANCELLED = "APPOINTMENT_CANCELLED",
-    APPOINTMENT_RESCHEDULED = "APPOINTMENT_RESCHEDULED",
-    APPOINTMENT_NOT_ATTENDED = "APPOINTMENT_NOT_ATTENDED",
-
-    PAYMENT_SUCCESS = "PAYMENT_SUCCESS",
-    PAYMENT_FAILED = "PAYMENT_FAILED",
-
-    SUBSCRIPTION_EXPIRING = "SUBSCRIPTION_EXPIRING",
-    SUBSCRIPTION_EXPIRED = "SUBSCRIPTION_EXPIRED",
-
-    BOOKING = "BOOKING",
-    APPOINTMENT = "APPOINTMENT",
-
-    SYSTEM = "SYSTEM",
-};
-
 export enum AdminVerificationStatus {
     REQUESTED = "REQUESTED",
     UNDER_REVIEW = "UNDER_REVIEW",
@@ -138,6 +113,16 @@ export enum ServiceCategory {
     EVENTS_AND_CREATIVE_SERVICES = "Events & Creative Services",
     TECHNOLOGY_SERVICES = "Technology Services",
     REAL_ESTATE_AND_PROPERTY = "Real Estate & Property",
+    FOOD_AND_CATERING = "Food & Catering",
+    TRAVEL_AND_HOSPITALITY = "Travel & Hospitality",
+    FINANCIAL_AND_INSURANCE = "Financial & Insurance",
+    PETS_AND_ANIMAL_CARE = "Pets & Animal Care",
+    LEGAL_AND_GOVERNMENT = "Legal & Government Services",
+    SPIRITUAL_AND_RELIGIOUS = "Spiritual & Religious Services",
+    CHILDCARE_AND_FAMILY = "Childcare & Family Services",
+    FASHION_AND_TAILORING = "Fashion & Tailoring",
+    PHOTOGRAPHY_AND_MEDIA = "Photography & Media",
+    BUSINESS_AND_MARKETING = "Business & Marketing",
 };
 
 export enum ServiceMode {
@@ -171,4 +156,12 @@ export enum EventStatus {
     FAILED = "FAILED",
     PENDING = "PENDING",
     RETRY = "RETRY",
+}
+
+export enum PaymentAccountStatus {
+    PENDING = "pending",
+    ACTIVE = "active",
+    RESTRICTED = "restricted",
+    REVOKED = "revoked",
+    NOT_CONNECTED = "not_connected",
 }

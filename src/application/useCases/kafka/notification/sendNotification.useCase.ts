@@ -1,12 +1,12 @@
 import { log } from "../../../../shared/logger/logger";
 import { AppError } from "../../../../shared/error/appError";
-import { NotificationEventPayload } from "../../../dtos/notification.dtos";
+import { NotificationEventPayload } from "../../../dtos/notification.dto";
 import { Notification } from "../../../../domain/entities/notification.entity";
+import { serializeRecordValues } from "../../../../shared/utils/helpers/serializeRecordValues";
+import { IPushNotificationService } from "../../../interfaces/services/IPushNotification.service";
 import { notificationTemplateRegistry } from "../../../../shared/utils/constants/notificationConstants";
 import { IUserDeviceRepository } from "../../../../domain/interfaces/repositories/IUserDevice.repository";
-import { IPushNotificationService } from "../../../../domain/interfaces/services/IPushNotification.service";
 import { INotificationRepository } from "../../../../domain/interfaces/repositories/INotification.repository";
-import { serializeRecordValues } from "../../../../shared/utils/helpers/serializeRecordValues";
 
 export class SendNotificationUseCase {
 

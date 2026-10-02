@@ -1,3 +1,4 @@
+
 export enum Platform {
     ANDROID = "ANDROID",
     IOS = "IOS",
@@ -20,7 +21,6 @@ export enum AppointmentStatus {
     REJECTED_BY_PROVIDER = "REJECTED_BY_PROVIDER",
     NOT_ATTENDED = "NOT_ATTENDED",
     CONFIRMED = "CONFIRMED",
-    PAYMENT_PENDING = "PAYMENT_PENDING",
     EXPIRED = "EXPIRED",
 };
 
@@ -30,29 +30,8 @@ export enum Role {
     PROVIDER = "PROVIDER",
 };
 
-export enum Boolean {
-    TRUE = "true",
-    FALSE = "false"
-};
-
-export enum FileType {
-    PNG = "image/png",
-    JPEG = "image/jpeg",
-    JPG = "image/jpg"
-};
-
-export enum Day {
-    SUNDAY = "Sunday",
-    MONDAY = "Monday",
-    TUESDAY = "Tuesday",
-    WEDNESDAY = "Wednesday",
-    THURSDAY = "Thursday",
-    FRIDAY = "Friday",
-    SATURDAY = "Saturday",
-};
-
 export enum AppConnect {
-    GOOGLE = "GOOGLE",
+    GOOGLE_CALENDAR = "GOOGLE_CALENDAR",
     STRIPE = "STRIPE",
     NOTION = "NOTION",
     WHATSAPP = "WHATSAPP",
@@ -73,19 +52,6 @@ export enum PaymentFor {
     CANCEL_SUBSCRIPTION = "CANCEL_SUBSCRIPTION",
 };
 
-export enum PaymentGateway {
-    STRIPE = "STRIPE",
-    RAZORPAY = "RAZORPAY",
-    PAYPAL = "PAYPAL"
-};
-
-export enum PaymentMethod {
-    CARD = "CARD",
-    UPI = "UPI",
-    WALLET = "WALLET",
-    NET_BANKING = "NET_BANKING",
-};
-
 export enum PaymentStatus {
     PENDING = "PENDING",
     PAID = "PAID",
@@ -102,53 +68,22 @@ export enum PlanName {
     NO_SUBSCRIPTION = "NO_SUBSCRIPTION"
 };
 
-export enum ServiceCategory {
-    HEALTHCARE_AND_WELLNESS = "Healthcare & Wellness",
-    PROFESSIONAL_SERVICES = "Professional Services",
-    EDUCATION_AND_TRAINING = "Education & Training",
-    HOME_AND_MAINTENANCE = "Home & Maintenance",
-    BEAUTY_AND_PERSONAL_CARE = "Beauty & Personal Care",
-    FITNESS_AND_LIFESTYLE = "Fitness & Lifestyle",
-    AUTOMOTIVE_SERVICES = "Automotive Services",
-    EVENTS_AND_CREATIVE_SERVICES = "Events & Creative Services",
-    TECHNOLOGY_SERVICES = "Technology Services",
-    REAL_ESTATE_AND_PROPERTY = "Real Estate & Property",
-    FOOD_AND_CATERING = "Food & Catering",
-    TRAVEL_AND_HOSPITALITY = "Travel & Hospitality",
-    FINANCIAL_AND_INSURANCE = "Financial & Insurance",
-    PETS_AND_ANIMAL_CARE = "Pets & Animal Care",
-    LEGAL_AND_GOVERNMENT = "Legal & Government Services",
-    SPIRITUAL_AND_RELIGIOUS = "Spiritual & Religious Services",
-    CHILDCARE_AND_FAMILY = "Childcare & Family Services",
-    FASHION_AND_TAILORING = "Fashion & Tailoring",
-    PHOTOGRAPHY_AND_MEDIA = "Photography & Media",
-    BUSINESS_AND_MARKETING = "Business & Marketing",
-};
-
 export enum ServiceMode {
     ONLINE = "ONLINE",
     OFFLINE = "OFFLINE",
     BOTH = "BOTH",
 };
 
-export enum ServiceType {
-    ONE_TIME = "ONE_TIME",
-    RECURRING = "RECURRING",
-};
-
 export enum SubscriptionStatus {
     ACTIVE = "ACTIVE",
-    EXPIRED = "EXPIRED",
     CANCELLED = "CANCELLED",
-    PAYMENT_PENDING = "PAYMENT_PENDING",
-};
-
-export enum SubscriptionValidity {
-    SEVEN_DAYS = 7,
-    ONE_MONTH = 30,
-    THREE_MONTHS = 90,
-    SIX_MONTHS = 180,
-    TWELVE_MONTHS = 360,
+    TRIALING = "TRIALING",
+    PAST_DUE = "PAST_DUE",
+    UNPAID = "UNPAID",
+    INCOMPLETE = "INCOMPLETE",
+    INCOMPLETE_EXPIRED = "INCOMPLETE_EXPIRED",
+    EXPIRED = "EXPIRED",
+    PAYMENT_FAILED = "PAYMENT_FAILED"
 };
 
 export enum EventStatus {
@@ -159,9 +94,23 @@ export enum EventStatus {
 }
 
 export enum PaymentAccountStatus {
-    PENDING = "pending",
-    ACTIVE = "active",
-    RESTRICTED = "restricted",
-    REVOKED = "revoked",
-    NOT_CONNECTED = "not_connected",
+    PENDING = "PENDING",
+    ACTIVE = "ACTIVE",
+    RESTRICTED = "RESTRICTED",
+    REVOKED = "REVOKED",
+    NOT_CONNECTED = "NOT_CONNECTED",
+}
+
+export enum IntegrationStatus {
+    CONNECTED = "CONNECTED",
+    EXPIRED = "EXPIRED",
+    REVOKED = "REVOKED",
+    DISCONNECTED = "DISCONNECTED",
+}
+
+export enum IntegrationProvider {
+    GOOGLE = "GOOGLE",
+    WHATSAPP = "WHATSAPP",
+    NOTION = "NOTION",
+    SLACK = "SLACK",
 }

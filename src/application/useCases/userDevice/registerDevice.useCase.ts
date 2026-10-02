@@ -1,4 +1,4 @@
-import { RegisterDeviceInput } from "../../dtos/common.dtos";
+import { RegisterDeviceInput } from "../../dtos/common.dto";
 import { UserDevice } from "../../../domain/entities/userDevice.entity";
 import { IUserDeviceRepository } from "../../../domain/interfaces/repositories/IUserDevice.repository";
 

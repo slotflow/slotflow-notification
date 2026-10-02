@@ -1,18 +1,41 @@
-import { SendEmailCommon } from "./kafka.dtos";
+import { SendEmailCommon } from "./kafka.dto";
+import { ProviderAddressForUser } from "./common.dto";
 import { emailTemplateConstants } from "../../shared/utils/constants/emailConstants";
-import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentFor, PaymentStatus, Role } from "../../domain/enums/enum";
+import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose } from "../../domain/enums/enum";
+
+/**
+ * Email common dtos
+ */
+
+// email options
+export interface EmailOptions {
+  to: string;
+  subject: string;
+  html: string;
+}
+
+
+
+
+
+/**
+ * Email kafka events dtos
+ */
+
+// Publishing events
 
 // send otp event for registration and password update
-export interface SendOtpEventInput extends SendEmailCommon {
+export interface SendOtpEventInput {
+    email: string;
     templateKey: typeof emailTemplateConstants.sendOtp;
     otp: string;
     purpose: OtpPurpose;
 }
 
 // send welcome event
-export interface SendWelcomeEventInput extends SendEmailCommon {
+export interface SendWelcomeEventInput {
+    email: string;
     templateKey: typeof emailTemplateConstants.registerSuccess;
-    role: Role;
 }
 
 // send reset password
@@ -49,6 +72,7 @@ export interface SendAppointmentStatusChangeForUserEventInput extends SendEmailC
     appointmentMode: string;
     appointmentStatus: AppointmentStatus;
     reason?: string;
+    address?: ProviderAddressForUser;
 }
 
 // send app connect event
@@ -111,7 +135,6 @@ export interface SendUserBookingRefundPaymentSuccessEventInput extends SendEmail
     transactionId: string;
 }
 
-
 // send provider payout event
 // export interface SendProviderPayoutEventInput extends SendEmailCommon {
 //     templateKey: typeof emailTemplateConstants.;
@@ -119,6 +142,7 @@ export interface SendUserBookingRefundPaymentSuccessEventInput extends SendEmail
 //     transactionId: string;
 //     payoutDate: string;
 // }
+
 
 export type EmailEventPayload =
     | SendOtpEventInput

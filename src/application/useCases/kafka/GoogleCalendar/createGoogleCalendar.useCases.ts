@@ -1,39 +1,76 @@
 import { kafkaConfig } from "../../../../config/env";
 import { log } from "../../../../shared/logger/logger";
+import { EventEnvelope } from "../../../dtos/kafka.dto";
 import { IdType } from "../../../../shared/utils/types/enums";
+import { NotFoundError } from "../../../../shared/error/appError";
 import { generateId } from "../../../../shared/utils/helpers/generateId";
-import { IKafkaProducerAdapter } from "../../../../domain/interfaces/messaging/IKafkaProducerAdapter";
-import { IGoogleCalendarGatewayService } from "../../../../domain/interfaces/services/IGoogleCalendarGateway.service";
-import { CreateGoogleCalendarEventInput, CreateGoogleCalendarEventFailedResult, GoogleCalendarCreateEventSuccessEvent, EventEnvelope } from "../../../dtos/kafka.dtos";
+import { IGoogleTokenService } from "../../../interfaces/services/IGoogleToken.service";
+import { IKafkaProducerAdapter } from "../../../interfaces/messaging/IKafkaProducer.adapter";
+import { IGoogleCalendarService } from "../../../interfaces/services/IGoogleCalendarGateway.service";
+import { CreateGoogleCalendarEventInput, GoogleCalendarCreateEventFailedEvent, GoogleCalendarCreateEventSuccessEvent } from "../../../dtos/googleCalendar.dto";
 
 export class CreateGoogleCalendarEventUseCase {
     constructor(
-        private googleCalendarGatewayService: IGoogleCalendarGatewayService,
-        private kafkaProducer: IKafkaProducerAdapter,
+        private readonly googleCalendarService: IGoogleCalendarService,
+        private readonly kafkaProducer: IKafkaProducerAdapter,
+        private readonly googleTokenService: IGoogleTokenService,
     ) { };
 
     async execute(input: CreateGoogleCalendarEventInput): Promise<void> {
         try {
             const {
                 role,
-                accessToken,
+                userId,
                 appointmentDate,
                 appointmentStatus,
                 bookingId,
                 slotDuration
             } = input;
 
-            if (!accessToken || !role || !appointmentDate || !appointmentStatus || !bookingId) {
+            if (!userId || !role || !appointmentDate || !appointmentStatus || !bookingId) {
                 return;
             };
 
-            const calendarEventId = await this.googleCalendarGatewayService.createEvent({
+            let accessToken: string | null = null;
+
+            try {
+                accessToken = await this.googleTokenService.getAccessToken(userId);
+            } catch (error) {
+                if (error instanceof NotFoundError) {
+                    log.warn(`CreateGoogleCalendarEventUseCase skipped calendar sync for user ${userId}: Google credentials not found.`);
+                    return;
+                }
+
+                throw error;
+            }
+
+            if (!accessToken) {
+                await this.kafkaProducer.publish<EventEnvelope<GoogleCalendarCreateEventFailedEvent>>(
+                    kafkaConfig.topics.pub.googleCalendarCreateEventFailed,
+                    {
+                        eventId: generateId(IdType.EVENT),
+                        occurredAt: new Date(),
+                        attempt: 1,
+                        maxAttempts: 3,
+                        payload: {
+                            mbsData: {
+                                bookingId,
+                                role,
+                            }
+                        }
+                    }
+                );
+                return;
+            }
+
+
+            const calendarEventId = await this.googleCalendarService.createEvent({
                 accessToken,
                 appointmentDate: new Date(appointmentDate),
                 appointmentStatus: appointmentStatus,
                 slotDuration
             });
-            
+
 
             // TODO create and send notification
 
@@ -56,7 +93,7 @@ export class CreateGoogleCalendarEventUseCase {
                 );
                 return;
             } else {
-                await this.kafkaProducer.publish<EventEnvelope<CreateGoogleCalendarEventFailedResult>>(
+                await this.kafkaProducer.publish<EventEnvelope<GoogleCalendarCreateEventFailedEvent>>(
                     kafkaConfig.topics.pub.googleCalendarCreateEventFailed,
                     {
                         eventId: generateId(IdType.EVENT),

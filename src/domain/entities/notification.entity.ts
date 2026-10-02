@@ -1,5 +1,6 @@
 import { NotificationProps } from "../contracts/notification.contract";
 import { CreateNotificationProps } from "../commands/notification.commands";
+import { NotificationType } from "@aws-sdk/client-ses";
 
 export class Notification {
     private props: NotificationProps;
@@ -13,15 +14,17 @@ export class Notification {
     };
 
     static create(props: CreateNotificationProps): Notification {
+        const now = new Date();
         return new Notification({
             _id: "",
             userId: props.userId,
             title: props.title,
             body: props.body,
+            type: props.type,
             data: props.data ?? null,
             isRead: false,
-            createdAt: new Date(),
-            updatedAt: new Date(),
+            createdAt: now,
+            updatedAt: now,
         });
     };
 
@@ -45,6 +48,10 @@ export class Notification {
     get isRead(): boolean {
         return this.props.isRead;
     };
+
+    get type(): NotificationType {
+        return this.props.type;
+    }
 
     get data(): Record<string, string> {
         if(this.props.data) {

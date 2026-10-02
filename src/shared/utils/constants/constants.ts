@@ -1,5 +1,6 @@
 import { IdType } from "../types/enums";
-import { NotificationChannel, NotificationType } from "../../../application/dtos/common.dtos";
+import { NotificationChannel } from "../../../application/dtos/common.dto";
+import { NotificationType } from "../../../domain/commands/notification.commands";
 
 // Google calendar event
 export enum EventData {
@@ -18,14 +19,6 @@ export const emailServiceConstants = {
   source: "no-reply@slotflow.online"
 };
 
-export const PREFIX_MAP: Record<IdType, string> = {
-  [IdType.EVENT]: "sf_evt_",
-  [IdType.TRANSACTION]: "sf_trx_",
-  [IdType.ROOM]: "sf_room_",
-  [IdType.IDEMPOTENCY]: "sf_idem_",
-  [IdType.FILE]: "sf_file_",
-};
-
 export const notificationChannel = {
   EMAIL: 'email',
   PUSH: 'push',
@@ -37,3 +30,11 @@ export const notificationType = {
   SYSTEM_UPDATES: 'system_updates',
   PROMOTIONAL_UPDATES: 'promotional_updates',
 } as const satisfies Record<string, NotificationType>;
+
+export const PREFIX_MAP: Record<IdType, string> = {
+  [IdType.EVENT]: "sf_evt_",
+  [IdType.TRANSACTION]: "sf_trx_",
+  [IdType.ROOM]: "sf_room_",
+  [IdType.IDEMPOTENCY]: "sf_idem_",
+  [IdType.FILE]: "sf_file_",
+} as const;

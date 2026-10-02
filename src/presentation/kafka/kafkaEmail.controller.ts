@@ -2,8 +2,8 @@ import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
 import { emailHandlers, processEventWrapperUseCase } from ".";
 import { kafkaEmailConsumer } from "../../infrastructure/messaging";
-import { NSSubKafkaEventPayload } from "../../application/dtos/kafka.dtos";
-import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
+import { NSSubKafkaEventPayload } from "../../application/dtos/kafka.dto";
+import { IKafkaConsumerAdapter } from "../../application/interfaces/messaging/IKafkaConsumer.adapter";
 import { ProcessEventWrapperUseCase } from "../../application/useCases/kafka/processEventWrapper.useCase";
 
 class KafkaEmailController {

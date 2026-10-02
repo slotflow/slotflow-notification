@@ -2,7 +2,8 @@ import { log } from "../../shared/logger/logger";
 import { AppError } from "../../shared/error/appError";
 import { ERROR_CODES } from "../../shared/utils/types/enums";
 import { firebaseMessaging } from "../firebase/firebaseAdmin";
-import { IPushNotificationService, SendPushNotificationRequest } from "../../domain/interfaces/services/IPushNotification.service";
+import { SendPushNotificationRequest } from "../../application/dtos/notification.dto";
+import { IPushNotificationService } from "../../application/interfaces/services/IPushNotification.service";
 
 export class PushNotificationServiceImpl implements IPushNotificationService {
 

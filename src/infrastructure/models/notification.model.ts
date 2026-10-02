@@ -37,16 +37,12 @@ const notificationSchema = new Schema<INotification>({
     data: {
         type: Object,
         default: {}
-    },
-    createdAt: {
-        type: Date,
-        required: true
-    },
-    updatedAt: {
-        type: Date,
-        required: true
     }
-});
+},
+    {
+        timestamps: true
+    }
+);
 
 
 export const NotificationModel = mongoose.model<INotification>('Notification', notificationSchema);

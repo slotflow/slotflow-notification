@@ -41,16 +41,12 @@ const userDeviceSchema = new Schema<IUserDevice>({
     lastUsedAt: {
         type: Date,
         default: Date.now
-    },
-    createdAt: {
-        type: Date,
-        required: true
-    },
-    updatedAt: {
-        type: Date,
-        required: true
     }
-});
+},
+    {
+        timestamps: true
+    }
+);
 
 userDeviceSchema.index({ userId: 1, deviceId: 1 }, { unique: true });
 

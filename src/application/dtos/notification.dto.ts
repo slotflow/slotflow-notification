@@ -1,21 +1,27 @@
-import { NotificationType } from "@aws-sdk/client-ses";
-import { AppConnect, AppointmentStatus, PaymentAccountStatus, PlanName } from "../../domain/enums/enum";
+import { ProviderAddressForUser } from "./common.dto";
+import { NotificationType } from "../../domain/commands/notification.commands";
 import { notificationTemplateConstants } from "../../shared/utils/constants/notificationConstants";
+import { AppConnect, AppointmentStatus, PaymentAccountStatus, PlanName } from "../../domain/enums/enum";
+
+/** 
+ * Notification common dtos
+*/
 
 // Notification data common event input
-interface CommonNotificationEventInput {
+export interface CommonNotificationEventInput {
     userId: string;
     notificationType: NotificationType;
 }
 
+
+
+
+
 /**
- * Main backend service notifications dtos
+ * Notifications events dtos
  */
 
-export interface SendAccountBlockStatusNotificationEventInput extends CommonNotificationEventInput {
-    templateKey: typeof notificationTemplateConstants.accountBlockStatus;
-    isBlocked: boolean;
-}
+// Publishing events dtos ( Main backend )
 
 export interface SendAccountTrustStatusNotificationEventInput extends CommonNotificationEventInput{
     templateKey: typeof notificationTemplateConstants.accountTrustStatus;
@@ -25,6 +31,7 @@ export interface SendAccountTrustStatusNotificationEventInput extends CommonNoti
 export interface SendAppointmentStatusChangeForUserNotificationEventInput extends CommonNotificationEventInput {
     templateKey: typeof notificationTemplateConstants.providerAppointmentStatusForUser;
     appointmentStatus: AppointmentStatus;
+    address?: ProviderAddressForUser;
 }
 
 export interface SendAppointmentStatusChangeForProviderNotificationEventInput extends CommonNotificationEventInput {
@@ -37,7 +44,7 @@ export interface SendAppointmentStatusChangeForProviderNotificationEventInput ex
 
 export interface SendAppConnectNotificationEventInput extends CommonNotificationEventInput {
     templateKey: typeof notificationTemplateConstants.appConnect;
-    appName: AppConnect;
+    appConnect: AppConnect;
 }
 
 export interface ProviderPlanSubscribedNotificationEventInput extends CommonNotificationEventInput {
@@ -66,9 +73,7 @@ export interface SendUpdatePasswordNotificationEventInput extends CommonNotifica
 }
 
 
-/**
- * Payment service notifications dtos
- */
+// Publishing evnts dtos ( Payment service ) 
 
 
 // provider create payment success event
@@ -99,9 +104,11 @@ export interface UserBookingRefundPaymentSuccessNotificationEventInput extends C
     transactionId: string;
 }
 
+export interface UserBookingPaymentFailedEventInput extends CommonNotificationEventInput {
+    templateKey: typeof notificationTemplateConstants.userBookingPaymentFailed;
+}
 
 export type NotificationEventPayload =
-    | SendAccountBlockStatusNotificationEventInput
     | SendAccountTrustStatusNotificationEventInput
     | SendAppointmentStatusChangeForUserNotificationEventInput
     | SendAppointmentStatusChangeForProviderNotificationEventInput
@@ -114,7 +121,8 @@ export type NotificationEventPayload =
     | StripeAccountStatusUpdatedNotificationEventInput
     | SendUpdatePasswordNotificationEventInput
     | GotAnAppointmentNotificationEventInput
-    | UserBookingRefundPaymentSuccessNotificationEventInput;
+    | UserBookingRefundPaymentSuccessNotificationEventInput
+    | UserBookingPaymentFailedEventInput;
 
 export type NotificationTemplateKey = NotificationEventPayload["templateKey"];
 
@@ -131,3 +139,19 @@ export interface NotificationTemplateDefinition<K extends NotificationTemplateKe
 export type NotificationTemplateRegistry = {
     [K in NotificationTemplateKey]: NotificationTemplateDefinition<K>;
 };
+
+
+
+
+
+/**
+ * Push notification service dtos
+ */
+
+// Push notification request
+export interface SendPushNotificationRequest {
+  tokens: string[],
+  title: string;
+  body: string;
+  data?: Record<string, string>;
+}

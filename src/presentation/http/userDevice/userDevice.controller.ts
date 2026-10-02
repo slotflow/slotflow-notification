@@ -1,8 +1,8 @@
 import { registerDeviceUseCase } from "..";
 import { log } from "../../../shared/logger/logger";
 import { NextFunction, Request, Response } from "express";
+import { AuthUser } from "../../../application/dtos/common.dto";
 import { sendResponse } from "../../../shared/utils/helpers/response";
-import { AuthUser } from "../../../application/dtos/common.dtos";
 import { registerDeviceZodSchema } from "../../../shared/zod/notification.zod";
 import { RegisterDeviceUseCase } from "../../../application/useCases/userDevice/registerDevice.useCase";
 

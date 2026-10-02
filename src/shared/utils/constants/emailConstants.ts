@@ -1,4 +1,3 @@
-import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentStatus } from "../../../domain/enums/enum";
 
 // email template mapper
 export const emailTemplateConstants = {
@@ -20,7 +19,7 @@ export const emailTemplateConstants = {
 
 // email template
 export const emailTemplate = {
-  html: (subject: string, name: string, contentHTML: string): string => `<!DOCTYPE html>
+    html: (subject: string, name: string, contentHTML: string): string => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +28,6 @@ export const emailTemplate = {
     <title>${subject}</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #F8F9FA; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; word-spacing: normal;">
-    <div style="background-color: #F8F9FA; width: 100%; table-layout: fixed; padding: 40px 0 60px 0;">
         <table align="center" border="0" cellpadding="0" cellspacing="0" style="background-color: #FFFFFF; margin: 0 auto; width: 100%; max-width: 600px; border-radius: 12px; border: 1px solid #E9ECEF; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); border-spacing: 0;">
             <!-- Header -->
             <tr>
@@ -44,7 +42,7 @@ export const emailTemplate = {
             <tr>
                 <td style="padding: 32px 40px; color: #212529; font-size: 15px; line-height: 1.6;">
                     <p style="font-size: 1.1em; margin-top: 0; margin-bottom: 16px; font-weight: 600; color: #212529;">
-                        Hi ${name},
+                        Hi, ${name},
                     </p>
 
                     ${contentHTML}
@@ -68,7 +66,6 @@ export const emailTemplate = {
                 </td>
             </tr>
         </table>
-    </div>
 </body>
 </html>`,
 };

@@ -1,7 +1,10 @@
 import { Platform, Role } from "../../domain/enums/enum";
 import { AppointmentStatus } from "../../domain/enums/enum";
+import { NotificationProps } from "../../domain/contracts/notification.contract";
 
-// **** ENTITY DTOS 
+/**
+ * Dtos from main service
+ */
 
 // participant presence
 export interface ParticipantPresence {
@@ -39,27 +42,12 @@ export interface BookingDTO {
 }
 
 
-// notification dto
-export interface Notification {
-  _id: string;
-  userId: string;
-  title: string;
-  body: string;
-  isRead: boolean;
-  data?: Record<string, string>,
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 
-// **** COMMON DTOS 
 
-// email options
-export interface EmailOptions {
-  to: string;
-  subject: string;
-  html: string;
-}
+/**
+ * Common dtos
+ */
 
 
 // decoded user
@@ -68,7 +56,16 @@ export interface AuthUser {
   role: Role;
   email: string;
   name: string;
+  timeZone: TimeZone;
 };
+
+export interface GoogleOAuthTokens {
+  userId: string;
+  googleAccessToken: string;
+  googleRefreshToken: string;
+  googleId: string;
+  expiryDate: Date;
+}
 
 
 // Used as the response interface for the all request
@@ -110,14 +107,31 @@ export interface GetNotificationsInput extends ApiPaginationRequest {
   userId: string;
 };
 
+
 // Get All Notifications Response
-export type GetNotificationsOutput = Array<Pick<Notification, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
+export type GetNotificationsOutput = Array<Pick<NotificationProps, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
+
 
 // Notification channels
 export type NotificationChannel = 'email' | 'push' | 'in_app';
 
-// Notification Type
-export type NotificationType =
-  | 'account_activity'
-  | 'system_updates'
-  | 'promotional_updates';
+
+// Provider address for the user view
+export type ProviderAddressForUser = {
+  addressLine: string;
+  landmark: string;
+  city: string;
+  state: string;
+  pincode: string;
+  location: string;
+  googleMapsUrl: string;
+} | null;
+
+// Time zone interface
+export interface TimeZone {
+    value: string;
+    label: string;
+    offset: number;
+    abbrev: string;
+    altName: string;
+}

@@ -1,6 +1,6 @@
-import { getAppDisplayName } from "../helpers/getAppName";
+import { formatString } from "../helpers/formatString";
 import { AdminVerificationStatus, AppointmentStatus, OtpPurpose, Role } from "../../../domain/enums/enum";
-import { EmailTemplateRegistry, SendAccountBlockStatusEventInput, SendAccountTrustStatusEventInput, SendAdminProviderReviewEventInput, SendAppConnectEventInput, SendAppointmentStatusChangeForUserEventInput, SendBookingPaymentSuccessEventInput, SendGotAnAppointmentEventInput, SendOtpEventInput, SendPlanSubscribedEventInput, SendProviderSubscriptionPaymentSuccessEventInput, SendResetPasswordEventInput, SendSlotBookedEventInput, SendUserBookingRefundPaymentSuccessEventInput, SendWelcomeEventInput } from "../../../application/dtos/email.dtos";
+import { EmailTemplateRegistry, SendAccountBlockStatusEventInput, SendAccountTrustStatusEventInput, SendAdminProviderReviewEventInput, SendAppConnectEventInput, SendAppointmentStatusChangeForUserEventInput, SendBookingPaymentSuccessEventInput, SendGotAnAppointmentEventInput, SendOtpEventInput, SendPlanSubscribedEventInput, SendProviderSubscriptionPaymentSuccessEventInput, SendResetPasswordEventInput, SendSlotBookedEventInput, SendUserBookingRefundPaymentSuccessEventInput, SendWelcomeEventInput } from "../../../application/dtos/email.dto";
 
 export const emailTemplateRegistry: EmailTemplateRegistry = {
   // otp email content
@@ -44,51 +44,24 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
 
   // registration completed welcome email content
   registerSuccess: {
-    subject: (data: Omit<SendWelcomeEventInput, "templateKey" | "email">) =>
-      data.role === Role.PROVIDER
-        ? "Welcome to Slotflow — Complete your provider setup"
-        : "Welcome to Slotflow — Start exploring & booking",
+    subject: (data: Omit<SendWelcomeEventInput, "templateKey" | "email">) => "Welcome to Slotflow",
 
-    // Body content rendered inside emailMainTemplate
     renderBody: (data: Omit<SendWelcomeEventInput, "templateKey" | "email">) => `
       <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
         Welcome to <strong>Slotflow</strong>! We're excited to have you on board.
       </p>
 
-      ${data.role === Role.PROVIDER
-        ? `
-          <p style="margin: 0 0 16px 0; color: #495057; font-size: 15px; line-height: 1.6;">
-            You can now begin completing your onboarding steps and start offering your services to users on Slotflow.
-          </p>
+      <p style="margin: 0 0 16px 0; color: #495057; font-size: 15px; line-height: 1.6;">
+  You have successfully registered and completed your onboarding on Slotflow.
+</p>
 
-          <!-- Provider Callout Box -->
-          <div style="background-color: #F8F9FA; border-left: 4px solid #635BFF; padding: 16px 20px; border-radius: 4px; margin: 24px 0;">
-            <p style="margin: 0 0 8px 0; font-weight: 600; color: #212529; font-size: 14px;">Next steps for Providers:</p>
-            <ul style="margin: 0; padding-left: 18px; color: #495057; font-size: 14px; line-height: 1.6;">
-              <li>Complete your professional profile</li>
-              <li>Set up your availability & slot schedules</li>
-              <li>Submit your account for verification</li>
-            </ul>
-          </div>
-          `
-        : `
-          <p style="margin: 0 0 16px 0; color: #495057; font-size: 15px; line-height: 1.6;">
-            You can now explore providers, book appointments, and manage your bookings with ease.
-          </p>
+<!-- Confirmation Callout Box -->
+<div style="background-color: #F8F9FA; border-left: 4px solid #635BFF; padding: 16px 20px; border-radius: 4px; margin: 24px 0;">
+  <p style="margin: 0; font-weight: 600; color: #212529; font-size: 14px;">
+    Your account is now fully set up and ready to use.
+  </p>
+</div>
 
-          <!-- User Callout Box -->
-          <div style="background-color: #F8F9FA; border-left: 4px solid #635BFF; padding: 16px 20px; border-radius: 4px; margin: 24px 0;">
-            <p style="margin: 0 0 8px 0; font-weight: 600; color: #212529; font-size: 14px;">What you can do now:</p>
-            <ul style="margin: 0; padding-left: 18px; color: #495057; font-size: 14px; line-height: 1.6;">
-              <li>Browse verified service providers</li>
-              <li>Reserve convenient time slots instantly</li>
-              <li>Track all your upcoming appointments in one place</li>
-            </ul>
-          </div>
-          `
-      }
-
-      <!-- Primary Action Button -->
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
         <tr>
           <td align="center" style="border-radius: 8px; background-color: #635BFF;">
@@ -394,79 +367,156 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
 
     renderBody: (data: Omit<SendAppointmentStatusChangeForUserEventInput, "templateKey" | "email">) => {
       const isConfirmed = data.appointmentStatus === AppointmentStatus.CONFIRMED;
+      const isOfflineMode = data.appointmentMode?.toLowerCase() === "offline";
+      const hasAddress = Boolean(data.address && data.address.addressLine);
 
-      return `
-        <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
-          ${isConfirmed
-          ? "Great news! Your service provider has <strong>confirmed</strong> your appointment request."
-          : "We are writing to let you know that your appointment request was <strong>declined</strong> by the service provider."
+      // Dynamic Address Section Renderer
+      const renderLocationBlock = () => {
+        // 1. Online mode or non-offline mode -> Do not render address
+        if (!isOfflineMode) return "";
+
+        // 2. Offline mode WITH address -> Location Card
+        if (hasAddress && data.address) {
+          const { addressLine, landmark, city, state, pincode, googleMapsUrl } = data.address;
+
+          return `
+          <!-- Premium Location Box -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px; margin: 24px 0; background-color: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+              <tr>
+                <td style="vertical-align: top; width: 28px; padding-right: 12px;">
+                  <span style="font-size: 20px; line-height: 1;">📍</span>
+                </td>
+                <td style="vertical-align: top;">
+                  <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B;">
+                    Service Location
+                  </p>
+                  <p style="margin: 0 0 4px 0; font-size: 15px; font-weight: 600; color: #0F172A; line-height: 1.4;">
+                    ${addressLine}${landmark ? `, ${landmark}` : ""}
+                  </p>
+                  <p style="margin: 0 0 16px 0; font-size: 14px; color: #475569; line-height: 1.4;">
+                    ${city}, ${state} - ${pincode}
+                  </p>
+                  
+                  ${googleMapsUrl
+              ? `
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="center" style="border-radius: 6px; background-color: #EFF6FF; border: 1px solid #BFDBFE;">
+                          <a href="${googleMapsUrl}" target="_blank" style="font-size: 13px; font-weight: 600; color: #1D4ED8; text-decoration: none; padding: 8px 16px; display: inline-block;">
+                            Get Directions on Google Maps &rarr;
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  `
+              : ""
+            }
+                </td>
+              </tr>
+            </table>
+          </div>
+        `;
         }
-        </p>
 
-        <!-- Status Badge -->
-        <div style="background-color: ${isConfirmed ? "#ECFDF5" : "#FEF2F2"}; border: 1px solid ${isConfirmed ? "#A7F3D0" : "#FCA5A5"}; border-radius: 8px; padding: 16px 20px; margin: 24px 0;">
-          <p style="margin: 0; color: ${isConfirmed ? "#065F46" : "#991B1B"}; font-size: 14px; font-weight: 600;">
-            Status: ${isConfirmed ? "Confirmed by Provider" : "Rejected by Provider"}
-          </p>
-        </div>
-
-        <!-- Appointment Details Box -->
-        <div style="border: 1px solid #E9ECEF; border-radius: 8px; padding: 18px 20px; margin: 20px 0; background-color: #FAFAFA;">
-          <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #212529;">Appointment Details:</p>
-          <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px; color: #495057;">
+        // 3. Offline mode WITHOUT address -> Fallback Support Note
+        return `
+        <!-- Missing Address Warning Box -->
+        <div style="border: 1px dashed #F59E0B; border-radius: 10px; padding: 16px 20px; margin: 24px 0; background-color: #FFFBEB;">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
             <tr>
-              <td style="padding: 4px 0; width: 30%; font-weight: 500;">Date:</td>
-              <td style="padding: 4px 0; font-weight: 600; color: #212529;">${data.appointmentDate}</td>
-            </tr>
-            <tr>
-              <td style="padding: 4px 0; font-weight: 500;">Time:</td>
-              <td style="padding: 4px 0; font-weight: 600; color: #212529;">${data.appointmentTime}</td>
-            </tr>
-            <tr>
-              <td style="padding: 4px 0; font-weight: 500;">Mode:</td>
-              <td style="padding: 4px 0; font-weight: 600; color: #212529;">${data.appointmentMode}</td>
+              <td style="vertical-align: top; width: 24px; padding-right: 10px;">
+                <span style="font-size: 16px;">⚠️</span>
+              </td>
+              <td style="vertical-align: top;">
+                <p style="margin: 0 0 4px 0; font-size: 13px; font-weight: 600; color: #B45309;">
+                  Location Details Missing
+                </p>
+                <p style="margin: 0; color: #92400E; font-size: 13px; line-height: 1.5;">
+                  Address details are currently unavailable for this offline appointment. Please contact support at <a href="mailto:slotflow.booking@gmail.com" style="color: #B45309; text-decoration: underline; font-weight: 600;">slotflow.booking@gmail.com</a> to retrieve location information.
+                </p>
+              </td>
             </tr>
           </table>
         </div>
+      `;
+      };
 
-        ${!isConfirmed && data.reason
+      return `
+      <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
+        ${isConfirmed
+          ? "Great news! Your service provider has <strong>confirmed</strong> your appointment request."
+          : "We are writing to let you know that your appointment request was <strong>declined</strong> by the service provider."
+        }
+      </p>
+
+      <!-- Status Badge -->
+      <div style="background-color: ${isConfirmed ? "#ECFDF5" : "#FEF2F2"}; border: 1px solid ${isConfirmed ? "#A7F3D0" : "#FCA5A5"}; border-radius: 8px; padding: 16px 20px; margin: 24px 0;">
+        <p style="margin: 0; color: ${isConfirmed ? "#065F46" : "#991B1B"}; font-size: 14px; font-weight: 600;">
+          Status: ${isConfirmed ? "Confirmed by Provider" : "Rejected by Provider"}
+        </p>
+      </div>
+
+      <!-- Appointment Details Box -->
+      <div style="border: 1px solid #E9ECEF; border-radius: 8px; padding: 18px 20px; margin: 20px 0; background-color: #FAFAFA;">
+        <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #212529;">Appointment Details:</p>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px; color: #495057;">
+          <tr>
+            <td style="padding: 4px 0; width: 30%; font-weight: 500;">Date:</td>
+            <td style="padding: 4px 0; font-weight: 600; color: #212529;">${data.appointmentDate}</td>
+          </tr>
+          <tr>
+            <td style="padding: 4px 0; font-weight: 500;">Time:</td>
+            <td style="padding: 4px 0; font-weight: 600; color: #212529;">${data.appointmentTime}</td>
+          </tr>
+          <tr>
+            <td style="padding: 4px 0; font-weight: 500;">Mode:</td>
+            <td style="padding: 4px 0; font-weight: 600; color: #212529;">${data.appointmentMode}</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Address / Location Section -->
+      ${renderLocationBlock()}
+
+      ${!isConfirmed && data.reason
           ? `
-            <div style="margin: 20px 0;">
-              <p style="margin: 0 0 6px 0; color: #212529; font-weight: 600; font-size: 14px;">Reason Provided:</p>
-              <p style="margin: 0; color: #495057; font-size: 14px; line-height: 1.6;">${data.reason}</p>
-            </div>
-            `
+        <div style="margin: 20px 0;">
+          <p style="margin: 0 0 6px 0; color: #212529; font-weight: 600; font-size: 14px;">Reason Provided:</p>
+          <p style="margin: 0; color: #495057; font-size: 14px; line-height: 1.6;">${data.reason}</p>
+        </div>
+        `
           : ""
         }
 
-        <!-- Primary CTA -->
-        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
-          <tr>
-            <td align="center" style="border-radius: 8px; background-color: #635BFF;">
-              <a href="https://slotflow.com/bookings" target="_blank" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 12px 28px; border-radius: 8px; display: inline-block;">
-                ${isConfirmed ? "View Appointment Details &rarr;" : "Browse Other Providers &rarr;"}
-              </a>
-            </td>
-          </tr>
-        </table>
+      <!-- Primary CTA -->
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
+        <tr>
+          <td align="center" style="border-radius: 8px; background-color: #635BFF;">
+            <a href="https://slotflow.com/bookings" target="_blank" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 12px 28px; border-radius: 8px; display: inline-block;">
+              ${isConfirmed ? "View Appointment Details &rarr;" : "Browse Other Providers &rarr;"}
+            </a>
+          </td>
+        </tr>
+      </table>
 
-        <!-- Support Info -->
-        <div style="background-color: #F8F9FA; border-radius: 8px; padding: 16px 20px; margin-top: 24px; border: 1px solid #E9ECEF;">
-          <p style="margin: 0; color: #6C757D; font-size: 13px; line-height: 1.5;">
-            If you have any questions or need further assistance, please reach out to us at <a href="mailto:slotflow.booking@gmail.com" style="color: #635BFF; text-decoration: underline; font-weight: 600;">slotflow.booking@gmail.com</a>.
-          </p>
-        </div>
-      `;
+      <!-- Support Info -->
+      <div style="background-color: #F8F9FA; border-radius: 8px; padding: 16px 20px; margin-top: 24px; border: 1px solid #E9ECEF;">
+        <p style="margin: 0; color: #6C757D; font-size: 13px; line-height: 1.5;">
+          If you have any questions or need further assistance, please reach out to us at <a href="mailto:slotflow.booking@gmail.com" style="color: #635BFF; text-decoration: underline; font-weight: 600;">slotflow.booking@gmail.com</a>.
+        </p>
+      </div>
+    `;
     },
   },
 
   // user or provider connecting app
   appConnect: {
     subject: (data: Omit<SendAppConnectEventInput, "templateKey" | "email">) =>
-      `Your Slotflow account was connected to ${getAppDisplayName(data.appConnect)}`,
+      `Your Slotflow account was connected to ${formatString(data.appConnect)}`,
 
     renderBody: (data: Omit<SendAppConnectEventInput, "templateKey" | "email">) => {
-      const appName = getAppDisplayName(data.appConnect);
+      const appName = formatString(data.appConnect);
 
       return `
         <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
@@ -756,7 +806,7 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
         <tr>
           <td align="center" style="border-radius: 8px; background-color: #635BFF;">
-            <a href="https://slotflow.com/user/bookings" target="_blank" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 12px 28px; border-radius: 8px; display: inline-block;">
+            <a href="https://slotflow.com/bookings" target="_blank" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 12px 28px; border-radius: 8px; display: inline-block;">
               View My Bookings &rarr;
             </a>
           </td>
@@ -766,7 +816,7 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
       <!-- Support Box -->
       <div style="background-color: #F8F9FA; border-radius: 8px; padding: 16px 20px; margin-top: 24px; border: 1px solid #E9ECEF;">
         <p style="margin: 0; color: #6C757D; font-size: 13px; line-height: 1.5;">
-          If you need to update or cancel this request before confirmation, manage your booking on <a href="https://slotflow.com/user/bookings" style="color: #635BFF; font-weight: 600; text-decoration: underline;">Slotflow</a> or contact support at <a href="mailto:slotflow.booking@gmail.com" style="color: #635BFF; text-decoration: underline; font-weight: 600;">slotflow.booking@gmail.com</a>.
+          If you need to update or cancel this request before confirmation, manage your booking on <a href="https://slotflow.com/bookings" style="color: #635BFF; font-weight: 600; text-decoration: underline;">Slotflow</a> or contact support at <a href="mailto:slotflow.booking@gmail.com" style="color: #635BFF; text-decoration: underline; font-weight: 600;">slotflow.booking@gmail.com</a>.
         </p>
       </div>
     `,
@@ -888,7 +938,7 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
         <tr>
           <td align="center" style="border-radius: 8px; background-color: #635BFF;">
-            <a href="https://slotflow.com/user/bookings" target="_blank" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 12px 28px; border-radius: 8px; display: inline-block;">
+            <a href="https://slotflow.com/bookings" target="_blank" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 12px 28px; border-radius: 8px; display: inline-block;">
               View Booking History &rarr;
             </a>
           </td>

@@ -2,15 +2,24 @@ import { log } from "../../../shared/logger/logger";
 import { EventStatus } from "../../../domain/enums/enum";
 import { appConfig, kafkaConfig } from "../../../config/env";
 import { ProcessedEvent } from "../../../domain/entities/ProcessedEvent.entity";
-import { IKafkaProducerAdapter } from "../../../domain/interfaces/messaging/IKafkaProducerAdapter";
+import { IKafkaProducerAdapter } from "../../interfaces/messaging/IKafkaProducer.adapter";
 import { IProcessedEventRepository } from "../../../domain/interfaces/repositories/IProcessedEvent.repository";
-import { DqMetaData, EventEnvelope, NSSubKafkaEventPayload, ProcessEventWrapperInput } from "../../dtos/kafka.dtos";
+import { DqMetaData, EventEnvelope, NSSubKafkaEventPayload, ProcessEventWrapperInput } from "../../dtos/kafka.dto";
 
 export class ProcessEventWrapperUseCase {
     constructor(
         private processedEventRepository: IProcessedEventRepository,
         private kafkaProducer: IKafkaProducerAdapter
     ) { }
+
+    private isDuplicateKeyError = (error: unknown): boolean => {
+    return Boolean(
+        error &&
+        typeof error === "object" &&
+        "code" in error &&
+        (error as { code?: number }).code === 11000
+    );
+};
 
     async execute(input: ProcessEventWrapperInput): Promise<void> {
         const { businessUseCase, eventData, topic, payloadExtractor } = input;
@@ -42,7 +51,17 @@ export class ProcessEventWrapperUseCase {
                 payload: JSON.stringify(eventData),
                 processedAt: new Date()
             });
-            processedEvent = await this.processedEventRepository.create(newProcessedEvent);
+
+            try {
+                processedEvent = await this.processedEventRepository.create(newProcessedEvent);
+            } catch (error) {
+                if (this.isDuplicateKeyError(error)) {
+                    log.warn(`Idempotency Event ${eventId} already exists in Mongo. Skipping duplicate processing.`);
+                    return;
+                }
+
+                throw error;
+            }
         }
 
         if (!payloadData) {

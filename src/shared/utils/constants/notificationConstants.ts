@@ -1,8 +1,8 @@
-import { NotificationTemplateRegistry } from "../../../application/dtos/notification.dtos";
+import { formatString } from "../helpers/formatString";
+import { NotificationTemplateRegistry } from "../../../application/dtos/notification.dto";
 import { AppointmentStatus, PaymentAccountStatus, PlanName } from "../../../domain/enums/enum";
 
 export const notificationTemplateConstants = {
-  accountBlockStatus: "accountBlockStatus",
   accountTrustStatus: "accountTrustStatus",
   providerAppointmentStatusForUser: "providerAppointmentStatusForUser",
   providerAppointmentStatusForProvider: "providerAppointmentStatusForProvider",
@@ -12,6 +12,7 @@ export const notificationTemplateConstants = {
   planSubscribed: "planSubscribed",
   slotBooked: "slotBooked",
   userBookingPaymentSuccess: "userBookingPaymentSuccess",
+  userBookingPaymentFailed: "userBookingPaymentFailed",
   stripeAccountStatusUpdated: "stripeAccountStatusUpdated",
   passwordUpdate: "passwordUpdate",
   gotAnAppointment: "gotAnAppointment",
@@ -20,12 +21,6 @@ export const notificationTemplateConstants = {
 
 
 export const notificationTemplateRegistry: NotificationTemplateRegistry = {
-  accountBlockStatus: {
-    title: () => "Account Status Updated",
-    body: (data) =>
-      `Your account status has changed. It is currently ${data.isBlocked ? "blocked" : "active"
-      }.`,
-  },
 
   accountTrustStatus: {
     title: () => "Account Trust Status",
@@ -36,11 +31,22 @@ export const notificationTemplateRegistry: NotificationTemplateRegistry = {
 
   providerAppointmentStatusForUser: {
     title: () => "Booking Status Updated",
-    body: (data) =>
-      `Your booking has been ${data.appointmentStatus === AppointmentStatus.CONFIRMED ? 'confirmed' :
-        data.appointmentStatus === AppointmentStatus.REJECTED_BY_PROVIDER ? 'rejected by provider' :
-          data.appointmentStatus.toLowerCase()
-      }.`,
+    body: (data) => {
+      const statusText =
+        data.appointmentStatus === AppointmentStatus.CONFIRMED
+          ? "confirmed"
+          : data.appointmentStatus === AppointmentStatus.REJECTED_BY_PROVIDER
+            ? "rejected by provider"
+            : data.appointmentStatus.toLowerCase();
+
+      let locationText = "";
+      if (data.address && data.address.city) {
+        const addressLine = data.address.addressLine ? `${data.address.addressLine}, ` : "";
+        locationText = ` Location: ${addressLine}${data.address.city}.`;
+      }
+
+      return `Your booking has been ${statusText}.${locationText}`;
+    },
   },
 
   providerAppointmentStatusForProvider: {
@@ -60,8 +66,8 @@ export const notificationTemplateRegistry: NotificationTemplateRegistry = {
   appConnect: {
     title: () => "App Connected",
     body: (data) => {
-      const formattedAppName = data.appName.charAt(0).toUpperCase() + data.appName.slice(1).toLowerCase();
-      return `Your account has been successfully connected with ${formattedAppName}.`;
+      const appName = formatString(data.appConnect);
+      return `Your account has been successfully connected with ${appName}.`;
     },
   },
 
@@ -105,6 +111,13 @@ export const notificationTemplateRegistry: NotificationTemplateRegistry = {
       `Your payment for booking was completed successfully. Transaction ID: ${data.transactionId}.`,
   },
 
+  userBookingPaymentFailed: {
+    title: () => "Payment Failed",
+    body: () => {
+      return `Your payment failed. We are holding your slot for the next 10 minutes. Try Another Payment Method to secure your booking.`;
+    },
+  },
+
   gotAnAppointment: {
     title: () => "New Appointment Request",
     body: (data) =>
@@ -142,4 +155,5 @@ export const notificationTemplateRegistry: NotificationTemplateRegistry = {
       return `A refund of $${amount.toFixed(2)} has been successfully processed. Transaction ID: ${data.transactionId}.`;
     },
   },
+
 };

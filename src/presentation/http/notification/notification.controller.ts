@@ -2,7 +2,7 @@ import { getNotificationsUseCase } from "..";
 import { log } from "../../../shared/logger/logger";
 import { NextFunction, Request, Response } from "express";
 import { sendResponse } from "../../../shared/utils/helpers/response";
-import { AuthUser } from "../../../application/dtos/common.dtos";
+import { AuthUser } from "../../../application/dtos/common.dto";
 import { paginationZodSchema } from "../../../shared/zod/common.zod";
 import { GetNotificationsUseCase } from "../../../application/useCases/notification/getNotifications.useCase";
 

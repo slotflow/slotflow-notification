@@ -14,6 +14,7 @@ export class UserDevice {
     };
 
     static create(props: CreateUserDeviceProps): UserDevice {
+        const now = new Date();
         return new UserDevice({
             _id: "",
             userId: props.userId,
@@ -21,9 +22,9 @@ export class UserDevice {
             platform: props.platform,
             deviceId: props.deviceId,
             isActive: true,
-            lastUsedAt: new Date(),
-            createdAt: new Date(),
-            updatedAt: new Date(),
+            lastUsedAt: now,
+            createdAt: now,
+            updatedAt: now,
         });
     };
 

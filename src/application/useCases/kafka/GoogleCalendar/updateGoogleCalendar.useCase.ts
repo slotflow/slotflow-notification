@@ -1,17 +1,19 @@
 import { log } from "../../../../shared/logger/logger";
-import { UpdateGoogleCalendarEventInput } from "../../../dtos/kafka.dtos";
-import { IGoogleCalendarGatewayService } from "../../../../domain/interfaces/services/IGoogleCalendarGateway.service";
+import { UpdateGoogleCalendarEventInput } from "../../../dtos/googleCalendar.dto";
+import { IGoogleTokenService } from "../../../interfaces/services/IGoogleToken.service";
+import { IGoogleCalendarService } from "../../../interfaces/services/IGoogleCalendarGateway.service";
 
 // TODO implement: Updating the calendar only when resheduling is happens
 export class UpdateGoogleCalendarEventUseCase {
     constructor(
-        private googleCalendarGatewayService: IGoogleCalendarGatewayService,
+        private googleCalendarService: IGoogleCalendarService,
+        private readonly googleTokenService: IGoogleTokenService,
     ) { };
 
     async execute(input: UpdateGoogleCalendarEventInput): Promise<void> {
         try {
             const {
-                accessToken,
+                userId,
                 appointmentDate,
                 appointmentStatus,
                 bookingId,
@@ -19,12 +21,15 @@ export class UpdateGoogleCalendarEventUseCase {
                 role
             } = input;
 
-            await this.googleCalendarGatewayService.updateEvent({
-                accessToken,
-                eventId: calendarEventId,
-                appointmentDate,
-                appointmentStatus,
-            });
+            const accessToken = await this.googleTokenService.getAccessToken(userId);
+            if (accessToken) {
+                await this.googleCalendarService.updateEvent({
+                    accessToken,
+                    eventId: calendarEventId,
+                    appointmentDate,
+                    appointmentStatus,
+                });
+            }
 
             return;
         } catch (error) {

@@ -2,8 +2,16 @@ import { log } from "../../shared/logger/logger";
 import { ERROR_CODES } from "../../shared/utils/types/enums";
 import { AppError } from "../../shared/error/appError";
 import { Kafka, Consumer, ConsumerCrashEvent } from "kafkajs";
-import { MessageHandler } from "../../application/dtos/kafka.dtos";
-import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
+import { MessageHandler } from "../../application/dtos/kafka.dto";
+import { IKafkaConsumerAdapter } from "../../application/interfaces/messaging/IKafkaConsumer.adapter";
+
+const clampToNonNegative = (value: number): number => {
+    if (!Number.isFinite(value)) {
+        return 0;
+    }
+
+    return Math.max(0, value);
+};
 
 export class KafkaConsumerAdapter implements IKafkaConsumerAdapter {
     private consumer!: Consumer;
@@ -16,15 +24,21 @@ export class KafkaConsumerAdapter implements IKafkaConsumerAdapter {
 
     async connectConsumer(): Promise<void> {
         try {
+            const sessionTimeoutMs = clampToNonNegative(45000);
+            const heartbeatIntervalMs = clampToNonNegative(6000);
+            const rebalanceTimeoutMs = clampToNonNegative(90000);
+            const initialRetryTimeMs = clampToNonNegative(300);
+            const maxRetryTimeMs = clampToNonNegative(30000);
+
             this.consumer = this.kafka.consumer({
                 groupId: this.groupId,
-                sessionTimeout: 45000,
-                heartbeatInterval: 6000,
-                rebalanceTimeout: 90000,
+                sessionTimeout: sessionTimeoutMs,
+                heartbeatInterval: heartbeatIntervalMs,
+                rebalanceTimeout: rebalanceTimeoutMs,
                 retry: {
-                    initialRetryTime: 300,
+                    initialRetryTime: initialRetryTimeMs,
                     retries: 8,
-                    maxRetryTime: 30000,
+                    maxRetryTime: maxRetryTimeMs,
                 },
             });
 

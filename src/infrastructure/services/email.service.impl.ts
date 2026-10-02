@@ -5,9 +5,9 @@ import { ses } from '../cloud/aws/aws.ses.client';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
 import { AppError } from '../../shared/error/appError';
 import { ERROR_CODES } from '../../shared/utils/types/enums';
-import { EmailOptions } from '../../application/dtos/common.dtos';
+import { EmailOptions } from '../../application/dtos/email.dto';
 import { emailServiceConstants } from '../../shared/utils/constants/constants';
-import { IEmailService } from '../../domain/interfaces/services/IEmail.service';
+import { IEmailService } from '../../application/interfaces/services/IEmail.service';
 
 export class EmailServiceImpl implements IEmailService {
 

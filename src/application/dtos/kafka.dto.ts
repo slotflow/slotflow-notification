@@ -1,7 +1,10 @@
 import { KafkaMessage } from "kafkajs";
-import { AdminVerificationStatus, AppConnect, AppointmentStatus, OtpPurpose, PaymentFor, PaymentGateway, PaymentStatus, Role } from "../../domain/enums/enum";
+import { AppConnect } from "../../domain/enums/enum";
+import { CommonNotificationEventInput } from "./notification.dto";
 
-// **** KAFKA COMMON DTOS
+/**
+ * Kafka common dtos
+ */
 
 // kafka client adapter props
 export interface KafkaClientAdapterProps {
@@ -54,57 +57,15 @@ export interface SendEmailCommon {
 export type MessageHandler = (payload: KafkaClientAdapterProps) => Promise<void>;
 
 
-// **** KAFKA EVENTS PAYLOAD
+/**
+ * Kafka publishing events
+ */
 
-// **** subscribing events
-
-
-
-
-// create google calendar event
-export interface CreateGoogleCalendarEventInput {
-    bookingId: string;
-    role: Role;
-    accessToken: string;
-    appointmentDate: Date;
-    appointmentStatus: AppointmentStatus;
-    slotDuration: number
-}
-
-// update google calendar event
-export interface UpdateGoogleCalendarEventInput {
-    accessToken: string;
-    eventId: string;
-    appointmentDate: Date;
-    appointmentStatus: AppointmentStatus;
-    bookingId: string;
-    role: Role;
-}
-
-
-
-
-
-
-
-
-
-
-// **** publishing events
-
-// create google calendar event success result
-export interface GoogleCalendarCreateEventSuccessEvent {
-    mbsData: {
-        bookingId: string;
-        role: Role;
-        eventId: string;
-    }
-}
-
-// create google calendar event failed result
-export interface CreateGoogleCalendarEventFailedResult {
-    mbsData: {
-        bookingId: string;
-        role: Role;
+export interface SendAppointmentStatusChangeForUserEvent {
+    emailData: {
+        appConnect: AppConnect;
+    },
+    notificationData: CommonNotificationEventInput & {
+        appConnect: AppConnect;
     }
 }

@@ -1,6 +1,6 @@
 import { log } from "../../../shared/logger/logger";
 import { INotificationRepository } from "../../../domain/interfaces/repositories/INotification.repository";
-import { GetNotificationsInput, TableData, GetNotificationsOutput } from "../../dtos/common.dtos";
+import { GetNotificationsInput, TableData, GetNotificationsOutput } from "../../dtos/common.dto";
 
 export class GetNotificationsUseCase {
     constructor(

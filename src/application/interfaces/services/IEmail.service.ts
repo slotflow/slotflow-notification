@@ -1,4 +1,4 @@
-import { EmailOptions } from "../../../application/dtos/common.dtos";
+import { EmailOptions } from "../../dtos/email.dto";
 
 export interface IEmailService {
 

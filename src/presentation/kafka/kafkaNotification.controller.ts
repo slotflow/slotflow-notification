@@ -1,9 +1,9 @@
 import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
 import { notificationHandler, processEventWrapperUseCase } from ".";
-import { NSSubKafkaEventPayload } from "../../application/dtos/kafka.dtos";
+import { NSSubKafkaEventPayload } from "../../application/dtos/kafka.dto";
 import { kafkaNotificationConsumer } from "../../infrastructure/messaging";
-import { IKafkaConsumerAdapter } from "../../domain/interfaces/messaging/IKafkaConsumerAdapter";
+import { IKafkaConsumerAdapter } from "../../application/interfaces/messaging/IKafkaConsumer.adapter";
 import { ProcessEventWrapperUseCase } from "../../application/useCases/kafka/processEventWrapper.useCase";
 
 class KafkaNotificationController {

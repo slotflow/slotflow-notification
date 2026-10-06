@@ -1,4 +1,4 @@
-import { NotificationType } from "@aws-sdk/client-ses";
+import { NotificationType } from "../commands/notification.commands";
 
 export interface NotificationProps {
     _id: string;

@@ -5,6 +5,7 @@ import { toAppError } from "../../../shared/error/handleUnknownError";
 import { generateId } from "../../../shared/utils/helpers/generateId";
 import { Credential } from "../../../domain/entities/credential.entity";
 import { notificationType } from "../../../shared/utils/constants/constants";
+import { notificationTemplateConstants } from "../../../shared/utils/constants/notificationConstants";
 import { IAesEncryptionService } from "../../interfaces/security/IAesEncryption.service";
 import { IKafkaProducerAdapter } from "../../interfaces/messaging/IKafkaProducer.adapter";
 import { EventEnvelope, SendAppointmentStatusChangeForUserEvent } from "../../dtos/kafka.dto";
@@ -66,6 +67,7 @@ export class ConnectGoogleCalendarUseCase {
                     notificationData: {
                         userId: userId,
                         appConnect: AppConnect.GOOGLE_CALENDAR,
+                        templateKey: notificationTemplateConstants.appConnect,
                         notificationType: notificationType.ACCOUNT_ACTIVITY
                     }
                 }

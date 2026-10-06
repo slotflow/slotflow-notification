@@ -1,6 +1,6 @@
 import { KafkaMessage } from "kafkajs";
 import { AppConnect } from "../../domain/enums/enum";
-import { CommonNotificationEventInput } from "./notification.dto";
+import { NotificationEventPayload, SendAppConnectNotificationEventInput } from "./notification.dto";
 
 /**
  * Kafka common dtos
@@ -15,9 +15,9 @@ export interface KafkaClientAdapterProps {
 
 // backend-main service subscribing kafka event payload
 export interface NSSubKafkaEventPayload {
-    emailData: any;
-    notificationData: any;
-    calendarData: any;
+    emailData?: any;
+    notificationData?: NotificationEventPayload;
+    calendarData?: any;
 }
 
 // dlq metadata
@@ -65,7 +65,5 @@ export interface SendAppointmentStatusChangeForUserEvent {
     emailData: {
         appConnect: AppConnect;
     },
-    notificationData: CommonNotificationEventInput & {
-        appConnect: AppConnect;
-    }
+    notificationData: SendAppConnectNotificationEventInput;
 }

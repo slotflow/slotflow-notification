@@ -2,7 +2,9 @@ import { kafkaConfig } from "../../config/env";
 import { log } from "../../shared/logger/logger";
 import { notificationHandler, processEventWrapperUseCase } from ".";
 import { NSSubKafkaEventPayload } from "../../application/dtos/kafka.dto";
+import { NotificationTemplateKey } from "../../application/dtos/notification.dto";
 import { kafkaNotificationConsumer } from "../../infrastructure/messaging";
+import { notificationTemplateRegistry } from "../../shared/utils/constants/notificationConstants";
 import { IKafkaConsumerAdapter } from "../../application/interfaces/messaging/IKafkaConsumer.adapter";
 import { ProcessEventWrapperUseCase } from "../../application/useCases/kafka/processEventWrapper.useCase";
 
@@ -20,7 +22,15 @@ class KafkaNotificationController {
             log.info("start listening kafka notification controller");
 
             for (const [key, topic] of Object.entries(kafkaConfig.topics.sub.notification)) {
-                const useCase = notificationHandler[key as keyof typeof notificationHandler];
+                const templateKey = Object.keys(notificationTemplateRegistry).find(
+                    (candidate): candidate is NotificationTemplateKey => candidate === key
+                );
+                if (!templateKey) {
+                    log.error(`No notification template is registered for Kafka event key: ${key}`);
+                    continue;
+                }
+
+                const useCase = notificationHandler[templateKey];
                 if (!useCase) continue;
 
                 await this.kafkaNotificationConsumerAdapter.subscribe(topic, async ({ message }) => {
@@ -30,7 +40,14 @@ class KafkaNotificationController {
                         businessUseCase: useCase,
                         eventData,
                         topic,
-                        payloadExtractor: (payload: NSSubKafkaEventPayload) => payload.notificationData
+                        payloadExtractor: (payload: NSSubKafkaEventPayload) => {
+                            const notificationData = payload.notificationData;
+                            if (!notificationData || typeof notificationData !== "object") {
+                                return undefined;
+                            }
+
+                            return { ...notificationData, templateKey };
+                        }
                     });
                 });
             };

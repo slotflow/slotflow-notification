@@ -9,6 +9,7 @@ export class NotificationMapper {
             _id: doc._id.toString(),
             userId: doc.userId.toString(),
             isRead: doc.isRead,
+            type: doc.type,
             body: doc.body,
             data: doc.data,
             title: doc.title,
@@ -24,6 +25,7 @@ export class NotificationMapper {
         return {
             userId: new Types.ObjectId(props.userId),
             isRead: props.isRead,
+            type: props.type,
             body: props.body,
             data: props.data,
             title: props.title,
@@ -33,4 +35,3 @@ export class NotificationMapper {
     };
 
 };
-

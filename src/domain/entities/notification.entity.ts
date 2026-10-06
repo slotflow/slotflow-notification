@@ -1,6 +1,6 @@
 import { NotificationProps } from "../contracts/notification.contract";
 import { CreateNotificationProps } from "../commands/notification.commands";
-import { NotificationType } from "@aws-sdk/client-ses";
+import { NotificationType } from "../commands/notification.commands";
 
 export class Notification {
     private props: NotificationProps;

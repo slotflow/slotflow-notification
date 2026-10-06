@@ -8,6 +8,9 @@ import { notificationTemplateRegistry } from "../../../../shared/utils/constants
 import { IUserDeviceRepository } from "../../../../domain/interfaces/repositories/IUserDevice.repository";
 import { INotificationRepository } from "../../../../domain/interfaces/repositories/INotification.repository";
 
+const isNotificationTemplateKey = (value: unknown): value is keyof typeof notificationTemplateRegistry =>
+    typeof value === "string" && Object.prototype.hasOwnProperty.call(notificationTemplateRegistry, value);
+
 export class SendNotificationUseCase {
 
     constructor(
@@ -17,13 +20,30 @@ export class SendNotificationUseCase {
     ) { };
 
     async execute(input: NotificationEventPayload): Promise<void> {
+        let templateKey: unknown;
         try {
-            const { templateKey, userId, ...payloadData } = input;
+            if (!input || typeof input !== "object") {
+                throw new AppError("Invalid notification event: expected an object payload", 400);
+            }
 
-            const template = notificationTemplateRegistry[templateKey] as typeof notificationTemplateRegistry[typeof templateKey];
+            templateKey = input.templateKey;
+            if (!isNotificationTemplateKey(templateKey)) {
+                throw new AppError(
+                    `Invalid notification event: missing or unknown templateKey (${String(templateKey)})`,
+                    400
+                );
+            }
+
+            if (typeof input.userId !== "string" || input.userId.trim().length === 0) {
+                throw new AppError("Invalid notification event: userId is required", 400);
+            }
+
+            const { userId, templateKey: eventTemplateKey, ...payloadData } = input;
+
+            const template = notificationTemplateRegistry[eventTemplateKey];
 
             if (!template) {
-                throw new AppError(`Notification template not found for key: ${templateKey}`, 400);
+                throw new AppError(`Notification template not found for key: ${eventTemplateKey}`, 400);
             }
 
             const title = template.title(payloadData as never);
@@ -36,6 +56,7 @@ export class SendNotificationUseCase {
                 title,
                 body,
                 data: serializedData,
+                type: payloadData.notificationType
             });
 
             await this.notificationRepository.create(inAppNotification);
@@ -54,7 +75,7 @@ export class SendNotificationUseCase {
             }
 
         } catch (error) {
-            log.error("SendNotificationUseCase failed : ", error as Error);
+            log.error(`SendNotificationUseCase failed [templateKey=${String(templateKey)}]`, error as Error);
             throw error;
         };
     };

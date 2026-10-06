@@ -1,4 +1,6 @@
 import mongoose, { Schema, Types } from "mongoose";
+import { NotificationType } from "../../domain/commands/notification.commands";
+import { notificationType } from "../../shared/utils/constants/constants";
 
 export interface INotification {
     _id: Types.ObjectId,
@@ -6,6 +8,7 @@ export interface INotification {
     title: string;
     body: string;
     isRead: boolean;
+    type: NotificationType;
     data: Record<string, string>;
     createdAt: Date,
     updatedAt: Date,
@@ -33,6 +36,11 @@ const notificationSchema = new Schema<INotification>({
     isRead: {
         type: Boolean,
         default: false,
+    },
+    type: {
+        type: String,
+        enum: Object.values(notificationType),
+        required: true,
     },
     data: {
         type: Object,

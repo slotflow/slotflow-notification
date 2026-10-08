@@ -1,7 +1,6 @@
 import { ProviderAddressForUser } from "./common.dto";
-import { NotificationType } from "../../domain/commands/notification.commands";
 import { notificationTemplateConstants } from "../../shared/utils/constants/notificationConstants";
-import { AppConnect, AppointmentStatus, PaymentAccountStatus, PlanName } from "../../domain/enums/enum";
+import { AppConnect, AppointmentStatus, NotificationType, PaymentAccountStatus, PlanName } from "../../domain/enums/enum";
 
 /** 
  * Notification common dtos

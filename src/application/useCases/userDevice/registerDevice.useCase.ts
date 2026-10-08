@@ -8,22 +8,15 @@ export class RegisterDeviceUseCase {
     ) { };
 
     async execute(input: RegisterDeviceInput): Promise<void> {
-        const { fcmToken, deviceId, platform, userId } = input;
-        const existing = await this.userDeviceRepository.findUnique(userId, deviceId, platform);
-        if (existing) {
-            existing.updateToken(fcmToken);
-            await this.userDeviceRepository.update(existing);
-            return;
-        };
 
-        const userDevice = UserDevice.create({
+        const { fcmToken, deviceId, platform, userId } = input;
+         const userDevice = UserDevice.create({
+            userId,
             fcmToken,
             deviceId,
-            userId,
             platform,
         });
 
-        await this.userDeviceRepository.create(userDevice);
-        return;
+        await this.userDeviceRepository.upsert(userDevice);
     };
 };

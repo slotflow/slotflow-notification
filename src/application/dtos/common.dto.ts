@@ -111,11 +111,6 @@ export interface GetNotificationsInput extends ApiPaginationRequest {
 // Get All Notifications Response
 export type GetNotificationsOutput = Array<Pick<NotificationProps, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
 
-
-// Notification channels
-export type NotificationChannel = 'email' | 'push' | 'in_app';
-
-
 // Provider address for the user view
 export type ProviderAddressForUser = {
   addressLine: string;
@@ -135,3 +130,4 @@ export interface TimeZone {
     abbrev: string;
     altName: string;
 }
+

@@ -15,12 +15,10 @@ export class UserDeviceController {
 
     async registerDevice(req: Request, res: Response, next: NextFunction) {
         try {
-            console.log("user device controller");
             const user = req.user as AuthUser;
             const validatedData = registerDeviceZodSchema.parse({
                 ...req.body,
             });
-            console.log("validatedData : ",validatedData);
             await this.registerDeviceUseCase.execute({
                 ...validatedData, 
                 userId: user.id

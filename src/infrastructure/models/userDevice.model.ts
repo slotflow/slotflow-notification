@@ -48,6 +48,6 @@ const userDeviceSchema = new Schema<IUserDevice>({
     }
 );
 
-userDeviceSchema.index({ userId: 1, deviceId: 1 }, { unique: true });
+userDeviceSchema.index({ userId: 1, deviceId: 1, platform: 1, }, { unique: true });
 
 export const UserDeviceModel = mongoose.model<IUserDevice>("UserDevice", userDeviceSchema);

@@ -4,6 +4,9 @@ import { notificationController } from "./notification.controller";
 
 const router = Router();
 
-router.get('/', authMiddleware, notificationController.getNotifications);
+router.get('/', 
+    authMiddleware, 
+    notificationController.getNotifications
+);
 
 export default router;

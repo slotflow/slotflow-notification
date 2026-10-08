@@ -1,4 +1,4 @@
-import { NotificationType } from "../commands/notification.commands";
+import { NotificationType } from "../enums/enum";
 
 export interface NotificationProps {
     _id: string;

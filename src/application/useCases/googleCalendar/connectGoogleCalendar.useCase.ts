@@ -1,10 +1,9 @@
 import { kafkaConfig } from "../../../config/env";
-import { AppConnect } from "../../../domain/enums/enum";
 import { IdType } from "../../../shared/utils/types/enums";
 import { toAppError } from "../../../shared/error/handleUnknownError";
 import { generateId } from "../../../shared/utils/helpers/generateId";
 import { Credential } from "../../../domain/entities/credential.entity";
-import { notificationType } from "../../../shared/utils/constants/constants";
+import { AppConnect, NotificationType } from "../../../domain/enums/enum";
 import { notificationTemplateConstants } from "../../../shared/utils/constants/notificationConstants";
 import { IAesEncryptionService } from "../../interfaces/security/IAesEncryption.service";
 import { IKafkaProducerAdapter } from "../../interfaces/messaging/IKafkaProducer.adapter";
@@ -68,7 +67,7 @@ export class ConnectGoogleCalendarUseCase {
                         userId: userId,
                         appConnect: AppConnect.GOOGLE_CALENDAR,
                         templateKey: notificationTemplateConstants.appConnect,
-                        notificationType: notificationType.ACCOUNT_ACTIVITY
+                        notificationType: NotificationType.ACCOUNT_ACTIVITY
                     }
                 }
             });

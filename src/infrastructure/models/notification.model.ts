@@ -1,6 +1,5 @@
 import mongoose, { Schema, Types } from "mongoose";
-import { NotificationType } from "../../domain/commands/notification.commands";
-import { notificationType } from "../../shared/utils/constants/constants";
+import { NotificationType } from "../../domain/enums/enum";
 
 export interface INotification {
     _id: Types.ObjectId,
@@ -39,7 +38,7 @@ const notificationSchema = new Schema<INotification>({
     },
     type: {
         type: String,
-        enum: Object.values(notificationType),
+        enum: Object.values(NotificationType),
         required: true,
     },
     data: {

@@ -2,52 +2,53 @@ import mongoose, { Schema, Types } from "mongoose";
 import { Platform } from "../../domain/enums/enum";
 
 export interface IUserDevice {
-    _id: Types.ObjectId;
-    userId: Types.ObjectId;
-    fcmToken: string;
-    platform: Platform;
-    deviceId: string;
-    isActive: boolean;
-    lastUsedAt: Date;
-    createdAt: Date;
-    updatedAt: Date;
-};
+  _id: Types.ObjectId;
+  userId: Types.ObjectId;
+  fcmToken: string;
+  platform: Platform;
+  deviceId: string;
+  isActive: boolean;
+  lastUsedAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-const userDeviceSchema = new Schema<IUserDevice>({
+const userDeviceSchema = new Schema<IUserDevice>(
+  {
     userId: {
-        type: Schema.Types.ObjectId,
-        required: [true, "User ID is required"],
-        index: true,
-        unique: true,
+      type: Schema.Types.ObjectId,
+      required: [true, "User ID is required"],
+      index: true,
+      unique: true,
     },
     fcmToken: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     platform: {
-        type: String,
-        enum: Object.values(Platform),
-        required: true
+      type: String,
+      enum: Object.values(Platform),
+      required: true,
     },
     deviceId: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
     },
     isActive: {
-        type: Boolean,
-        default: true
+      type: Boolean,
+      default: true,
     },
     lastUsedAt: {
-        type: Date,
-        default: Date.now
-    }
-},
-    {
-        timestamps: true
-    }
+      type: Date,
+      default: Date.now,
+    },
+  },
+  {
+    timestamps: true,
+  },
 );
 
-userDeviceSchema.index({ userId: 1, deviceId: 1, platform: 1, }, { unique: true });
+userDeviceSchema.index({ userId: 1, deviceId: 1, platform: 1 }, { unique: true });
 
 export const UserDeviceModel = mongoose.model<IUserDevice>("UserDevice", userDeviceSchema);

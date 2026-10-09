@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import "dotenv/config";
 
 import app from "../src/app/app";
 import { appConfig } from "./config/env";
@@ -11,20 +11,18 @@ import { setupGracefulShutdown } from "./app/init/shutdown";
 
 const start = async () => {
   try {
-  
-    // await initOtel();
+    await initOtel();
     await initDB();
     await initKafka();
 
     const server = app.listen(appConfig.port, () => {
       printText();
-      log.info(`Live on http://localhost:${appConfig.port}`)
+      log.info(`Live on http://localhost:${appConfig.port}`);
     });
 
     setupGracefulShutdown(server);
-    
   } catch (error) {
-    log.error("Startup failed", error as Error);
+    log.error("Startup failed", { error });
     process.exit(1);
   }
 };

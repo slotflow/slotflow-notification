@@ -21,34 +21,29 @@ export interface statusTrack {
 
 // booking dto
 export interface BookingDTO {
-  _id: string,
-  serviceProviderId: string,
-  userId: string,
-  appointmentDate: Date,
-  appointmentTime: string,
-  appointmentMode: string,
-  appointmentStatus: AppointmentStatus,
-  slotId: string,
-  paymentId: string | null,
-  videoCallRoomId: string | null,
-  googleEventId: string | null,
+  _id: string;
+  serviceProviderId: string;
+  userId: string;
+  appointmentDate: Date;
+  appointmentTime: string;
+  appointmentMode: string;
+  appointmentStatus: AppointmentStatus;
+  slotId: string;
+  paymentId: string | null;
+  videoCallRoomId: string | null;
+  googleEventId: string | null;
   onlineTrack: {
     user: ParticipantPresence;
     provider: ParticipantPresence;
-  },
-  statusTrack: statusTrack[],
-  createdAt: Date,
-  updatedAt: Date,
+  };
+  statusTrack: statusTrack[];
+  createdAt: Date;
+  updatedAt: Date;
 }
-
-
-
-
 
 /**
  * Common dtos
  */
-
 
 // decoded user
 export interface AuthUser {
@@ -57,7 +52,7 @@ export interface AuthUser {
   email: string;
   name: string;
   timeZone: TimeZone;
-};
+}
 
 export interface GoogleOAuthTokens {
   userId: string;
@@ -67,13 +62,11 @@ export interface GoogleOAuthTokens {
   expiryDate: Date;
 }
 
-
 // Used as the response interface for the all request
 export interface CommonResponse {
   success?: boolean;
   message?: string;
-};
-
+}
 
 // Used as the request interface for the paginated request
 export interface ApiPaginationRequest {
@@ -81,35 +74,33 @@ export interface ApiPaginationRequest {
   limit: number;
 }
 
-
 // Used as the type of table data
 export interface TableData<T> {
   totalPages?: number;
   currentPage?: number;
   totalCount?: number;
-  items?: T
-};
-
+  items?: T;
+}
 
 // **** USECASE DTOS
 
-// Register Device 
+// Register Device
 export interface RegisterDeviceInput {
   fcmToken: string;
   deviceId: string;
   platform: Platform;
   userId: string;
-};
-
+}
 
 // Get All Notifications
 export interface GetNotificationsInput extends ApiPaginationRequest {
   userId: string;
-};
-
+}
 
 // Get All Notifications Response
-export type GetNotificationsOutput = Array<Pick<NotificationProps, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">>;
+export type GetNotificationsOutput = Array<
+  Pick<NotificationProps, "_id" | "createdAt" | "isRead" | "title" | "body" | "data">
+>;
 
 // Provider address for the user view
 export type ProviderAddressForUser = {
@@ -124,10 +115,9 @@ export type ProviderAddressForUser = {
 
 // Time zone interface
 export interface TimeZone {
-    value: string;
-    label: string;
-    offset: number;
-    abbrev: string;
-    altName: string;
+  value: string;
+  label: string;
+  offset: number;
+  abbrev: string;
+  altName: string;
 }
-

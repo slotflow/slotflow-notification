@@ -10,4 +10,4 @@ export interface UserDeviceProps {
   lastUsedAt: Date;
   createdAt: Date;
   updatedAt: Date;
-};
+}

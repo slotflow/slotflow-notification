@@ -4,9 +4,6 @@ import { authMiddleware } from "../../middleware/auth.middleware";
 
 const router = Router();
 
-router.post('/',
-    authMiddleware,
-    userDeviceController.registerDevice
-);
+router.post("/", authMiddleware, userDeviceController.registerDevice);
 
 export default router;

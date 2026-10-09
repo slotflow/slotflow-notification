@@ -2,13 +2,11 @@ import passport from "passport";
 import { Request } from "express";
 import { googleClientConfig } from "../../config/env";
 import { GoogleOAuthTokens } from "../../application/dtos/common.dto";
-import { Strategy as GoogleStrategy, Profile, VerifyCallback } from 'passport-google-oauth20';
+import { Strategy as GoogleStrategy, Profile, VerifyCallback } from "passport-google-oauth20";
 import { IGooglePassportStrategy } from "../../application/interfaces/passport/IGooglePassport.stratergy";
 
 export class GooglePassportStrategyImpl implements IGooglePassportStrategy {
-
-  constructor(
-  ) { };
+  constructor() {}
 
   register(): void {
     passport.use(
@@ -25,7 +23,7 @@ export class GooglePassportStrategyImpl implements IGooglePassportStrategy {
           refreshToken: string,
           params: { expires_in: number },
           profile: Profile,
-          done: VerifyCallback
+          done: VerifyCallback,
         ) => {
           try {
             let userId = "";
@@ -48,9 +46,9 @@ export class GooglePassportStrategyImpl implements IGooglePassportStrategy {
             return done(null, tokenPayload);
           } catch (err) {
             return done(err);
-          };
+          }
         },
       ),
     );
-  };
-};
+  }
+}

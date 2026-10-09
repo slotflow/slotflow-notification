@@ -1,4 +1,3 @@
-import { NotificationChannel, NotificationType } from "../../domain/enums/enum";
 import { NotificationPreferenceProps } from "../../domain/contracts/notificationPreference.contract";
 import { NotificationPreference } from "../../domain/entities/notificationPreference.entity";
 
@@ -8,26 +7,25 @@ import { NotificationPreference } from "../../domain/entities/notificationPrefer
 
 // Get my notification preference
 export interface GetMyNotificationPreferenceInput {
-    userId: string;
+  userId: string;
 }
 export type GetMyNotificationPreferenceOutput = Pick<
-    NotificationPreference,
-    "accountActivity" | "systemUpdates" | "promotionalUpdates"
+  NotificationPreference,
+  "accountActivity" | "systemUpdates" | "promotionalUpdates"
 >;
-
 
 // Update notification preference
 export type UpdateNotificationPreferenceInput = Pick<NotificationPreferenceProps, "userId"> & {
-    pushNotification: boolean;
+  pushNotification: boolean;
 };
 
 // Update push notification preference for all notification types
 export interface UpdatePushNotificationPreferenceInput {
-    userId: string;
-    pushNotification: boolean;
+  userId: string;
+  pushNotification: boolean;
 }
 
 export type UpdatePushNotificationPreferenceOutput = Pick<
-    UpdatePushNotificationPreferenceInput,
-    "pushNotification"
+  UpdatePushNotificationPreferenceInput,
+  "pushNotification"
 >;

@@ -4,19 +4,14 @@ import { notificationPreferenceController } from "./notificationPreference.contr
 
 const router = Router();
 
-router.get("/", 
-    authMiddleware, 
-    notificationPreferenceController.getMyNotificationPreference
-);
+router.get("/", authMiddleware, notificationPreferenceController.getMyNotificationPreference);
 
-router.patch("/", 
-    authMiddleware, 
-    notificationPreferenceController.updateNotificationPreference
-);
+router.patch("/", authMiddleware, notificationPreferenceController.updateNotificationPreference);
 
-router.patch("/push",
-    authMiddleware,
-    notificationPreferenceController.updatePushNotificationPreference
+router.patch(
+  "/push",
+  authMiddleware,
+  notificationPreferenceController.updatePushNotificationPreference,
 );
 
 export default router;

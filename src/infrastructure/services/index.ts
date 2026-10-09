@@ -25,7 +25,12 @@ export const pushNotificationService: IPushNotificationService = new PushNotific
 export const aesEncryptionService: IAesEncryptionService = new AesEncryptionServiceImpl();
 
 // google refresh token service instance
-export const googleRefreshTokenService: IGoogleRefreshTokenService = new GoogleRefreshTokenServiceImpl();
+export const googleRefreshTokenService: IGoogleRefreshTokenService =
+  new GoogleRefreshTokenServiceImpl();
 
 // google Token service intance
-export const googleTokenService: IGoogleTokenService = new GoogleTokenServiceImpl(credentialRepository, aesEncryptionService, googleRefreshTokenService);
+export const googleTokenService: IGoogleTokenService = new GoogleTokenServiceImpl(
+  credentialRepository,
+  aesEncryptionService,
+  googleRefreshTokenService,
+);

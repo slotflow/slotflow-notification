@@ -12,13 +12,15 @@ import { INotificationPreferenceRepository } from "../../domain/interfaces/repos
 // notification repository instance
 export const notificationRepository: INotificationRepository = new NotificationRepositoryImpl();
 
-export const notificationPreferenceRepository: INotificationPreferenceRepository = new NotificationPreferenceRepositoryImpl();
+export const notificationPreferenceRepository: INotificationPreferenceRepository =
+  new NotificationPreferenceRepositoryImpl();
 
 // userDevice repository instance
 export const userDeviceRepository: IUserDeviceRepository = new UserDeviceRepositoryImpl();
 
 // processed event repository instance
-export const processedEventRepository: IProcessedEventRepository = new ProcessedEventRepositoryImpl();
+export const processedEventRepository: IProcessedEventRepository =
+  new ProcessedEventRepositoryImpl();
 
 // credential repository instance
 export const credentialRepository: ICredentialRepository = new CredentialRepositoryImpl();

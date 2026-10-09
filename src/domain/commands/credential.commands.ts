@@ -31,4 +31,6 @@ export interface NotionCredentials extends BaseCredentialDetails {
 
 export type CreateCredentialProps = Pick<CredentialProps, "userId">;
 
-export type UpdateCredentialProps = Partial<Omit<CredentialProps, "_id" | "userId" | "createdAt" | "updatedAt">>;
+export type UpdateCredentialProps = Partial<
+  Omit<CredentialProps, "_id" | "userId" | "createdAt" | "updatedAt">
+>;

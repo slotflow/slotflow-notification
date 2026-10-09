@@ -5,35 +5,28 @@ import { IGoogleCalendarService } from "../../../interfaces/services/IGoogleCale
 
 // TODO implement: Updating the calendar only when resheduling is happens
 export class UpdateGoogleCalendarEventUseCase {
-    constructor(
-        private googleCalendarService: IGoogleCalendarService,
-        private readonly googleTokenService: IGoogleTokenService,
-    ) { };
+  constructor(
+    private googleCalendarService: IGoogleCalendarService,
+    private readonly googleTokenService: IGoogleTokenService,
+  ) {}
 
-    async execute(input: UpdateGoogleCalendarEventInput): Promise<void> {
-        try {
-            const {
-                userId,
-                appointmentDate,
-                appointmentStatus,
-                bookingId,
-                eventId: calendarEventId,
-                role
-            } = input;
+  async execute(input: UpdateGoogleCalendarEventInput): Promise<void> {
+    try {
+      const { userId, appointmentDate, appointmentStatus, eventId: calendarEventId } = input;
 
-            const accessToken = await this.googleTokenService.getAccessToken(userId);
-            if (accessToken) {
-                await this.googleCalendarService.updateEvent({
-                    accessToken,
-                    eventId: calendarEventId,
-                    appointmentDate,
-                    appointmentStatus,
-                });
-            }
+      const accessToken = await this.googleTokenService.getAccessToken(userId);
+      if (accessToken) {
+        await this.googleCalendarService.updateEvent({
+          accessToken,
+          eventId: calendarEventId,
+          appointmentDate,
+          appointmentStatus,
+        });
+      }
 
-            return;
-        } catch (error) {
-            log.error("UpdateGoogleCalendarEventUseCase failed : ", error as Error);
-        };
-    };
-};
+      return;
+    } catch (error) {
+      log.error("UpdateGoogleCalendarEventUseCase failed : ", { error });
+    }
+  }
+}

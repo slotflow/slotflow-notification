@@ -1,6 +1,21 @@
 import { formatString } from "../helpers/formatString";
-import { AdminVerificationStatus, AppointmentStatus, OtpPurpose, Role } from "../../../domain/enums/enum";
-import { EmailTemplateRegistry, SendAccountBlockStatusEventInput, SendAccountTrustStatusEventInput, SendAdminProviderReviewEventInput, SendAppConnectEventInput, SendAppointmentStatusChangeForUserEventInput, SendBookingPaymentSuccessEventInput, SendGotAnAppointmentEventInput, SendOtpEventInput, SendPlanSubscribedEventInput, SendProviderSubscriptionPaymentSuccessEventInput, SendResetPasswordEventInput, SendSlotBookedEventInput, SendUserBookingRefundPaymentSuccessEventInput, SendWelcomeEventInput } from "../../../application/dtos/email.dto";
+import { AdminVerificationStatus, AppointmentStatus, OtpPurpose } from "../../../domain/enums/enum";
+import {
+  EmailTemplateRegistry,
+  SendAccountBlockStatusEventInput,
+  SendAccountTrustStatusEventInput,
+  SendAdminProviderReviewEventInput,
+  SendAppConnectEventInput,
+  SendAppointmentStatusChangeForUserEventInput,
+  SendBookingPaymentSuccessEventInput,
+  SendGotAnAppointmentEventInput,
+  SendOtpEventInput,
+  SendPlanSubscribedEventInput,
+  SendProviderSubscriptionPaymentSuccessEventInput,
+  SendResetPasswordEventInput,
+  SendSlotBookedEventInput,
+  SendUserBookingRefundPaymentSuccessEventInput,
+} from "../../../application/dtos/email.dto";
 
 export const emailTemplateRegistry: EmailTemplateRegistry = {
   // otp email content
@@ -12,10 +27,11 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
 
     renderBody: (data: Omit<SendOtpEventInput, "templateKey" | "email">) => `
       <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
-        ${data.purpose === OtpPurpose.REGISTRATION
-        ? "Thank you for signing up with <strong>Slotflow</strong>. To complete your registration, please enter the one-time verification code below:"
-        : "We received a request to reset your password for your <strong>Slotflow</strong> account. Use the one-time code below to proceed:"
-      }
+        ${
+          data.purpose === OtpPurpose.REGISTRATION
+            ? "Thank you for signing up with <strong>Slotflow</strong>. To complete your registration, please enter the one-time verification code below:"
+            : "We received a request to reset your password for your <strong>Slotflow</strong> account. Use the one-time code below to proceed:"
+        }
       </p>
 
       <!-- OTP Code Box -->
@@ -44,9 +60,9 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
 
   // registration completed welcome email content
   registerSuccess: {
-    subject: (data: Omit<SendWelcomeEventInput, "templateKey" | "email">) => "Welcome to Slotflow",
+    subject: () => "Welcome to Slotflow",
 
-    renderBody: (data: Omit<SendWelcomeEventInput, "templateKey" | "email">) => `
+    renderBody: () => `
       <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
         Welcome to <strong>Slotflow</strong>! We're excited to have you on board.
       </p>
@@ -130,8 +146,9 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
         : "Update Regarding Your Slotflow Provider Application",
 
     renderBody: (data: Omit<SendAdminProviderReviewEventInput, "templateKey" | "email">) => `
-      ${data.status === AdminVerificationStatus.APPROVED
-        ? `
+      ${
+        data.status === AdminVerificationStatus.APPROVED
+          ? `
           <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
             We are pleased to inform you that your provider application has been reviewed and <strong>approved</strong> by our administrative team.
           </p>
@@ -157,7 +174,7 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
             </tr>
           </table>
           `
-        : `
+          : `
           <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
             Thank you for your interest in Slotflow. After careful review, your account approval was not successful at this time.
           </p>
@@ -169,15 +186,16 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
             </p>
           </div>
 
-          ${data.reason
-          ? `
+          ${
+            data.reason
+              ? `
               <div style="margin: 20px 0;">
                 <p style="margin: 0 0 6px 0; color: #212529; font-weight: 600; font-size: 14px;">Reason for Rejection:</p>
                 <p style="margin: 0; color: #495057; font-size: 14px; line-height: 1.6;">${data.reason}</p>
               </div>
               `
-          : ""
-        }
+              : ""
+          }
 
           <p style="margin: 0 0 16px 0; color: #495057; font-size: 15px; line-height: 1.6;">
             Please visit Slotflow and check out your submitted details. You can edit your information on the platform and resubmit your application for review.
@@ -202,8 +220,9 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
         : "Your Slotflow Account Has Been Reactivated",
 
     renderBody: (data: Omit<SendAccountBlockStatusEventInput, "templateKey" | "email">) => `
-      ${data.blocked
-        ? `
+      ${
+        data.blocked
+          ? `
           <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
             We are writing to inform you that your <strong>Slotflow</strong> account has been suspended due to activities that violate our Terms of Service or safety guidelines.
           </p>
@@ -215,15 +234,16 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
             </p>
           </div>
 
-          ${data.reason
-          ? `
+          ${
+            data.reason
+              ? `
               <div style="margin: 20px 0;">
                 <p style="margin: 0 0 6px 0; color: #212529; font-weight: 600; font-size: 14px;">Reason for Suspension:</p>
                 <p style="margin: 0; color: #495057; font-size: 14px; line-height: 1.6;">${data.reason}</p>
               </div>
               `
-          : ""
-        }
+              : ""
+          }
 
           <p style="margin: 0 0 16px 0; color: #495057; font-size: 15px; line-height: 1.6;">
             While your account is blocked, access to bookings, services, and platform features will be restricted.
@@ -237,7 +257,7 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
             </p>
           </div>
           `
-        : `
+          : `
           <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
             We are pleased to let you know that your <strong>Slotflow</strong> account has been successfully unblocked and reactivated.
           </p>
@@ -253,15 +273,16 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
             You can now log in and resume using all features and services on Slotflow without restriction.
           </p>
 
-          ${data.reason
-          ? `
+          ${
+            data.reason
+              ? `
               <div style="margin: 20px 0;">
                 <p style="margin: 0 0 6px 0; color: #212529; font-weight: 600; font-size: 14px;">Additional Note:</p>
                 <p style="margin: 0; color: #495057; font-size: 14px; line-height: 1.6;">${data.reason}</p>
               </div>
               `
-          : ""
-        }
+              : ""
+          }
 
           <!-- CTA Button for Unblocked Users -->
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
@@ -293,8 +314,9 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
         : "Update Regarding Your Slotflow Account Trust Status",
 
     renderBody: (data: Omit<SendAccountTrustStatusEventInput, "templateKey" | "email">) => `
-      ${data.trusted
-        ? `
+      ${
+        data.trusted
+          ? `
           <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
             Congratulations! Your service provider account has been <strong>marked as Trusted</strong> on Slotflow.
           </p>
@@ -321,7 +343,7 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
             </tr>
           </table>
           `
-        : `
+          : `
           <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
             We are writing to inform you that your service provider account is <strong>no longer marked as Trusted</strong> on Slotflow.
           </p>
@@ -333,15 +355,16 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
             </p>
           </div>
 
-          ${data.reason
-          ? `
+          ${
+            data.reason
+              ? `
               <div style="margin: 20px 0;">
                 <p style="margin: 0 0 6px 0; color: #212529; font-weight: 600; font-size: 14px;">Reason for Change:</p>
                 <p style="margin: 0; color: #495057; font-size: 14px; line-height: 1.6;">${data.reason}</p>
               </div>
               `
-          : ""
-        }
+              : ""
+          }
 
           <p style="margin: 0 0 16px 0; color: #495057; font-size: 15px; line-height: 1.6;">
             Please review your account details and service feedback.
@@ -365,7 +388,9 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
         ? "Your Slotflow Appointment Has Been Confirmed"
         : "Update: Your Slotflow Appointment Request Was Declined",
 
-    renderBody: (data: Omit<SendAppointmentStatusChangeForUserEventInput, "templateKey" | "email">) => {
+    renderBody: (
+      data: Omit<SendAppointmentStatusChangeForUserEventInput, "templateKey" | "email">,
+    ) => {
       const isConfirmed = data.appointmentStatus === AppointmentStatus.CONFIRMED;
       const isOfflineMode = data.appointmentMode?.toLowerCase() === "offline";
       const hasAddress = Boolean(data.address && data.address.addressLine);
@@ -398,8 +423,9 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
                     ${city}, ${state} - ${pincode}
                   </p>
                   
-                  ${googleMapsUrl
-              ? `
+                  ${
+                    googleMapsUrl
+                      ? `
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td align="center" style="border-radius: 6px; background-color: #EFF6FF; border: 1px solid #BFDBFE;">
@@ -410,8 +436,8 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
                       </tr>
                     </table>
                   `
-              : ""
-            }
+                      : ""
+                  }
                 </td>
               </tr>
             </table>
@@ -444,9 +470,10 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
 
       return `
       <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
-        ${isConfirmed
-          ? "Great news! Your service provider has <strong>confirmed</strong> your appointment request."
-          : "We are writing to let you know that your appointment request was <strong>declined</strong> by the service provider."
+        ${
+          isConfirmed
+            ? "Great news! Your service provider has <strong>confirmed</strong> your appointment request."
+            : "We are writing to let you know that your appointment request was <strong>declined</strong> by the service provider."
         }
       </p>
 
@@ -479,7 +506,8 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
       <!-- Address / Location Section -->
       ${renderLocationBlock()}
 
-      ${!isConfirmed && data.reason
+      ${
+        !isConfirmed && data.reason
           ? `
         <div style="margin: 20px 0;">
           <p style="margin: 0 0 6px 0; color: #212529; font-weight: 600; font-size: 14px;">Reason Provided:</p>
@@ -487,7 +515,7 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
         </div>
         `
           : ""
-        }
+      }
 
       <!-- Primary CTA -->
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
@@ -562,7 +590,9 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
   providerSubscriptionPaymentSuccess: {
     subject: () => "Receipt for Your Slotflow Provider Subscription",
 
-    renderBody: (data: Omit<SendProviderSubscriptionPaymentSuccessEventInput, "templateKey" | "email">) => `
+    renderBody: (
+      data: Omit<SendProviderSubscriptionPaymentSuccessEventInput, "templateKey" | "email">,
+    ) => `
       <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
         Thank you for your payment! Your provider subscription on <strong>Slotflow</strong> is active and up to date.
       </p>
@@ -600,16 +630,17 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
       <!-- Action Buttons -->
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
         <tr>
-          ${data.receiptUrl
-        ? `
+          ${
+            data.receiptUrl
+              ? `
               <td style="border-radius: 8px; background-color: #635BFF; padding-right: 12px;">
                 <a href="${data.receiptUrl}" target="_blank" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 12px 24px; border-radius: 8px; display: inline-block;">
                   View / Download Receipt &rarr;
                 </a>
               </td>
               `
-        : ""
-      }
+              : ""
+          }
           <td style="border-radius: 8px; background-color: #F1F3F5;">
             <a href="https://slotflow.com/subscriptions" target="_blank" style="font-size: 14px; font-weight: 600; color: #212529; text-decoration: none; padding: 12px 24px; border-radius: 8px; display: inline-block;">
               Manage Subscription
@@ -665,16 +696,17 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
       <!-- Action Buttons -->
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
         <tr>
-          ${data.receiptUrl
-        ? `
+          ${
+            data.receiptUrl
+              ? `
               <td style="border-radius: 8px; background-color: #635BFF; padding-right: 12px;">
                 <a href="${data.receiptUrl}" target="_blank" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 12px 24px; border-radius: 8px; display: inline-block;">
                   View / Download Receipt &rarr;
                 </a>
               </td>
               `
-        : ""
-      }
+              : ""
+          }
           <td style="border-radius: 8px; background-color: #F1F3F5;">
             <a href="https://slotflow.com/bookings" target="_blank" style="font-size: 14px; font-weight: 600; color: #212529; text-decoration: none; padding: 12px 24px; border-radius: 8px; display: inline-block;">
               View My Bookings
@@ -706,10 +738,11 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
 
       return `
         <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
-          ${isTrial
-          ? `Your free trial for the <strong>${data.subscribedPlan}</strong> plan has officially started! Enjoy full access to all trial features on <strong>Slotflow</strong>.`
-          : `Your subscription to the <strong>${data.subscribedPlan}</strong> plan is now active! Thank you for choosing <strong>Slotflow</strong> to power your services.`
-        }
+          ${
+            isTrial
+              ? `Your free trial for the <strong>${data.subscribedPlan}</strong> plan has officially started! Enjoy full access to all trial features on <strong>Slotflow</strong>.`
+              : `Your subscription to the <strong>${data.subscribedPlan}</strong> plan is now active! Thank you for choosing <strong>Slotflow</strong> to power your services.`
+          }
         </p>
 
         <!-- Status Badge -->
@@ -895,10 +928,13 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
   },
 
   userBookingRefundPaymentSuccess: {
-    subject: (_data: Omit<SendUserBookingRefundPaymentSuccessEventInput, "templateKey" | "email">) =>
-      `Refund Processed Successfully — Slotflow`,
+    subject: (
+      _data: Omit<SendUserBookingRefundPaymentSuccessEventInput, "templateKey" | "email">,
+    ) => `Refund Processed Successfully — Slotflow`,
 
-    renderBody: (data: Omit<SendUserBookingRefundPaymentSuccessEventInput, "templateKey" | "email">) => `
+    renderBody: (
+      data: Omit<SendUserBookingRefundPaymentSuccessEventInput, "templateKey" | "email">,
+    ) => `
       <p style="margin: 0 0 16px 0; color: #212529; font-size: 15px; line-height: 1.6;">
         Your refund for your booking has been processed successfully.
       </p>
@@ -952,9 +988,5 @@ export const emailTemplateRegistry: EmailTemplateRegistry = {
         </p>
       </div>
     `,
-  }
-}
-
-
-
-
+  },
+};

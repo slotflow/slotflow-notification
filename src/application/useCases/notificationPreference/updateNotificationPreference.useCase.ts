@@ -5,41 +5,44 @@ import { NotificationPreference } from "../../../domain/entities/notificationPre
 import { INotificationPreferenceRepository } from "../../../domain/interfaces/repositories/INotificationPreference.repository";
 
 export class UpdateNotificationPreferenceUseCase {
-    constructor(
-        private readonly notificationPreferenceRepository: INotificationPreferenceRepository,
-    ) { };
+  constructor(
+    private readonly notificationPreferenceRepository: INotificationPreferenceRepository,
+  ) {}
 
-    async execute(input: UpdateNotificationPreferenceInput): Promise<void> {
-        try {
-            const { pushNotification, userId } = input;
-            if(!userId) {
-                throw new BadRequestError();
-            }
+  async execute(input: UpdateNotificationPreferenceInput): Promise<void> {
+    try {
+      const { pushNotification, userId } = input;
+      if (!userId) {
+        throw new BadRequestError();
+      }
 
-            const notificationPreference = await this.notificationPreferenceRepository.findByUserId(input.userId)
-                ?? await this.notificationPreferenceRepository.create(NotificationPreference.create({ userId: input.userId }));
+      const notificationPreference =
+        (await this.notificationPreferenceRepository.findByUserId(input.userId)) ??
+        (await this.notificationPreferenceRepository.create(
+          NotificationPreference.create({ userId: input.userId }),
+        ));
 
-            notificationPreference.updateAccountActivity({
-                ...notificationPreference.accountActivity,
-                push: pushNotification,
-            });
-            notificationPreference.updateSystemUpdates({
-                ...notificationPreference.systemUpdates,
-                push: pushNotification,
-            });
-            notificationPreference.updatePromotionalUpdates({
-                ...notificationPreference.promotionalUpdates,
-                push: pushNotification,
-            });
+      notificationPreference.updateAccountActivity({
+        ...notificationPreference.accountActivity,
+        push: pushNotification,
+      });
+      notificationPreference.updateSystemUpdates({
+        ...notificationPreference.systemUpdates,
+        push: pushNotification,
+      });
+      notificationPreference.updatePromotionalUpdates({
+        ...notificationPreference.promotionalUpdates,
+        push: pushNotification,
+      });
 
-            const updatedNotificationPreference = await this.notificationPreferenceRepository.update(notificationPreference);
-            if(!updatedNotificationPreference) {
-                throw new AppError();
-            }
-
-        } catch (error) {
-            log.error("UpdateNotificationPreferenceUseCase failed :", error as Error);
-            throw error;
-        };
-    };
-};
+      const updatedNotificationPreference =
+        await this.notificationPreferenceRepository.update(notificationPreference);
+      if (!updatedNotificationPreference) {
+        throw new AppError();
+      }
+    } catch (error) {
+      log.error("UpdateNotificationPreferenceUseCase failed :", { error });
+      throw error;
+    }
+  }
+}

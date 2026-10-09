@@ -1,25 +1,24 @@
-
 // email template mapper
 export const emailTemplateConstants = {
-    sendOtp: 'sendOtp',
-    registerSuccess: 'registerSuccess',
-    passwordReset: 'passwordReset',
-    adminProviderReview: 'adminProviderReview',
-    accountBlockStatus: 'accountBlockStatus',
-    accountTrustStatus: 'accountTrustStatus',
-    providerAppointmentStatusForUser: 'providerAppointmentStatusForUser',
-    appConnect: 'appConnect',
-    providerSubscriptionPaymentSuccess: 'providerSubscriptionPaymentSuccess',
-    userBookingPaymentSuccess: 'userBookingPaymentSuccess',
-    planSubscribed: 'planSubscribed',
-    slotBooked: 'slotBooked',
-    gotAnAppointment: 'gotAnAppointment',
-    userBookingRefundPaymentSuccess: "userBookingRefundPaymentSuccess",
+  sendOtp: "sendOtp",
+  registerSuccess: "registerSuccess",
+  passwordReset: "passwordReset",
+  adminProviderReview: "adminProviderReview",
+  accountBlockStatus: "accountBlockStatus",
+  accountTrustStatus: "accountTrustStatus",
+  providerAppointmentStatusForUser: "providerAppointmentStatusForUser",
+  appConnect: "appConnect",
+  providerSubscriptionPaymentSuccess: "providerSubscriptionPaymentSuccess",
+  userBookingPaymentSuccess: "userBookingPaymentSuccess",
+  planSubscribed: "planSubscribed",
+  slotBooked: "slotBooked",
+  gotAnAppointment: "gotAnAppointment",
+  userBookingRefundPaymentSuccess: "userBookingRefundPaymentSuccess",
 } as const;
 
 // email template
 export const emailTemplate = {
-    html: (subject: string, name: string, contentHTML: string): string => `<!DOCTYPE html>
+  html: (subject: string, name: string, contentHTML: string): string => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

@@ -3,6 +3,6 @@ import { NotificationPreferenceProps } from "../contracts/notificationPreference
 export type CreateNotificationPreferenceProps = Pick<NotificationPreferenceProps, "userId">;
 
 export type UpdateNotificationPreferenceProps = Pick<
-    NotificationPreferenceProps,
-    "accountActivity" | "systemUpdates" | "promotionalUpdates"
+  NotificationPreferenceProps,
+  "accountActivity" | "systemUpdates" | "promotionalUpdates"
 >;

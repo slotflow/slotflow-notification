@@ -6,7 +6,7 @@ export enum EventData {
   eventAddBorderColor = "#635bff",
   eventAddTextColor = "#ffffff",
   eventCancelBorderColor = "#ff0000",
-  eventCancelTextColor = "#ffffff",
+  eventCancelTextColor = "#fa3535",
   eventTimeZone = "Asia/Kolkata",
 }
 
@@ -14,7 +14,7 @@ export enum EventData {
 export const emailServiceConstants = {
   gmail: "Gmail",
   slotflow: "Slotflow",
-  source: "no-reply@slotflow.online"
+  source: "no-reply@slotflow.online",
 };
 
 export const PREFIX_MAP: Record<IdType, string> = {

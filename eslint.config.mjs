@@ -1,20 +1,20 @@
-import globals from 'globals'
-import eslint from '@eslint/js'
-import tseslint from 'typescript-eslint'
-import importPlugin from 'eslint-plugin-import'
+import globals from "globals";
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
+import importPlugin from "eslint-plugin-import";
 
 export default [
   /* Ignore replacement for .eslintignore */
   {
     ignores: [
-      'node_modules',
-      'dist',
-      'dist-bundle',
-      'coverage',
-      '*.log',
-      '*.js',
-      '*.d.ts',
-      '.env*'
+      "node_modules",
+      "dist",
+      "dist-bundle",
+      "coverage",
+      "*.log",
+      "*.js",
+      "*.d.ts",
+      ".env*",
     ],
   },
 
@@ -27,9 +27,9 @@ export default [
   {
     languageOptions: {
       parserOptions: {
-        project: './tsconfig.json',
+        project: "./tsconfig.json",
         tsconfigRootDir: import.meta.dirname,
-        sourceType: 'module',
+        sourceType: "module",
       },
       globals: {
         ...globals.node,
@@ -42,43 +42,43 @@ export default [
     },
 
     settings: {
-      'import/resolver': {
+      "import/resolver": {
         typescript: {
-          project: './tsconfig.json',
+          project: "./tsconfig.json",
         },
       },
     },
 
     rules: {
       /* -------- Type safety -------- */
-      '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/no-unsafe-assignment': 'error',
-      '@typescript-eslint/no-unsafe-call': 'error',
-      '@typescript-eslint/no-unsafe-return': 'error',
-      '@typescript-eslint/no-floating-promises': 'error',
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-unsafe-assignment": "error",
+      "@typescript-eslint/no-unsafe-call": "error",
+      "@typescript-eslint/no-unsafe-return": "error",
+      "@typescript-eslint/no-floating-promises": "error",
 
       /* -------- Clean Architecture -------- */
-      'import/no-cycle': 'error',
-      'import/no-self-import': 'error',
+      "import/no-cycle": "error",
+      "import/no-self-import": "error",
 
       /* -------- Practical backend rules -------- */
-      'no-console': 'warn',
+      "no-console": "warn",
     },
   },
 
   /* Bootstrap & config files */
   {
-    files: ['src/server.ts', '**/config/**'],
+    files: ["src/server.ts", "**/config/**"],
     rules: {
-      '@typescript-eslint/no-non-null-assertion': 'off',
+      "@typescript-eslint/no-non-null-assertion": "off",
     },
   },
 
   /* Tests */
   {
-    files: ['**/*.spec.ts', '**/*.test.ts'],
+    files: ["**/*.spec.ts", "**/*.test.ts"],
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
-]
+];

@@ -7,16 +7,16 @@ import { emailTemplate } from "../../../../shared/utils/constants/emailConstants
 import { emailTemplateRegistry } from "../../../../shared/utils/constants/emailTemplates";
 
 export class SendEmailUseCase {
-  constructor(
-    private readonly emailService: IEmailService
-  ) { }
+  constructor(private readonly emailService: IEmailService) {}
 
   async execute(input: EmailEventPayload): Promise<void> {
     try {
       const { email, templateKey, ...payloadData } = input;
       let { name } = input;
 
-      const template = emailTemplateRegistry[templateKey] as typeof emailTemplateRegistry[typeof templateKey];
+      const template = emailTemplateRegistry[
+        templateKey
+      ] as (typeof emailTemplateRegistry)[typeof templateKey];
 
       if (!template) {
         throw new AppError(`Template not found for key: ${templateKey}`, 400);
@@ -35,7 +35,7 @@ export class SendEmailUseCase {
         html: fullHtml,
       });
     } catch (error) {
-      log.error(`SendEmailUseCase [${input.templateKey}] failed:`, error as Error);
+      log.error(`SendEmailUseCase [${input.templateKey}] failed:`, { error });
       throw error;
     }
   }

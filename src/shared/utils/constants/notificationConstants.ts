@@ -19,14 +19,11 @@ export const notificationTemplateConstants = {
   userBookingRefundPaymentSuccess: "userBookingRefundPaymentSuccess",
 } as const;
 
-
 export const notificationTemplateRegistry: NotificationTemplateRegistry = {
-
   accountTrustStatus: {
     title: () => "Account Trust Status",
     body: (data) =>
-      `Your account trust status has been updated to ${data.isTrusted ? "trusted" : "untrusted"
-      }.`,
+      `Your account trust status has been updated to ${data.isTrusted ? "trusted" : "untrusted"}.`,
   },
 
   providerAppointmentStatusForUser: {
@@ -136,8 +133,7 @@ export const notificationTemplateRegistry: NotificationTemplateRegistry = {
       };
 
       const formattedStatus =
-        statusTextMap[data.accountStatus] ||
-        data.accountStatus.replace(/_/g, " ").toLowerCase();
+        statusTextMap[data.accountStatus] || data.accountStatus.replace(/_/g, " ").toLowerCase();
 
       return `Your Stripe payment account status has been updated to ${formattedStatus}.`;
     },
@@ -155,5 +151,4 @@ export const notificationTemplateRegistry: NotificationTemplateRegistry = {
       return `A refund of $${amount.toFixed(2)} has been successfully processed. Transaction ID: ${data.transactionId}.`;
     },
   },
-
 };

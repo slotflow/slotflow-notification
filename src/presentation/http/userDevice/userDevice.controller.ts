@@ -7,31 +7,26 @@ import { registerDeviceZodSchema } from "../../../shared/zod/notification.zod";
 import { RegisterDeviceUseCase } from "../../../application/useCases/userDevice/registerDevice.useCase";
 
 export class UserDeviceController {
-    constructor(
-        private readonly registerDeviceUseCase: RegisterDeviceUseCase,
-    ) {
-        this.registerDevice = this.registerDevice.bind(this);
-    };
+  constructor(private readonly registerDeviceUseCase: RegisterDeviceUseCase) {
+    this.registerDevice = this.registerDevice.bind(this);
+  }
 
-    async registerDevice(req: Request, res: Response, next: NextFunction) {
-        try {
-            const user = req.user as AuthUser;
-            const validatedData = registerDeviceZodSchema.parse({
-                ...req.body,
-            });
-            await this.registerDeviceUseCase.execute({
-                ...validatedData, 
-                userId: user.id
-            });
-            sendResponse(res, null);
-        } catch (error) {
-            log.error("registerDevice failed : ", error as Error);
-            next(error)
-        };
-    };
+  async registerDevice(req: Request, res: Response, next: NextFunction) {
+    try {
+      const user = req.user as AuthUser;
+      const validatedData = registerDeviceZodSchema.parse({
+        ...req.body,
+      });
+      await this.registerDeviceUseCase.execute({
+        ...validatedData,
+        userId: user.id,
+      });
+      sendResponse(res, null);
+    } catch (error) {
+      log.error("registerDevice failed : ", { error });
+      next(error);
+    }
+  }
+}
 
-};
-
-export const userDeviceController = new UserDeviceController(
-    registerDeviceUseCase,
-);
+export const userDeviceController = new UserDeviceController(registerDeviceUseCase);

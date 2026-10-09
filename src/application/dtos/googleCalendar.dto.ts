@@ -4,12 +4,12 @@ import { AppointmentStatus, Role } from "../../domain/enums/enum";
 // google calendar events props for backend
 interface GoogleCalendarEventsPropsForBackend {
   start: {
-    dateTime: string,
-    timeZone: string,
+    dateTime: string;
+    timeZone: string;
   };
   end: {
-    dateTime: string,
-    timeZone: string,
+    dateTime: string;
+    timeZone: string;
   };
 }
 
@@ -57,55 +57,65 @@ export interface GoogleCalendarEvent extends Partial<BookingDTO> {
       title?: string;
       backgroundColor?: string;
       textColor?: string;
-    },
-  },
-};
-
-
-
+    };
+  };
+}
 
 /**
  * Google calnedar service dtos
  */
 
-
 export interface CreateGoogleCalendarEventRequest {
-  appointmentDate: Date,
-  appointmentStatus: AppointmentStatus,
+  appointmentDate: Date;
+  appointmentStatus: AppointmentStatus;
   accessToken: string;
   slotDuration: number;
 }
 
 export interface UpdateGoogleCalendarEventRequest {
-  eventId: string,
-  appointmentDate: Date,
-  appointmentStatus: AppointmentStatus,
-  accessToken: string,
+  eventId: string;
+  appointmentDate: Date;
+  appointmentStatus: AppointmentStatus;
+  accessToken: string;
 }
 
 // used in add event to calendar usecase
 interface CombinedStartAndEndProps {
-  start: {
-    dateTime: string,
-    date: string,
-    timeZone: string,
-  } | string;
-  end: {
-    dateTime: string,
-    date: string,
-    timeZone: string,
-  } | string;
+  start:
+    | {
+        dateTime: string;
+        date: string;
+        timeZone: string;
+      }
+    | string;
+  end:
+    | {
+        dateTime: string;
+        date: string;
+        timeZone: string;
+      }
+    | string;
 }
 
+export type GetEventsFromCalendarProps = Pick<
+  GoogleCalendarEvent,
+  | "id"
+  | "summary"
+  | "description"
+  | "creator"
+  | "organizer"
+  | "iCalUID"
+  | "reminders"
+  | "eventType"
+  | "extendedProperties"
+> &
+  CombinedStartAndEndProps;
 
-export type GetEventsFromCalendarProps = Pick<GoogleCalendarEvent, "id" | "summary" | "description" | "creator" | "organizer" | "iCalUID" | "reminders" | "eventType" | "extendedProperties"> & CombinedStartAndEndProps;
-
-
-export type AddEventToCalendarProps = Pick<GoogleCalendarEvent, "summary" | "description" | "extendedProperties"> & GoogleCalendarEventsPropsForBackend;
-
-
-
-
+export type AddEventToCalendarProps = Pick<
+  GoogleCalendarEvent,
+  "summary" | "description" | "extendedProperties"
+> &
+  GoogleCalendarEventsPropsForBackend;
 
 /**
  * Google calendat usecase dtos
@@ -117,21 +127,17 @@ export interface GetGoogleCalendarInput {
 }
 export type GetGoogleCalendarOutput = Array<GetEventsFromCalendarProps>;
 
-
 // ConnectGoogleCalendarUseCase
 export interface ConnectGoogleCalendarInput {
   userId: string;
   googleId: string;
   googleAccessToken: string;
   googleRefreshToken: string;
-  expiryDate: Date,
+  expiryDate: Date;
 }
 export interface ConnectGoogleCalendarOutput {
   googleCalendarConnected: boolean;
 }
-
-
-
 
 /**
  * Google calendar kafka events dtos
@@ -146,7 +152,7 @@ export interface CreateGoogleCalendarEventInput {
   userId: string;
   appointmentDate: Date;
   appointmentStatus: AppointmentStatus;
-  slotDuration: number
+  slotDuration: number;
 }
 
 // update google calendar event
@@ -167,7 +173,7 @@ export interface GoogleCalendarCreateEventSuccessEvent {
     bookingId: string;
     role: Role;
     eventId: string;
-  }
+  };
 }
 
 // create google calendar event failed result
@@ -175,5 +181,5 @@ export interface GoogleCalendarCreateEventFailedEvent {
   mbsData: {
     bookingId: string;
     role: Role;
-  }
+  };
 }

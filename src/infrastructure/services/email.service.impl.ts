@@ -1,16 +1,15 @@
-import nodemailer from 'nodemailer';
-import { log } from '../../shared/logger/logger';
-import { officialConfig } from '../../config/env';
-import { ses } from '../cloud/aws/aws.ses.client';
-import { SendEmailCommand } from '@aws-sdk/client-ses';
-import { AppError } from '../../shared/error/appError';
-import { ERROR_CODES } from '../../shared/utils/types/enums';
-import { EmailOptions } from '../../application/dtos/email.dto';
-import { emailServiceConstants } from '../../shared/utils/constants/constants';
-import { IEmailService } from '../../application/interfaces/services/IEmail.service';
+import nodemailer from "nodemailer";
+import { log } from "../../shared/logger/logger";
+import { officialConfig } from "../../config/env";
+import { ses } from "../cloud/aws/aws.ses.client";
+import { SendEmailCommand } from "@aws-sdk/client-ses";
+import { AppError } from "../../shared/error/appError";
+import { ERROR_CODES } from "../../shared/utils/types/enums";
+import { EmailOptions } from "../../application/dtos/email.dto";
+import { emailServiceConstants } from "../../shared/utils/constants/constants";
+import { IEmailService } from "../../application/interfaces/services/IEmail.service";
 
 export class EmailServiceImpl implements IEmailService {
-
   async sendEmailViaNodemailer(options: EmailOptions): Promise<void> {
     try {
       const transporter = nodemailer.createTransport({
@@ -28,17 +27,11 @@ export class EmailServiceImpl implements IEmailService {
         html: options.html,
       });
     } catch (error) {
-      log.error("sendEmailViaNodemailer failed : ", error as Error);
+      log.error("sendEmailViaNodemailer failed : ", { error });
 
-      throw new AppError(
-        "Failed to send email",
-        500,
-        false,
-        ERROR_CODES.EMAIL_SERVICE_ERROR
-      )
-    };
-  };
-
+      throw new AppError("Failed to send email", 500, false, ERROR_CODES.EMAIL_SERVICE_ERROR);
+    }
+  }
 
   async sendEmailViaSes(options: EmailOptions): Promise<void> {
     try {
@@ -57,17 +50,10 @@ export class EmailServiceImpl implements IEmailService {
 
       const command = new SendEmailCommand(params);
       await ses.send(command);
-
     } catch (error) {
-      log.error("sendEmailViaSes failed : ", error as Error);
-      
-      throw new AppError(
-        "Failed to send email",
-        500,
-        false,
-        ERROR_CODES.EMAIL_SERVICE_ERROR
-      )
-    };
-  };
+      log.error("sendEmailViaSes failed : ", { error });
 
-};
+      throw new AppError("Failed to send email", 500, false, ERROR_CODES.EMAIL_SERVICE_ERROR);
+    }
+  }
+}

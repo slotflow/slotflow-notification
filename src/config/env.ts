@@ -10,11 +10,15 @@ export const appConfig = {
 };
 
 export const callbackConfig = {
-  integrationsUrl: appConfig.isDev ? validator.requireEnv("CLIENT_INTEGRATIONS_CALLBACK_URL_DEV") : validator.requireEnv("CLIENT_INTEGRATIONS_CALLBACK_URL"),
-}
+  integrationsUrl: appConfig.isDev
+    ? validator.requireEnv("CLIENT_INTEGRATIONS_CALLBACK_URL_DEV")
+    : validator.requireEnv("CLIENT_INTEGRATIONS_CALLBACK_URL"),
+};
 
 export const mongodbConfig = {
-  mongoUri: appConfig.isDev ? validator.requireEnv("MONGO_URI_DEV") : validator.requireEnv("MONGO_URI"),
+  mongoUri: appConfig.isDev
+    ? validator.requireEnv("MONGO_URI_DEV")
+    : validator.requireEnv("MONGO_URI"),
 };
 
 export const officialConfig = {
@@ -25,16 +29,30 @@ export const officialConfig = {
 export const googleClientConfig = {
   googleClientId: validator.requireEnv("GOOGLE_CLIENT_ID"),
   googleClientSecret: validator.requireEnv("GOOGLE_CLIENT_SECRET"),
-  googleCallbackUrl: appConfig.isDev ? validator.requireEnv("GOOGLE_CALLBACK_URL_DEV") : validator.requireEnv("GOOGLE_CALLBACK_URL"),
+  googleCallbackUrl: appConfig.isDev
+    ? validator.requireEnv("GOOGLE_CALLBACK_URL_DEV")
+    : validator.requireEnv("GOOGLE_CALLBACK_URL"),
 };
 
 export const serviceConfig = {
-    frontendUrl: appConfig.isDev ? validator.requireEnv("FRONTEND_URL_DEV") : validator.requireEnv("FRONTEND_URL"),
-    apiGatewayUrl: appConfig.isDev ? validator.requireEnv("API_GATEWAY_URL_DEV") : validator.requireEnv("API_GATEWAY_URL"),
-    mainBackendServiceUrl: appConfig.isDev ? validator.requireEnv("MAIN_BACKEND_SERVICE_URL_DEV") : validator.requireEnv("MAIN_BACKEND_SERVICE_URL"),
-    realtimeServiceUrl: appConfig.isDev ? validator.requireEnv("REALTIME_SERVICE_URL_DEV") : validator.requireEnv("REALTIME_SERVICE_URL"),
-    notificationServiceUrl: appConfig.isDev ? validator.requireEnv("NOTIFICATION_SERVICE_URL_DEV") : validator.requireEnv("NOTIFICATION_SERVICE_URL"),
-    paymentServiceUrl: appConfig.isDev ? validator.requireEnv("PAYMENT_SERVICE_URL_DEV") : validator.requireEnv("PAYMENT_SERVICE_URL"),
+  frontendUrl: appConfig.isDev
+    ? validator.requireEnv("FRONTEND_URL_DEV")
+    : validator.requireEnv("FRONTEND_URL"),
+  apiGatewayUrl: appConfig.isDev
+    ? validator.requireEnv("API_GATEWAY_URL_DEV")
+    : validator.requireEnv("API_GATEWAY_URL"),
+  mainBackendServiceUrl: appConfig.isDev
+    ? validator.requireEnv("MAIN_BACKEND_SERVICE_URL_DEV")
+    : validator.requireEnv("MAIN_BACKEND_SERVICE_URL"),
+  realtimeServiceUrl: appConfig.isDev
+    ? validator.requireEnv("REALTIME_SERVICE_URL_DEV")
+    : validator.requireEnv("REALTIME_SERVICE_URL"),
+  notificationServiceUrl: appConfig.isDev
+    ? validator.requireEnv("NOTIFICATION_SERVICE_URL_DEV")
+    : validator.requireEnv("NOTIFICATION_SERVICE_URL"),
+  paymentServiceUrl: appConfig.isDev
+    ? validator.requireEnv("PAYMENT_SERVICE_URL_DEV")
+    : validator.requireEnv("PAYMENT_SERVICE_URL"),
 };
 
 export const firebaseConfig = {
@@ -42,9 +60,15 @@ export const firebaseConfig = {
 };
 
 export const otelConfig = {
-  otelExporterOtlpTracesEndpoint: appConfig.isDev ? validator.requireEnv("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT_DEV") : validator.requireEnv("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT"),
-  otelExporterOtlpMetricsEndpoint: appConfig.isDev ? validator.requireEnv("OTEL_EXPORTER_OTLP_METRICS_ENDPOINT_DEV") : validator.requireEnv("OTEL_EXPORTER_OTLP_METRICS_ENDPOINT"),
-  otelExporterOtlpLogsEndpoint: appConfig.isDev ? validator.requireEnv("OTEL_EXPORTER_OTLP_LOGS_ENDPOINT_DEV") : validator.requireEnv("OTEL_EXPORTER_OTLP_LOGS_ENDPOINT"),
+  otelExporterOtlpTracesEndpoint: appConfig.isDev
+    ? validator.requireEnv("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT_DEV")
+    : validator.requireEnv("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT"),
+  otelExporterOtlpMetricsEndpoint: appConfig.isDev
+    ? validator.requireEnv("OTEL_EXPORTER_OTLP_METRICS_ENDPOINT_DEV")
+    : validator.requireEnv("OTEL_EXPORTER_OTLP_METRICS_ENDPOINT"),
+  otelExporterOtlpLogsEndpoint: appConfig.isDev
+    ? validator.requireEnv("OTEL_EXPORTER_OTLP_LOGS_ENDPOINT_DEV")
+    : validator.requireEnv("OTEL_EXPORTER_OTLP_LOGS_ENDPOINT"),
 };
 
 export const aesConfig = {
@@ -82,24 +106,38 @@ export const kafkaConfig = {
         adminProviderReview: validator.requireEnv("KAFKA_ADMIN_PROVIDER_REVIEW"),
         accountBlockStatus: validator.requireEnv("KAFKA_ACCOUNT_BLOCK_STATUS"),
         accountTrustStatus: validator.requireEnv("KAFKA_ACCOUNT_TRUST_STATUS"),
-        providerAppointmentStatusForUser: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_USER"),
+        providerAppointmentStatusForUser: validator.requireEnv(
+          "KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_USER",
+        ),
         appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
-        providerSubscriptionPaymentSuccess: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_SUCCESS"),
+        providerSubscriptionPaymentSuccess: validator.requireEnv(
+          "KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_SUCCESS",
+        ),
         planSubscribed: validator.requireEnv("KAFKA_PLAN_SUBSCRIBED"),
         slotBooked: validator.requireEnv("KAFKA_SLOT_BOOKED"),
         userBookingPaymentSuccess: validator.requireEnv("KAFKA_USER_BOOKING_PAYMENT_SUCCESS"),
         gotAnAppointment: validator.requireEnv("KAFKA_GOT_AN_APPOINTMENT"),
-        userBookingRefundPaymentSuccess: validator.requireEnv("KAFKA_USER_BOOKING_REFUND_PAYMENT_SUCCESS"),
+        userBookingRefundPaymentSuccess: validator.requireEnv(
+          "KAFKA_USER_BOOKING_REFUND_PAYMENT_SUCCESS",
+        ),
       },
 
       notification: {
         // NOTIFICATIONS
         accountTrustStatus: validator.requireEnv("KAFKA_ACCOUNT_TRUST_STATUS"),
-        providerAppointmentStatusForUser: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_USER"),
-        providerAppointmentStatusForProvider: validator.requireEnv("KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_PROVIDER"),
+        providerAppointmentStatusForUser: validator.requireEnv(
+          "KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_USER",
+        ),
+        providerAppointmentStatusForProvider: validator.requireEnv(
+          "KAFKA_PROVIDER_APPOINTMENT_STATUS_FOR_PROVIDER",
+        ),
         appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
-        providerSubscriptionPaymentSuccess: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_SUCCESS"),
-        providerSubscriptionPaymentFailed: validator.requireEnv("KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_FAILED"),
+        providerSubscriptionPaymentSuccess: validator.requireEnv(
+          "KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_SUCCESS",
+        ),
+        providerSubscriptionPaymentFailed: validator.requireEnv(
+          "KAFKA_PROVIDER_SUBSCRIPTION_PAYMENT_FAILED",
+        ),
         planSubscribed: validator.requireEnv("KAFKA_PLAN_SUBSCRIBED"),
         slotBooked: validator.requireEnv("KAFKA_SLOT_BOOKED"),
         userBookingPaymentSuccess: validator.requireEnv("KAFKA_USER_BOOKING_PAYMENT_SUCCESS"),
@@ -107,24 +145,29 @@ export const kafkaConfig = {
         gotAnAppointment: validator.requireEnv("KAFKA_GOT_AN_APPOINTMENT"),
         stripeAccountStatusUpdated: validator.requireEnv("KAFKA_STRIPE_ACCOUNT_STATUS_UPDATED"),
         passwordUpdate: validator.requireEnv("KAFKA_PASSWORD_UPDATE"),
-        userBookingRefundPaymentSuccess: validator.requireEnv("KAFKA_USER_BOOKING_REFUND_PAYMENT_SUCCESS"),
+        userBookingRefundPaymentSuccess: validator.requireEnv(
+          "KAFKA_USER_BOOKING_REFUND_PAYMENT_SUCCESS",
+        ),
       },
-      
+
       calendar: {
         // GOOGLE CALENDAR
         createGoogleCalendarEvent: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_EVENT_CREATE"),
-        
+
         // TODO implement: update the calendar when resheduling is happens
         updateGoogleCalendarEvent: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_EVENT_UPDATE"),
       },
     },
-    
+
     pub: {
       appConnect: validator.requireEnv("KAFKA_APP_CONNECT"),
-      googleCalendarCreateEventSuccess: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_CREATE_EVENT_SUCCESS"),
-      googleCalendarCreateEventFailed: validator.requireEnv("KAFKA_GOOGLE_CALENDAR_CREATE_EVENT_FAILED"),
+      googleCalendarCreateEventSuccess: validator.requireEnv(
+        "KAFKA_GOOGLE_CALENDAR_CREATE_EVENT_SUCCESS",
+      ),
+      googleCalendarCreateEventFailed: validator.requireEnv(
+        "KAFKA_GOOGLE_CALENDAR_CREATE_EVENT_FAILED",
+      ),
     },
-
   },
 };
 

@@ -8,21 +8,18 @@ import { IKafkaProducerAdapter } from "../../application/interfaces/messaging/IK
 // Different Consumers for different usecases
 export const kafkaEmailConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapter(
   kafkaClient,
-  kafkaConfig.groups.emailGroupId
+  kafkaConfig.groups.emailGroupId,
 );
 
 export const kafkaNotificationConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapter(
   kafkaClient,
-  kafkaConfig.groups.notificationGroupId
+  kafkaConfig.groups.notificationGroupId,
 );
 
 export const kafkaGoogleCalendarConsumer: IKafkaConsumerAdapter = new KafkaConsumerAdapter(
   kafkaClient,
-  kafkaConfig.groups.calendarGroupId
+  kafkaConfig.groups.calendarGroupId,
 );
 
 // Kafka Single producer
-export const kafkaProducer: IKafkaProducerAdapter = new KafkaProducerAdapter(
-  kafkaClient
-);
-
+export const kafkaProducer: IKafkaProducerAdapter = new KafkaProducerAdapter(kafkaClient);

@@ -68,7 +68,7 @@ Its layered architecture separates HTTP presentation, application use cases, dom
 - Gmail SMTP integration for transactional email transport.
 - Reusable email templates for notification messages.
 - Kafka-driven processing of email-related events.
-- Amazon Simple Email Service (SES) integration components for email delivery workflows.
+- Amazon Simple Email Service (SES) integration components for email delivery workflows ( in development ).
 
 ### Push Notifications
 
@@ -143,7 +143,6 @@ Its layered architecture separates HTTP presentation, application use cases, dom
 <p align="left">
   <img src="https://img.shields.io/badge/Nodemailer-22A7F0?style=for-the-badge" alt="Nodemailer" />
   <img src="https://img.shields.io/badge/Gmail_SMTP-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail SMTP" />
-  <img src="https://img.shields.io/badge/Amazon_SES-DD344C?style=for-the-badge&logo=amazonaws&logoColor=white" alt="Amazon SES" />
   <img src="https://img.shields.io/badge/Firebase_Admin_SDK-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase Admin SDK" />
   <img src="https://img.shields.io/badge/FCM-Push_Notifications-4285F4?style=for-the-badge&logo=firebase&logoColor=white" alt="Firebase Cloud Messaging" />
 </p>
@@ -207,6 +206,7 @@ flowchart TD
         Kafka[("Apache Kafka")]
         MongoDB[("MongoDB")]
         Redis[("Redis")]
+        Observability[("OTEL")]
         FCM["Firebase Cloud Messaging"]
         Calendar["Google Calendar API"]
         Email["Nodemailer / Email Transport"]
@@ -219,6 +219,7 @@ flowchart TD
     Kafka --> Notification
     Notification <--> MongoDB
     Notification <--> Redis
+    Notification <--> Observability
     Notification --> FCM
     Notification --> Calendar
     Notification --> Email
@@ -269,8 +270,6 @@ The event-processing infrastructure incorporates retry and dead-letter handling 
 ### Email Infrastructure
 
 Nodemailer provides email transport integration, with Gmail SMTP used for transactional email delivery.
-
-The service also includes Amazon Simple Email Service (SES) integration components, providing an additional option for email infrastructure configuration.
 
 Email workflows support notification templates, event-driven processing, and integration with the wider SlotFlow platform.
 
@@ -360,7 +359,7 @@ Explore the SlotFlow ecosystem and its supporting services.
 - Transactional email delivery using Nodemailer and Gmail SMTP.
 - Firebase Cloud Messaging integration for push notifications.
 - MongoDB persistence for notifications, preferences, device registrations, and processing state.
-- API endpoints for notification preference management.
+- APIs for notification preference management.
 - Google Calendar integration for calendar-related workflows.
 - Retry and dead-letter handling infrastructure for event processing.
 - Winston logging and OpenTelemetry instrumentation.

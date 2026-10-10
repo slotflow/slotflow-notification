@@ -1,12 +1,12 @@
+import {
+  AppConnect,
+  OtpPurpose,
+  AppointmentStatus,
+  AdminVerificationStatus,
+} from "../../domain/enums/enum";
 import { SendEmailCommon } from "./kafka.dto";
 import { ProviderAddressForUser } from "./common.dto";
 import { emailTemplateConstants } from "../../shared/utils/constants/emailConstants";
-import {
-  AdminVerificationStatus,
-  AppConnect,
-  AppointmentStatus,
-  OtpPurpose,
-} from "../../domain/enums/enum";
 
 /**
  * Email common dtos
@@ -146,6 +146,7 @@ export interface SendUserBookingRefundPaymentSuccessEventInput extends SendEmail
 //     payoutDate: string;
 // }
 
+// Email events payloads union type
 export type EmailEventPayload =
   | SendOtpEventInput
   | SendWelcomeEventInput
@@ -162,15 +163,15 @@ export type EmailEventPayload =
   | SendProviderSubscriptionPaymentSuccessEventInput
   | SendUserBookingRefundPaymentSuccessEventInput;
 
+// Email template key type
 export type EmailTemplateKey = EmailEventPayload["templateKey"];
 
+// Email template registry type
 type PayloadFor<K extends EmailTemplateKey> = Extract<EmailEventPayload, { templateKey: K }>;
-
-export interface EmailTemplateDefinition<K extends EmailTemplateKey> {
+interface EmailTemplateDefinition<K extends EmailTemplateKey> {
   subject: (data: Omit<PayloadFor<K>, "templateKey" | "email">) => string;
   renderBody: (data: Omit<PayloadFor<K>, "templateKey" | "email">) => string;
 }
-
 export type EmailTemplateRegistry = {
   [K in EmailTemplateKey]: EmailTemplateDefinition<K>;
 };

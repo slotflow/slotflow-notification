@@ -1,6 +1,7 @@
 import { KafkaMessage } from "kafkajs";
 import { AppConnect } from "../../domain/enums/enum";
 import { NotificationEventPayload, SendAppConnectNotificationEventInput } from "./notification.dto";
+import { EmailEventPayload } from "./email.dto";
 
 /**
  * Kafka common dtos
@@ -15,7 +16,7 @@ export interface KafkaClientAdapterProps {
 
 // backend-main service subscribing kafka event payload
 export interface NSSubKafkaEventPayload<TData = Record<string, string | number>> {
-  emailData?: TData;
+  emailData?: EmailEventPayload;
   notificationData?: NotificationEventPayload;
   calendarData?: TData;
 }

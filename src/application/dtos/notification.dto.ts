@@ -1,12 +1,12 @@
-import { ProviderAddressForUser } from "./common.dto";
-import { notificationTemplateConstants } from "../../shared/utils/constants/notificationConstants";
 import {
+  PlanName,
   AppConnect,
   AppointmentStatus,
   NotificationType,
   PaymentAccountStatus,
-  PlanName,
 } from "../../domain/enums/enum";
+import { ProviderAddressForUser } from "./common.dto";
+import { notificationTemplateConstants } from "../../shared/utils/constants/notificationConstants";
 
 /**
  * Notification common dtos
@@ -106,6 +106,7 @@ export interface UserBookingPaymentFailedEventInput extends CommonNotificationEv
   templateKey: typeof notificationTemplateConstants.userBookingPaymentFailed;
 }
 
+// Notification events payloads union type
 export type NotificationEventPayload =
   | SendAccountTrustStatusNotificationEventInput
   | SendAppointmentStatusChangeForUserNotificationEventInput
@@ -122,18 +123,18 @@ export type NotificationEventPayload =
   | UserBookingRefundPaymentSuccessNotificationEventInput
   | UserBookingPaymentFailedEventInput;
 
+// Notification template key type
 export type NotificationTemplateKey = NotificationEventPayload["templateKey"];
 
+// Notification template registry type
 type PayloadFor<K extends NotificationTemplateKey> = Extract<
   NotificationEventPayload,
   { templateKey: K }
 >;
-
 export interface NotificationTemplateDefinition<K extends NotificationTemplateKey> {
   title: (data: Omit<PayloadFor<K>, "templateKey" | "notificationType" | "userId">) => string;
   body: (data: Omit<PayloadFor<K>, "templateKey" | "notificationType" | "userId">) => string;
 }
-
 export type NotificationTemplateRegistry = {
   [K in NotificationTemplateKey]: NotificationTemplateDefinition<K>;
 };

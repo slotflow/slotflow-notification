@@ -1,5 +1,5 @@
-import { NotificationPreferenceProps } from "../../domain/contracts/notificationPreference.contract";
 import { NotificationPreference } from "../../domain/entities/notificationPreference.entity";
+import { NotificationPreferenceProps } from "../../domain/contracts/notificationPreference.contract";
 
 /**
  * Usecase dtos
@@ -24,7 +24,6 @@ export interface UpdatePushNotificationPreferenceInput {
   userId: string;
   pushNotification: boolean;
 }
-
 export type UpdatePushNotificationPreferenceOutput = Pick<
   UpdatePushNotificationPreferenceInput,
   "pushNotification"

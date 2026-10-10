@@ -82,7 +82,9 @@ export interface TableData<T> {
   items?: T;
 }
 
-// **** USECASE DTOS
+/**
+ * Usecase dtos
+ */
 
 // Register Device
 export interface RegisterDeviceInput {
